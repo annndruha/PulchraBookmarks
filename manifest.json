@@ -1,0 +1,32 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "build-info.js", "brandings.js", "backend/bootstrap.js", "backend/bundle.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icons/19.png"
+   },
+   "chrome_url_overrides": {
+      "newtab": "layout/newtab.html"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "includes/contentscript.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   }],
+   "content_security_policy": "script-src 'self'; object-src 'self'",
+   "default_locale": "ru",
+   "description": "__MSG_product_description__",
+   "icons": {
+      "128": "icons/128.png",
+      "16": "icons/16.png",
+      "48": "icons/48.png"
+   },
+   "manifest_version": 1,
+   "minimum_chrome_version": "46",
+   "name": "__MSG_product_name__",
+   "permissions": ["bookmarks", "cookies", "geolocation", "history", "notifications", "storage", "tabs", "topSites", "unlimitedStorage", "webNavigation", "chrome://favicon/"],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.0.1"
+}
