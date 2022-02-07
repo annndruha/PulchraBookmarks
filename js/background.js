@@ -1,38 +1,50 @@
-//function toggleText(id) {
-//        var button = document.getElementById(id).firstChild;
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('Extension installed');
+  chrome.tabs.create({"url": "chrome://newtab/"});
+});
+
+
+
+chrome.tabs.onCreated.addListener(function callback)
+
+//function toggleText() {
+//        var button = document.getElementById("hhh").firstChild;
 //        button.innerText = "pressed"
 //        button.data = button.data == "Lock" ? "Unlock" : "Lock";
 //}
 //
-//chrome.commands.onCommand.addListener(function (command) {
-//    if (command == "scroll") {
-//        // alert("Test"); this works
-//        window.scrollTo(0, 500); // this doesn't work
-//    }
+//function reddenPage() {
+//  document.body.style.backgroundColor = 'red';
+//}
+
+//async function getCurrentTab() {
+//  let queryOptions = { active: true, currentWindow: true };
+//  let [tab] = await chrome.tabs.query(queryOptions);
+//  return tab;
+//}
+//
+//let tab = await getCurrentTab();
+//
+//chrome.scripting.executeScript({
+//  target: {tabId: tab.id},
+//  files: ['content-script.js']
 //});
 
-//const tabId = getTabId();
-//chrome.scripting.executeScript(
-//    {
-//      target: {tabId: tabId, allFrames: true},
-//      files: ['js/newtab.js'],
-//    },
-//    () => { ... });
 
-function reddenPage() {
-  document.body.style.backgroundColor = 'red';
-}
+//function hellYeah(text) {
+//  document.getElementById("text-holder").innerHTML = text;
+//}
 
-chrome.action.onClicked.addListener((tab) => {
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: reddenPage
-  });
+//document.addEventListener('DOMContentLoaded', function() {
+//    var link = document.getElementById('link');
+//    link.addEventListener('click', function() {
+//        hellYeah('xxx');
+//    });
+//});
 
-
-let color = '#3aa757';
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Extention installed');
-  chrome.tabs.create({"url": "chrome://newtab/"});
-});
+//chrome.action.onClicked.addListener((tab) => {
+//  chrome.scripting.executeScript({
+//    target: { tabId: tab.id },
+//    function: reddenPage
+//  });
+//});

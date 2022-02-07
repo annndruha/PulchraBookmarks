@@ -1,26 +1,35 @@
 {
-   "name": "Pulchra bookmarks",
-   "description": "Pulchra bookmarks extension",
-   "version": "0.0.2",
-   "manifest_version": 3,
-   "minimum_chrome_version": "88",
-
-   "chrome_url_overrides": {
-      "newtab": "newtab.html"
-   },
-
-   "background": {
-      "service_worker": "js/background.js"
-   },
-
-   "permissions": ["activeTab",
-      "bookmarks",
-      "history",
-      "scripting",
-      "storage",
-      "tabs",
-      "topSites",
-      "unlimitedStorage",
-      "webNavigation"]
-
+  "name": "Pulchra bookmarks",
+  "description": "Pulchra bookmarks extension",
+  "version": "0.0.3",
+  "manifest_version": 3,
+  "minimum_chrome_version": "96",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {},
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "bookmarks",
+    "history",
+    "scripting",
+    "storage",
+    "topSites",
+    "unlimitedStorage",
+    "webNavigation",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content-script.js"]
+    }
+    ]
 }
