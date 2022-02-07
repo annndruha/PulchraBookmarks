@@ -1,27 +1,29 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Bookmarks</title>
     <link rel="icon" href="icons/favicon.svg">
     <link rel="stylesheet" href="css/background.css">
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/newtab.css">
+<!--    <script src="js/background.js"></script>-->
 </head>
 <body>
 
 <div data-reactroot class="content">
     <div class="bottom-menu">
-        <span class="bottom-menu__item bottom-menu__item_closed-tabs">Closed tabs</span>
-        <span class="bottom-menu__item bottom-menu__item_downloads">Downloads</span>
-        <span class="bottom-menu__item bottom-menu__item_bookmarks">Bookmarks</span>
-        <span class="bottom-menu__item bottom-menu__item_history">History</span>
+<!--        <span class="bottom-menu__item bottom-menu__item_closed-tabs" onclick="openInNewTab('www.vk.com');">Closed tabs</span>-->
+        <span class="bottom-menu__item bottom-menu__item_downloads" onclick="openInNewTab('chrome://downloads');">Downloads</span>
+        <span class="bottom-menu__item bottom-menu__item_bookmarks" onclick="openInNewTab('chrome://bookmarks');">Bookmarks</span>
+        <span class="bottom-menu__item bottom-menu__item_history" onclick="openInNewTab('chrome://history');">History</span>
         <span class="bottom-menu__item bottom-menu__item_settings">Settings</span>
-        <span class="bottom-menu__item bottom-menu__item_add_bookmark">Add bookmark</span>
+        <span class="text"> example</span>
+<!--        <span class="bottom-menu__item bottom-menu__item_add_bookmark">Add bookmark</span>-->
     </div>
 <!--    <label class="switch">-->
 <!--  <input type="checkbox" checked>-->
 <!--  <span class="slider round"></span>-->
 <!--</label>-->
-</div>
 
+</div>
 </body>
 </html>

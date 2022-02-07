@@ -1,8 +1,7 @@
 {
    "name": "Pulchra bookmarks",
-   "description": "Pulchra bookmarks extention",
+   "description": "Pulchra bookmarks extension",
    "version": "0.0.2",
-   "update_url": "https://clients2.google.com/service/update2/crx",
    "manifest_version": 3,
    "minimum_chrome_version": "88",
 
@@ -11,15 +10,12 @@
    },
 
    "background": {
-      "service_worker": "js/bottom-menu.js"
+      "service_worker": "js/background.js"
    },
 
    "permissions": ["activeTab",
       "bookmarks",
-      "geolocation",
       "history",
-      "notifications",
-      "activeTab",
       "scripting",
       "storage",
       "tabs",
