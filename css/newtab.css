@@ -3,8 +3,6 @@ body {
     text-align: center;
     padding: 50px;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
     box-sizing: border-box;
     font: 1.0em Arial, Helvetica, sans-serif;
     position: relative;
@@ -17,8 +15,28 @@ body {
     position: relative;
     height: 15px;
     padding: 12px 6px 23px;
+    text-align: left;
 }
 
 .bottom-menu__item:hover {
     opacity: 0.6;
+}
+
+
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+#container {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+.grid-item {
+  padding: 1em;
+  border: 1px solid #ddd;
+  text-align: center;
 }
