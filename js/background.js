@@ -3,10 +3,6 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.tabs.create({"url": "chrome://newtab/"});
 });
 
-
-
-chrome.tabs.onCreated.addListener(function callback)
-
 //function toggleText() {
 //        var button = document.getElementById("hhh").firstChild;
 //        button.innerText = "pressed"
