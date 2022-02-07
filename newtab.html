@@ -1,32 +1,27 @@
 <head>
     <title>Bookmarks</title>
     <link rel="icon" href="icons/favicon.svg">
-    <link rel="stylesheet" href="css/background-image.css">
-    <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/newtab.css">
-
-    <script language="JavaScript" type="text/javascript" src="/js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/content-script.js"></script>
-
-<!--    <script src="js/background.js"></script>-->
+    <link rel="stylesheet" href="css/button.css">
+    <script language="JavaScript" type="text/javascript" src="js/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/bottom-menu.js"></script>
 </head>
 
 <body>
 <div data-reactroot class="content">
     <div class="bottom-menu">
-        <span class="bottom-menu__item bottom-menu__item_downloads" id="downloads">Downloads</span>
-        <span class="bottom-menu__item bottom-menu__item_bookmarks" id="bookmarks">Bookmarks</span>
-        <span class="bottom-menu__item bottom-menu__item_history" id="history">History</span>
-        <span class="bottom-menu__item bottom-menu__item_settings" id="settings">Settings</span>
+        <span class="bottom-menu__item" id="downloads">Downloads</span>
+        <span class="bottom-menu__item" id="bookmarks">Bookmarks</span>
+        <span class="bottom-menu__item" id="history">History</span>
+        <span class="bottom-menu__item" id="settings">Settings</span>
     </div>
+
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
 </div>
 </body>
 </html>
 
 
-
-
-<!--    <label class="switch">-->
-<!--  <input type="checkbox" checked>-->
-<!--  <span class="slider round"></span>-->
-<!--</label>-->

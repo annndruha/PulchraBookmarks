@@ -5,10 +5,10 @@ $(document).ready(function(){
     $('#bookmarks').click(function() {
       chrome.tabs.create({"url": "chrome://bookmarks/"});
    });
-       $('#history').click(function() {
+    $('#history').click(function() {
       chrome.tabs.create({"url": "chrome://history/"});
    });
-       $('#settings').click(function() {
+    $('#settings').click(function() {
       chrome.tabs.create({"url": "chrome://settings/"});
    });
 });
