@@ -10,3 +10,11 @@ function makeRows(rows, cols) {
 };
 
 makeRows(3, 5);
+
+//value = 5;
+//chrome.storage.local.set({key: value}, function() {
+//  console.log('Value is set to ' + value);
+//});
+//chrome.storage.local.get(['key'], function(result) {
+//  console.log('Value currently is ' + result.key);
+//});
