@@ -1,4 +1,4 @@
-# pulchra-bookmarks
+# IN DEVELOPMENT (DON'T USE THIS EXTENTION)
 
 Цели:
 * Прямоугольные закладки 16:9 со скруглёнными углами
