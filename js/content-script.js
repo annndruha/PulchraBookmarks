@@ -21,8 +21,21 @@
 
 
 $(document).ready(function(){
-   $('#text').click(function() {
-      alert('You clicked a label named ' + $(this).html() +'!');
+   $('#downloads').click(function() {
+      //alert('You clicked a label named ' + $(this).html() +'!');
       console.log("Fuck chrome")
+      chrome.tabs.create({"url": "chrome://downloads/"});
+   });
+    $('#bookmarks').click(function() {
+      console.log("Fuck chrome")
+      chrome.tabs.create({"url": "chrome://bookmarks/"});
+   });
+       $('#history').click(function() {
+      console.log("Fuck chrome")
+      chrome.tabs.create({"url": "chrome://history/"});
+   });
+       $('#settings').click(function() {
+      console.log("Fuck chrome")
+      chrome.tabs.create({"url": "chrome://settings/"});
    });
 });
