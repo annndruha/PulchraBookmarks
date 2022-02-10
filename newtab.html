@@ -3,28 +3,34 @@
     <link rel="icon" href="icons/favicon.svg">
     <link rel="stylesheet" href="css/newtab.css">
     <link rel="stylesheet" href="css/button.css">
-    <script language="JavaScript" type="text/javascript" src="js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/bottom-menu.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/container.js" defer></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bottom-menu.js"></script>
+    <script type="text/javascript" src="js/grid.js" defer></script>
 </head>
 
 <body>
-<div class="content">
-    <div class="container" id="container">
+<div class="app-container">
+    <div class="bookmarks-header">
 
     </div>
-    <div class="bottom-menu">
-        <span class="bottom-menu__item" id="downloads">Downloads</span>
-        <span class="bottom-menu__item" id="bookmarks">Bookmarks</span>
-        <span class="bottom-menu__item" id="history">History</span>
-        <span class="bottom-menu__item" id="settings">Settings</span>
+    <div class="content">
+        <div class="grid" id="grid">
+
+        </div>
+
+
+
     </div>
 
 
 </div>
+<div class="bottom-menu">
+    <span class="bottom-menu__item" id="bm-downloads">Downloads</span>
+    <span class="bottom-menu__item" id="bm-bookmarks">Bookmarks</span>
+    <span class="bottom-menu__item" id="bm-history">History</span>
+    <span class="bottom-menu__item" id="bm-settings">Settings</span>
+</div>
 </body>
-</html>
-
 
 
 <!--    <label class="switch">-->
