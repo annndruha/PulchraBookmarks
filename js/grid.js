@@ -12,16 +12,23 @@ function makeGrid(parent, cols, rows) {
 }
 
 const container = document.getElementById("grid");
-makeGrid(container, 3, 4);
-
-function makeMark(c,r){
-    let itemInside = document.createElement("div");
-    itemInside.innerText = r.toString() + c.toString();
-    console.log(itemInside.innerText)
-    return itemInside
-}
+let cols = 3
+let rows = 3
+makeGrid(container, cols, rows);
 
 
+$(document).ready(function(){
+    $('.grid-item-inside').click(function () {
+        let link = this.getAttribute("link");
+        console.log(link)
+        // chrome.tabs.create({"url": link});
+        // chrome.tabs.update({active: true, url: link});
+        alert(link)
+    });
+});
+
+
+// });
 //value = 5;
 //chrome.storage.local.set({key: value}, function() {
 //  console.log('Value is set to ' + value);
