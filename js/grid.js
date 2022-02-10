@@ -16,22 +16,11 @@ let cols = 5
 let rows = 5
 makeGrid(container, cols, rows);
 
-
 $(document).ready(function(){
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link");
-        console.log("Open:" + link)
-        chrome.tabs.create({"url": link});
+        chrome.tabs.create({"url": "https://" + link});
         // chrome.tabs.update({active: true, url: link});
+        console.log("Open:" + link)
     });
 });
-
-
-// });
-//value = 5;
-//chrome.storage.local.set({key: value}, function() {
-//  console.log('Value is set to ' + value);
-//});
-//chrome.storage.local.get(['key'], function(result) {
-//  console.log('Value currently is ' + result.key);
-//});
