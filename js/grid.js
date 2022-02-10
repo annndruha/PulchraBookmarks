@@ -12,18 +12,17 @@ function makeGrid(parent, cols, rows) {
 }
 
 const container = document.getElementById("grid");
-let cols = 3
-let rows = 3
+let cols = 5
+let rows = 5
 makeGrid(container, cols, rows);
 
 
 $(document).ready(function(){
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link");
-        console.log(link)
-        // chrome.tabs.create({"url": link});
+        console.log("Open:" + link)
+        chrome.tabs.create({"url": link});
         // chrome.tabs.update({active: true, url: link});
-        alert(link)
     });
 });
 

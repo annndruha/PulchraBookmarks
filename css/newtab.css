@@ -63,3 +63,12 @@ body {
     cursor: pointer;
     opacity: 0.6;
 }
+
+.grid-item-inside-menu{
+    text-align: right;
+    padding: 2px;
+    opacity: 0.0;
+}
+.grid-item-inside-menu:hover{
+    opacity: 1.0;
+}
