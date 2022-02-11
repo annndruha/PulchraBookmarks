@@ -42,32 +42,6 @@ function makeTextDiv(text, id) {
     return text_div
 }
 
-// function getIcon(url) {
-//     // url += "/favicon.ico"
-//     // let http = new XMLHttpRequest()
-//     // http.open('HEAD', url, false)
-//     // //http.send()
-//     // console.log(http.status)
-//     // return http.status != 404
-//     // return true
-//
-//     let xhr = new XMLHttpRequest()
-//     xhr.open('HEAD', url, false) // "https://www.google.com/s2/favicons?sz=64&domain_url=" +
-//
-//     // try {
-//         xhr.send()
-//         if (xhr.status != 200) {
-//             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`)
-//         } else {
-//             alert(xhr.response)
-//         }
-//     // } catch(err) { // для отлова ошибок используем конструкцию try...catch вместо onerror
-//     //     alert("Cant load")
-//     // }
-// }
-//
-// getIcon("https://yandex.ru/internet/")
-
 function  iconAvaidable(link){
     let url = linkDefined(getOpenLink(getDomain(link))) // Link set in bookmark
     if (url){
@@ -146,3 +120,19 @@ function makeGrid(parent, cols, rows) {
         parent.appendChild(gridRow).className = "grid-row"
     }
 }
+
+// async function start() {
+//     url = "https://vk.com/im"
+//     let response = await fetch(url, {method: 'HEAD'});
+//     // if (response.ok) {
+//     let json = await response;
+//     console.log(json)
+//     // }
+//     // else {
+//     //     alert("Responce " + response.status);
+//     // }
+// }
+//
+//
+// start()
+

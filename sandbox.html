@@ -1,15 +1,10 @@
-<!DOCTYPE HTML>
-<html>
- <head>
-  <meta charset="utf-8">
-  <title>Событие onclick</title>
-  <script src="js/bottom-menu.js"></script>
- </head>
- <body>
-  <form action="">
-   <p>Введите адрес электронной почты и нажмите кнопку &laquo;Проверить&raquo;</p>
-   <p><input type="text" id="email"> <span id="status"></span></p>
-   <p><input type="button" value="Проверить" onclick="isEmail()"></p>
-  </form>
- </body>
-</html>
+<script type="text/javascript" src="favicon.js"></script>
+<script type="text/javascript">
+ var favicon = new Favicon;
+
+ favicon.get('vk.com/im', function(url) {
+  jQuery('#favicon').attr('src', url);
+  // favicon.js automagically loads jQuery.
+ });
+</script>
+<img id="favicon" width="16" height="16" src="default.png" alt="A favicon.">
