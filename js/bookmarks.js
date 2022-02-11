@@ -42,26 +42,40 @@ function makeTextDiv(text, id) {
     return text_div
 }
 
-function UrlExists(url) {
-    // url += "/favicon.ico"
-    // let http = new XMLHttpRequest();
-    // http.open('HEAD', url, false);
-    // //http.send();
-    // console.log(http.status)
-    // return http.status != 404;
-    return true
-}
+// function getIcon(url) {
+//     // url += "/favicon.ico"
+//     // let http = new XMLHttpRequest();
+//     // http.open('HEAD', url, false);
+//     // //http.send();
+//     // console.log(http.status)
+//     // return http.status != 404;
+//     // return true
+//
+//     let xhr = new XMLHttpRequest();
+//     xhr.open('HEAD', url, false); // "https://www.google.com/s2/favicons?sz=64&domain_url=" +
+//
+//     // try {
+//         xhr.send();
+//         if (xhr.status != 200) {
+//             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+//         } else {
+//             alert(xhr.response);
+//         }
+//     // } catch(err) { // для отлова ошибок используем конструкцию try...catch вместо onerror
+//     //     alert("Cant load");
+//     // }
+// }
+//
+// getIcon("https://yandex.ru/internet/")
 
 function  iconAvaidable(link){
-    let url = linkDefined(getOpenLink(getDomain(link))); // + "/favicon.ico"
+    let url = linkDefined(getOpenLink(getDomain(link))); // Link set in bookmark
     if (url){
-        return UrlExists(url)
+        return true
     }
     else {
         return false
     }
-
-
 }
 function makeBMIco(link, id) {
     let icon_div = document.createElement("div");
@@ -102,28 +116,25 @@ function editBookmark(editId) {
     let bmId = editId.replace("img-", "")
     let bookmark = document.getElementById(bmId);
     let link = bookmark.getAttribute("link");
+    let placeholder = linkDefined(link) ? link :  ""
+
     console.log("Edit id: " + editId + " with stored link:" + link)
-
-    let placeholder = ""
-    if (linkDefined(link)) {
-        placeholder = link
-    }
     let newLink = prompt("Enter new link:", placeholder)
-    if (newLink === null) {
-        return;
-    }
-    bookmark.setAttribute("link", newLink)
-    document.getElementById("text-" + bmId).textContent = getDomain(newLink)
 
+
+    if (newLink === null) {return}
+
+    bookmark.setAttribute("link", newLink)
+    chrome.storage.local.set({[bmId]: newLink}, function () {}) // console.log('Id=' + bmId + ' value=' + newLink);
+
+    document.getElementById("text-" + bmId).textContent = ""
+    document.getElementById("icon-" + bmId).remove();
+    document.getElementById("text-" + bmId).textContent = getDomain(newLink)
     if (iconAvaidable(newLink))
     {
         let iconDiv = makeBMIco(newLink, bmId)
         bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
     }
-
-    chrome.storage.local.set({[bmId]: newLink}, function () {
-        console.log('Storage value set: id=' + bmId + ' value=' + newLink);
-    })
 }
 
 
