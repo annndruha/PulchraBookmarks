@@ -1,5 +1,5 @@
 function linkDefined(link) {
-    return link !== "undefined" && link !== "null" && link !== null && link !== undefined && link !== "";
+    return link !== "undefined" && link !== "null" && link !== null && link !== undefined && link !== ""
 }
 
 function getDomain(link) {
@@ -10,8 +10,8 @@ function getDomain(link) {
         } else if (link.includes(":\\\\")) {
             let name = link.split("\\")
             return name[2].replace("www.", "")
-        } else return link;
-    } else return "";
+        } else return link
+    } else return ""
 }
 
 function getOpenLink(link) {
@@ -27,8 +27,8 @@ function getOpenLink(link) {
 }
 
 function makeSubMenu(id) {
-    let subMenu = document.createElement("div");
-    let img = document.createElement("img");
+    let subMenu = document.createElement("div")
+    let img = document.createElement("img")
     img.setAttribute("src", "images/icons/edit_black_24dp.svg")
     img.id = "img-" + id
     subMenu.appendChild(img).className = "grid-item-inside-menu-img"
@@ -36,7 +36,7 @@ function makeSubMenu(id) {
 }
 
 function makeTextDiv(text, id) {
-    let text_div = document.createElement("div");
+    let text_div = document.createElement("div")
     text_div.textContent = text
     text_div.id = "text-" + id
     return text_div
@@ -44,32 +44,32 @@ function makeTextDiv(text, id) {
 
 // function getIcon(url) {
 //     // url += "/favicon.ico"
-//     // let http = new XMLHttpRequest();
-//     // http.open('HEAD', url, false);
-//     // //http.send();
+//     // let http = new XMLHttpRequest()
+//     // http.open('HEAD', url, false)
+//     // //http.send()
 //     // console.log(http.status)
-//     // return http.status != 404;
+//     // return http.status != 404
 //     // return true
 //
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('HEAD', url, false); // "https://www.google.com/s2/favicons?sz=64&domain_url=" +
+//     let xhr = new XMLHttpRequest()
+//     xhr.open('HEAD', url, false) // "https://www.google.com/s2/favicons?sz=64&domain_url=" +
 //
 //     // try {
-//         xhr.send();
+//         xhr.send()
 //         if (xhr.status != 200) {
-//             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+//             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`)
 //         } else {
-//             alert(xhr.response);
+//             alert(xhr.response)
 //         }
 //     // } catch(err) { // для отлова ошибок используем конструкцию try...catch вместо onerror
-//     //     alert("Cant load");
+//     //     alert("Cant load")
 //     // }
 // }
 //
 // getIcon("https://yandex.ru/internet/")
 
 function  iconAvaidable(link){
-    let url = linkDefined(getOpenLink(getDomain(link))); // Link set in bookmark
+    let url = linkDefined(getOpenLink(getDomain(link))) // Link set in bookmark
     if (url){
         return true
     }
@@ -78,9 +78,9 @@ function  iconAvaidable(link){
     }
 }
 function makeBMIco(link, id) {
-    let icon_div = document.createElement("div");
+    let icon_div = document.createElement("div")
     let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
-    let icon_icon = document.createElement("img");
+    let icon_icon = document.createElement("img")
     icon_icon.setAttribute("src", fav_link)
     icon_icon.id = "icon-" + id
     icon_div.appendChild(icon_icon).className = "icon"
@@ -89,8 +89,8 @@ function makeBMIco(link, id) {
 
 function makeMark(c, r) {
     // Create one bookmark
-    let itemInside = document.createElement("div");
-    itemInside.id = r.toString() + c.toString();
+    let itemInside = document.createElement("div")
+    itemInside.id = r.toString() + c.toString()
     chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         itemInside.setAttribute("link", link)
@@ -107,15 +107,15 @@ function makeMark(c, r) {
             let iconDiv = makeBMIco(link, itemInside.id)
             itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
         }
-    });
+    })
     return itemInside
 }
 
 
 function editBookmark(editId) {
     let bmId = editId.replace("img-", "")
-    let bookmark = document.getElementById(bmId);
-    let link = bookmark.getAttribute("link");
+    let bookmark = document.getElementById(bmId)
+    let link = bookmark.getAttribute("link")
     let placeholder = linkDefined(link) ? link :  ""
 
     console.log("Edit id: " + editId + " with stored link:" + link)
@@ -125,10 +125,10 @@ function editBookmark(editId) {
     if (newLink === null) {return}
 
     bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[bmId]: newLink}, function () {}) // console.log('Id=' + bmId + ' value=' + newLink);
+    chrome.storage.local.set({[bmId]: newLink}, function () {}) // console.log('Id=' + bmId + ' value=' + newLink)
 
     document.getElementById("text-" + bmId).textContent = ""
-    document.getElementById("icon-" + bmId).remove();
+    document.getElementById("icon-" + bmId).remove()
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
     if (iconAvaidable(newLink))
     {
@@ -140,9 +140,9 @@ function editBookmark(editId) {
 
 function makeGrid(parent, cols, rows) {
     for (let r = 0; r < rows; r++) {
-        let gridRow = document.createElement("div");
+        let gridRow = document.createElement("div")
         for (let c = 0; c < cols; c++) {
-            let item = document.createElement("div");
+            let item = document.createElement("div")
             let itemInside = makeMark(r, c)
             item.appendChild(itemInside).className = "grid-item-inside"
             gridRow.appendChild(item).className = "grid-item"
