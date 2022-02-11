@@ -41,8 +41,27 @@ function makeTextDiv(text, id) {
     text_div.id = "text-" + id
     return text_div
 }
+
+function UrlExists(url) {
+    // url += "/favicon.ico"
+    // let http = new XMLHttpRequest();
+    // http.open('HEAD', url, false);
+    // //http.send();
+    // console.log(http.status)
+    // return http.status != 404;
+    return true
+}
+
 function  iconAvaidable(link){
-    return linkDefined(getOpenLink(getDomain(link))); // + "/favicon.ico"
+    let url = linkDefined(getOpenLink(getDomain(link))); // + "/favicon.ico"
+    if (url){
+        return UrlExists(url)
+    }
+    else {
+        return false
+    }
+
+
 }
 function makeBMIco(link, id) {
     let icon_div = document.createElement("div");
@@ -95,6 +114,12 @@ function editBookmark(editId) {
     }
     bookmark.setAttribute("link", newLink)
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
+
+    if (iconAvaidable(newLink))
+    {
+        let iconDiv = makeBMIco(newLink, bmId)
+        bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
+    }
 
     chrome.storage.local.set({[bmId]: newLink}, function () {
         console.log('Storage value set: id=' + bmId + ' value=' + newLink);
