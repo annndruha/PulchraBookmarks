@@ -1,27 +1,35 @@
+function getName(link){
+    if (link !== undefined && link !== "" && link !== null) {
+        if (link.includes("://")) {
+            let name = link.split("/")
+            return name[2].replace("www.", "")
+        } else if (link.includes(":\\\\")) {
+            let name = link.split("\\")
+            return name[2].replace("www.", "")
+        } else return undefined;
+    }
+    else return undefined;
+}
+
+
 function makeMark(c, r) {
-    // Big bookmark
+    // Create one bookmark
     let itemInside = document.createElement("div");
     itemInside.id = r.toString() + c.toString();
-    console.log(itemInside.id)
-    let wtf = itemInside.id.toString()
-    chrome.storage.local.get([wtf], function(result) {
-        console.log('Value currently is ' + result[wtf]); // 6
-        let link = result[wtf]
+    chrome.storage.local.get([itemInside.id], function (result) {
+        let link = result[itemInside.id]
 
         // SubMenu
         let subMenu = document.createElement("div");
         let img = document.createElement("img");
-        img.setAttribute("src", "icons/build_black_24dp.svg")
+        img.setAttribute("src", "icons/edit_black_24dp.svg")
         img.setAttribute("alt", "Edit")
         img.setAttribute("par-id", itemInside.id)
-
         subMenu.appendChild(img).className = "grid-item-inside-menu"
 
-        // Bookmark
+        // Bookmark name
         itemInside.setAttribute("link", link)
-        if (link !== undefined){
-            itemInside.innerHTML = link.replace("https://", "").replace("http://", "")
-        }
+        itemInside.innerHTML = getName(link) !== undefined ? getName(link) : ""
         itemInside.appendChild(subMenu).className = "grid-item-inside-menu"
     });
     return itemInside
@@ -36,14 +44,13 @@ $(document).ready(function () {
         let link = bookmark.getAttribute("link");
         console.log("Edit id:" + this.id + " with link:" + link)
 
-        // var myName = prompt("Name Here:","")
-        let newLink = prompt("Enter new link:", link).replace("https://", "").replace("http://", "")
+        let newLink = prompt("Enter new link:", link)
         bookmark.setAttribute("link", newLink)
-        bookmark.innerHTML = newLink.replace("https://", "").replace("http://", "")
+        bookmark.innerHTML = getName(newLink) !== undefined ? getName(newLink) : ""
 
         let textId = id.toString()
         chrome.storage.local.set({[textId]: newLink}, function () {
-            console.log('storage.local.value with id='+ textId + ' is set to ' + newLink);
+            console.log('storage.local.value with id=' + textId + ' is set to ' + newLink);
         })
     });
 });

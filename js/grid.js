@@ -13,14 +13,23 @@ function makeGrid(parent, cols, rows) {
 
 const container = document.getElementById("grid");
 let cols = 5
-let rows = 5
+let rows = 3
 makeGrid(container, cols, rows);
 
 $(document).ready(function(){
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link");
-        chrome.tabs.create({"url": "https://" + link});
-        // chrome.tabs.update({active: true, url: link});
-        console.log("Open:" + link)
+        console.log(link)
+        chrome.tabs.update({active: true, url: link});
+        // if (typeof link === "undefined") {
+        //     console.log("Bookmark empty")
+        // } else {
+        //     console.log("Open:" + link)
+        // }
     });
 });
+
+// alert("Bookmark empty")
+// alert(link)
+//chrome.tabs.create({"url": "https://" + link});
+//chrome.tabs.update({active: true, url: link});
