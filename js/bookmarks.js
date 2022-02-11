@@ -120,18 +120,28 @@ function makeGrid(parent, cols, rows) {
     }
 }
 
-// async function start() {
-//     url = "https://vk.com/im"
-//     let response = await fetch(url, {method: 'HEAD'});
-//     // if (response.ok) {
-//     let json = await response;
-//     console.log(json)
-//     // }
-//     // else {
-//     //     alert("Responce " + response.status);
-//     // }
+// async function start(url) {
+//
+//     let request = new Request(url, {
+//         method: 'GET',
+//         headers: new Headers({
+//             "X-HTTP-Method-Override": "HEAD"
+//         })
+//     });
+//     let response = await fetch(request)
+//     let ans = await response
+//     console.log(ans)
 // }
-//
-//
-// start()
+
+// url = "https://www.google.com/"
+// start(url)
+
+// var http = new XMLHttpRequest();
+// http.open('HEAD', url);
+// http.onreadystatechange = function() {
+//     if (this.readyState == this.DONE) {
+//         callback(this.status != 404);
+//     }
+// };
+// http.send();
 
