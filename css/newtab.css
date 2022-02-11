@@ -73,15 +73,31 @@ body {
     opacity: 0.6;
 }
 
+.grid-item-inside:hover > .grid-item-inside-menu{
+    animation: 0.7s ease 0s normal forwards 1 fadein;
+    -webkit-animation:0.7s ease 0s normal forwards 1 fadein;
+    opacity:1
+}
+
+@keyframes fadein{
+    0%{opacity:0}
+    80%{opacity:0}
+    100%{opacity:1}
+}
+
+@-webkit-keyframes fadein{
+    0%{opacity:0}
+    80%{opacity:0}
+    100%{opacity:1}
+}
+
 .grid-item-inside-menu{
     opacity: 0.0;
     position: absolute;
     top: 2px;
     right: 2px;
 }
-.grid-item-inside-menu:hover{
-    opacity: 1.0;
-}
+
 
 .grid-item-inside-icon{
     text-align: center;
