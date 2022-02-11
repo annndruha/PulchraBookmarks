@@ -22,7 +22,7 @@ function getOpenLink(link) {
         } else {
             openlink = link
         }
-}
+    }
     return openlink
 }
 
@@ -42,15 +42,11 @@ function makeTextDiv(text, id) {
     return text_div
 }
 
-function  iconAvaidable(link){
+function iconAvaidable(link) {
     let url = linkDefined(getOpenLink(getDomain(link))) // Link set in bookmark
-    if (url){
-        return true
-    }
-    else {
-        return false
-    }
+    return !!url;
 }
+
 function makeBMIco(link, id) {
     let icon_div = document.createElement("div")
     let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
@@ -75,7 +71,6 @@ function makeMark(c, r) {
         let textDiv = makeTextDiv(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
-        // console.log(iconAvaidable(link) + " : " + link)
         if (iconAvaidable(link)) {
             let iconDiv = makeBMIco(link, itemInside.id)
             itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
@@ -89,19 +84,23 @@ function editBookmark(editId) {
     let bmId = editId.replace("img-", "")
     let bookmark = document.getElementById(bmId)
     let link = bookmark.getAttribute("link")
-    let placeholder = linkDefined(link) ? link :  ""
+    let placeholder = linkDefined(link) ? link : ""
 
     console.log("Edit id: " + editId + " with stored link:" + link)
     let newLink = prompt("Enter new link:", placeholder)
-    if (newLink === null) {return}
+    if (newLink === null) {
+        return
+    }
 
     bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[bmId]: newLink}, function () {})
+    chrome.storage.local.set({[bmId]: newLink}, function () {
+    })
 
-    if (document.getElementById("icon-" + bmId)){document.getElementById("icon-" + bmId).remove()}
+    if (document.getElementById("icon-" + bmId)) {
+        document.getElementById("icon-" + bmId).remove()
+    }
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
-    if (iconAvaidable(newLink))
-    {
+    if (iconAvaidable(newLink)) {
         let iconDiv = makeBMIco(newLink, bmId)
         bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
     }

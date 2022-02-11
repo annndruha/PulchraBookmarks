@@ -5,7 +5,7 @@ makeGrid(container, cols, rows)
 
 debug = true
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link")
         let openLink = getOpenLink(link)
@@ -14,8 +14,7 @@ $(document).ready(function(){
             //chrome.tabs.update({active: true, url: openLink})
             chrome.tabs.create({"url": openLink})
             console.log("User open: " + openLink)
-        }
-        else {
+        } else {
             alert("Empty link")
         }
     })
