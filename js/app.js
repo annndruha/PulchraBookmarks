@@ -8,16 +8,12 @@ debug = true
 $(document).ready(function(){
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link");
-        if (link !== "undefined" && link !== "null" && link !== "") {
-            //chrome.tabs.create({"url": "https://" + link});
-            let openLink = link
-            if (!(link.startsWith("https://")) && !(link.startsWith("http://")))
-            {
-                openLink = "https://" + link
-            }
+        let openLink = getOpenLink(link)
 
-            chrome.tabs.update({active: true, url: openLink});
-            console.log(typeof openLink + " : " + openLink)
+        if (!(openLink === "")) {
+            //chrome.tabs.update({active: true, url: openLink});
+            chrome.tabs.create({"url": openLink});
+            console.log("User open: " + openLink)
         }
         else {
             alert("Empty link")
