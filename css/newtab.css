@@ -74,8 +74,6 @@ body {
 }
 
 .grid-item-inside-menu{
-    /*text-align: right;*/
-    /*padding: 2px;*/
     opacity: 0.0;
     position: absolute;
     top: 2px;

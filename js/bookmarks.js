@@ -1,4 +1,4 @@
-function getName(link){
+function getName(link) {
     if (link !== "undefined" && link !== "null" && link !== null && link !== undefined) { // && link !== ""
         if (link.includes("://")) {
             let name = link.split("/")
@@ -7,25 +7,23 @@ function getName(link){
             let name = link.split("\\")
             return name[2].replace("www.", "")
         } else return link;
-    }
-    else return "";
+    } else return "";
 }
 
-function makeSubMenu(id){
+function makeSubMenu(id) {
     let subMenu = document.createElement("div");
     let img = document.createElement("img");
     img.setAttribute("src", "images/icons/edit_black_24dp.svg")
     //img.setAttribute("edit-id", "edit-"+id)
-    img.id = "img-"+id
+    img.id = "img-" + id
     subMenu.appendChild(img).className = "grid-item-inside-menu-img"
     return subMenu
 }
 
-function makeTextDiv(text, id){
+function makeTextDiv(text, id) {
     let text_div = document.createElement("div");
-    // text_div.setAttribute("text-id", "text-"+id)
     text_div.textContent = text
-    text_div.id = "text-"+id
+    text_div.id = "text-" + id
     return text_div
 }
 
@@ -50,16 +48,18 @@ function makeMark(c, r) {
 }
 
 
-function editBookmark(editId){
+function editBookmark(editId) {
     let bmId = editId.replace("img-", "")
     let bookmark = document.getElementById(bmId);
     let link = bookmark.getAttribute("link");
     console.log("Edit id:" + editId + " with link:" + link)
 
     let newLink = prompt("Enter new link:", link)
+    if (newLink === null) {
+        return;
+    }
     bookmark.setAttribute("link", newLink)
-
-    document.getElementById("text-"+bmId).textContent = getName(newLink)
+    document.getElementById("text-" + bmId).textContent = getName(newLink)
 
     chrome.storage.local.set({[bmId]: newLink}, function () {
         console.log('storage.local.value with id=' + bmId + ' is set to ' + newLink);

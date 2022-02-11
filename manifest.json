@@ -7,20 +7,18 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
+  "icons":{
+    "128": "images/branding/logo128.png"
+  },
   "background": {
     "service_worker": "js/background.js"
   },
   "action": {},
   "permissions": [
-    "activeTab",
     "tabs",
     "bookmarks",
     "history",
-    "scripting",
     "storage",
-    "topSites",
-    "unlimitedStorage",
-    "webNavigation",
-    "notifications"
+    "topSites"
   ]
 }
