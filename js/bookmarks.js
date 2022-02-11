@@ -14,7 +14,7 @@ function getName(link){
 function makeSubMenu(id){
     let subMenu = document.createElement("div");
     let img = document.createElement("img");
-    img.setAttribute("src", "icons/edit_black_24dp.svg")
+    img.setAttribute("src", "images/icons/edit_black_24dp.svg")
     //img.setAttribute("edit-id", "edit-"+id)
     img.id = "img-"+id
     subMenu.appendChild(img).className = "grid-item-inside-menu-img"
