@@ -10,8 +10,14 @@ $(document).ready(function(){
         let link = this.getAttribute("link");
         if (link !== "undefined" && link !== "null" && link !== "") {
             //chrome.tabs.create({"url": "https://" + link});
-            chrome.tabs.update({active: true, url: link});
-            console.log(typeof link + " : " + link)
+            let openLink = link
+            if (!(link.startsWith("https://")) && !(link.startsWith("http://")))
+            {
+                openLink = "https://" + link
+            }
+
+            chrome.tabs.update({active: true, url: openLink});
+            console.log(typeof openLink + " : " + openLink)
         }
         else {
             alert("Empty link")
