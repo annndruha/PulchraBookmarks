@@ -15,8 +15,8 @@ function makeSubMenu(id){
     let subMenu = document.createElement("div");
     let img = document.createElement("img");
     img.setAttribute("src", "icons/edit_black_24dp.svg")
-    img.setAttribute("edit-id", "edit-"+id)
-    // img.id = "edit-"+id
+    //img.setAttribute("edit-id", "edit-"+id)
+    img.id = "img-"+id
     subMenu.appendChild(img).className = "grid-item-inside-menu-img"
     return subMenu
 }
@@ -51,7 +51,7 @@ function makeMark(c, r) {
 
 
 function editBookmark(editId){
-    let bmId = editId.replace("edit-", "")
+    let bmId = editId.replace("img-", "")
     let bookmark = document.getElementById(bmId);
     let link = bookmark.getAttribute("link");
     console.log("Edit id:" + editId + " with link:" + link)
@@ -69,7 +69,6 @@ function editBookmark(editId){
 $(document).ready(function () {
 $('.grid-item-inside-menu-img').click(function (e) {
     e.stopPropagation();
-    let editId = this.getAttribute("edit-id").toString()
-    editBookmark(editId)
+    editBookmark(this.id)
 });
 });
