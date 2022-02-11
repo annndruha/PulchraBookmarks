@@ -1,16 +1,33 @@
 function getName(link){
-    if (link !== undefined && link !== "" && link !== null) {
+    if (link !== "undefined" && link !== "null" && link !== null && link !== undefined) { // && link !== ""
         if (link.includes("://")) {
             let name = link.split("/")
             return name[2].replace("www.", "")
         } else if (link.includes(":\\\\")) {
             let name = link.split("\\")
             return name[2].replace("www.", "")
-        } else return undefined;
+        } else return link;
     }
-    else return undefined;
+    else return "";
 }
 
+function makeSubMenu(id){
+    let subMenu = document.createElement("div");
+    let img = document.createElement("img");
+    img.setAttribute("src", "icons/edit_black_24dp.svg")
+    img.setAttribute("edit-id", "edit-"+id)
+    // img.id = "edit-"+id
+    subMenu.appendChild(img).className = "grid-item-inside-menu-img"
+    return subMenu
+}
+
+function makeTextDiv(text, id){
+    let text_div = document.createElement("div");
+    // text_div.setAttribute("text-id", "text-"+id)
+    text_div.textContent = text
+    text_div.id = "text-"+id
+    return text_div
+}
 
 function makeMark(c, r) {
     // Create one bookmark
@@ -20,37 +37,39 @@ function makeMark(c, r) {
         let link = result[itemInside.id]
 
         // SubMenu
-        let subMenu = document.createElement("div");
-        let img = document.createElement("img");
-        img.setAttribute("src", "icons/edit_black_24dp.svg")
-        img.setAttribute("alt", "Edit")
-        img.setAttribute("par-id", itemInside.id)
-        subMenu.appendChild(img).className = "grid-item-inside-menu"
+        let subMenu = makeSubMenu(itemInside.id)
 
         // Bookmark name
         itemInside.setAttribute("link", link)
-        itemInside.innerHTML = getName(link) !== undefined ? getName(link) : ""
+        textDiv = makeTextDiv(getName(link), itemInside.id)
+
         itemInside.appendChild(subMenu).className = "grid-item-inside-menu"
+        itemInside.appendChild(textDiv).className = "grid-item-inside-text"
     });
     return itemInside
 }
 
 
+function editBookmark(editId){
+    let bmId = editId.replace("edit-", "")
+    let bookmark = document.getElementById(bmId);
+    let link = bookmark.getAttribute("link");
+    console.log("Edit id:" + editId + " with link:" + link)
+
+    let newLink = prompt("Enter new link:", link)
+    bookmark.setAttribute("link", newLink)
+
+    document.getElementById("text-"+bmId).textContent = getName(newLink)
+
+    chrome.storage.local.set({[bmId]: newLink}, function () {
+        console.log('storage.local.value with id=' + bmId + ' is set to ' + newLink);
+    })
+}
+
 $(document).ready(function () {
-    $('.grid-item-inside-menu').click(function (e) {
-        e.stopPropagation();
-        let id = this.getAttribute("par-id")
-        let bookmark = document.getElementById(id);
-        let link = bookmark.getAttribute("link");
-        console.log("Edit id:" + this.id + " with link:" + link)
-
-        let newLink = prompt("Enter new link:", link)
-        bookmark.setAttribute("link", newLink)
-        bookmark.innerHTML = getName(newLink) !== undefined ? getName(newLink) : ""
-
-        let textId = id.toString()
-        chrome.storage.local.set({[textId]: newLink}, function () {
-            console.log('storage.local.value with id=' + textId + ' is set to ' + newLink);
-        })
-    });
+$('.grid-item-inside-menu-img').click(function (e) {
+    e.stopPropagation();
+    let editId = this.getAttribute("edit-id").toString()
+    editBookmark(editId)
+});
 });

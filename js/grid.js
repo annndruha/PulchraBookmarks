@@ -17,21 +17,15 @@ let rows = 3
 makeGrid(container, cols, rows);
 
 
-
 $(document).ready(function(){
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link");
-        if (Boolean(link)) {
-            console.log("True:" + link)
+        if (link !== "undefined" && link !== "null") {
+            chrome.tabs.update({active: true, url: link});
+            //chrome.tabs.create({"url": "https://" + link});
         }
         else {
-            console.log("False:" + link)
+            alert("Empty link")
         }
     });
 });
-// chrome.tabs.update({active: true, url: link});
-// !== "string"  && link !== null
-// alert("Bookmark empty")
-// alert(link)
-//chrome.tabs.create({"url": "https://" + link});
-//chrome.tabs.update({active: true, url: link});
