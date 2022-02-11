@@ -54,7 +54,11 @@ function editBookmark(editId) {
     let link = bookmark.getAttribute("link");
     console.log("Edit id:" + editId + " with link:" + link)
 
-    let newLink = prompt("Enter new link:", link)
+    let placeholder = ""
+    if (link !== "undefined" && link !== "null" && link !== ""){
+        placeholder = link
+    }
+    let newLink = prompt("Enter new link:", placeholder)
     if (newLink === null) {
         return;
     }
