@@ -101,9 +101,8 @@ function makeMark(c, r) {
         let textDiv = makeTextDiv(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
-        console.log(iconAvaidable(link) + " : " + link)
-        if (iconAvaidable(link))
-        {
+        // console.log(iconAvaidable(link) + " : " + link)
+        if (iconAvaidable(link)) {
             let iconDiv = makeBMIco(link, itemInside.id)
             itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
         }
@@ -120,15 +119,12 @@ function editBookmark(editId) {
 
     console.log("Edit id: " + editId + " with stored link:" + link)
     let newLink = prompt("Enter new link:", placeholder)
-
-
     if (newLink === null) {return}
 
     bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[bmId]: newLink}, function () {}) // console.log('Id=' + bmId + ' value=' + newLink)
+    chrome.storage.local.set({[bmId]: newLink}, function () {})
 
-    document.getElementById("text-" + bmId).textContent = ""
-    document.getElementById("icon-" + bmId).remove()
+    if (document.getElementById("icon-" + bmId)){document.getElementById("icon-" + bmId).remove()}
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
     if (iconAvaidable(newLink))
     {
