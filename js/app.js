@@ -1,16 +1,3 @@
-function makeGrid(parent, cols, rows) {
-    for (let r = 0; r < rows; r++) {
-        let gridRow = document.createElement("div");
-        for (let c = 0; c < cols; c++) {
-            let item = document.createElement("div");
-            let itemInside = makeMark(r, c)
-            item.appendChild(itemInside).className = "grid-item-inside"
-            gridRow.appendChild(item).className = "grid-item"
-        }
-        parent.appendChild(gridRow).className = "grid-row"
-    }
-}
-
 const container = document.getElementById("grid");
 let cols = 5
 let rows = 3
@@ -27,5 +14,9 @@ $(document).ready(function(){
         else {
             alert("Empty link")
         }
+    });
+    $('.grid-item-inside-menu-img').click(function (e) {
+        e.stopPropagation();
+        editBookmark(this.id)
     });
 });
