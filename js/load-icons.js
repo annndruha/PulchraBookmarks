@@ -14,7 +14,6 @@ function waitToLoadFavicon(google_img, fav_link, id){
     fav_img.onerror = () => remakeIcon(google_img, fav_img, id);
 }
 
-
 function remakeIcon(google_img, fav_img, id) {
     let imgOld = document.getElementById("icon-" + id)
     // console.log("id=" + id + " gw=" + google_img.src + " fw=" + fav_img.src)

@@ -7,7 +7,7 @@ function makeSubMenu(id) {
     return subMenu
 }
 
-function makeTextDiv(text, id) {
+function makeText(text, id) {
     let text_div = document.createElement("div")
     let textCopy = text
     text = text.split(".")
@@ -27,7 +27,6 @@ function makeIconTemplate(id){
 
 
 function makeMark(r, c) {
-    // Create one bookmark
     let itemInside = document.createElement("div")
     itemInside.id = r.toString() + c.toString()
     chrome.storage.local.get([itemInside.id], function (result) {
@@ -37,15 +36,13 @@ function makeMark(r, c) {
         let subMenu = makeSubMenu(itemInside.id)
         itemInside.appendChild(subMenu).className = "grid-item-inside-menu"
 
-        let textDiv = makeTextDiv(getDomain(link), itemInside.id)
+        let textDiv = makeText(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
-        let iconDiv = makeIconTemplate(itemInside.id)
-        itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
-        // if (iconDefined(link)) {
-        //     let iconDiv = makeIcon(link, itemInside.id)
-        //     itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
-        // }
+        if (link !== "") {
+            let iconDiv = makeIconTemplate(itemInside.id)
+            itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
+        }
     })
     return itemInside
 }

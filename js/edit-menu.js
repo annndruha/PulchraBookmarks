@@ -1,26 +1,30 @@
-function editBookmark(editId) {
-    let bmId = editId.replace("img-", "")
-    let bookmark = document.getElementById(bmId)
+function editBookmark(menu_img_id) {
+    let id = menu_img_id.replace("img-", "")
+    let bookmark = document.getElementById(id)
     let link = bookmark.getAttribute("link")
     let placeholder = linkDefined(link) ? link : ""
 
-    console.log("Edit id: " + editId + " with stored link:" + link)
     let newLink = prompt("Enter new link:", placeholder)
     if (newLink === null) {
         return
     }
 
     bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[bmId]: newLink}, function () {
-    })
+    chrome.storage.local.set({[id]: newLink}, function () {})
+    document.getElementById("text-" + id).textContent = getDomain(newLink)
 
-    if (document.getElementById("icon-" + bmId)) {
-        document.getElementById("icon-" + bmId).remove()
+    // Remove icon and
+    if (document.getElementById("icon-" + id)) {
+        document.getElementById("icon-" + id).remove()
     }
-    document.getElementById("text-" + bmId).textContent = getDomain(newLink)
 
-    // if (iconDefined(newLink)) {
-    //     let iconDiv = makeIcon(newLink, bmId)
-    //     bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
-    // }
+    // If bookmark is not empty
+    if (newLink !== "") {
+        // Set template
+        let iconDiv = makeIconTemplate(id)
+        bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
+
+        // Load real icon
+        loadIcon(id)
+    }
 }
