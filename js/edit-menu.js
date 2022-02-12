@@ -18,13 +18,9 @@ function editBookmark(menu_img_id) {
         document.getElementById("icon-" + id).remove()
     }
 
-    // If bookmark is not empty
-    if (newLink !== "") {
-        // Set template
-        let iconDiv = makeIconTemplate(id)
+    if (newLink !== "") { // If bookmark is not empty
+        let iconDiv = makeIconTemplate(id) // Set template
         bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
-
-        // Load real icon
-        loadIcon(id)
+        loadIcon(id) // And load real icon
     }
 }

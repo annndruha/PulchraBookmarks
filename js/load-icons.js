@@ -28,7 +28,6 @@ function remakeIcon(google_img, fav_img, id) {
     }
 }
 
-
 function loadAllIcons(cols, rows){
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {

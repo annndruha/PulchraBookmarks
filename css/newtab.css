@@ -68,9 +68,28 @@ body {
     vertical-align: middle;
 }
 
-.grid-item-inside:hover {
+.grid-item-inside-menu:hover {
     cursor: pointer;
-    opacity: 0.6;
+    /*opacity: 1;*/
+}
+
+.icon{
+    position: absolute;
+    top: 18px;
+    width: 50px;
+    height: 50px;
+}
+
+.grid-item-inside:hover > .grid-item-inside-icon{
+    /*text-align: center;*/
+    margin-right:+60px;
+    /*transform: scale(1.1);*/
+}
+
+.grid-item-inside:hover .icon{
+    top: 13px;
+    width: 60px;
+    height: 60px;
 }
 
 .grid-item-inside:hover > .grid-item-inside-menu{
@@ -94,23 +113,11 @@ body {
 .grid-item-inside-menu{
     opacity: 0.0;
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 5px;
+    right: 5px;
 }
-
 
 .grid-item-inside-icon{
     text-align: center;
     margin-right:+50px;
-}
-.icon{
-    position: absolute;
-    top: 18px;
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    max-width: 100%;
-    max-height: 100%;
 }
