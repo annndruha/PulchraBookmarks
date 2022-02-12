@@ -22,19 +22,8 @@ $(document).ready(function () {
         e.stopPropagation()
         editBookmark(this.id)
     })
-
-    writeWH(cols, rows)
-    // writeWH(cols, rows)
-    // setTimeout(writeWH(cols, rows), 2000);
-
-
-    // let img = document.getElementById("icon-41")
-    // $("<img>").attr("src", $(img).attr("src")).load(function() {
-    //     var realWidth = this.width;
-    //     var realHeight = this.height;
-    //     img.setAttribute("w", realWidth)
-    //     img.setAttribute("h", realHeight)
-    // })
 })
-// writeWH(cols, rows).delay( 800 )
 
+$(window).on("load", function (){
+    writeWH(cols, rows)
+})

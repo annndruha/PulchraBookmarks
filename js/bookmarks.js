@@ -137,19 +137,7 @@ function writeWH(cols, rows){
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             let img = document.getElementById("icon-" + r + c)
-            if (img === null)
-            {
-                // img = getMeta(document.getElementById(r.toString() + c).getAttribute("link"))
-                // console.log(img)
-            }
-            $("<img>").attr("src", $(img).attr("src")).load(function () {
-                img.setAttribute("w", this.width)
-                img.setAttribute("h", this.height)
-                //console.log("id=" + r+c + " size=" + img.getAttribute("w") + "x" + img.getAttribute("h"))
-            })
-            // console.log(img)
-            // console.log("id=" + r+c + " size=" + img.getAttribute("w") + "x" + img.getAttribute("h"))
-            // remakeIcon(document.getElementById(r.toString() + c).getAttribute("link"), "icon-" + r + c)
+            console.log("id=" + r+c + " size=" + img.naturalHeight + "x" + img.naturalWidth)
         }
     }
 }
