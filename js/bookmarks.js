@@ -37,7 +37,9 @@ function makeSubMenu(id) {
 
 function makeTextDiv(text, id) {
     let text_div = document.createElement("div")
-    text_div.textContent = text
+    let textCopy = text
+    text = text.split(".")
+    text_div.textContent = textCopy.replace("."+text[text.length - 1], "")
     text_div.id = "text-" + id
     return text_div
 }
@@ -47,17 +49,21 @@ function iconAvaidable(link) {
     return !!url;
 }
 
-function makeBMIco(link, id) {
+function makeIcon(link, id) {
     let icon_div = document.createElement("div")
-    let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
+    // let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
+    //https://s2.googleusercontent.com/s2/favicons?domain=https://ximc.ru/&sz=128
+    let fav_link = "https://s2.googleusercontent.com/s2/favicons?domain=" + getOpenLink(link) + "&sz=128"
     let icon_icon = document.createElement("img")
     icon_icon.setAttribute("src", fav_link)
     icon_icon.id = "icon-" + id
+
+    // console.log(icon_icon.clientWidth)
     icon_div.appendChild(icon_icon).className = "icon"
     return icon_div
 }
 
-function makeMark(c, r) {
+function makeMark(r, c) {
     // Create one bookmark
     let itemInside = document.createElement("div")
     itemInside.id = r.toString() + c.toString()
@@ -72,7 +78,7 @@ function makeMark(c, r) {
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
         if (iconAvaidable(link)) {
-            let iconDiv = makeBMIco(link, itemInside.id)
+            let iconDiv = makeIcon(link, itemInside.id)
             itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
         }
     })
@@ -101,7 +107,7 @@ function editBookmark(editId) {
     }
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
     if (iconAvaidable(newLink)) {
-        let iconDiv = makeBMIco(newLink, bmId)
+        let iconDiv = makeIcon(newLink, bmId)
         bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
     }
 }
@@ -120,28 +126,45 @@ function makeGrid(parent, cols, rows) {
     }
 }
 
-// async function start(url) {
+function getMeta(url) {
+    let img = new Image();
+    img.src = url;
+    img.onload = function () {return this}
+    return img
+}
+
+function writeWH(cols, rows){
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            let img = document.getElementById("icon-" + r + c)
+            if (img === null)
+            {
+                // img = getMeta(document.getElementById(r.toString() + c).getAttribute("link"))
+                // console.log(img)
+            }
+            $("<img>").attr("src", $(img).attr("src")).load(function () {
+                img.setAttribute("w", this.width)
+                img.setAttribute("h", this.height)
+                //console.log("id=" + r+c + " size=" + img.getAttribute("w") + "x" + img.getAttribute("h"))
+            })
+            // console.log(img)
+            // console.log("id=" + r+c + " size=" + img.getAttribute("w") + "x" + img.getAttribute("h"))
+            // remakeIcon(document.getElementById(r.toString() + c).getAttribute("link"), "icon-" + r + c)
+        }
+    }
+}
+
+// function remakeIcon(link, id) {
+//     // let icon_div = document.createElement("div")
+//     console.log(link)
+//     let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
+//     // let icon_icon = document.createElement("img")
+//     // icon_icon.setAttribute("src", fav_link)
+//     // icon_icon.id = "icon-" + id
+//     let img = getMeta(fav_link)
+//     // console.log(link)
 //
-//     let request = new Request(url, {
-//         method: 'GET',
-//         headers: new Headers({
-//             "X-HTTP-Method-Override": "HEAD"
-//         })
-//     });
-//     let response = await fetch(request)
-//     let ans = await response
-//     console.log(ans)
+//     // console.log(icon_icon.clientWidth)
+//     // icon_div.appendChild(icon_icon).className = "icon"
+//     return fav_link
 // }
-
-// url = "https://www.google.com/"
-// start(url)
-
-// var http = new XMLHttpRequest();
-// http.open('HEAD', url);
-// http.onreadystatechange = function() {
-//     if (this.readyState == this.DONE) {
-//         callback(this.status != 404);
-//     }
-// };
-// http.send();
-
