@@ -13,11 +13,11 @@ body {
     text-shadow: 0px 0px 3px black;
     position: relative;
     height: 15px;
-    padding:20px;
+    padding: 20px;
     text-align: left;
 }
 
-.bottom-menu__item{
+.bottom-menu__item {
     padding: 15px;
 }
 
@@ -52,7 +52,7 @@ body {
     padding: 0px 10px 0px 10px;
     text-overflow: clip;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
     vertical-align: middle;
     line-height: 170px;
 }
@@ -64,60 +64,73 @@ body {
     height: 100%;
     text-overflow: clip;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
     vertical-align: middle;
 }
 
 .grid-item-inside-menu:hover {
-    cursor: pointer;
-    /*opacity: 1;*/
+    cursor: default;
 }
 
-.icon{
+.icon {
     position: absolute;
     top: 18px;
     width: 50px;
     height: 50px;
 }
 
-.grid-item-inside:hover > .grid-item-inside-icon{
-    /*text-align: center;*/
-    margin-right:+60px;
-    /*transform: scale(1.1);*/
+.grid-item-inside:hover {
+    cursor: pointer;
 }
 
-.grid-item-inside:hover .icon{
+.grid-item-inside:hover > .grid-item-inside-icon {
+    margin-right: +60px;
+}
+
+.grid-item-inside:hover .icon {
     top: 13px;
     width: 60px;
     height: 60px;
 }
 
-.grid-item-inside:hover > .grid-item-inside-menu{
+.grid-item-inside:hover > .grid-item-inside-menu {
     animation: 0.7s ease 0s normal forwards 1 fadein;
-    -webkit-animation:0.7s ease 0s normal forwards 1 fadein;
-    opacity:1
+    -webkit-animation: 0.7s ease 0s normal forwards 1 fadein;
+    opacity: 1
 }
 
-@keyframes fadein{
-    0%{opacity:0}
-    80%{opacity:0}
-    100%{opacity:1}
+@keyframes fadein {
+    0% {
+        opacity: 0
+    }
+    80% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
 }
 
-@-webkit-keyframes fadein{
-    0%{opacity:0}
-    80%{opacity:0}
-    100%{opacity:1}
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0
+    }
+    80% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
 }
 
-.grid-item-inside-menu{
+.grid-item-inside-menu {
     opacity: 0.0;
     position: absolute;
     top: 5px;
     right: 5px;
 }
 
-.grid-item-inside-icon{
+.grid-item-inside-icon {
     text-align: center;
-    margin-right:+50px;
+    margin-right: +50px;
 }

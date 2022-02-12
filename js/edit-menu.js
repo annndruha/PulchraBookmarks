@@ -10,7 +10,8 @@ function editBookmark(menu_img_id) {
     }
 
     bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[id]: newLink}, function () {})
+    chrome.storage.local.set({[id]: newLink}, function () {
+    })
     document.getElementById("text-" + id).textContent = getDomain(newLink)
 
     // Remove icon and

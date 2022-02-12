@@ -4,7 +4,7 @@ let rows = 3
 makeGrid(container, cols, rows)
 
 // $(document).ready(function () {
-$(window).on("load", function (){
+$(window).on("load", function () {
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link")
         let openLink = getOpenLink(link)

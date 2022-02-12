@@ -11,12 +11,12 @@ function makeText(text, id) {
     let text_div = document.createElement("div")
     let textCopy = text
     text = text.split(".")
-    text_div.textContent = textCopy.replace("."+text[text.length - 1], "")
+    text_div.textContent = textCopy.replace("." + text[text.length - 1], "")
     text_div.id = "text-" + id
     return text_div
 }
 
-function makeIconTemplate(id){
+function makeIconTemplate(id) {
     let icon_div = document.createElement("div")
     let icon = document.createElement("img")
     icon.setAttribute("src", "images/icons/autorenew_black_24dp.svg")
