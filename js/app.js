@@ -25,5 +25,5 @@ $(document).ready(function () {
 })
 
 $(window).on("load", function (){
-    writeWH(cols, rows)
+    loadAllIcons(cols, rows)
 })

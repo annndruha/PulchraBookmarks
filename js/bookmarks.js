@@ -1,31 +1,3 @@
-function linkDefined(link) {
-    return link !== "undefined" && link !== "null" && link !== null && link !== undefined && link !== ""
-}
-
-function getDomain(link) {
-    if (linkDefined(link)) {
-        if (link.includes("://")) {
-            let name = link.split("/")
-            return name[2].replace("www.", "")
-        } else if (link.includes(":\\\\")) {
-            let name = link.split("\\")
-            return name[2].replace("www.", "")
-        } else return link
-    } else return ""
-}
-
-function getOpenLink(link) {
-    let openlink = ""
-    if (linkDefined(link)) {
-        if (!(link.startsWith("https://")) && !(link.startsWith("http://"))) {
-            openlink = "https://" + link
-        } else {
-            openlink = link
-        }
-    }
-    return openlink
-}
-
 function makeSubMenu(id) {
     let subMenu = document.createElement("div")
     let img = document.createElement("img")
@@ -44,20 +16,13 @@ function makeTextDiv(text, id) {
     return text_div
 }
 
-function iconDefined(link) {
-    let url = linkDefined(getOpenLink(getDomain(link))) // Link set in bookmark
-    return !!url;
+
+
+function makeIconTemplate(link, id){
+
 }
 
-function makeIcon(link, id) {
-    let icon_div = document.createElement("div")
-    let google_link = "https://s2.googleusercontent.com/s2/favicons?domain=" + getOpenLink(link) + "&sz=128"
-    let icon = document.createElement("img")
-    icon.setAttribute("src", google_link)
-    icon.id = "icon-" + id
-    icon_div.appendChild(icon).className = "icon"
-    return icon_div
-}
+
 
 function makeMark(r, c) {
     // Create one bookmark
@@ -81,34 +46,6 @@ function makeMark(r, c) {
     return itemInside
 }
 
-
-function editBookmark(editId) {
-    let bmId = editId.replace("img-", "")
-    let bookmark = document.getElementById(bmId)
-    let link = bookmark.getAttribute("link")
-    let placeholder = linkDefined(link) ? link : ""
-
-    console.log("Edit id: " + editId + " with stored link:" + link)
-    let newLink = prompt("Enter new link:", placeholder)
-    if (newLink === null) {
-        return
-    }
-
-    bookmark.setAttribute("link", newLink)
-    chrome.storage.local.set({[bmId]: newLink}, function () {
-    })
-
-    if (document.getElementById("icon-" + bmId)) {
-        document.getElementById("icon-" + bmId).remove()
-    }
-    document.getElementById("text-" + bmId).textContent = getDomain(newLink)
-    if (iconDefined(newLink)) {
-        let iconDiv = makeIcon(newLink, bmId)
-        bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
-    }
-}
-
-
 function makeGrid(parent, cols, rows) {
     for (let r = 0; r < rows; r++) {
         let gridRow = document.createElement("div")
@@ -119,40 +56,5 @@ function makeGrid(parent, cols, rows) {
             gridRow.appendChild(item).className = "grid-item"
         }
         parent.appendChild(gridRow).className = "grid-row"
-    }
-}
-
-function writeWH(cols, rows){
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-            let id = r.toString()+c.toString()
-            let img = document.getElementById("icon-" + id)
-            // console.log("id=" + id + " size=" + img.naturalHeight + "x" + img.naturalWidth)
-            getFaviconReplace(id, img.naturalHeight, img.naturalWidth)
-        }
-    }
-}
-
-function getFaviconReplace(id, w, h) {
-    let link = document.getElementById(id).getAttribute("link")
-    let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
-    waitToLoad(fav_link, id, w, h)
-}
-
-function waitToLoad(fav_link, id, w, h){
-    let img = new Image()
-    img.src = fav_link
-    img.onload = () => remakeIcon(img, fav_link, id, w, h);
-}
-
-function remakeIcon(img, link, id, w, h) {
-    if (img.width<= w){
-        console.log("No icon change: w=", w, "nw=", img.width, link)
-    }
-    else
-    {
-        console.log("Try to change: w=", w, "nw=", img.width, link)
-        let imgOld = document.getElementById("icon-" + id)
-        imgOld.src = img.src
     }
 }
