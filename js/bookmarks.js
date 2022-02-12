@@ -16,12 +16,14 @@ function makeTextDiv(text, id) {
     return text_div
 }
 
-
-
-function makeIconTemplate(link, id){
-
+function makeIconTemplate(id){
+    let icon_div = document.createElement("div")
+    let icon = document.createElement("img")
+    icon.setAttribute("src", "images/icons/autorenew_black_24dp.svg")
+    icon.id = "icon-" + id
+    icon_div.appendChild(icon).className = "icon"
+    return icon_div
 }
-
 
 
 function makeMark(r, c) {
@@ -38,10 +40,12 @@ function makeMark(r, c) {
         let textDiv = makeTextDiv(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
-        if (iconDefined(link)) {
-            let iconDiv = makeIcon(link, itemInside.id)
-            itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
-        }
+        let iconDiv = makeIconTemplate(itemInside.id)
+        itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
+        // if (iconDefined(link)) {
+        //     let iconDiv = makeIcon(link, itemInside.id)
+        //     itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
+        // }
     })
     return itemInside
 }

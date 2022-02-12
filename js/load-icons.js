@@ -1,39 +1,31 @@
-function iconDefined(link) {
-    let url = linkDefined(getOpenLink(getDomain(link))) // Link set in bookmark
-    return !!url;
-}
-
-function makeIcon(link, id) {
-    let icon_div = document.createElement("div")
-    let google_link = "https://s2.googleusercontent.com/s2/favicons?domain=" + getOpenLink(link) + "&sz=128"
-    let icon = document.createElement("img")
-    icon.setAttribute("src", google_link)
-    icon.id = "icon-" + id
-    icon_div.appendChild(icon).className = "icon"
-    return icon_div
-}
-
-function getFaviconReplace(id, w, h) {
+function loadIcon(id){
     let link = document.getElementById(id).getAttribute("link")
+    let google_img = new Image()
     let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
-    waitToLoad(fav_link, id, w, h)
+    google_img.src = "https://s2.googleusercontent.com/s2/favicons?domain=" + getOpenLink(link) + "&sz=128"
+    google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id);
+    google_img.onerror = () => waitToLoadFavicon(google_img, fav_link, id);
 }
 
-function waitToLoad(fav_link, id, w, h){
-    let img = new Image()
-    img.src = fav_link
-    img.onload = () => remakeIcon(img, fav_link, id, w, h);
+function waitToLoadFavicon(google_img, fav_link, id){
+    let fav_img = new Image()
+    fav_img.src = fav_link
+    fav_img.onload = () => remakeIcon(google_img, fav_img, id);
+    fav_img.onerror = () => remakeIcon(google_img, fav_img, id);
 }
 
-function remakeIcon(img, link, id, w, h) {
-    if (img.width<= w){
-        console.log("No icon change: w=", w, "nw=", img.width, link)
+
+function remakeIcon(google_img, fav_img, id) {
+    let imgOld = document.getElementById("icon-" + id)
+    // console.log("id=" + id + " gw=" + google_img.src + " fw=" + fav_img.src)
+    if (google_img.naturalWidth >= fav_img.naturalWidth){
+        imgOld.src = google_img.src
+        console.log("id=" + id + "google")
     }
     else
     {
-        console.log("Try to change: w=", w, "nw=", img.width, link)
-        let imgOld = document.getElementById("icon-" + id)
-        imgOld.src = img.src
+        imgOld.src = fav_img.src
+        console.log("id=" + id + "favicon")
     }
 }
 
@@ -42,9 +34,7 @@ function loadAllIcons(cols, rows){
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             let id = r.toString()+c.toString()
-            let img = document.getElementById("icon-" + id)
-            // console.log("id=" + id + " size=" + img.naturalHeight + "x" + img.naturalWidth)
-            getFaviconReplace(id, img.naturalHeight, img.naturalWidth)
+            loadIcon(id)
         }
     }
 }

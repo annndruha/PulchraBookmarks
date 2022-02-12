@@ -19,8 +19,8 @@ function editBookmark(editId) {
     }
     document.getElementById("text-" + bmId).textContent = getDomain(newLink)
 
-    if (iconDefined(newLink)) {
-        let iconDiv = makeIcon(newLink, bmId)
-        bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
-    }
+    // if (iconDefined(newLink)) {
+    //     let iconDiv = makeIcon(newLink, bmId)
+    //     bookmark.appendChild(iconDiv).className = "grid-item-inside-icon"
+    // }
 }
