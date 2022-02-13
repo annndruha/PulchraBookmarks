@@ -27,5 +27,5 @@ function getOpenLink(link) {
 }
 
 function isNumeric(value) {
-    return /^\d+$/.test(value);
+    return /^\d+$/.test(value)
 }

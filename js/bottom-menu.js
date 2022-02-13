@@ -1,4 +1,4 @@
-function addBootomMenu(parent, cols, rows){
+function addBootomMenu(parent, cols, rows) {
     let gridRow = document.createElement("div")
     for (let c = 0; c < cols; c++) {
         let item = document.createElement("div")
@@ -6,12 +6,10 @@ function addBootomMenu(parent, cols, rows){
         if (c === 0) {
             itemInside.id = "bottom-left"
             item.appendChild(itemInside).className = "pseudo-grid-item-inside"
-        }
-        else if (c === cols -1 ){
+        } else if (c === cols - 1) {
             itemInside.id = "bottom-right"
             item.appendChild(itemInside).className = "pseudo-grid-item-inside"
-        }
-        else {
+        } else {
             // itemInside.id = "bottom-disable"
             item.appendChild(itemInside).className = "pseudo-grid-item-inside bottom-disable"
         }
@@ -27,24 +25,24 @@ function makeBottonMenuLeft() {
     let bottom_menu = document.createElement("div")
 
     let span_downloads = document.createElement("span")
-    span_downloads.id="chrome-downloads"
+    span_downloads.id = "chrome-downloads"
     span_downloads.textContent = "Downloads"
     bottom_menu.appendChild(span_downloads).className = "bm-item left"
 
     let span_bookmarks = document.createElement("span")
-    span_bookmarks.id="chrome-bookmarks"
+    span_bookmarks.id = "chrome-bookmarks"
     span_bookmarks.textContent = "Bookmarks"
-    bottom_menu.appendChild(span_bookmarks).className ="bm-item left"
+    bottom_menu.appendChild(span_bookmarks).className = "bm-item left"
 
     let span_history = document.createElement("span")
-    span_history.id="chrome-history"
+    span_history.id = "chrome-history"
     span_history.textContent = "History"
-    bottom_menu.appendChild(span_history).className ="bm-item left"
+    bottom_menu.appendChild(span_history).className = "bm-item left"
 
     let span_settings = document.createElement("span")
-    span_settings.id="chrome-settings"
+    span_settings.id = "chrome-settings"
     span_settings.textContent = "Settings"
-    bottom_menu.appendChild(span_settings).className ="bm-item left"
+    bottom_menu.appendChild(span_settings).className = "bm-item left"
 
     let left_container = document.getElementById("bottom-left")
     left_container.appendChild(bottom_menu).className = "bottom-menu-left"
@@ -67,7 +65,7 @@ function makeBottonMenuRight() {
     let settings = document.createElement("img")
     settings.id = "settings"
     settings.src = "images/icons/settings.svg"
-    bottom_menu.appendChild(settings).className ="bm-item right"
+    bottom_menu.appendChild(settings).className = "bm-item right"
 
     left_container.appendChild(bottom_menu).className = "bottom-menu-right"
 }
