@@ -68,9 +68,9 @@ body {
     vertical-align: middle;
 }
 
-.grid-item-inside-menu:hover {
-    cursor: default;
-}
+/*.grid-item-inside-menu:hover {*/
+/*    cursor: default;*/
+/*}*/
 
 .icon {
     position: absolute;

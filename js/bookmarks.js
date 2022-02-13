@@ -1,7 +1,7 @@
 function makeSubMenu(id) {
     let subMenu = document.createElement("div")
     let img = document.createElement("img")
-    img.setAttribute("src", "images/icons/edit_black_24dp.svg")
+    img.setAttribute("src", "images/icons/edit.svg")
     img.id = "img-" + id
     subMenu.appendChild(img).className = "grid-item-inside-menu-img"
     return subMenu
@@ -19,7 +19,7 @@ function makeText(text, id) {
 function makeIconTemplate(id) {
     let icon_div = document.createElement("div")
     let icon = document.createElement("img")
-    icon.setAttribute("src", "images/icons/autorenew_black_24dp.svg")
+    icon.setAttribute("src", "images/icons/autorenew.svg")
     icon.id = "icon-" + id
     icon_div.appendChild(icon).className = "icon"
     return icon_div
