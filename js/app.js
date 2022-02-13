@@ -3,7 +3,7 @@ let cols = 5
 let rows = 3
 makeGrid(container, cols, rows)
 
-// $(document).ready(function () {
+
 $(window).on("load", function () {
     $('.grid-item-inside').click(function () {
         let link = this.getAttribute("link")
@@ -22,5 +22,4 @@ $(window).on("load", function () {
         editBookmark(this.id)
     })
     loadAllIcons(cols, rows)
-    // loadLocalIcons(cols, rows)
 })
