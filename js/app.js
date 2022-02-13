@@ -22,4 +22,5 @@ $(window).on("load", function () {
         editBookmark(this.id)
     })
     loadAllIcons(cols, rows)
+    // loadLocalIcons(cols, rows)
 })
