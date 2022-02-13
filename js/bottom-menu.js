@@ -18,7 +18,7 @@ function addBootomMenu(parent, cols, rows) {
     }
     parent.appendChild(gridRow).className = "pseudo-grid-row"
     makeBottonMenuLeft()
-    makeBottonMenuRight()
+    // makeBottonMenuRight()
 }
 
 function makeBottonMenuLeft() {
