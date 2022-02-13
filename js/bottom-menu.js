@@ -54,15 +54,15 @@ function makeBottonMenuRight() {
     let left_container = document.getElementById("bottom-right")
     let bottom_menu = document.createElement("div")
 
-    let save_to_file = document.createElement("img")
-    save_to_file.id = "save"
-    save_to_file.src = "images/icons/file_download.svg"
-    bottom_menu.appendChild(save_to_file).className ="bm-item right"
-
-    let load_from_file = document.createElement("img")
-    load_from_file.id = "load"
-    load_from_file.src = "images/icons/file_upload.svg"
-    bottom_menu.appendChild(load_from_file).className ="bm-item right"
+    // let save_to_file = document.createElement("img")
+    // save_to_file.id = "save"
+    // save_to_file.src = "images/icons/file_download.svg"
+    // bottom_menu.appendChild(save_to_file).className ="bm-item right"
+    //
+    // let load_from_file = document.createElement("img")
+    // load_from_file.id = "load"
+    // load_from_file.src = "images/icons/file_upload.svg"
+    // bottom_menu.appendChild(load_from_file).className ="bm-item right"
 
     let settings = document.createElement("img")
     settings.id = "settings"
