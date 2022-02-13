@@ -8,24 +8,6 @@ body {
     position: relative;
 }
 
-.bottom-menu {
-    color: white;
-    text-shadow: 0px 0px 3px black;
-    position: relative;
-    height: 15px;
-    padding: 20px;
-    text-align: left;
-}
-
-.bottom-menu__item {
-    padding: 15px;
-}
-
-.bottom-menu__item:hover {
-    cursor: pointer;
-    opacity: 0.6;
-}
-
 .grid {
     flex: 1;
     display: flex;
@@ -67,10 +49,6 @@ body {
     overflow: hidden;
     vertical-align: middle;
 }
-
-/*.grid-item-inside-menu:hover {*/
-/*    cursor: default;*/
-/*}*/
 
 .icon {
     position: absolute;
