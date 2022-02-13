@@ -8,6 +8,11 @@ body {
     position: relative;
 }
 
+*, html {
+    margin:0;
+    padding:0;
+}
+
 .grid {
     flex: 1;
     display: flex;

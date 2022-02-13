@@ -64,3 +64,26 @@ function makeGrid(parent, cols, rows) {
     }
     addBootomMenu(parent, cols, rows)
 }
+
+function beautyfyView(cols, rows) {
+    let windowHeight = $(document).height();
+    let windowWidth = $(document).width();
+    const states = [cols * 130, cols * 113, cols * 92, cols * 40]
+    let key = 0
+    const keys = {
+        0: {"pb": "50px", "pi": "10px"},
+        1: {"pb": "10px", "pi": "10px"},
+        2: {"pb": "5px", "pi": "5px"},
+        3: {"pb": "1px", "pi": "1px"},
+        4: {"pb": "0px", "pi": "1px"}
+    }
+    if (windowWidth >= states[0]) {key = 0}
+    else if (states[0] >= windowWidth && windowWidth > states[1]) {key = 1}
+    else if (states[1] >= windowWidth && windowWidth > states[2]) {key = 2}
+    else if (states[2] >= windowWidth && windowWidth > states[3]) {key = 3}
+    else if (states[3] >= windowWidth) {key = 4}
+    document.body.style.paddingRight = keys[key]["pb"]
+    document.body.style.paddingLeft = keys[key]["pb"]
+    $(".grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
+    $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
+}
