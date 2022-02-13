@@ -1,37 +1,5 @@
-.bottom-menu {
-    color: white;
-    /*text-shadow: 0px 0px 3px black;*/
-    position: relative;
-    /*height: 15px;*/
-    /*padding: 20px;*/
-    text-align: left;
-}
-
-.bottom-menu__item {
-    display: inline-block;
-    vertical-align:middle;
-    padding: 15px;
-}
-
-#img-download {
-    /*padding: 15px;*/
-}
-
-.bottom-menu__item:hover {
-    cursor: pointer;
-    opacity: 0.6;
-}
-
-
-
-.pseudo-grid {
-    flex: 1;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    overflow: hidden;
+.pseudo-grid-item-inside.bottom-disable {
+    display: none;
 }
 
 .pseudo-grid-row {
@@ -40,7 +8,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    overflow: hidden;
     padding: 10px 0px 10px 0px;
 }
 
@@ -50,19 +17,51 @@
     padding: 0px 10px 0px 10px;
     text-overflow: clip;
     white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
-    line-height: 60px;
 }
 
 .pseudo-grid-item-inside {
-    /*border-radius: 1em;*/
-    background: white;
     position: relative;
     height: 100%;
-    text-overflow: clip;
+    text-overflow: fade;
     white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
 }
 
+/* =============================================================== */
+
+.bottom-menu-left {
+    color: white;
+    text-shadow: 0 0 3px black;
+    position: relative;
+    height: 15px;
+    text-align: left;
+}
+
+.bottom-menu-right {
+    color: white;
+    text-shadow: 0 0 3px black;
+    position: relative;
+    height: 15px;
+    text-align: right;
+}
+
+/* =============================================================== */
+
+.bm-item {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.bm-item:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/* =============================================================== */
+.bm-item.right {
+    padding-right: 0;
+    padding-left: 10px;
+    filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
+    width: 22px;
+    height: 22px;
+}

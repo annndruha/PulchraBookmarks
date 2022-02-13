@@ -58,4 +58,5 @@ function makeGrid(parent, cols, rows) {
         }
         parent.appendChild(gridRow).className = "grid-row"
     }
+    addBootomMenu(parent, cols, rows)
 }
