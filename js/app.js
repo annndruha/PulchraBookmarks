@@ -25,7 +25,7 @@ function pasteSettingsValues() {
 }
 
 $(window).on("load change", function () {
-    $('.grid-item-inside').on("click", function () {
+    $('.grid-item-inside').unbind("click").on("click", function () {
         let link = this.getAttribute("link")
         let openLink = getOpenLink(link)
 
@@ -42,33 +42,33 @@ $(window).on("load change", function () {
             alert("Empty link")
         }
     })
-    $('.grid-item-inside-menu-img').on("click", function (e) {
+    $('.grid-item-inside-menu-img').unbind("click").on("click", function (e) {
         e.stopPropagation()
         editBookmark(this.id)
     })
-    $('#chrome-downloads').on("click", function () {
+    $('#chrome-downloads').unbind("click").on("click", function () {
         chrome.tabs.create({"url": "chrome://downloads/"})
     })
-    $('#chrome-bookmarks').on("click", function () {
+    $('#chrome-bookmarks').unbind("click").on("click", function () {
         chrome.tabs.create({"url": "chrome://bookmarks/"})
     })
-    $('#chrome-history').on("click", function () {
+    $('#chrome-history').unbind("click").on("click", function () {
         chrome.tabs.create({"url": "chrome://history/"})
     })
-    $('#chrome-settings').on("click", function () {
+    $('#chrome-settings').unbind("click").on("click", function () {
         chrome.tabs.create({"url": "chrome://settings/"})
     })
-    $('#settings-open-button').on("click", function (e) {
+    $('#settings-open-button').unbind("click").on("click", function (e) {
         e.stopPropagation()
         openSettings()
         console.log("Open Settings")
     })
-    $('#close-settings-button').on("click", function (e) {
+    $('#close-settings-button').unbind("click").on("click", function (e) {
         e.stopPropagation()
         closeSettings()
         console.log("Close Settings")
     })
-    $("#checkbox-new-tab").on("click", function (e) {
+    $("#checkbox-new-tab").unbind("click").on("click", function (e) {
         e.stopPropagation()
         if( $(this).is(':checked') ) {
             chrome.storage.local.set({["new-tab"]: true}, function () {console.log("set checked")})

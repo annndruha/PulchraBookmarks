@@ -14,7 +14,7 @@ function closeSettings() {
     $("#settings-open-button").css("cursor", "pointer")
 }
 
-$('#range-rows').on('input', function (e) {
+$('#range-rows').unbind("input").on('input', function (e) {
     let rows =parseInt(e.target.value)
     document.getElementById("rows").innerText = rows.toString()
     let cols = parseInt(document.getElementById("cols").innerText)
@@ -25,7 +25,7 @@ $('#range-rows').on('input', function (e) {
     beautyfyView()
 })
 
-$('#range-cols').on('input', function (e) {
+$('#range-cols').unbind("input").on('input', function (e) {
     let cols = parseInt(e.target.value)
     document.getElementById("cols").innerText = cols.toString()
     let rows = parseInt(document.getElementById("rows").innerText)
