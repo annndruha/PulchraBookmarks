@@ -55,9 +55,9 @@ function makeGrid() {
 
     // let grid = document.getElementById("grid")
     //     grid.remove()
-    // if (document.getElementById("grid")) {
-    //     document.getElementById("grid").remove()
-    // }
+    if (document.getElementById("grid")) {
+        document.getElementById("grid").remove()
+    }
     let grid = document.createElement("div")
     grid.id = "grid"
     grid.className = "grid"
