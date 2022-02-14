@@ -76,10 +76,10 @@ $(window).on("load", function () {
         openSettings()
         console.log("Open Settings")
     })
-    $('#settings-close-button').click(function (e) {
+    $('#close-settings-button').click(function (e) {
         e.stopPropagation()
         closeSettings()
         console.log("Close Settings")
     })
-    // openSettings()
+    openSettings()
 })

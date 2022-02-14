@@ -4,8 +4,33 @@
     top: 0;
     right: -360px;
     background: white;
-    transition: all 0.5s;
+    /*transition: all 0.5s;*/
     width: 320px;
     height: 100vh;
     padding: 10px 10px;
+
+    /*text-align: center;*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: 1.0em Arial, Helvetica, sans-serif;
+}
+
+#logo{
+    width: 30px;
+    height: 30px;
+}
+
+#title{
+    padding-top: 5px;
+    padding-right: 90px;
+}
+
+#close-settings-button{
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
 }
