@@ -9,17 +9,3 @@
     height: 100vh;
     padding: 40px 20px;
 }
-
-#side-checkbox {
-    display: none;
-}
-
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
-    display: none;
-}
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-close {
-    display: block;
-}
-#side-checkbox:checked + .side-panel {
-    right: 0;
-}

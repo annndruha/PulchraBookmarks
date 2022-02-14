@@ -1,11 +1,7 @@
 function openSettings(){
-    // let favDialog = document.getElementById('favDialog');
-    // favDialog.showModal();
-    let overlay = document.getElementsByClassName("settings-overlay")
-    overlay.right = "0px"
+    $(".side-panel").css("right", 0)
 }
 
 function closeSettings(){
-    let favDialog = document.getElementById('favDialog');
-    favDialog.close();
+    $(".side-panel").css("right", "-360px")
 }
