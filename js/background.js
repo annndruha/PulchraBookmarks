@@ -3,6 +3,8 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.tabs.create({"url": "chrome://newtab/"})
     chrome.storage.local.set({["cols"]: 5}, function () {
     })
-    chrome.storage.local.set({["rows"]: 3}, function () {
+    chrome.storage.local.set({["rows"]: 5}, function () {
+    })
+    chrome.storage.local.set({["new-tab"]: false}, function () {
     })
 })

@@ -30,6 +30,10 @@
     height: 20px;
 }
 
+#save-to-file, #load-from-file{
+    cursor: not-allowed;
+}
+
 #version{
     color: #888888;
     font: 0.8em Arial, Helvetica, sans-serif;

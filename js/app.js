@@ -12,6 +12,16 @@ function pasteSettingsValues() {
         document.getElementById("rows").innerText = result["rows"]
         document.getElementById("range-rows").setAttribute("value", result["rows"])
     })
+    chrome.storage.local.get(["new-tab"], function (result) {
+        if (result["new-tab"]){
+            document.getElementById("checkbox-new-tab").setAttribute("checked")
+            console.log("checked")
+        }
+        else {
+            document.getElementById("checkbox-new-tab").removeAttribute("checked")
+            console.log("unchecked")
+        }
+    })
 }
 
 $(window).on("load change", function () {
@@ -20,8 +30,13 @@ $(window).on("load change", function () {
         let openLink = getOpenLink(link)
 
         if (!(openLink === "")) {
-            chrome.tabs.update({active: true, url: openLink})
-            //chrome.tabs.create({"url": openLink})
+            chrome.storage.local.get(["new-tab"], function (result) {
+                if(result["new-tab"]){
+                    chrome.tabs.create({"url": openLink})
+                }else {
+                    chrome.tabs.update({active: true, url: openLink})
+                }
+            })
             console.log("User open: " + openLink)
         } else {
             alert("Empty link")
@@ -53,9 +68,18 @@ $(window).on("load change", function () {
         closeSettings()
         console.log("Close Settings")
     })
+    $("#checkbox-new-tab").on("click", function (e) {
+        e.stopPropagation()
+        if( $(this).is(':checked') ) {
+            chrome.storage.local.set({["new-tab"]: true}, function () {console.log("set checked")})
+        }
+        else {
+            chrome.storage.local.set({["new-tab"]: false}, function () {console.log("set unchecked")})
+        }
+    });
     pasteSettingsValues()
     loadAllIcons()
-    openSettings()
+    // openSettings()
 })
 
 $(window).on("resize", function () {
