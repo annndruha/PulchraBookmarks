@@ -1,6 +1,7 @@
 makeGrid()
 beautyfyView()
-function pasteSettingsValues(){
+
+function pasteSettingsValues() {
     chrome.storage.local.get(["cols"], function (result) {
         document.getElementById("cols").innerText = result["cols"]
     })
@@ -10,7 +11,7 @@ function pasteSettingsValues(){
 }
 
 $(window).on("load change", function () {
-    $('.grid-item-inside').click(function () {
+    $('.grid-item-inside').on("click", function () {
         let link = this.getAttribute("link")
         let openLink = getOpenLink(link)
 
@@ -22,28 +23,28 @@ $(window).on("load change", function () {
             alert("Empty link")
         }
     })
-    $('.grid-item-inside-menu-img').click(function (e) {
+    $('.grid-item-inside-menu-img').on("click", function (e) {
         e.stopPropagation()
         editBookmark(this.id)
     })
-    $('#chrome-downloads').click(function () {
+    $('#chrome-downloads').on("click", function () {
         chrome.tabs.create({"url": "chrome://downloads/"})
     })
-    $('#chrome-bookmarks').click(function () {
+    $('#chrome-bookmarks').on("click", function () {
         chrome.tabs.create({"url": "chrome://bookmarks/"})
     })
-    $('#chrome-history').click(function () {
+    $('#chrome-history').on("click", function () {
         chrome.tabs.create({"url": "chrome://history/"})
     })
-    $('#chrome-settings').click(function () {
+    $('#chrome-settings').on("click", function () {
         chrome.tabs.create({"url": "chrome://settings/"})
     })
-    $('#settings-open-button').click(function (e) {
+    $('#settings-open-button').on("click", function (e) {
         e.stopPropagation()
         openSettings()
         console.log("Open Settings")
     })
-    $('#close-settings-button').click(function (e) {
+    $('#close-settings-button').on("click", function (e) {
         e.stopPropagation()
         closeSettings()
         console.log("Close Settings")
@@ -53,6 +54,6 @@ $(window).on("load change", function () {
     loadAllIcons()
 })
 
-$(window).on("resize", function (event){
+$(window).on("resize", function () {
     beautyfyView()
 })

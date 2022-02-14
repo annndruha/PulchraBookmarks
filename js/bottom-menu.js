@@ -1,4 +1,4 @@
-function addBootomMenu(cols, rows) {
+function addBootomMenu(cols) {
     let grid = document.getElementById("grid")
     let gridRow = document.createElement("div")
     for (let c = 0; c < cols; c++) {
