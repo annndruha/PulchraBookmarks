@@ -30,8 +30,8 @@ function makeIconTemplate(id) {
 }
 
 
-function fillMark(itemInside) {
-    chrome.storage.local.get([itemInside.id], function (result) {
+async function fillMark(itemInside) {
+    await chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         itemInside.setAttribute("link", link)
 
@@ -48,11 +48,11 @@ function fillMark(itemInside) {
     })
 }
 
-function makeMark(id) {
+async function makeMark(id) {
     let item = document.createElement("div")
     let itemInside = document.createElement("div")
     itemInside.id = id
-    fillMark(itemInside)
+    await fillMark(itemInside)
     item.appendChild(itemInside).className = "grid-item-inside"
     return item
 }
@@ -69,13 +69,14 @@ function getExistedColsRows(grid) {
     return [rows, cols]
 }
 
-function makeGrid(cols, rows, regrid = false) {
+async function makeGrid(cols, rows, regrid = false) {
         // Remove bottom menu
         if(document.getElementById("pseudo-grid-row")){
             document.getElementById("pseudo-grid-row").remove()
         }
 
         let grid = document.getElementById("grid")
+        let newIDs =[]
 
         // Removing and add rows
         let existedRows = getExistedColsRows(grid)[0]
@@ -88,7 +89,8 @@ function makeGrid(cols, rows, regrid = false) {
                 let gridRow = document.createElement("div")
                 for (let c = 0; c < cols; c++) {
                     let id = r.toString() + c.toString()
-                    let item = makeMark(id)
+                    newIDs.push(id)
+                    let item = await makeMark(id)
                     gridRow.appendChild(item).className = "grid-item"
                 }
                 grid.appendChild(gridRow).className = "grid-row"
@@ -106,17 +108,25 @@ function makeGrid(cols, rows, regrid = false) {
         } else {
             for (let r = 0; r < rows; r++) {
                 let item = ""
+                let id =""
                 for (let c = existedCols; c < cols; c++) {
-
-                    let id = r.toString() + c.toString()
-                    item = makeMark(id)
+                    id = r.toString() + c.toString()
+                    item = await makeMark(id)
                     item.className = "grid-item"
                     if (r === 0){
                         console.log(c)
                     }
                 }
-                if (item !== ""){grid.children[r].appendChild(item)}
+                if (item !== ""){
+                    grid.children[r].appendChild(item)
+                    newIDs.push(id)
+                }
             }
+        }
+        for (let i = 0; i<newIDs.length; i++){
+            // loadIcon(newIDs[i])
+            let link = document.getElementById(newIDs[i]).getAttribute("link")
+            console.log(link)
         }
         addBootomMenu(cols)
 }

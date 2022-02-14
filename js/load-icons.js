@@ -1,18 +1,19 @@
-function loadAllIcons() {
-    chrome.storage.local.get(["cols", "rows"], function (res) {
-        let cols = res["cols"]
-        let rows = res["rows"]
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                let id = r.toString() + c.toString()
-                loadIcon(id)
-            }
-        }
-    })
-}
+// function loadAllIcons() {
+//     chrome.storage.local.get(["cols", "rows"], function (res) {
+//         let cols = res["cols"]
+//         let rows = res["rows"]
+//         for (let r = 0; r < rows; r++) {
+//             for (let c = 0; c < cols; c++) {
+//                 let id = r.toString() + c.toString()
+//                 await loadIcon(id)
+//             }
+//         }
+//     })
+// }
 
-function loadIcon(id) {
+async function loadIcon(id) {
     let link = document.getElementById(id).getAttribute("link")
+    console.log(id, link)
     let google_img = new Image()
     if (linkDefined(link)) {
         let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"

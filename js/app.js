@@ -54,7 +54,7 @@ $(window).on("load change", function () {
     })
     openSettings()
     pasteSettingsValues()
-    loadAllIcons()
+    // loadAllIcons()
 })
 
 $(window).on("resize", function () {
