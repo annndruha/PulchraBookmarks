@@ -30,8 +30,8 @@ function makeIconTemplate(id) {
 }
 
 
-async function fillMark(itemInside) {
-    await chrome.storage.local.get([itemInside.id], function (result) {
+function fillMark(itemInside) {
+    chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         itemInside.setAttribute("link", link)
 
@@ -48,11 +48,11 @@ async function fillMark(itemInside) {
     })
 }
 
-async function makeMark(id) {
+function makeMark(id) {
     let item = document.createElement("div")
     let itemInside = document.createElement("div")
     itemInside.id = id
-    await fillMark(itemInside)
+    fillMark(itemInside)
     item.appendChild(itemInside).className = "grid-item-inside"
     return item
 }
@@ -69,14 +69,13 @@ function getExistedColsRows(grid) {
     return [rows, cols]
 }
 
-async function makeGrid(cols, rows, regrid = false) {
+function makeGrid(cols, rows) {
         // Remove bottom menu
         if(document.getElementById("pseudo-grid-row")){
             document.getElementById("pseudo-grid-row").remove()
         }
 
         let grid = document.getElementById("grid")
-        let newIDs =[]
 
         // Removing and add rows
         let existedRows = getExistedColsRows(grid)[0]
@@ -89,8 +88,7 @@ async function makeGrid(cols, rows, regrid = false) {
                 let gridRow = document.createElement("div")
                 for (let c = 0; c < cols; c++) {
                     let id = r.toString() + c.toString()
-                    newIDs.push(id)
-                    let item = await makeMark(id)
+                    let item = makeMark(id)
                     gridRow.appendChild(item).className = "grid-item"
                 }
                 grid.appendChild(gridRow).className = "grid-row"
@@ -111,7 +109,7 @@ async function makeGrid(cols, rows, regrid = false) {
                 let id =""
                 for (let c = existedCols; c < cols; c++) {
                     id = r.toString() + c.toString()
-                    item = await makeMark(id)
+                    item = makeMark(id)
                     item.className = "grid-item"
                     if (r === 0){
                         console.log(c)
@@ -119,14 +117,8 @@ async function makeGrid(cols, rows, regrid = false) {
                 }
                 if (item !== ""){
                     grid.children[r].appendChild(item)
-                    newIDs.push(id)
                 }
             }
-        }
-        for (let i = 0; i<newIDs.length; i++){
-            // loadIcon(newIDs[i])
-            let link = document.getElementById(newIDs[i]).getAttribute("link")
-            console.log(link)
         }
         addBootomMenu(cols)
 }
@@ -135,7 +127,7 @@ function beautyfyView() {
     chrome.storage.local.get(["cols"], function (res) {
         let cols = res["cols"]
         let windowWidth = $(document).width()
-        const states = [cols * 130, cols * 113, cols * 92, cols * 40]
+        const states = [cols * 130-370, cols * 113-370, cols * 92-370, cols * 40-370]
         let key = 0
         const keys = {
             0: {"pb": "50px", "pi": "10px"},

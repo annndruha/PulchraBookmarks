@@ -1,6 +1,10 @@
 chrome.storage.local.get(["cols", "rows"], function (res) {
     makeGrid(parseInt(res["cols"]), parseInt(res["rows"]))
 })
+// chrome.storage.sync.get(null, function(res) {
+//     // let allKeys = Object.keys(items);
+//     console.log(res);
+// });
 
 beautyfyView()
 
@@ -54,7 +58,7 @@ $(window).on("load change", function () {
     })
     openSettings()
     pasteSettingsValues()
-    // loadAllIcons()
+    loadAllIcons()
 })
 
 $(window).on("resize", function () {
