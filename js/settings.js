@@ -6,12 +6,14 @@ function openSettings() {
         ver.innerText = "v" + json["version"]
     })
     $("#settings-open-button").css("cursor", "not-allowed")
+    $("#settings-cancel-overlay").css("right", "370px")
 }
 
 function closeSettings() {
     $(".settings").css("right", "-800px")
     $(".app-container").css("margin-right", "0px")
     $("#settings-open-button").css("cursor", "pointer")
+    $("#settings-cancel-overlay").css("right", "5000px")
 }
 
 $('#range-rows').unbind("input").on('input', function (e) {

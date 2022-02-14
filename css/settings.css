@@ -13,6 +13,20 @@
     font: 1.0em Arial, Helvetica, sans-serif;
 }
 
+.settings-cancel-overlay{
+    /*display: none;*/
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+    height: 100vh;
+    width: 5000px;
+    right: 5000px;
+    background: black;
+    opacity: 0.4;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
 .text {
     cursor: default;
 }

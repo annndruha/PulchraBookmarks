@@ -14,7 +14,7 @@ function pasteSettingsValues() {
     })
     chrome.storage.local.get(["new-tab"], function (result) {
         if (result["new-tab"]){
-            document.getElementById("checkbox-new-tab").setAttribute("checked")
+            document.getElementById("checkbox-new-tab").setAttribute("checked", "")
             console.log("checked")
         }
         else {
@@ -62,6 +62,11 @@ $(window).on("load change", function () {
         e.stopPropagation()
         openSettings()
         console.log("Open Settings")
+    })
+    $("#settings-cancel-overlay").unbind("click").on("click", function (e) {
+        e.stopPropagation()
+        closeSettings()
+        console.log("Close Settings by overlay")
     })
     $('#close-settings-button').unbind("click").on("click", function (e) {
         e.stopPropagation()
