@@ -8,21 +8,21 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    padding: 10px 0px 10px 0px;
+    /*height: 30px;*/
+    padding: 10px 0 10px 0;
 }
 
 .pseudo-grid-item {
-    height: 50px;
+    /*height: 30px;*/
     width: 200px;
-    /*display: flex;*/
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
     text-overflow: clip;
     white-space: nowrap;
 }
 
 .pseudo-grid-item-inside {
     position: relative;
-    height: 100%;
+    height: 20px;
     text-overflow: fade;
     white-space: nowrap;
 }

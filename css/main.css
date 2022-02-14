@@ -8,7 +8,7 @@ body {
 }
 .app-container{
     padding: 50px;
-    transition: margin 500ms;
+    transition: margin 500ms, padding 500ms;
 }
 
 *, html {

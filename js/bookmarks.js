@@ -152,3 +152,9 @@ function beautyfyView() {
         $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
     })
 }
+
+// function beautyfyView(){
+//     // $(".app-container").css("padding-right", keys[key]["pb"]).css("padding-left", keys[key]["pb"])
+//     // $(".grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
+//     // $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
+// }
