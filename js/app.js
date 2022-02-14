@@ -1,8 +1,5 @@
-// const container =
-let cols = 5
-let rows = 3
-makeGrid(cols, rows)
-// beautyfyView(cols, rows)
+makeGrid()
+beautyfyView()
 
 $(window).on("load", function () {
     $('.grid-item-inside').click(function () {
@@ -22,9 +19,9 @@ $(window).on("load", function () {
         editBookmark(this.id)
     })
     pasteSettingsValues()
-    loadAllIcons(cols, rows)
+    loadAllIcons()
 })
 
-// window.onresize = function(event) {
-//     beautyfyView(cols, rows)
-// }
+window.onresize = function(event) {
+    beautyfyView()
+}

@@ -30,7 +30,7 @@ function makeIconTemplate(id) {
 }
 
 
-function fillMark(itemInside, id) {
+function fillMark(itemInside) {
     chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         itemInside.setAttribute("link", link)
@@ -48,7 +48,10 @@ function fillMark(itemInside, id) {
     })
 }
 
-function makeGrid(cols, rows) {
+function makeGrid() {
+    chrome.storage.local.get(["cols", "rows"], function (res) {
+    let cols = res["cols"]
+    let rows = res["rows"]
     let grid = document.getElementById("grid")
     for (let r = 0; r < rows; r++) {
         let gridRow = document.createElement("div")
@@ -57,17 +60,20 @@ function makeGrid(cols, rows) {
             let item = document.createElement("div")
             let itemInside = document.createElement("div")
             itemInside.id = id
-            fillMark(itemInside, id)
+            fillMark(itemInside)
             item.appendChild(itemInside).className = "grid-item-inside"
             gridRow.appendChild(item).className = "grid-item"
         }
         grid.appendChild(gridRow).className = "grid-row"
     }
     addBootomMenu(grid, cols, rows)
-}
+})}
 
-function beautyfyView(cols, rows) {
-    let windowHeight = $(document).height();
+function beautyfyView() {
+    chrome.storage.local.get(["cols"], function (res) {
+    let cols = res["cols"]
+    // let rows = res["rows"]
+    // let windowHeight = $(document).height();
     let windowWidth = $(document).width();
     const states = [cols * 130, cols * 113, cols * 92, cols * 40]
     let key = 0
@@ -85,5 +91,5 @@ function beautyfyView(cols, rows) {
     else if (states[3] >= windowWidth) {key = 4}
     $(".app-container").css("padding-right", keys[key]["pb"]).css("padding-left", keys[key]["pb"])
     $(".grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
-    $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
+    $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])})
 }

@@ -1,10 +1,13 @@
-function loadAllIcons(cols, rows) {
+function loadAllIcons() {
+    chrome.storage.local.get(["cols", "rows"], function (res) {
+    let cols = res["cols"]
+    let rows = res["rows"]
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             let id = r.toString() + c.toString()
             loadIcon(id)
         }
-    }
+    }})
 }
 
 function loadIcon(id) {
