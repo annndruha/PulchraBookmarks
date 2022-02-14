@@ -56,9 +56,9 @@ $(window).on("load change", function () {
         closeSettings()
         console.log("Close Settings")
     })
-    openSettings()
     pasteSettingsValues()
     loadAllIcons()
+    openSettings()
 })
 
 $(window).on("resize", function () {

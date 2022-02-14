@@ -31,4 +31,5 @@ $('#range-cols').on('input', function (e) {
         console.log("cols set:", cols)
     })
     makeGrid(cols, rows)
+    beautyfyView()
 })
