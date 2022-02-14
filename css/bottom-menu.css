@@ -14,6 +14,7 @@
 .pseudo-grid-item {
     height: 50px;
     width: 200px;
+    /*display: flex;*/
     padding: 0px 10px 0px 10px;
     text-overflow: clip;
     white-space: nowrap;

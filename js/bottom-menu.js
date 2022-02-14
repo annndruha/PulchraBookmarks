@@ -18,7 +18,7 @@ function addBootomMenu(parent, cols, rows) {
     }
     parent.appendChild(gridRow).className = "pseudo-grid-row"
     makeBottonMenuLeft()
-    // makeBottonMenuRight()
+    makeSettingsBotton()
 }
 
 function makeBottonMenuLeft() {
@@ -48,7 +48,7 @@ function makeBottonMenuLeft() {
     left_container.appendChild(bottom_menu).className = "bottom-menu-left"
 }
 
-function makeBottonMenuRight() {
+function makeSettingsBotton() {
     let left_container = document.getElementById("bottom-right")
     let bottom_menu = document.createElement("div")
 
@@ -62,12 +62,23 @@ function makeBottonMenuRight() {
     // load_from_file.src = "images/icons/file_upload.svg"
     // bottom_menu.appendChild(load_from_file).className ="bm-item right"
 
-    let settings = document.createElement("img")
-    settings.id = "settings"
-    settings.src = "images/icons/settings.svg"
-    bottom_menu.appendChild(settings).className = "bm-item right"
+    // let settings = document.createElement("img")
+    // settings.id = "settings-open-button"
+    // settings.src = "images/icons/settings.svg"
+    // bottom_menu.appendChild(settings).className = "bm-item right"
+    let sbs = document.createElement("label")
+    // sbs.for =
+    sbs.setAttribute("for", "side-checkbox")
+    let sidechbs = document.createElement("div")
+    sidechbs.innerText = "Open"
+    sbs.appendChild(sidechbs).className = "side-b side-open"
 
-    left_container.appendChild(bottom_menu).className = "bottom-menu-right"
+    let sidechbs2 = document.createElement("div")
+    sidechbs2.innerText = "Close"
+    sbs.appendChild(sidechbs2).className = "side-b side-close"
+
+    bottom_menu.appendChild(sbs).className = "side-button-1"
+    left_container.appendChild(bottom_menu).className = "side-button-1-wr"
 }
 
 $(window).on("load", function () {
@@ -83,4 +94,15 @@ $(window).on("load", function () {
     $('#chrome-settings').click(function () {
         chrome.tabs.create({"url": "chrome://settings/"})
     })
+    $('#settings-open-button').click(function (e) {
+        e.stopPropagation()
+        openSettings()
+        console.log("Open Settings")
+    })
+    $('#settings-close-button').click(function (e) {
+        e.stopPropagation()
+        closeSettings()
+        console.log("Close Settings")
+    })
+    openSettings()
 })

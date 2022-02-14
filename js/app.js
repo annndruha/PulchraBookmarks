@@ -1,6 +1,6 @@
 const container = document.getElementById("grid")
-let cols = 10
-let rows = 10
+let cols = 5
+let rows = 3
 makeGrid(container, cols, rows)
 beautyfyView(cols, rows)
 
@@ -26,4 +26,4 @@ $(window).on("load", function () {
 
 window.onresize = function(event) {
     beautyfyView(cols, rows)
-};
+}

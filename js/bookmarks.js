@@ -82,8 +82,9 @@ function beautyfyView(cols, rows) {
     else if (states[1] >= windowWidth && windowWidth > states[2]) {key = 2}
     else if (states[2] >= windowWidth && windowWidth > states[3]) {key = 3}
     else if (states[3] >= windowWidth) {key = 4}
-    document.body.style.paddingRight = keys[key]["pb"]
-    document.body.style.paddingLeft = keys[key]["pb"]
+    $(".app-container").css("padding-right", keys[key]["pb"]).css("padding-left", keys[key]["pb"])
+    // document.body.style.paddingRight = keys[key]["pb"]
+    // document.body.style.paddingLeft = keys[key]["pb"]
     $(".grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
     $(".pseudo-grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
 }
