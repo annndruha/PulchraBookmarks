@@ -9,7 +9,8 @@
 * Включите режим разработчика <img src="https://user-images.githubusercontent.com/51162917/153860635-b3da0d96-22cf-4762-8e1f-a66359477af6.png" height="40">
 * Загрузите расширение <img src="https://user-images.githubusercontent.com/51162917/153861803-9a691abd-fdaa-40fc-a996-c4c0dee69ef1.png" height="40">
 * Всё готово! Тестируйте!
-
+* 
+### Как это выглядит:
 <img src="https://user-images.githubusercontent.com/51162917/153872840-1214b03f-2b93-4745-9d97-ac4ff01ae653.png" height="500">
 
 ### Цели:
