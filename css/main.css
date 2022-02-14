@@ -43,6 +43,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     vertical-align: middle;
+    transition: padding 500ms;
 }
 
 .grid-item-inside {

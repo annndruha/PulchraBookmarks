@@ -64,3 +64,7 @@ $(window).on("load change", function () {
 $(window).on("resize", function () {
     beautyfyView()
 })
+
+$(".settings").on("transitionend", function (){
+    beautyfyView()
+})

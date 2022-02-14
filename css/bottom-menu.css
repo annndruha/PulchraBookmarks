@@ -8,16 +8,15 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    /*height: 30px;*/
     padding: 10px 0 10px 0;
 }
 
 .pseudo-grid-item {
-    /*height: 30px;*/
     width: 200px;
     padding: 0 10px 0 10px;
     text-overflow: clip;
     white-space: nowrap;
+    transition: padding 500ms;
 }
 
 .pseudo-grid-item-inside {
