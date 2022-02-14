@@ -21,6 +21,7 @@ $(window).on("load", function () {
         e.stopPropagation()
         editBookmark(this.id)
     })
+    pasteSettingsValues()
     loadAllIcons(cols, rows)
 })
 
