@@ -1,19 +1,16 @@
 chrome.storage.local.get(["cols", "rows"], function (res) {
     makeGrid(parseInt(res["cols"]), parseInt(res["rows"]))
 })
-// chrome.storage.sync.get(null, function(res) {
-//     // let allKeys = Object.keys(items);
-//     console.log(res);
-// });
-
 beautyfyView()
 
 function pasteSettingsValues() {
     chrome.storage.local.get(["cols"], function (result) {
         document.getElementById("cols").innerText = result["cols"]
+        document.getElementById("range-cols").setAttribute("value", result["cols"])
     })
     chrome.storage.local.get(["rows"], function (result) {
         document.getElementById("rows").innerText = result["rows"]
+        document.getElementById("range-rows").setAttribute("value", result["rows"])
     })
 }
 

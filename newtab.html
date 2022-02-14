@@ -23,38 +23,46 @@
     <div class="row title">
         <img id="logo" src="images/branding/logo128.png" alt="">
         <span class="text" id="title">
-            <span>Pulchra Bookmarks</span>
-            <span id="version">vNaN</span>
+            <span class="left">Pulchra Bookmarks</span>
+            <span class="left" id="version">vNaN</span>
         </span>
-        <img id="close-settings-button" class="close-settings-button" src="images/icons/close.svg" alt="">
+        <img id="close-settings-button" class="close-settings-button right" src="images/icons/close.svg" alt="">
     </div>
     <div class="row" id="row-down-title">
-        <div class="text">
+        <div class="text left">
             Строк
         </div>
-        <div>
-            <input type="range" id="range-rows" name="volume"
+        <div class="slider-long">
+            <input type="range" class="right" id="range-rows" name="volume"
                    min="1" max="10">
         </div>
-        <label id="rows" for="range-rows">N</label>
+        <label id="rows" class="right" for="range-rows">N</label>
     </div>
     <div class="row">
-        <div class="text">
+        <div class="text left">
             Столбцов
         </div>
-        <div>
-            <input type="range" id="range-cols" name="volume"
+        <div class="slider-long">
+            <input type="range" class="right" id="range-cols" name="volume"
                    min="1" max="10">
         </div>
-        <label id="cols" for="range-cols">N</label>
+        <label id="cols" class="right" for="range-cols">N</label>
     </div>
     <div class="row">
-        <div class="text">Save to file</div>
-        <img id="save-to-file2" class="settings-icon" src="images/icons/file_download.svg" alt="">
+        <div class="text left">Save to file</div>
+        <img id="save-to-file2" class="settings-icon right" src="images/icons/file_download.svg" alt="">
     </div>
     <div class="row">
-        <div class="text">Load from file</div>
-        <img id="load-from-file" class="settings-icon" src="images/icons/file_upload.svg" alt="">
+        <div class="text left">Load from file</div>
+        <img id="load-from-file" class="settings-icon right" src="images/icons/file_upload.svg" alt="">
+    </div>
+    <div class="row">
+        <div class="text left">Open in new tab</div>
+<!--        <img id="open-new-tabs" class="switch right" src="images/icons/file_upload.svg" alt="">-->
+        <label class="switch right">
+          <input type="checkbox" checked>
+          <span class="slider round"></span>
+        </label>
     </div>
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>

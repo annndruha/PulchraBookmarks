@@ -16,6 +16,14 @@
 .text {
     cursor: default;
 }
+#rows, #cols{
+    padding-right: 5.5px;
+}
+
+.slider-long{
+    position: absolute;
+    right: 50px;
+}
 
 .settings-icon {
     width: 20px;
@@ -49,4 +57,5 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
+    height: 20px;
 }
