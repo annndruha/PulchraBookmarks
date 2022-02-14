@@ -30,9 +30,7 @@ function makeIconTemplate(id) {
 }
 
 
-function makeMark(r, c) {
-    let itemInside = document.createElement("div")
-    itemInside.id = r.toString() + c.toString()
+function fillMark(itemInside, id) {
     chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         itemInside.setAttribute("link", link)
@@ -48,21 +46,24 @@ function makeMark(r, c) {
             itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
         }
     })
-    return itemInside
 }
 
-function makeGrid(parent, cols, rows) {
+function makeGrid(cols, rows) {
+    let grid = document.getElementById("grid")
     for (let r = 0; r < rows; r++) {
         let gridRow = document.createElement("div")
         for (let c = 0; c < cols; c++) {
+            let id = r.toString() + c.toString()
             let item = document.createElement("div")
-            let itemInside = makeMark(r, c)
+            let itemInside = document.createElement("div")
+            itemInside.id = id
+            fillMark(itemInside, id)
             item.appendChild(itemInside).className = "grid-item-inside"
             gridRow.appendChild(item).className = "grid-item"
         }
-        parent.appendChild(gridRow).className = "grid-row"
+        grid.appendChild(gridRow).className = "grid-row"
     }
-    addBootomMenu(parent, cols, rows)
+    addBootomMenu(grid, cols, rows)
 }
 
 function beautyfyView(cols, rows) {

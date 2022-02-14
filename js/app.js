@@ -1,8 +1,8 @@
-const container = document.getElementById("grid")
+// const container =
 let cols = 5
 let rows = 3
-makeGrid(container, cols, rows)
-beautyfyView(cols, rows)
+makeGrid(cols, rows)
+// beautyfyView(cols, rows)
 
 $(window).on("load", function () {
     $('.grid-item-inside').click(function () {
@@ -25,6 +25,6 @@ $(window).on("load", function () {
     loadAllIcons(cols, rows)
 })
 
-window.onresize = function(event) {
-    beautyfyView(cols, rows)
-}
+// window.onresize = function(event) {
+//     beautyfyView(cols, rows)
+// }

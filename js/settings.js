@@ -14,13 +14,17 @@ function closeSettings(){
 $('#range-rows').on('input', function (e){
     let rows = e.target.value
     document.getElementById("rows").innerText = rows
-    chrome.storage.local.set({["rows"]: rows}, function () {})
+    chrome.storage.local.set({["rows"]: rows}, function () {
+        console.log("rows set:", rows)
+    })
 })
 
 $('#range-cols').on('input', function (e){
     let cols = e.target.value
     document.getElementById("cols").innerText = cols
-    chrome.storage.local.set({["cols"]: cols}, function () {})
+    chrome.storage.local.set({["cols"]: cols}, function () {
+        console.log("cols set:", cols)
+    })
 })
 $(window).on("load", function () {
     pasteSettingsValues()
