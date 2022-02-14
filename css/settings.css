@@ -14,69 +14,7 @@
     color: #FFF;
     padding: 40px 20px;
 }
-/*.side-title {*/
-/*    font-size: 20px;*/
-/*    padding-bottom: 10px;*/
-/*    margin-bottom: 20px;*/
-/*    border-bottom: 2px solid #BFE2FF;*/
-/*}*/
-/* Оформление кнопки на странице */
-/*.side-button-1-wr {*/
-/*    text-align: center; !* Контейнер для кнопки, чтобы было удобнее ее разместить *!*/
-/*}*/
-/*.side-button-1 {*/
-/*    display: inline-block;*/
-/*}*/
-/*.side-button-1 .side-b {*/
-/*    margin: 10px;*/
-/*    text-decoration: none;*/
-/*    position: relative;*/
-/*    font-size: 20px;*/
-/*    line-height: 20px;*/
-/*    padding: 12px 30px;*/
-/*    color: #FFF;*/
-/*    font-weight: bold;*/
-/*    text-transform: uppercase;*/
-/*    font-family: 'Roboto Condensed', Тahoma, sans-serif;*/
-/*    background: #337AB7;*/
-/*    cursor: pointer;*/
-/*    border: 2px solid #BFE2FF;*/
-/*}*/
-/*.side-button-1 .side-b:hover,*/
-/*.side-button-1 .side-b:active,*/
-/*.side-button-1 .side-b:focus {*/
-/*    color: #FFF;*/
-/*}*/
-/*.side-button-1 .side-b:after,*/
-/*.side-button-1 .side-b:before {*/
-/*    position: absolute;*/
-/*    height: 4px;*/
-/*    left: 50%;*/
-/*    bottom: -6px;*/
-/*    content: "";*/
-/*    transition: all 280ms ease-in-out;*/
-/*    width: 0;*/
-/*}*/
-/*.side-button-1 .side-open:after,*/
-/*.side-button-1 .side-open:before {*/
-/*    background: green;*/
-/*}*/
-/*.side-button-1 .side-close:after,*/
-/*.side-button-1 .side-close:before {*/
-/*    background: red;*/
-/*}*/
-/*.side-button-1 .side-b:before {*/
-/*    top: -6px;*/
-/*}*/
-/*.side-button-1 .side-b:hover:after,*/
-/*.side-button-1 .side-b:hover:before {*/
-/*    width: 100%;*/
-/*    left: 0;*/
-/*}*/
-/* Переключатели кнопки 1 */
-/*.side-button-1 .side-close {*/
-/*    display: none;*/
-/*}*/
+
 #side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
     display: none;
 }
@@ -99,7 +37,3 @@
     color: #BFE2FF;
     /*transition: all 280ms ease-in-out;*/
 }
-/*.side-button-2:hover {*/
-/*    transform: rotate(45deg) scale(1.1);*/
-/*    color: #FFF;*/
-/*}*/
