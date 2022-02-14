@@ -1,18 +1,17 @@
-#side-checkbox {
-    display: none;
-}
 .side-panel {
     position: fixed;
     z-index: 999999;
     top: 0;
-    left: -360px;
-    background: #337AB7;
+    right: -360px;
+    background: white;
     transition: all 0.5s;
     width: 320px;
     height: 100vh;
-    /*box-shadow: 10px 0 20px rgba(0,0,0,0.4);*/
-    color: #FFF;
     padding: 40px 20px;
+}
+
+#side-checkbox {
+    display: none;
 }
 
 #side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
@@ -22,18 +21,5 @@
     display: block;
 }
 #side-checkbox:checked + .side-panel {
-    left: 0;
-}
-/* Оформление кнопки на панеле */
-.side-button-2 {
-    font-size: 30px;
-    border-radius: 20px;
-    position: absolute;
-    z-index: 1;
-    top: 8px;
-    right: 8px;
-    cursor: pointer;
-    transform: rotate(45deg);
-    color: #BFE2FF;
-    /*transition: all 280ms ease-in-out;*/
+    right: 0;
 }
