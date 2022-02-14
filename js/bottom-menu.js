@@ -1,22 +1,28 @@
 function addBootomMenu(cols) {
     let grid = document.getElementById("grid")
     let gridRow = document.createElement("div")
-    for (let c = 0; c < cols; c++) {
-        let item = document.createElement("div")
-        let itemInside = document.createElement("div")
-        if (c === 0) {
-            itemInside.id = "bottom-left"
-            item.appendChild(itemInside).className = "pseudo-grid-item-inside"
-        } else if (c === cols - 1) {
-            itemInside.id = "bottom-right"
-            item.appendChild(itemInside).className = "pseudo-grid-item-inside"
-        } else {
-            // itemInside.id = "bottom-disable"
-            item.appendChild(itemInside).className = "pseudo-grid-item-inside bottom-disable"
-        }
 
+    // Left pannel
+    let item = document.createElement("div")
+    let itemInside = document.createElement("div")
+    itemInside.id = "bottom-left"
+    item.appendChild(itemInside).className = "pseudo-grid-item-inside"
+    gridRow.appendChild(item).className = "pseudo-grid-item"
+    //
+    for (let c = 0; c < cols-2; c++) {
+        item = document.createElement("div")
+        itemInside = document.createElement("div")
+        item.appendChild(itemInside).className = "pseudo-grid-item-inside bottom-disable"
         gridRow.appendChild(item).className = "pseudo-grid-item"
     }
+    // Right pannel
+    item = document.createElement("div")
+    itemInside = document.createElement("div")
+    itemInside.id = "bottom-right"
+    item.appendChild(itemInside).className = "pseudo-grid-item-inside"
+    gridRow.appendChild(item).className = "pseudo-grid-item"
+    //
+
     gridRow.id = "pseudo-grid-row"
     grid.appendChild(gridRow).className = "pseudo-grid-row"
     makeBottonMenuLeft()
