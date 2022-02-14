@@ -24,7 +24,7 @@ function pasteSettingsValues() {
     })
 }
 
-$(window).on("load change", function () {
+function updateBinds(){
     $('.grid-item-inside').unbind("click").on("click", function () {
         let link = this.getAttribute("link")
         let openLink = getOpenLink(link)
@@ -81,10 +81,13 @@ $(window).on("load change", function () {
         else {
             chrome.storage.local.set({["new-tab"]: false}, function () {console.log("set unchecked")})
         }
-    });
+    })
+}
+
+$(window).on("load change", function () {
+    updateBinds()
     pasteSettingsValues()
     loadAllIcons()
-    // openSettings()
 })
 
 $(window).on("resize", function () {

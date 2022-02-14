@@ -7,6 +7,7 @@ function openSettings() {
     })
     $("#settings-open-button").css("cursor", "not-allowed")
     $("#settings-cancel-overlay").css("right", "370px")
+    updateBinds()
 }
 
 function closeSettings() {
@@ -14,6 +15,7 @@ function closeSettings() {
     $(".app-container").css("margin-right", "0px")
     $("#settings-open-button").css("cursor", "pointer")
     $("#settings-cancel-overlay").css("right", "5000px")
+    updateBinds()
 }
 
 $('#range-rows').unbind("input").on('input', function (e) {
@@ -25,6 +27,7 @@ $('#range-rows').unbind("input").on('input', function (e) {
     })
     makeGrid(cols, rows)
     beautyfyView()
+    updateBinds()
 })
 
 $('#range-cols').unbind("input").on('input', function (e) {
@@ -36,4 +39,5 @@ $('#range-cols').unbind("input").on('input', function (e) {
     })
     makeGrid(cols, rows)
     beautyfyView()
+    updateBinds()
 })
