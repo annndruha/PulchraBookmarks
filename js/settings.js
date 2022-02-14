@@ -2,15 +2,16 @@ function openSettings() {
     $(".settings").css("right", 0)
     $(".app-container").css("margin-right", "370px")
     $.getJSON("manifest.json", function (json) {
-        console.log(json["version"])
         let ver = document.getElementById("version")
         ver.innerText = "v" + json["version"]
     })
+    $("#settings-open-button").css("cursor", "not-allowed")
 }
 
 function closeSettings() {
     $(".settings").css("right", "-800px")
     $(".app-container").css("margin-right", "0px")
+    $("#settings-open-button").css("cursor", "pointer")
 }
 
 $('#range-rows').on('input', function (e) {
