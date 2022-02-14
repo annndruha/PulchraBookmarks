@@ -2,17 +2,33 @@
     position: fixed;
     z-index: 999999;
     top: 0;
-    right: -360px;
+    height: 100vh;
+    width: 370px;
+    right: -800px;
     background: white;
     /*transition: all 0.5s;*/
-    width: 320px;
-    height: 100vh;
     padding: 10px 10px;
-
-    /*text-align: center;*/
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font: 1.0em Arial, Helvetica, sans-serif;
+}
+
+.text {
+    cursor: default;
+}
+
+.settings-icon {
+    width: 20px;
+    height: 20px;
+}
+
+#version{
+    color: #888888;
+    font: 0.8em Arial, Helvetica, sans-serif;
+}
+
+#row-down-title{
+    padding-top: 25px;
 }
 
 #logo{
@@ -32,5 +48,5 @@
 .row {
     display: flex;
     justify-content: space-between;
-    padding: 5px 5px;
+    padding: 8px;
 }
