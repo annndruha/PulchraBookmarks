@@ -1,4 +1,4 @@
-.side-panel {
+.settings {
     position: fixed;
     z-index: 999999;
     top: 0;
@@ -7,5 +7,5 @@
     transition: all 0.5s;
     width: 320px;
     height: 100vh;
-    padding: 40px 20px;
+    padding: 10px 10px;
 }
