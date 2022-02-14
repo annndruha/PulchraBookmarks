@@ -48,46 +48,75 @@ function fillMark(itemInside) {
     })
 }
 
-function makeMark(id, regrid){
-    // if (regrid && document.getElementById(id)){
-    //
-    // }
-    // else {
-        let item = document.createElement("div")
-        let itemInside = document.createElement("div")
-        itemInside.id = id
-        fillMark(itemInside)
-        item.appendChild(itemInside).className = "grid-item-inside"
-        return item
-    // }
+function makeMark(id) {
+    let item = document.createElement("div")
+    let itemInside = document.createElement("div")
+    itemInside.id = id
+    fillMark(itemInside)
+    item.appendChild(itemInside).className = "grid-item-inside"
+    return item
 }
 
-function makeGrid(regrid = false) {
-    chrome.storage.local.get(["cols", "rows"], function (res) {
-        let cols = res["cols"]
-        let rows = res["rows"]
+function getExistedColsRows(grid) {
+    let rows = grid.childElementCount
+    let cols = 0
+    try {
+        cols = grid.children[0].childElementCount
+    }
+    catch (e){
+        cols = 0
+    }
+    return [rows, cols]
+}
 
-        // let grid = document.getElementById("grid")
-        //     grid.remove()
-        if (document.getElementById("grid")) {
-            document.getElementById("grid").remove()
-        }
-        let grid = document.createElement("div")
-        grid.id = "grid"
-        grid.className = "grid"
-        for (let r = 0; r < rows; r++) {
-            let gridRow = document.createElement("div")
-            for (let c = 0; c < cols; c++) {
-                let id = r.toString() + c.toString()
-                let item = makeMark(id, regrid)
-                gridRow.appendChild(item).className = "grid-item"
+function makeGrid(cols, rows, regrid = false) {
+    // chrome.storage.local.get(["cols", "rows"], function (res) {
+        let grid = document.getElementById("grid")
+        let existedRows = getExistedColsRows(grid)[0]
+        // let existedCols = getExistedColsRows(grid)[1]
+        // console.log(existedCols, "->cols->", cols, existedRows, "->rows->", rows)
+
+        // Removing
+        if (rows < existedRows){
+            for (let r = existedRows-1; r >= rows; r--) {
+                grid.children[r].remove()
             }
-            grid.appendChild(gridRow).className = "grid-row"
+        } else {
+            for (let r = existedRows; r < rows; r++) {
+                let gridRow = document.createElement("div")
+                for (let c = 0; c < cols; c++) {
+                    let id = r.toString() + c.toString()
+                    let item = makeMark(id)
+                    gridRow.appendChild(item).className = "grid-item"
+                }
+                grid.appendChild(gridRow).className = "grid-row"
+            }
         }
-        let content = document.getElementById("grid-content")
-        content.appendChild(grid)
-        addBootomMenu(cols)
-    })
+        // existedRows = getExistedColsRows(grid)[0]
+        let existedCols = getExistedColsRows(grid)[1]
+        console.log(existedCols, "->cols->", cols)
+        if (cols < existedCols){
+            for (let r = 0; r < rows; r++) {
+                for (let c = existedCols-1; c >= cols; c--) {
+                    grid.children[r].children[c].remove()
+                }
+            }
+        } else {
+            for (let r = 0; r < rows; r++) {
+                let item = ""
+                for (let c = existedCols; c < cols; c++) {
+
+                    let id = r.toString() + c.toString()
+                    item = makeMark(id)
+                    item.className = "grid-item"
+                    if (r === 0){
+                        console.log(c)
+                    }
+                }
+                if (item !== ""){grid.children[r].appendChild(item)}
+            }
+        }
+        //addBootomMenu(cols)
 }
 
 function beautyfyView() {

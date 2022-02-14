@@ -1,4 +1,7 @@
-makeGrid()
+chrome.storage.local.get(["cols", "rows"], function (res) {
+    makeGrid(parseInt(res["cols"]), parseInt(res["rows"]))
+})
+
 beautyfyView()
 
 function pasteSettingsValues() {
