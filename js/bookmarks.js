@@ -126,8 +126,11 @@ function makeGrid(cols, rows) {
 function beautyfyView() {
     chrome.storage.local.get(["cols"], function (res) {
         let cols = res["cols"]
-        let windowWidth = $(document).width()
-        const states = [cols * 130-370, cols * 113-370, cols * 92-370, cols * 40-370]
+        let app_container = document.getElementById("app-container")
+        let style = app_container.currentStyle || window.getComputedStyle(app_container)
+        let margin = style.marginRight //parseFloat(
+        let windowWidth = app_container.clientWidth - parseFloat(margin)
+        const states = [cols * 150, cols * 130, cols * 113, cols * 92]
         let key = 0
         const keys = {
             0: {"pb": "50px", "pi": "10px"},
@@ -146,6 +149,7 @@ function beautyfyView() {
             key = 3
         } else if (states[3] >= windowWidth) {
             key = 4
+            console.log("minimized")
         }
         $(".app-container").css("padding-right", keys[key]["pb"]).css("padding-left", keys[key]["pb"])
         $(".grid-item").css("padding-right", keys[key]["pi"]).css("padding-left", keys[key]["pi"])
