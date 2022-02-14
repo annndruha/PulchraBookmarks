@@ -41,10 +41,8 @@ function fillMark(itemInside) {
         let textDiv = makeText(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = "grid-item-inside-text"
 
-        if (link !== "") {
-            let iconDiv = makeIconTemplate(itemInside.id)
-            itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
-        }
+        let iconDiv = makeIconTemplate(itemInside.id)
+        itemInside.appendChild(iconDiv).className = "grid-item-inside-icon"
     })
 }
 
@@ -111,11 +109,9 @@ function makeGrid(cols, rows) {
                     id = r.toString() + c.toString()
                     item = makeMark(id)
                     item.className = "grid-item"
-                    if (r === 0){
-                        console.log(c)
+                    if (r===0){
+                        console.log(id)
                     }
-                }
-                if (item !== ""){
                     grid.children[r].appendChild(item)
                 }
             }

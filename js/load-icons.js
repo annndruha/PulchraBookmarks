@@ -13,7 +13,7 @@ function loadAllIcons() {
 
 function loadIcon(id) {
     let link = document.getElementById(id).getAttribute("link")
-    console.log(id, link)
+    // console.log(id, link)
     let google_img = new Image()
     if (linkDefined(link)) {
         let fav_link = getOpenLink(getDomain(link)) + "/favicon.ico"
