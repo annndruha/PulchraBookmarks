@@ -17,6 +17,7 @@ function addBootomMenu(cols) {
 
         gridRow.appendChild(item).className = "pseudo-grid-item"
     }
+    gridRow.id = "pseudo-grid-row"
     grid.appendChild(gridRow).className = "pseudo-grid-row"
     makeBottonMenuLeft()
     makeSettingsButton()

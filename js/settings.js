@@ -1,5 +1,6 @@
 function openSettings() {
     $(".settings").css("right", 0)
+    $(".app-container").css("margin-right", "370px")
     $.getJSON("manifest.json", function (json) {
         console.log(json["version"])
         let ver = document.getElementById("version")
@@ -9,6 +10,7 @@ function openSettings() {
 
 function closeSettings() {
     $(".settings").css("right", "-800px")
+    $(".app-container").css("margin-right", "0px")
 }
 
 $('#range-rows').on('input', function (e) {

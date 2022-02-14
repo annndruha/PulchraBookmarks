@@ -70,13 +70,15 @@ function getExistedColsRows(grid) {
 }
 
 function makeGrid(cols, rows, regrid = false) {
-    // chrome.storage.local.get(["cols", "rows"], function (res) {
-        let grid = document.getElementById("grid")
-        let existedRows = getExistedColsRows(grid)[0]
-        // let existedCols = getExistedColsRows(grid)[1]
-        // console.log(existedCols, "->cols->", cols, existedRows, "->rows->", rows)
+        // Remove bottom menu
+        if(document.getElementById("pseudo-grid-row")){
+            document.getElementById("pseudo-grid-row").remove()
+        }
 
-        // Removing
+        let grid = document.getElementById("grid")
+
+        // Removing and add rows
+        let existedRows = getExistedColsRows(grid)[0]
         if (rows < existedRows){
             for (let r = existedRows-1; r >= rows; r--) {
                 grid.children[r].remove()
@@ -92,7 +94,7 @@ function makeGrid(cols, rows, regrid = false) {
                 grid.appendChild(gridRow).className = "grid-row"
             }
         }
-        // existedRows = getExistedColsRows(grid)[0]
+        // Removing and add cols
         let existedCols = getExistedColsRows(grid)[1]
         console.log(existedCols, "->cols->", cols)
         if (cols < existedCols){
@@ -116,7 +118,7 @@ function makeGrid(cols, rows, regrid = false) {
                 if (item !== ""){grid.children[r].appendChild(item)}
             }
         }
-        //addBootomMenu(cols)
+        addBootomMenu(cols)
 }
 
 function beautyfyView() {

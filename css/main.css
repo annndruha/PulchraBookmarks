@@ -5,37 +5,11 @@ body {
     box-sizing: border-box;
     font: 1.0em Arial, Helvetica, sans-serif;
     position: relative;
-    /*padding: 50px;*/
 }
-
-/*.app {*/
-/*    display: flex;*/
-/*    !*justify-content: start;*!*/
-/*    justify-content: space-between;*/
-/*    !*flex-basis: max-content;*!*/
-/*    column-gap: 0;*/
-/*}*/
-
-/*.app-container{*/
-/*    !*display: flex;*!*/
-/*    padding: 50px;*/
-/*    !*flex-grow: inherit;*!*/
-/*    !*flex-basis: available;*!*/
-/*    !*float: left;*!*/
-/*    !*display: inline-block;*!*/
-/*}*/
-
-/*.settings-overlay{*/
-/*    background: beige;*/
-/*    !*margin-right: 0;*!*/
-/*    !*display: inline-block;*!*/
-/*    !*float:right;*!*/
-/*    !*margin-left: auto;*!*/
-/*    !*margin-right: 0;*!*/
-/*    !*float: right;*!*/
-/*    !*margin-left: auto;*!*/
-/*    !*margin-right: 0;*!*/
-/*}*/
+.app-container{
+    padding: 50px;
+    transition: margin 500ms;
+}
 
 *, html {
     margin:0;
