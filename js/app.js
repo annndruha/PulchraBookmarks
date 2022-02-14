@@ -22,6 +22,6 @@ $(window).on("load", function () {
     loadAllIcons()
 })
 
-window.onresize = function(event) {
+$(window).on("resize", function (event){
     beautyfyView()
-}
+})
