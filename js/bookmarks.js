@@ -74,10 +74,12 @@ function makeGrid() {
         }
         grid.appendChild(gridRow).className = "grid-row"
     }
-    // addBootomMenu(grid, cols, rows)
     let content = document.getElementById("grid-content")
-    // console.log(grid)
     content.appendChild(grid)
+    addBootomMenu(cols, rows)
+
+    // console.log(grid)
+
 })}
 
 function beautyfyView() {

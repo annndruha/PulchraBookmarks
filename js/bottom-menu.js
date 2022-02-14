@@ -1,4 +1,5 @@
-function addBootomMenu(parent, cols, rows) {
+function addBootomMenu(cols, rows) {
+    let grid = document.getElementById("grid")
     let gridRow = document.createElement("div")
     for (let c = 0; c < cols; c++) {
         let item = document.createElement("div")
@@ -16,7 +17,7 @@ function addBootomMenu(parent, cols, rows) {
 
         gridRow.appendChild(item).className = "pseudo-grid-item"
     }
-    parent.appendChild(gridRow).className = "pseudo-grid-row"
+    grid.appendChild(gridRow).className = "pseudo-grid-row"
     makeBottonMenuLeft()
     makeSettingsButton()
 }
@@ -57,29 +58,3 @@ function makeSettingsButton() {
     bottom_menu.appendChild(settings).className = "bm-item right"
     left_container.appendChild(bottom_menu).className = "bottom-menu-right"
 }
-
-$(window).on("load", function () {
-    $('#chrome-downloads').click(function () {
-        chrome.tabs.create({"url": "chrome://downloads/"})
-    })
-    $('#chrome-bookmarks').click(function () {
-        chrome.tabs.create({"url": "chrome://bookmarks/"})
-    })
-    $('#chrome-history').click(function () {
-        chrome.tabs.create({"url": "chrome://history/"})
-    })
-    $('#chrome-settings').click(function () {
-        chrome.tabs.create({"url": "chrome://settings/"})
-    })
-    $('#settings-open-button').click(function (e) {
-        e.stopPropagation()
-        openSettings()
-        console.log("Open Settings")
-    })
-    $('#close-settings-button').click(function (e) {
-        e.stopPropagation()
-        closeSettings()
-        console.log("Close Settings")
-    })
-    openSettings()
-})
