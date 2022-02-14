@@ -1,5 +1,13 @@
 makeGrid()
 beautyfyView()
+function pasteSettingsValues(){
+    chrome.storage.local.get(["cols"], function (result) {
+        document.getElementById("cols").innerText = result["cols"]
+    })
+    chrome.storage.local.get(["rows"], function (result) {
+        document.getElementById("rows").innerText = result["rows"]
+    })
+}
 
 $(window).on("load", function () {
     $('.grid-item-inside').click(function () {

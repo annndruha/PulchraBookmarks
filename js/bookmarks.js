@@ -52,7 +52,15 @@ function makeGrid() {
     chrome.storage.local.get(["cols", "rows"], function (res) {
     let cols = res["cols"]
     let rows = res["rows"]
-    let grid = document.getElementById("grid")
+
+    // let grid = document.getElementById("grid")
+    //     grid.remove()
+    // if (document.getElementById("grid")) {
+    //     document.getElementById("grid").remove()
+    // }
+    let grid = document.createElement("div")
+    grid.id = "grid"
+    grid.className = "grid"
     for (let r = 0; r < rows; r++) {
         let gridRow = document.createElement("div")
         for (let c = 0; c < cols; c++) {
@@ -66,7 +74,10 @@ function makeGrid() {
         }
         grid.appendChild(gridRow).className = "grid-row"
     }
-    addBootomMenu(grid, cols, rows)
+    // addBootomMenu(grid, cols, rows)
+    let content = document.getElementById("grid-content")
+    // console.log(grid)
+    content.appendChild(grid)
 })}
 
 function beautyfyView() {

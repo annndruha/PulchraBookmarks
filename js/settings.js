@@ -26,15 +26,8 @@ $('#range-cols').on('input', function (e){
         console.log("cols set:", cols)
     })
 })
-$(window).on("load", function () {
-    pasteSettingsValues()
-})
 
-function pasteSettingsValues(){
-    chrome.storage.local.get(["cols"], function (result) {
-        document.getElementById("cols").innerText = result["cols"]
-    })
-    chrome.storage.local.get(["rows"], function (result) {
-        document.getElementById("rows").innerText = result["rows"]
-    })
-}
+// $('#range-rows').on('change', function(){
+//     // console.log("cols set:", cols)
+//     makeGrid()
+// });
