@@ -1,7 +1,7 @@
 {
   "name": "Pulchra bookmarks",
   "description": "Pulchra bookmarks extension",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "manifest_version": 3,
   "minimum_chrome_version": "96",
   "chrome_url_overrides": {
