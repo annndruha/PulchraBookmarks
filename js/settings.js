@@ -17,7 +17,7 @@ $('#range-rows').on('input', function (e) {
     chrome.storage.local.set({["rows"]: rows}, function () {
         console.log("rows set:", rows)
     })
-    makeGrid()
+    makeGrid(true)
 })
 
 $('#range-cols').on('input', function (e) {
@@ -26,5 +26,5 @@ $('#range-cols').on('input', function (e) {
     chrome.storage.local.set({["cols"]: cols}, function () {
         console.log("cols set:", cols)
     })
-    makeGrid()
+    makeGrid(true)
 })

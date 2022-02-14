@@ -48,7 +48,21 @@ function fillMark(itemInside) {
     })
 }
 
-function makeGrid() {
+function makeMark(id, regrid){
+    // if (regrid && document.getElementById(id)){
+    //
+    // }
+    // else {
+        let item = document.createElement("div")
+        let itemInside = document.createElement("div")
+        itemInside.id = id
+        fillMark(itemInside)
+        item.appendChild(itemInside).className = "grid-item-inside"
+        return item
+    // }
+}
+
+function makeGrid(regrid = false) {
     chrome.storage.local.get(["cols", "rows"], function (res) {
         let cols = res["cols"]
         let rows = res["rows"]
@@ -65,11 +79,7 @@ function makeGrid() {
             let gridRow = document.createElement("div")
             for (let c = 0; c < cols; c++) {
                 let id = r.toString() + c.toString()
-                let item = document.createElement("div")
-                let itemInside = document.createElement("div")
-                itemInside.id = id
-                fillMark(itemInside)
-                item.appendChild(itemInside).className = "grid-item-inside"
+                let item = makeMark(id, regrid)
                 gridRow.appendChild(item).className = "grid-item"
             }
             grid.appendChild(gridRow).className = "grid-row"
