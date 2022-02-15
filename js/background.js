@@ -7,4 +7,6 @@ chrome.runtime.onInstalled.addListener(() => {
     })
     chrome.storage.local.set({['new-tab']: false}, function () {
     })
+    chrome.storage.local.set({['show-quick']: true}, function () {
+    })
 })

@@ -3,10 +3,13 @@ function addBootomMenu(cols) {
     let grid_row = document.createElement('div')
     let item = document.createElement('div')
     item.id = 'grid-item-settings'
+    // chrome.storage.local.get(['show-quick'], function (result) {
+    // if (result['show-quick']) {item = makeBottonMenuLeft(item)}})
     item = makeBottonMenuLeft(item)
     item = makeSettingsButton(item)
     grid_row.id = 'grid-row'
     grid_row.appendChild(item).className = 'grid-item'
+    grid_row.id = 'row-settings'
     grid.appendChild(grid_row).className = 'grid-row'
     $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
 }

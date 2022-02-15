@@ -75,8 +75,8 @@ function makeGrid(cols, rows) {
         //
 
         // Remove bottom menu
-        if(document.getElementById('pseudo-grid-row')){
-            document.getElementById('pseudo-grid-row').remove()
+        if(document.getElementById('row-settings')){
+            document.getElementById('row-settings').remove()
         }
 
         let grid = document.getElementById('grid')

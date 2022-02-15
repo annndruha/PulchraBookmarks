@@ -14,14 +14,12 @@ function pasteSettingsValues() {
         document.getElementById('range-rows').setAttribute('value', result['rows'])
     })
     chrome.storage.local.get(['new-tab'], function (result) {
-        if (result['new-tab']){
-            document.getElementById('checkbox-new-tab').setAttribute('checked', '')
-            console.log('checked')
-        }
-        else {
-            document.getElementById('checkbox-new-tab').removeAttribute('checked')
-            console.log('unchecked')
-        }
+        if (result['new-tab']){document.getElementById('checkbox-new-tab').setAttribute('checked', '')}
+        else {document.getElementById('checkbox-new-tab').removeAttribute('checked')}
+    })
+    chrome.storage.local.get(['show-quick'], function (result) {
+        if (result['show-quick']){document.getElementById('checkbox-show-quick').setAttribute('checked', '')}
+        else {document.getElementById('checkbox-show-quick').removeAttribute('checked')}
     })
 }
 
@@ -73,10 +71,19 @@ function updateBinds(){
     $('#checkbox-new-tab').unbind('click').on('click', function (e) {
         e.stopPropagation()
         if( $(this).is(':checked') ) {
-            chrome.storage.local.set({['new-tab']: true}, function () {console.log('set checked')})
+            chrome.storage.local.set({['new-tab']: true}, function () {})
         }
         else {
-            chrome.storage.local.set({['new-tab']: false}, function () {console.log('set unchecked')})
+            chrome.storage.local.set({['new-tab']: false}, function () {})
+        }
+    })
+    $('#checkbox-show-quick').unbind('click').on('click', function (e) {
+        e.stopPropagation()
+        if( $(this).is(':checked') ) {
+            chrome.storage.local.set({['show-quick']: true}, function () {})
+        }
+        else {
+            chrome.storage.local.set({['show-quick']: false}, function () {})
         }
     })
 }
@@ -104,7 +111,7 @@ $('.settings').on('transitionend', function (){
     console.log('settings on transitionend')
 })
 
-$('.cancel-overlay').unbind('click').on('click', function (e) {
+$('.cancel-overlay').on('click', function (e) {
     e.stopPropagation()
     closeSettings()
     console.log('Close Settings by overlay')
