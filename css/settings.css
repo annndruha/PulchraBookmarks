@@ -8,13 +8,11 @@
     background: white;
     transition: all 0.5s;
     padding: 10px 10px;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font: 1.0em Arial, Helvetica, sans-serif;
 }
 
-.settings-cancel-overlay{
-    /*display: none;*/
+.settings-cancel-overlay {
     position: fixed;
     top: 0;
     z-index: 999999;
@@ -30,11 +28,12 @@
 .text {
     cursor: default;
 }
-#rows, #cols{
-    padding-right: 5.5px;
+
+#rows, #cols {
+    padding-right: 6px;
 }
 
-.slider-long{
+.slider-long {
     position: absolute;
     right: 50px;
 }
@@ -44,30 +43,30 @@
     height: 20px;
 }
 
-#save-to-file, #load-from-file{
+#save-to-file, #load-from-file {
     cursor: not-allowed;
 }
 
-#version{
+#version {
     color: #888888;
     font: 0.8em Arial, Helvetica, sans-serif;
 }
 
-#row-down-title{
+#row-down-title {
     padding-top: 25px;
 }
 
-#logo{
+#logo {
     width: 30px;
     height: 30px;
 }
 
-#title{
+#title {
     padding-top: 5px;
     padding-right: 90px;
 }
 
-#close-settings-button{
+#close-settings-button {
     cursor: pointer;
 }
 

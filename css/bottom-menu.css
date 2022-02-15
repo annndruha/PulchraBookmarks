@@ -22,11 +22,9 @@
 .pseudo-grid-item-inside {
     position: relative;
     height: 20px;
-    text-overflow: fade;
+    text-overflow: clip;
     white-space: nowrap;
 }
-
-/* =============================================================== */
 
 .bottom-menu-left {
     color: white;
@@ -44,8 +42,6 @@
     text-align: right;
 }
 
-/* =============================================================== */
-
 .bm-item {
     display: inline-block;
     vertical-align: middle;
@@ -57,7 +53,6 @@
     opacity: 0.6;
 }
 
-/* =============================================================== */
 .bm-item.right {
     padding-right: 0;
     padding-left: 10px;

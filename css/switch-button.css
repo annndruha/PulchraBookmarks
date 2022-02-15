@@ -30,7 +30,6 @@
     left: 1px;
     bottom: 1px;
     background-color: white;
-    -webkit-transition: .1s;
     transition: .1s;
 }
 
@@ -38,10 +37,10 @@ input:checked + .slider {
     background-color: #0075ff;
 }
 
-.slider{
+.slider {
     position: absolute;
-    left: 0px;
-    bottom: 0px;
+    left: 0;
+    bottom: 0;
     border: solid #aaa 1px;
 }
 
