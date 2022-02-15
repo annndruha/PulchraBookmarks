@@ -5,12 +5,12 @@
     transition: right 0.5s;
 }
 
-.settings.window{
+.window{
     right: -400px;
     width: 370px;
-    padding: 15px;
     background: white;
     cursor: default;
+    /*padding: 15px;*/
 }
 
 .settings.cancel-overlay {
@@ -36,6 +36,7 @@
 }
 
 #title-row{
+    padding-top: 15px;
     padding-bottom: 25px;
 }
 
@@ -62,6 +63,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     text-align: left;
+    padding-left: 15px;
 }
 
 .item-right{
@@ -69,6 +71,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     text-align: right;
+    padding-right: 15px;
 }
 
 .slider-long{
