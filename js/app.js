@@ -85,6 +85,7 @@ $(window).on('load', function () {
     updateBinds()
     pasteSettingsValues()
     loadAllIcons()
+    openSettings()
     console.log('window on load')
 })
 

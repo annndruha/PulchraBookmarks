@@ -2,7 +2,7 @@ body {
     background: url(../images/backgrounds/windows.jpg);
     text-align: center;
     box-sizing: border-box;
-    font: 1.0em Arial, Helvetica, sans-serif;
+    font: 1.0em Arial, sans-serif;
     position: relative;
 }
 
