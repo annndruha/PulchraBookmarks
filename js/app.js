@@ -62,30 +62,6 @@ function updateBinds(){
         openSettings()
         console.log('Open Settings')
     })
-
-    $('#close-settings-button').unbind('click').on('click', function (e) {
-        e.stopPropagation()
-        closeSettings()
-        console.log('Close Settings')
-    })
-    $('#checkbox-new-tab').unbind('click').on('click', function (e) {
-        e.stopPropagation()
-        if( $(this).is(':checked') ) {
-            chrome.storage.local.set({['new-tab']: true}, function () {})
-        }
-        else {
-            chrome.storage.local.set({['new-tab']: false}, function () {})
-        }
-    })
-    $('#checkbox-show-quick').unbind('click').on('click', function (e) {
-        e.stopPropagation()
-        if( $(this).is(':checked') ) {
-            chrome.storage.local.set({['show-quick']: true}, function () {})
-        }
-        else {
-            chrome.storage.local.set({['show-quick']: false}, function () {})
-        }
-    })
 }
 
 $(window).on('load', function () {
@@ -103,12 +79,10 @@ $(window).on('change', function () {
 
 $(window).on('resize', function () {
     beautyfyView()
-    console.log('window on resize')
 })
 
 $('.settings').on('transitionend', function (){
     beautyfyView()
-    console.log('settings on transitionend')
 })
 
 $('.cancel-overlay').on('click', function (e) {

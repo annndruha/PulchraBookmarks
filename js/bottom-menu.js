@@ -1,11 +1,11 @@
 function addBootomMenu(cols) {
+    console.log(cols)
     let grid = document.getElementById('grid')
     let grid_row = document.createElement('div')
     let item = document.createElement('div')
     item.id = 'grid-item-settings'
-    // chrome.storage.local.get(['show-quick'], function (result) {
-    // if (result['show-quick']) {item = makeBottonMenuLeft(item)}})
-    item = makeBottonMenuLeft(item)
+    chrome.storage.local.get(['show-quick'], function (result) {
+    if (result['show-quick']) {item = makeBottonMenuLeft(item)}})
     item = makeSettingsButton(item)
     grid_row.id = 'grid-row'
     grid_row.appendChild(item).className = 'grid-item'
@@ -48,4 +48,15 @@ function makeSettingsButton(parent) {
     bottom_menu.appendChild(settings).className = 'bm-item right'
     parent.appendChild(bottom_menu).className = 'bottom-menu-right'
     return parent
+}
+
+function deleteBottomMenu(){
+    if(document.getElementById('row-settings')){
+        document.getElementById('row-settings').remove()
+    }
+}
+
+function updateBottomMenu(cols){
+    deleteBottomMenu()
+    addBootomMenu(cols)
 }
