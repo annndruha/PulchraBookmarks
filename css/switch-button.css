@@ -24,11 +24,11 @@
 
 .slider:before {
     position: absolute;
+    left: 1px;
+    bottom: 1px;
     content: "";
     height: 16px;
     width: 16px;
-    left: 1px;
-    bottom: 1px;
     background-color: white;
     transition: .1s;
 }
