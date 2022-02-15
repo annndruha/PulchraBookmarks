@@ -11,7 +11,7 @@ body {
     transition: margin 500ms, padding 500ms;
 }
 
-*, html {
+html, body {
     margin: 0;
     padding: 0;
 }

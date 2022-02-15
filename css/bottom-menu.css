@@ -1,62 +1,28 @@
-.pseudo-grid-item-inside.bottom-disable {
-    display: none;
-}
-
-.pseudo-grid-row {
-    flex: 1;
+#grid-item-settings{
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    padding: 10px 0 10px 0;
-}
-
-.pseudo-grid-item {
-    width: 200px;
-    padding: 0 10px 0 10px;
-    text-overflow: clip;
-    white-space: nowrap;
-    transition: padding 500ms;
-}
-
-.pseudo-grid-item-inside {
-    position: relative;
+    justify-content: space-between;
     height: 20px;
-    text-overflow: clip;
-    white-space: nowrap;
+    color: white;
+    text-shadow: 0 0 3px black;
 }
 
 .bottom-menu-left {
-    color: white;
-    text-shadow: 0 0 3px black;
-    position: relative;
-    height: 15px;
-    text-align: left;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
-.bottom-menu-right {
-    color: white;
-    text-shadow: 0 0 3px black;
-    position: relative;
-    height: 15px;
-    text-align: right;
-}
-
-.bm-item {
-    display: inline-block;
-    vertical-align: middle;
+.bm-item.left {
     padding-right: 10px;
+}
+
+.bm-item.right {
+    padding-left: 3px;
+    filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
+    width: 18px;
+    height: 18px;
 }
 
 .bm-item:hover {
     cursor: pointer;
     opacity: 0.6;
-}
-
-.bm-item.right {
-    padding-right: 0;
-    padding-left: 10px;
-    filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
-    width: 18px;
-    height: 18px;
 }

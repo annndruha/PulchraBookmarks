@@ -1,35 +1,17 @@
 function addBootomMenu(cols) {
     let grid = document.getElementById('grid')
-    let gridRow = document.createElement('div')
-
-    // Left pannel
+    let grid_row = document.createElement('div')
     let item = document.createElement('div')
-    let itemInside = document.createElement('div')
-    itemInside.id = 'bottom-left'
-    item.appendChild(itemInside).className = 'pseudo-grid-item-inside'
-    gridRow.appendChild(item).className = 'pseudo-grid-item'
-    //
-    for (let c = 0; c < cols-2; c++) {
-        item = document.createElement('div')
-        itemInside = document.createElement('div')
-        item.appendChild(itemInside).className = 'pseudo-grid-item-inside bottom-disable'
-        gridRow.appendChild(item).className = 'pseudo-grid-item'
-    }
-    // Right pannel
-    item = document.createElement('div')
-    itemInside = document.createElement('div')
-    itemInside.id = 'bottom-right'
-    item.appendChild(itemInside).className = 'pseudo-grid-item-inside'
-    gridRow.appendChild(item).className = 'pseudo-grid-item'
-    //
-
-    gridRow.id = 'pseudo-grid-row'
-    grid.appendChild(gridRow).className = 'pseudo-grid-row'
-    makeBottonMenuLeft()
-    makeSettingsButton()
+    item.id = 'grid-item-settings'
+    item = makeBottonMenuLeft(item)
+    item = makeSettingsButton(item)
+    grid_row.id = 'grid-row'
+    grid_row.appendChild(item).className = 'grid-item'
+    grid.appendChild(grid_row).className = 'grid-row'
+    $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
 }
 
-function makeBottonMenuLeft() {
+function makeBottonMenuLeft(parent) {
     let bottom_menu = document.createElement('div')
 
     let span_downloads = document.createElement('span')
@@ -51,17 +33,16 @@ function makeBottonMenuLeft() {
     span_settings.id = 'chrome-settings'
     span_settings.textContent = 'Settings'
     bottom_menu.appendChild(span_settings).className = 'bm-item left'
-
-    let left_container = document.getElementById('bottom-left')
-    left_container.appendChild(bottom_menu).className = 'bottom-menu-left'
+    parent.appendChild(bottom_menu).className = 'bottom-menu-left'
+    return parent
 }
 
-function makeSettingsButton() {
-    let left_container = document.getElementById('bottom-right')
+function makeSettingsButton(parent) {
     let bottom_menu = document.createElement('div')
     let settings = document.createElement('img')
     settings.id = 'settings-open-button'
     settings.src = 'images/icons/settings.svg'
     bottom_menu.appendChild(settings).className = 'bm-item right'
-    left_container.appendChild(bottom_menu).className = 'bottom-menu-right'
+    parent.appendChild(bottom_menu).className = 'bottom-menu-right'
+    return parent
 }
