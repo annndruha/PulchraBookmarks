@@ -1,28 +1,23 @@
 .settings {
     position: fixed;
-    z-index: 999999;
     top: 0;
     height: 100vh;
-    width: 370px;
-    right: -800px;
-    background: white;
-    transition: all 0.5s;
-    padding: 10px 10px;
-    box-sizing: border-box;
-    font: 1.0em Arial, Helvetica, sans-serif;
+    transition: right 0.5s;
 }
 
-.settings-cancel-overlay {
-    position: fixed;
-    top: 0;
-    z-index: 999999;
-    height: 100vh;
-    width: 5000px;
+.settings.window{
+    right: -400px;
+    width: 370px;
+    padding: 10px;
+    background: white;
+}
+
+.settings.cancel-overlay {
     right: 5000px;
+    width: 100vw;
+    padding: 0;
     background: black;
     opacity: 0.4;
-    box-sizing: border-box;
-    transition: all 0.2s;
 }
 
 .text {

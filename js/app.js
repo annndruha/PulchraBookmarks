@@ -64,11 +64,7 @@ function updateBinds(){
         openSettings()
         console.log('Open Settings')
     })
-    $('#settings-cancel-overlay').unbind('click').on('click', function (e) {
-        e.stopPropagation()
-        closeSettings()
-        console.log('Close Settings by overlay')
-    })
+
     $('#close-settings-button').unbind('click').on('click', function (e) {
         e.stopPropagation()
         closeSettings()
@@ -105,4 +101,10 @@ $(window).on('resize', function () {
 $('.settings').on('transitionend', function (){
     beautyfyView()
     console.log('settings on transitionend')
+})
+
+$('.cancel-overlay').unbind('click').on('click', function (e) {
+    e.stopPropagation()
+    closeSettings()
+    console.log('Close Settings by overlay')
 })

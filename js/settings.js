@@ -1,20 +1,20 @@
 function openSettings() {
-    $('.settings').css('right', 0)
     $('.app-container').css('margin-right', '370px')
     $.getJSON('manifest.json', function (json) {
         let ver = document.getElementById('version')
         ver.innerText = 'v' + json['version']
     })
-    $('#settings-open-button').css('cursor', 'not-allowed')
-    $('#settings-cancel-overlay').css('right', '370px')
+
+    $('.settings.window').css('right','0px')
+    $('.settings.cancel-overlay').css('right', '370px')
     updateBinds()
 }
 
 function closeSettings() {
-    $('.settings').css('right', '-800px')
     $('.app-container').css('margin-right', '0px')
-    $('#settings-open-button').css('cursor', 'pointer')
-    $('#settings-cancel-overlay').css('right', '5000px')
+
+    $('.settings.window').css('right', '-400px')
+    $('.settings.cancel-overlay').css('right', '5000px')
     updateBinds()
 }
 
