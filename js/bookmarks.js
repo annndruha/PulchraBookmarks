@@ -68,6 +68,12 @@ function getExistedColsRows(grid) {
 }
 
 function makeGrid(cols, rows) {
+        // Переписать логику
+        // Сейчас строка/столбец добавляется как только готова вся
+        // Нужно сначала создать сетку нужного размера
+        // А потом асинхронно добавлять туда детей (заполнять закладки)
+        //
+
         // Remove bottom menu
         if(document.getElementById('pseudo-grid-row')){
             document.getElementById('pseudo-grid-row').remove()

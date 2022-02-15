@@ -28,6 +28,7 @@ $('#range-rows').unbind('input').on('input', function (e) {
     makeGrid(cols, rows)
     beautyfyView()
     updateBinds()
+    loadAllIcons()
 })
 
 $('#range-cols').unbind('input').on('input', function (e) {
@@ -40,4 +41,5 @@ $('#range-cols').unbind('input').on('input', function (e) {
     makeGrid(cols, rows)
     beautyfyView()
     updateBinds()
+    loadAllIcons()
 })
