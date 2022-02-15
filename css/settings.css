@@ -79,6 +79,7 @@
 
 #rows, #cols {
     padding-right: 8px;
+    width: 10px;
 }
 
 #close-settings-button {
