@@ -6,11 +6,10 @@
 }
 
 .window{
-    right: -400px;
+    right: -500px;
     width: 370px;
     background: white;
     cursor: default;
-    /*padding: 15px;*/
 }
 
 .settings.cancel-overlay {

@@ -13,7 +13,7 @@ function openSettings() {
 function closeSettings() {
     $('.app-container').css('margin-right', '0px')
 
-    $('.settings.window').css('right', '-370px')
+    $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
     updateBinds()
 }

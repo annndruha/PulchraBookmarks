@@ -1,9 +1,8 @@
 body {
     background: url(../images/backgrounds/windows.jpg);
-    text-align: center;
-    box-sizing: border-box;
     font: 1.0em Arial, sans-serif;
-    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .app-container {
@@ -11,38 +10,27 @@ body {
     transition: margin 500ms, padding 500ms;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
 .grid {
-    flex: 1;
     display: flex;
-    position: relative;
-    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
+    flex-direction: column;
 }
 
 .grid-row {
-    flex: 1;
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    flex-direction: row;
     overflow: hidden;
     padding: 10px 0 10px 0;
 }
 
 .grid-item {
+    overflow: hidden;
+    padding: 0 10px 0 10px;
     height: 100px;
     width: 200px;
-    padding: 0 10px 0 10px;
-    text-overflow: clip;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
     transition: padding 500ms;
 }
 
@@ -51,10 +39,8 @@ html, body {
     background: white;
     position: relative;
     height: 100%;
-    text-overflow: clip;
     white-space: nowrap;
     overflow: hidden;
-    vertical-align: middle;
     text-align: center;
 }
 
@@ -63,7 +49,6 @@ html, body {
     top: 18px;
     width: 50px;
     height: 50px;
-    margin: auto;
 }
 
 .grid-item-inside:hover {
@@ -105,7 +90,7 @@ html, body {
 }
 
 .grid-item-inside-text {
-    margin: 75px auto 0 auto;
+    padding-top: 75px;
 }
 
 .grid-item-inside-icon {
