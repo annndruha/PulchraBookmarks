@@ -16,9 +16,6 @@
   "action": {},
   "permissions": [
     "tabs",
-    "bookmarks",
-    "history",
-    "storage",
-    "topSites"
+    "storage"
   ]
 }
