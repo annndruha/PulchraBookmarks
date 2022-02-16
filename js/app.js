@@ -40,14 +40,6 @@ function updateBinds(){
             alert('Empty link')
         }
     })
-    // $('.grid-item-inside-menu-img').off('click').on('click', function (e) {
-    //     e.stopPropagation()
-    //     editBookmark(this.id)
-    // })
-    // $('.grid-item-inside-add-img').off('click').on('click', function (e) {
-    //     e.stopPropagation()
-    //     editBookmark(this.id)
-    // })
     $('#chrome-downloads').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://downloads/'})
     })
