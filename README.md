@@ -1,4 +1,4 @@
-# Bookmarks - Chrome extention (BETA)
+# Pulchra bookmarks - Chrome extention (BETA)
 
 ### Установка из этого репозитория:
 * Нажмите на <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="30">и скачайте zip-архив <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="30">
@@ -34,7 +34,7 @@
 
 * Бэк:
   * ✅ Полностью open source
-  * ✅ Никакой слежки за пользователем и передачи данных
+  * ✅ Никакой слежки за пользователем
   * ⚒️ Нулевое количество ошибок и предупреждений, полная чистота кода, в том числе лицензионная
   
   
