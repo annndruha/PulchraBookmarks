@@ -3,32 +3,33 @@ chrome.storage.local.get(['cols', 'rows'], function (res) {
 })
 
 function pasteSettingsValues() {
-    chrome.storage.local.get(['cols'], function (result) {
-        document.getElementById('cols').innerText = result['cols']
-        document.getElementById('range-cols').setAttribute('value', result['cols'])
+    chrome.storage.local.get(['cols'], function (res) {
+        document.getElementById('cols').innerText = res['cols']
+        document.getElementById('range-cols').setAttribute('value', res['cols'])
     })
-    chrome.storage.local.get(['rows'], function (result) {
-        document.getElementById('rows').innerText = result['rows']
-        document.getElementById('range-rows').setAttribute('value', result['rows'])
+    chrome.storage.local.get(['rows'], function (res) {
+        document.getElementById('rows').innerText = res['rows']
+        document.getElementById('range-rows').setAttribute('value', res['rows'])
     })
-    chrome.storage.local.get(['new-tab'], function (result) {
-        if (result['new-tab']){document.getElementById('checkbox-new-tab').setAttribute('checked', '')}
+    chrome.storage.local.get(['new-tab'], function (res) {
+        if (res['new-tab']){document.getElementById('checkbox-new-tab').setAttribute('checked', '')}
         else {document.getElementById('checkbox-new-tab').removeAttribute('checked')}
     })
-    chrome.storage.local.get(['show-quick'], function (result) {
-        if (result['show-quick']){document.getElementById('checkbox-show-quick').setAttribute('checked', '')}
+    chrome.storage.local.get(['show-quick'], function (res) {
+        if (res['show-quick']){document.getElementById('checkbox-show-quick').setAttribute('checked', '')}
         else {document.getElementById('checkbox-show-quick').removeAttribute('checked')}
     })
 }
 
 function updateBinds(){
-    $('.grid-item-inside').off('click').on('click', function () {
+    $('.grid-item-inside').off('click').on('click', function (e) {
+        e.stopPropagation()
         let link = this.getAttribute('link')
         let openLink = getOpenLink(link)
 
         if (!(openLink === '')) {
-            chrome.storage.local.get(['new-tab'], function (result) {
-                if(result['new-tab']){
+            chrome.storage.local.get(['new-tab'], function (res) {
+                if(res['new-tab']){
                     chrome.tabs.create({'url': openLink})
                 }else {
                     chrome.tabs.update({active: true, url: openLink})

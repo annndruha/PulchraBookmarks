@@ -4,8 +4,8 @@ function addBootomMenu(cols) {
     let grid_row = document.createElement('div')
     let item = document.createElement('div')
     item.id = 'grid-item-settings'
-    chrome.storage.local.get(['show-quick'], function (result) {
-    if (result['show-quick']) {item = makeBottonMenuLeft(item)}})
+    chrome.storage.local.get(['show-quick'], function (res) {
+    if (res['show-quick']) {item = makeBottonMenuLeft(item)}})
     item = makeSettingsButton(item)
     grid_row.id = 'grid-row'
     grid_row.appendChild(item).className = 'grid-item'
