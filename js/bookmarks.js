@@ -53,14 +53,24 @@ function fillMark(itemInside) {
 
             let subMenu = makeSubMenu(itemInside.id)
             itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
+            $('.grid-item-inside-menu-img').off('click').on('click', function (e) {
+                e.stopPropagation()
+                editBookmark(this.id)
+            })
         }
         else {
             let iconDiv = makeAddBookmark(itemInside.id)
             itemInside.setAttribute('link', "")
             itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
             $('#'+itemInside.id).css("background-color", "rgba(255, 255, 255, 0.0)").css("cursor", "default")
+            $('.grid-item-inside-add-img').off('click').on('click', function (e) {
+                e.stopPropagation()
+                editBookmark(this.id)
+            })
         }
     })
+
+
 }
 
 function makeMark(id) {

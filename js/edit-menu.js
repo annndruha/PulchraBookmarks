@@ -4,7 +4,7 @@ function editBookmark(menu_img_id) {
     let link = bookmark.getAttribute('link')
     let placeholder = linkDefined(link) ? link : ''
 
-    let newLink = prompt('Enter new link:', placeholder)
+    let newLink = prompt('Enter new link:\n(Erase line to delete)', placeholder)
     if (newLink === null) {
         return
     }
@@ -14,6 +14,6 @@ function editBookmark(menu_img_id) {
     })
 
     fillMark(bookmark)
-    updateBinds() // Dowsnt work 
+    updateBinds()
     loadIcon(id)
 }
