@@ -14,5 +14,6 @@ function editBookmark(menu_img_id) {
     })
 
     fillMark(bookmark)
+    updateBinds() // Dowsnt work 
     loadIcon(id)
 }
