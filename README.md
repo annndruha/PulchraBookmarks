@@ -1,22 +1,21 @@
 # BETA (functionality is not guaranteed)
 
-
-
 ### Установка из этого репозитория:
-* Нажмите на <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="40">и скачайте zip-архив <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="40">
+* Нажмите на <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="30">и скачайте zip-архив <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="30">
 * Распакуйте в любое удобное место
 * Зайдите в расширения хрома chrome://extensions/
-* Включите режим разработчика <img src="https://user-images.githubusercontent.com/51162917/153860635-b3da0d96-22cf-4762-8e1f-a66359477af6.png" height="40">
-* Загрузите расширение <img src="https://user-images.githubusercontent.com/51162917/153861803-9a691abd-fdaa-40fc-a996-c4c0dee69ef1.png" height="40">
+* Включите режим разработчика <img src="https://user-images.githubusercontent.com/51162917/153860635-b3da0d96-22cf-4762-8e1f-a66359477af6.png" height="30">
+* Загрузите расширение <img src="https://user-images.githubusercontent.com/51162917/153861803-9a691abd-fdaa-40fc-a996-c4c0dee69ef1.png" height="30">
 * Всё готово! Тестируйте!
-* 
+
 ### Как это выглядит:
-<img src="https://user-images.githubusercontent.com/51162917/153873296-02510bf2-a7f9-46bc-b731-eb55f7b00903.png" height="500">
+<img src="https://user-images.githubusercontent.com/51162917/154171155-bcdaef06-fe8e-477e-8e39-40b4f92e8167.png" width="941" height="500">
 
 ### Цели:
 * Интерфейс:
   * ✅ Симпатичные закладки со скруглёнными углами
   * ✅ Быстрый, но ненавязчивый доступ к Downloads, Bookmarks, History, Settings
+  * ✅ Возможность отключить быстрый доступ
   * Выбор фона, несколько стандартных фонов, смена фона ежедневно
   * ✅ Красивые, подгружающиеся логотипы
 
