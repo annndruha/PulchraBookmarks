@@ -35,14 +35,14 @@ function fillMark(itemInside) {
         let link = result[itemInside.id]
         itemInside.setAttribute('link', link)
 
-        let subMenu = makeSubMenu(itemInside.id)
-        itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
-
         let textDiv = makeText(getDomain(link), itemInside.id)
         itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
 
         let iconDiv = makeIconTemplate(itemInside.id)
         itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
+
+        let subMenu = makeSubMenu(itemInside.id)
+        itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
     })
 }
 
