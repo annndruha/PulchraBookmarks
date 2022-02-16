@@ -12,13 +12,12 @@ function openSettings() {
 
 function closeSettings() {
     $('.app-container').css('margin-right', '0px')
-
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
     updateBinds()
 }
 
-$('#range-rows').unbind('input').on('input', function (e) {
+$('#range-rows').on('input', function (e) {
     let rows =parseInt(e.target.value)
     document.getElementById('rows').innerText = rows.toString()
     let cols = parseInt(document.getElementById('cols').innerText)

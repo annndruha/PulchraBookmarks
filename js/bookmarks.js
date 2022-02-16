@@ -56,7 +56,9 @@ function fillMark(itemInside) {
         }
         else {
             let iconDiv = makeAddBookmark(itemInside.id)
+            itemInside.setAttribute('link', "")
             itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
+            $('#'+itemInside.id).css("background-color", "rgba(255, 255, 255, 0.0)").css("cursor", "default")
         }
     })
 }

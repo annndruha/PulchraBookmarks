@@ -22,7 +22,7 @@ function pasteSettingsValues() {
 }
 
 function updateBinds(){
-    $('.grid-item-inside').unbind('click').on('click', function () {
+    $('.grid-item-inside').off('click').on('click', function () {
         let link = this.getAttribute('link')
         let openLink = getOpenLink(link)
 
@@ -39,27 +39,29 @@ function updateBinds(){
             alert('Empty link')
         }
     })
-    $('.grid-item-inside-menu-img').unbind('click').on('click', function (e) {
+    $('.grid-item-inside-menu-img').off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
+        updateBinds()
     })
-    $('.grid-item-inside-add-img').unbind('click').on('click', function (e) {
+    $('.grid-item-inside-add-img').off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
+        updateBinds()
     })
-    $('#chrome-downloads').unbind('click').on('click', function () {
+    $('#chrome-downloads').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://downloads/'})
     })
-    $('#chrome-bookmarks').unbind('click').on('click', function () {
+    $('#chrome-bookmarks').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://bookmarks/'})
     })
-    $('#chrome-history').unbind('click').on('click', function () {
+    $('#chrome-history').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://history/'})
     })
-    $('#chrome-settings').unbind('click').on('click', function () {
+    $('#chrome-settings').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://settings/'})
     })
-    $('#settings-open-button').unbind('click').on('click', function (e) {
+    $('#settings-open-button').off('click').on('click', function (e) {
         e.stopPropagation()
         openSettings()
         console.log('Open Settings')

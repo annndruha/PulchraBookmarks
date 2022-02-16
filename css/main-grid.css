@@ -96,7 +96,7 @@ body {
 }
 
 .grid-item-inside:hover .grid-item-inside-add-img{
-    animation: 0.7s ease 0s normal forwards 1 fadein;
+    animation: 0.5s ease 0s normal forwards 1 fadein;
     opacity: 1;
 }
 
