@@ -34,6 +34,8 @@ function waitToLoadFavicon(google_img, fav_link, id, loaded1) {
     fav_img.onerror = () => remakeIcon(google_img, fav_img, id, loaded1, false)
 }
 
+// favicons/favicon.svg
+
 function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
     let imgOld = document.getElementById('icon-' + id)
     if (imgOld === null){return}// When remake grid so fast

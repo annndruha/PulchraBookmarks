@@ -32,8 +32,24 @@ body {
     height: 100px;
     width: 200px;
     transition: padding 500ms;
-    filter: drop-shadow(0px 0px 2px black);
+    /*filter: drop-shadow(0px 0px 2px black);*/
 }
+
+.grid-item:hover {
+    opacity: 1;
+    filter: drop-shadow(-5px 0px 2px deeppink);
+    /*background-color: purple;*/
+    border-radius: 1em;
+    border-color: aqua;
+}
+
+.grid-item:hover > .grid-item-inside {
+    opacity: 1;
+    filter: drop-shadow(0px -4px 2px #14ff57);
+    background-color: purple;
+}
+
+/*}*/
 
 .grid-item-inside {
     border-radius: 1em;
@@ -103,13 +119,13 @@ body {
 
 .grid-item-inside-add {
     margin-right: 0;
-    padding-top: 20px;
+    padding-top: 35px;
 }
 
 .grid-item-inside-add-img{
     cursor: pointer;
     opacity: 0;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     filter: invert(1) drop-shadow(0px 0px 2px black)
 }
