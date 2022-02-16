@@ -1,8 +1,6 @@
 chrome.storage.local.get(['cols', 'rows'], function (res) {
     makeGrid(parseInt(res['cols']), parseInt(res['rows']))
-    loadAllIcons()
 })
-beautyfyView()
 
 function pasteSettingsValues() {
     chrome.storage.local.get(['cols'], function (result) {
@@ -64,17 +62,10 @@ function updateBinds(){
     })
 }
 
-$(window).on('load', function () {
-    updateBinds()
+$(window).on('ready load change', function () {
     pasteSettingsValues()
-    loadAllIcons()
-    openSettings()
-    console.log('window on load')
-})
-
-$(window).on('change', function () {
+    beautyfyView()
     updateBinds()
-    console.log('window on change')
 })
 
 $(window).on('resize', function () {
@@ -88,5 +79,4 @@ $('.settings').on('transitionend', function (){
 $('.cancel-overlay').on('click', function (e) {
     e.stopPropagation()
     closeSettings()
-    console.log('Close Settings by overlay')
 })

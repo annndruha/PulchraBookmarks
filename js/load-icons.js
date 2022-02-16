@@ -13,7 +13,6 @@ function loadAllIcons() {
 
 function loadIcon(id) {
     let link = document.getElementById(id).getAttribute('link')
-    // console.log(id, link)
     let google_img = new Image()
     if (linkDefined(link)) {
         let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
@@ -36,6 +35,7 @@ function waitToLoadFavicon(google_img, fav_link, id, loaded1) {
 
 function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
     let imgOld = document.getElementById('icon-' + id)
+    if (imgOld === null){return}// When remake grid so fast
     if (loaded1 && loaded2) {
         if (google_img.naturalWidth >= fav_img.naturalWidth) {
             imgOld.src = google_img.src
@@ -43,7 +43,12 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
             imgOld.src = fav_img.src
         }
     } else if (loaded1) {
-        imgOld.src = google_img.src
+        if (google_img.naturalWidth !== 16){
+            imgOld.src = google_img.src
+        }
+        else {
+            imgOld.src = '../images/icons/language.svg'
+        }
     } else if (loaded2) {
         imgOld.src = fav_img.src
     } else {

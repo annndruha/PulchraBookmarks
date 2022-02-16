@@ -26,9 +26,6 @@ $('#range-rows').unbind('input').on('input', function (e) {
         console.log('rows set:', rows)
     })
     makeGrid(cols, rows)
-    beautyfyView()
-    updateBinds()
-    loadAllIcons()
 })
 
 $('#range-cols').on('input', function (e) {
@@ -39,9 +36,6 @@ $('#range-cols').on('input', function (e) {
         console.log('cols set:', cols)
     })
     makeGrid(cols, rows)
-    beautyfyView()
-    updateBinds()
-    loadAllIcons()
 })
 
 $('#close-settings-button').on('click', function (e) {

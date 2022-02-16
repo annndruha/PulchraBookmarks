@@ -120,6 +120,9 @@ function makeGrid(cols, rows) {
             }
         }
         addBootomMenu(cols)
+        beautyfyView()
+        updateBinds()
+        loadAllIcons()
 }
 
 function beautyfyView() {
@@ -127,7 +130,7 @@ function beautyfyView() {
         let cols = res['cols']
         let app_container = document.getElementById('app-container')
         let style = app_container.currentStyle || window.getComputedStyle(app_container)
-        let margin = style.marginRight //parseFloat(
+        let margin = style.marginRight
         let windowWidth = app_container.clientWidth - parseFloat(margin)
         const states = [cols * 150, cols * 130, cols * 113, cols * 92]
         let key = 0
