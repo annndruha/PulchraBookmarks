@@ -43,6 +43,10 @@ function updateBinds(){
         e.stopPropagation()
         editBookmark(this.id)
     })
+    $('.grid-item-inside-add-img').unbind('click').on('click', function (e) {
+        e.stopPropagation()
+        editBookmark(this.id)
+    })
     $('#chrome-downloads').unbind('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://downloads/'})
     })
@@ -62,21 +66,21 @@ function updateBinds(){
     })
 }
 
-$(window).on('ready load change', function () {
+$(window).on('ready load change', () => {
     pasteSettingsValues()
     beautyfyView()
     updateBinds()
 })
 
-$(window).on('resize', function () {
+$(window).on('resize', () => {
     beautyfyView()
 })
 
-$('.settings').on('transitionend', function (){
+$('.settings').on('transitionend', () =>{
     beautyfyView()
 })
 
-$('.cancel-overlay').on('click', function (e) {
+$('.cancel-overlay').on('click', (e) => {
     e.stopPropagation()
     closeSettings()
 })

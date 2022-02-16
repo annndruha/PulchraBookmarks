@@ -7,6 +7,15 @@ function makeSubMenu(id) {
     return subMenu
 }
 
+function makeAddBookmark(id){
+    let subMenu = document.createElement('div')
+    let img = document.createElement('img')
+    img.setAttribute('src', 'images/icons/add_circle_outline.svg')
+    img.id = 'img-' + id
+    subMenu.appendChild(img).className = 'grid-item-inside-add-img'
+    return subMenu
+}
+
 function makeText(text, id) {
     let text_div = document.createElement('div')
     let textCopy = text
@@ -29,8 +38,8 @@ function makeIconTemplate(id) {
     return icon_div
 }
 
-
 function fillMark(itemInside) {
+    itemInside.innerHTML = '';
     chrome.storage.local.get([itemInside.id], function (result) {
         let link = result[itemInside.id]
         if (linkDefined(link)){
@@ -46,7 +55,8 @@ function fillMark(itemInside) {
             itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
         }
         else {
-
+            let iconDiv = makeAddBookmark(itemInside.id)
+            itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
         }
     })
 }
