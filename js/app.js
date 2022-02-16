@@ -21,24 +21,32 @@ function pasteSettingsValues() {
     })
 }
 
+function openLink(open_link) {
+    if (linkDefined(open_link)) {
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if(res['new-tab']){
+                chrome.tabs.create({'url': open_link})
+            }else {
+                chrome.tabs.update({active: true, url: open_link})
+            }
+        })
+        console.log('User open: ' + open_link)
+    } else {
+        alert('Empty link')
+    }
+}
 function updateBinds(){
     $('.grid-item-inside').off('click').on('click', function (e) {
         e.stopPropagation()
         let link = this.getAttribute('link')
-        let openLink = getOpenLink(link)
-
-        if (!(openLink === '')) {
-            chrome.storage.local.get(['new-tab'], function (res) {
-                if(res['new-tab']){
-                    chrome.tabs.create({'url': openLink})
-                }else {
-                    chrome.tabs.update({active: true, url: openLink})
-                }
-            })
-            console.log('User open: ' + openLink)
-        } else {
-            alert('Empty link')
+        let open_link = getOpenLink(link)
+        if (linkDefined(open_link)){
+            openLink(open_link)
         }
+        else {
+            editBookmark(this.getAttribute('id'))
+        }
+
     })
     $('#chrome-downloads').off('click').on('click', function () {
         chrome.tabs.create({'url': 'chrome://downloads/'})

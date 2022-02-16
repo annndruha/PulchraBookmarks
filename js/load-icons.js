@@ -15,7 +15,7 @@ function loadIcon(id) {
     let link = document.getElementById(id).getAttribute('link')
     let google_img = new Image()
     if (linkDefined(link)) {
-        $('#'+id).css("background-color", "rgba(255, 255, 255, 1.0)").css("cursor", "pointer")
+        $('#'+id).css("background-color", "rgba(255, 255, 255)").css("cursor", "pointer")
         let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
         google_img.src = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128'
         google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id, true)

@@ -32,33 +32,30 @@ body {
     height: 100px;
     width: 200px;
     transition: padding 500ms;
-    /*filter: drop-shadow(0px 0px 2px black);*/
 }
 
-.grid-item:hover {
+.grid-item:hover > .empty-icon {
     opacity: 1;
-    filter: drop-shadow(-5px 0px 2px deeppink);
-    /*background-color: purple;*/
     border-radius: 1em;
-    border-color: aqua;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 0px 3px #000);
+    animation: 0.5s ease 0s normal forwards 1 fadein;
 }
 
-.grid-item:hover > .grid-item-inside {
+.grid-item:hover .grid-item-inside-add-img{
+    animation: 0.5s ease 0s normal forwards 1 fadein;
     opacity: 1;
-    filter: drop-shadow(0px -4px 2px #14ff57);
-    background-color: purple;
 }
-
-/*}*/
 
 .grid-item-inside {
     border-radius: 1em;
-    background-color: rgba(255, 255, 255, 0.0);
     position: relative;
     height: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
+    cursor: pointer;
 }
 
 .icon {
@@ -112,20 +109,14 @@ body {
     margin-right: +50px;
 }
 
-.grid-item-inside:hover .grid-item-inside-add-img{
-    animation: 0.5s ease 0s normal forwards 1 fadein;
-    opacity: 1;
-}
-
 .grid-item-inside-add {
     margin-right: 0;
-    padding-top: 35px;
+    padding-top: 27px;
 }
 
 .grid-item-inside-add-img{
-    cursor: pointer;
     opacity: 0;
     width: 45px;
     height: 45px;
-    filter: invert(1) drop-shadow(0px 0px 2px black)
+    filter: invert(1) /*drop-shadow(0px 0px 2px black)*/
 }

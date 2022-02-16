@@ -57,16 +57,25 @@ function fillMark(itemInside) {
                 e.stopPropagation()
                 editBookmark(this.id)
             })
+            $('.grid-item-inside').off('click').on('click', function (e) {
+                e.stopPropagation()
+                let link = this.getAttribute('link')
+                let open_link = getOpenLink(link)
+                openLink(open_link)
+            })
+            itemInside.className = 'grid-item-inside'
         }
         else {
             let iconDiv = makeAddBookmark(itemInside.id)
             itemInside.setAttribute('link', "")
             itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
-            $('#'+itemInside.id).css("background-color", "rgba(255, 255, 255, 0.0)").css("cursor", "default")
-            $('.grid-item-inside-add-img').off('click').on('click', function (e) {
+            $('#'+itemInside.id).css("background-color", "transparent")
+            $('.grid-item-inside').off('click').on('click', function (e) {
                 e.stopPropagation()
                 editBookmark(this.id)
             })
+            itemInside.className = 'grid-item-inside empty-icon'
+
         }
     })
 
@@ -78,7 +87,7 @@ function makeMark(id) {
     let itemInside = document.createElement('div')
     itemInside.id = id
     fillMark(itemInside)
-    item.appendChild(itemInside).className = 'grid-item-inside'
+    item.appendChild(itemInside)
     return item
 }
 
