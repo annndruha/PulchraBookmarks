@@ -42,23 +42,28 @@ $('#close-settings-button').on('click', function (e) {
     closeSettings()
     console.log('Close Settings')
 })
-$('#checkbox-new-tab').on('click', function (e) {
+
+$('#new-tab').on('click', function (e) {
     e.stopPropagation()
-    if( $(this).is(':checked') ) {
-        chrome.storage.local.set({['new-tab']: true}, function () {})
+    if( $('#checkbox-new-tab').is(':checked') ) {
+        chrome.storage.local.set({['new-tab']: false}, function () {})
+        document.getElementById('checkbox-new-tab').removeAttribute('checked')
     }
     else {
-        chrome.storage.local.set({['new-tab']: false}, function () {})
+        chrome.storage.local.set({['new-tab']: true}, function () {})
+        document.getElementById('checkbox-new-tab').setAttribute('checked', '') // checkbox-show-quick
     }
 })
 
-$('#checkbox-show-quick').on('click', function (e) {
+$('#show-quick').on('click', function (e) {
     e.stopPropagation()
-    if( $(this).is(':checked') ) {
-        chrome.storage.local.set({['show-quick']: true}, function () {})
+    if( $('#checkbox-show-quick').is(':checked') ) {
+        chrome.storage.local.set({['show-quick']: false}, function () {})
+        document.getElementById('checkbox-show-quick').removeAttribute('checked')
     }
     else {
-        chrome.storage.local.set({['show-quick']: false}, function () {})
+        chrome.storage.local.set({['show-quick']: true}, function () {})
+        document.getElementById('checkbox-show-quick').setAttribute('checked', '')
     }
     chrome.storage.local.get(['cols'], function (res) {
     updateBottomMenu(res['cols'])})

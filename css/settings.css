@@ -63,6 +63,7 @@
     flex-direction: row;
     text-align: left;
     padding-left: 15px;
+    padding-top: 3px;
 }
 
 .item-right{
@@ -71,6 +72,7 @@
     flex-direction: row;
     text-align: right;
     padding-right: 15px;
+    padding-top: 2px;
 }
 
 .slider-long{
@@ -91,12 +93,11 @@
     height: 24px;
 }
 
-#save-to-file, #load-from-file {
+#save-to-file, #load-from-file, #show-quick, #new-tab, #range-rows, #range-cols {
     cursor: pointer;
+    border-radius: 1em;
 }
 
-
-
-
-
-
+#save-to-file:hover, #load-from-file:hover, #show-quick:hover, #new-tab:hover {
+    background-color: #eee;
+}

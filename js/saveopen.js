@@ -1,7 +1,7 @@
 async function saveToFile(){
     await chrome.storage.local.get(null, (res) => {
         $("<a />", {
-            "download": "bookmarks.json",
+            "download": "pulchra-" + moment().format('DD.MM.YYYY') + '.json',
             "href" : "data:application/json," + encodeURIComponent(JSON.stringify(res, null, "\t"))
         }).appendTo("body")
             .click(function() {
@@ -19,4 +19,5 @@ $('#load-from-file').on('click', function (e) {
     e.stopPropagation()
     // loadFromFile()
     // chrome.storage.local.clear()
+    alert("Function not finished")
 })
