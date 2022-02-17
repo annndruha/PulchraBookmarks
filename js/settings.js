@@ -45,25 +45,21 @@ $('#close-settings-button').on('click', function (e) {
 
 $('#new-tab').on('click', function (e) {
     e.stopPropagation()
-    if( $('#checkbox-new-tab').is(':checked') ) {
+    if( $('#checkbox-new-tab').click().is(':checked') ) {
         chrome.storage.local.set({['new-tab']: false}, function () {})
-        document.getElementById('checkbox-new-tab').removeAttribute('checked')
     }
     else {
         chrome.storage.local.set({['new-tab']: true}, function () {})
-        document.getElementById('checkbox-new-tab').setAttribute('checked', '') // checkbox-show-quick
     }
 })
 
 $('#show-quick').on('click', function (e) {
     e.stopPropagation()
-    if( $('#checkbox-show-quick').is(':checked') ) {
+    if( $('#checkbox-show-quick').click().is(':checked') ) {
         chrome.storage.local.set({['show-quick']: false}, function () {})
-        document.getElementById('checkbox-show-quick').removeAttribute('checked')
     }
     else {
         chrome.storage.local.set({['show-quick']: true}, function () {})
-        document.getElementById('checkbox-show-quick').setAttribute('checked', '')
     }
     chrome.storage.local.get(['cols'], function (res) {
     updateBottomMenu(res['cols'])})

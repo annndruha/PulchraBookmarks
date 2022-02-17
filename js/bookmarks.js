@@ -92,14 +92,14 @@ function makeMark(id) {
 
 function getExistedColsRows(grid) {
     let rows = grid.childElementCount
-    let cols = 0
     try {
-        cols = grid.children[0].childElementCount
+        let cols = grid.children[0].childElementCount
+        return [rows, cols]
     }
     catch (e){
-        cols = 0
+        let cols = 0
+        return [rows, cols]
     }
-    return [rows, cols]
 }
 
 function makeGrid(cols, rows) {
@@ -163,7 +163,6 @@ function makeGrid(cols, rows) {
 function beautyfyView() {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         let cols = res['cols']
-        let rows = res['rows']
         let app_container = document.getElementById('app-container')
         let style = app_container.currentStyle || window.getComputedStyle(app_container)
         let margin = style.marginRight
