@@ -1,5 +1,4 @@
 function addBootomMenu(cols) {
-    console.log(cols)
     let grid = document.getElementById('grid')
     let grid_row = document.createElement('div')
     let item = document.createElement('div')

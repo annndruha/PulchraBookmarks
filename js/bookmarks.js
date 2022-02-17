@@ -41,8 +41,8 @@ function makeIconTemplate(id) {
 function fillMark(itemInside) {
     itemInside.innerHTML = '';
     chrome.storage.local.get([itemInside.id], function (res) {
-        let link = res[itemInside.id]
-        if (linkDefined(link)){
+        try{
+            let link = res[itemInside.id][0]["link"]
             itemInside.setAttribute('link', link)
 
             let textDiv = makeText(getDomain(link), itemInside.id)
@@ -65,7 +65,7 @@ function fillMark(itemInside) {
             })
             itemInside.className = 'grid-item-inside'
         }
-        else {
+        catch (e) {
             let iconDiv = makeAddBookmark(itemInside.id)
             itemInside.setAttribute('link', "")
             itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
@@ -162,8 +162,9 @@ function makeGrid(cols, rows) {
 }
 
 function beautyfyView() {
-    chrome.storage.local.get(['cols'], function (res) {
+    chrome.storage.local.get(['cols', 'rows'], function (res) {
         let cols = res['cols']
+        let rows = res['rows']
         let app_container = document.getElementById('app-container')
         let style = app_container.currentStyle || window.getComputedStyle(app_container)
         let margin = style.marginRight
