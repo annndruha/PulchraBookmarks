@@ -53,11 +53,11 @@ function fillMark(itemInside) {
 
             let subMenu = makeSubMenu(itemInside.id)
             itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
-            $('.grid-item-inside-menu-img').off('click').on('click', function (e) {
+            $('#img-'+itemInside.id).off('click').on('click', function (e) {
                 e.stopPropagation()
                 editBookmark(this.id)
             })
-            $('.grid-item-inside').off('click').on('click', function (e) {
+            $('#'+itemInside.id).off('click').on('click', function (e) {
                 e.stopPropagation()
                 let link = this.getAttribute('link')
                 let open_link = getOpenLink(link)
@@ -69,13 +69,12 @@ function fillMark(itemInside) {
             let iconDiv = makeAddBookmark(itemInside.id)
             itemInside.setAttribute('link', "")
             itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
-            $('#'+itemInside.id).css("background-color", "transparent")
-            $('.grid-item-inside').off('click').on('click', function (e) {
+            // $('#'+itemInside.id).css("background-color", "transparent")
+            $('#'+itemInside.id).off('click').on('click', function (e) {
                 e.stopPropagation()
                 editBookmark(this.id)
-            })
+            }).css("background-color", "transparent")
             itemInside.className = 'grid-item-inside empty-icon'
-
         }
     })
 
