@@ -1,0 +1,23 @@
+async function saveToFile(){
+    await chrome.storage.local.get(null, (res) => {
+        console.log(res)
+        console.log(res)
+        $("<a />", {
+            "download": "bookmarks.json",
+            "href" : "data:application/json," + encodeURIComponent(JSON.stringify(res, null, "\t"))
+        }).appendTo("body")
+            .click(function() {
+                $(this).remove()
+            })[0].click()
+    })
+}
+
+$('#save-to-file').on('click', function (e) {
+    e.stopPropagation()
+    saveToFile()
+})
+
+$('#load-from-file').on('click', function (e) {
+    e.stopPropagation()
+    loadFromFile()
+})

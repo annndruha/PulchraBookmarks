@@ -92,7 +92,7 @@
 }
 
 #save-to-file, #load-from-file {
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 

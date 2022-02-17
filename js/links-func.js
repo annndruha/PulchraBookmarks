@@ -1,9 +1,9 @@
-function linkDefined(link) {
+function varDefined(link) {
     return link !== 'undefined' && link !== 'null' && link !== null && link !== undefined && link !== ''
 }
 
 function getDomain(link) {
-    if (linkDefined(link)) {
+    if (varDefined(link)) {
         if (link.includes('://')) {
             let name = link.split('/')
             return name[2].replace('www.', '')
@@ -16,7 +16,7 @@ function getDomain(link) {
 
 function getOpenLink(link) {
     let openlink = ''
-    if (linkDefined(link)) {
+    if (varDefined(link)) {
         if (!(link.startsWith('https://')) && !(link.startsWith('http://'))) {
             openlink = 'https://' + link
         } else {

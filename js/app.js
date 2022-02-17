@@ -22,7 +22,7 @@ function pasteSettingsValues() {
 }
 
 function openLink(open_link) {
-    if (linkDefined(open_link)) {
+    if (varDefined(open_link)) {
         chrome.storage.local.get(['new-tab'], function (res) {
             if(res['new-tab']){
                 chrome.tabs.create({'url': open_link})
@@ -40,7 +40,7 @@ function updateBinds(){
         e.stopPropagation()
         let link = this.getAttribute('link')
         let open_link = getOpenLink(link)
-        if (linkDefined(open_link)){
+        if (varDefined(open_link)){
             openLink(open_link)
         }
         else {
@@ -71,6 +71,7 @@ $(window).on('ready load change', () => {
     pasteSettingsValues()
     beautyfyView()
     updateBinds()
+    // saveToFile()
 })
 
 $(window).on('resize', () => {
