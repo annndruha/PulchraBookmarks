@@ -100,6 +100,10 @@
     background-color: #eee;
 }
 
+.input-row-1:hover ~ #load-from-file {
+    background-color: #eee;
+}
+
 /*#input-block {*/
 /*    display: block;*/
 /*    width: 355px;*/
@@ -139,11 +143,11 @@
 /*}*/
 
 .input-row-1{
-    width: 370px;
+    width: 652px;
     height: 34px;
     position: absolute;
     top: 235px;
-    left: -282px;
+    /*opacity: 0;*/
     overflow: hidden;
 }
 
@@ -151,8 +155,8 @@
     width: 652px;
     height: 34px;
     position: absolute;
-    top: 0px;
-    left: -0px;
+    /*top: 235px;*/
+    left: -283px;
     overflow: hidden;
 }
 #upload_input {
