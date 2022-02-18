@@ -37,6 +37,9 @@ $('#upload_input').on('change', function (e) {
         console.log(json['cols'])
         makeGrid(parseInt(json['cols']), parseInt(json['rows']), true)
         pasteSettingsValues()
+        $.getJSON('manifest.json', function (json) {
+            chrome.storage.local.set({'version':json['version']}, function () {console.log(json['version'])})
+        })
     };
     fileReader.readAsDataURL($('#upload_input').prop('files')[0]);
 })

@@ -1,24 +1,8 @@
 chrome.runtime.onInstalled.addListener(() => {
     console.log('Extension installed')
     chrome.tabs.create({'url': 'chrome://newtab/'})
-    chrome.storage.local.get(['cols'], function (res) {
-        if (res['cols'] !== Object){chrome.storage.local.set({['cols']: 5},() => {
-            console.log("cols set to:", 5)
-        })}
-    })
-    chrome.storage.local.get(['rows'], function (res) {
-        if (res['rows'] !== Object){chrome.storage.local.set({['rows']: 3}, () => {
-            console.log("rows set to:", 3)
-        })}
-    })
-    chrome.storage.local.get(['new-tab'], function (res) {
-        if (res['new-tab'] !== Object){chrome.storage.local.set({['new-tab']: false}, () => {
-            console.log("new-tab set to:", false)
-        })}
-    })
-    chrome.storage.local.get(['show-quick'], function (res) {
-        if (res['show-quick'] !== Object){chrome.storage.local.set({['show-quick']: true}, () => {
-            console.log("show-quick set to:", true)
-        })}
-    })
+    const isntall_bm = "{\"10\":{\"0\":{\"link\":\"https://drive.google.com/drive/u/0/my-drive\"}},\"11\":{\"0\":{\"link\":\"https://twitter.com/\"}},\"12\":{\"0\":{\"link\":\"https://youtube.com/\"}},\"13\":{\"0\":{\"link\":\"https://www.instagram.com/\"}},\"14\":{\"0\":{\"link\":\"https://www.spotify.com/\"}},\"15\":{\"0\":{\"link\":\"https://mail.yandex.ru/touch\"}},\"20\":{\"0\":{\"link\":\"https://www.facebook.com/\"}},\"21\":{\"0\":{\"link\":\"https://www.amazon.com/\"}},\"22\":{\"0\":{\"link\":\"https://www.pinterest.com/\"}},\"23\":{\"0\":{\"link\":\"https://www.imdb.com/\"}},\"24\":{\"0\":{\"link\":\"https://github.com/Annndruha/pulchra-bookmarks\"}},\"25\":{\"0\":{\"link\":\"mail.ximc.ru\"}},\"00\":{\"0\":{\"link\":\"http://www.google.com/\"}},\"01\":{\"0\":{\"link\":\"https://wikipedia.org/\"}},\"02\":{\"0\":{\"link\":\"https://translate.google.com/\"}},\"03\":{\"0\":{\"link\":\"https://netflix.com\"}},\"04\":{\"0\":{\"link\":\"https://www.reddit.com/\"}},\"05\":{\"0\":{\"link\":\"https://mail.google.com/mail\"}},\"cols\":5,\"new-tab\":false,\"rows\":3,\"show-quick\":true,\"version\":\"0.4.0\"}"
+    const json = JSON.parse(isntall_bm);
+    chrome.storage.local.clear()
+    chrome.storage.local.set(json, function () {})
 })

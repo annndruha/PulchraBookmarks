@@ -2,6 +2,10 @@ chrome.storage.local.get(['cols', 'rows'], function (res) {
     makeGrid(parseInt(res['cols']), parseInt(res['rows']))
 })
 
+$.getJSON('manifest.json', function (json) {
+    chrome.storage.local.set({'version':json['version']}, function () {console.log(json['version'])})
+})
+
 function pasteSettingsValues() {
     chrome.storage.local.get(['cols'], function (res) {
         document.getElementById('cols').innerText = res['cols']
