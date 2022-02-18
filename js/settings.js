@@ -43,13 +43,13 @@ $('#close-settings-button').on('click', function (e) {
     console.log('Close Settings')
 })
 
-$('#new-tab,#new-tab.item-right').on('click', function (e) {
+$('#new-tab').on('click', function (e) {
     e.stopPropagation()
     if( $('#checkbox-new-tab').click().is(':checked') ) {
-        chrome.storage.local.set({['new-tab']: false}, function () {})
+        chrome.storage.local.set({['new-tab']: true}, function () {})
     }
     else {
-        chrome.storage.local.set({['new-tab']: true}, function () {})
+        chrome.storage.local.set({['new-tab']: false}, function () {})
     }
 })
 
@@ -57,13 +57,13 @@ $('#new-tab.item-right.switch.slider-round').on('click', () => {
     console.log('#new-tab.item-right')
 })
 
-$('#show-quick,#checkbox-show-quick').on('click', function (e) {
+$('#show-quick').on('click', function (e) {
     e.stopPropagation()
     if( $('#checkbox-show-quick').click().is(':checked') ) {
-        chrome.storage.local.set({['show-quick']: false}, function () {})
+        chrome.storage.local.set({['show-quick']: true}, function () {})
     }
     else {
-        chrome.storage.local.set({['show-quick']: true}, function () {})
+        chrome.storage.local.set({['show-quick']: false}, function () {})
     }
     chrome.storage.local.get(['cols'], function (res) {
     updateBottomMenu(res['cols'])})
