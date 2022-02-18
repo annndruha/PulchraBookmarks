@@ -15,9 +15,30 @@ $('#save-to-file').on('click', function (e) {
     saveToFile()
 })
 
+$('#save-to-file.item-left').on('click', function (e) {
+    e.stopPropagation()
+    saveToFile()
+})
+
+$('#save-to-file.item-right').on('click', function (e) {
+    e.stopPropagation()
+    saveToFile()
+})
+
 $('#load-from-file').on('click', function (e) {
     e.stopPropagation()
     // loadFromFile()
     // chrome.storage.local.clear()
-    alert('Function not finished')
+    // alert('Function not finished')
+    // alert('Function not finished')
 })
+
+// $('#load-from-file.item-left').on('click', function (e) {
+//     e.stopPropagation()
+//     // alert('Function not finished')
+// })
+//
+// $('#load-from-file.item-right').on('click', function (e) {
+//     e.stopPropagation()
+//     // alert('Function not finished')
+// })
