@@ -25,20 +25,18 @@ $('#save-to-file.item-right').on('click', function (e) {
     saveToFile()
 })
 
-$('#load-from-file').on('click', function (e) {
+$('#upload_input').on('change', function (e) {
     e.stopPropagation()
-    // loadFromFile()
-    // chrome.storage.local.clear()
-    // alert('Function not finished')
-    // alert('Function not finished')
+    let fileReader = new FileReader();
+    fileReader.onload = function () {
+        let dataURI = fileReader.result;
+        const decoded = atob(dataURI.substring(29));
+        const json = JSON.parse(decoded);
+        chrome.storage.local.clear()
+        chrome.storage.local.set(json, function () {})
+        console.log(json['cols'])
+        makeGrid(parseInt(json['cols']), parseInt(json['rows']), true)
+        pasteSettingsValues()
+    };
+    fileReader.readAsDataURL($('#upload_input').prop('files')[0]);
 })
-
-// $('#load-from-file.item-left').on('click', function (e) {
-//     e.stopPropagation()
-//     // alert('Function not finished')
-// })
-//
-// $('#load-from-file.item-right').on('click', function (e) {
-//     e.stopPropagation()
-//     // alert('Function not finished')
-// })

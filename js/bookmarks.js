@@ -102,20 +102,33 @@ function getExistedColsRows(grid) {
     }
 }
 
-function makeGrid(cols, rows) {
+function makeGrid(cols, rows, fromfile=false) {
         // Переписать логику
         // Сейчас строка/столбец добавляется как только готова вся
         // Нужно сначала создать сетку нужного размера
         // А потом асинхронно добавлять туда детей (заполнять закладки)
         //
+        console.log('MakeGrid')
 
         // Remove bottom menu
         deleteBottomMenu()
-
         let grid = document.getElementById('grid')
+
+        if (fromfile){
+            let Rows = getExistedColsRows(grid)[0]
+            console.log("Rows", Rows)
+            for (let r = Rows-1; r >= 0; r--) {
+                grid.children[r].remove()
+                console.log("Remove row:", r)
+            }
+        }
 
         // Removing and add rows
         let existedRows = getExistedColsRows(grid)[0]
+
+        console.log("existedRows", existedRows)
+
+
         if (rows < existedRows){
             for (let r = existedRows-1; r >= rows; r--) {
                 grid.children[r].remove()
@@ -133,30 +146,35 @@ function makeGrid(cols, rows) {
         }
         // Removing and add cols
         let existedCols = getExistedColsRows(grid)[1]
-        if (cols < existedCols){
+        console.log("existedCols", existedCols)
+        if (cols < existedCols) {
             for (let r = 0; r < rows; r++) {
-                for (let c = existedCols-1; c >= cols; c--) {
+                for (let c = existedCols - 1; c >= cols; c--) {
                     grid.children[r].children[c].remove()
                 }
             }
         } else {
             for (let r = 0; r < rows; r++) {
                 let item = ''
-                let id =''
+                let id = ''
                 for (let c = existedCols; c < cols; c++) {
                     id = r.toString() + c.toString()
+                    console.log("Create mark:", id)
                     item = makeMark(id)
                     item.className = 'grid-item'
-                    if (r===0){
-                        console.log(id)
-                    }
                     grid.children[r].appendChild(item)
                 }
             }
         }
-        addBootomMenu(cols)
+
         beautyfyView()
         updateBinds()
+
+        existedRows = getExistedColsRows(grid)[0]
+        existedCols = getExistedColsRows(grid)[1]
+        console.log("existedRows", existedRows)
+        console.log("existedCols", existedCols)
+        addBootomMenu(cols)
         loadAllIcons()
 }
 
