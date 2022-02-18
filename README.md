@@ -9,7 +9,7 @@
 * Всё готово! Тестируйте!
 
 ### Как это выглядит:
-<img src="https://user-images.githubusercontent.com/51162917/154171155-bcdaef06-fe8e-477e-8e39-40b4f92e8167.png" width=100% alt="">
+<img src="https://user-images.githubusercontent.com/51162917/154694838-48abbc66-6a24-467a-88f8-71e97ab7294f.png" width=100% alt="">
 
 ### Цели:
 * Интерфейс:
