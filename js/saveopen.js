@@ -27,11 +27,11 @@ $('#save-to-file.item-right').on('click', function (e) {
 
 $('#upload_input').on('change', function (e) {
     e.stopPropagation()
-    let fileReader = new FileReader();
+    let fileReader = new FileReader()
     fileReader.onload = function () {
-        let dataURI = fileReader.result;
-        const decoded = atob(dataURI.substring(29));
-        const json = JSON.parse(decoded);
+        let dataURI = fileReader.result
+        const decoded = atob(dataURI.substring(29))
+        const json = JSON.parse(decoded)
         chrome.storage.local.clear()
         chrome.storage.local.set(json, function () {})
         console.log(json['cols'])
@@ -40,6 +40,6 @@ $('#upload_input').on('change', function (e) {
         $.getJSON('manifest.json', function (json) {
             chrome.storage.local.set({'version':json['version']}, function () {console.log(json['version'])})
         })
-    };
-    fileReader.readAsDataURL($('#upload_input').prop('files')[0]);
+    }
+    fileReader.readAsDataURL($('#upload_input').prop('files')[0])
 })

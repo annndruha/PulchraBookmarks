@@ -53,16 +53,36 @@ function updateBinds(){
 
     })
     $('#chrome-downloads').off('click').on('click', function () {
-        chrome.tabs.create({'url': 'chrome://downloads/'})
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if(res['new-tab']){
+                chrome.tabs.create({'url': 'chrome://downloads/'})
+            }else {
+                chrome.tabs.update({active: true, url: 'chrome://downloads/'})
+            }})
     })
     $('#chrome-bookmarks').off('click').on('click', function () {
-        chrome.tabs.create({'url': 'chrome://bookmarks/'})
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if(res['new-tab']){
+                chrome.tabs.create({'url': 'chrome://bookmarks/'})
+            }else {
+                chrome.tabs.update({active: true, url: 'chrome://bookmarks/'})
+            }})
     })
     $('#chrome-history').off('click').on('click', function () {
-        chrome.tabs.create({'url': 'chrome://history/'})
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if(res['new-tab']){
+                chrome.tabs.create({'url': 'chrome://history/'})
+            }else {
+                chrome.tabs.update({active: true, url: 'chrome://history/'})
+            }})
     })
     $('#chrome-settings').off('click').on('click', function () {
-        chrome.tabs.create({'url': 'chrome://settings/'})
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if(res['new-tab']){
+                chrome.tabs.create({'url': 'chrome://settings/'})
+            }else {
+                chrome.tabs.update({active: true, url: 'chrome://settings/'})
+            }})
     })
     $('#settings-open-button').off('click').on('click', function (e) {
         e.stopPropagation()

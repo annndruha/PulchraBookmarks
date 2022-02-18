@@ -39,7 +39,7 @@ function makeIconTemplate(id) {
 }
 
 function fillMark(itemInside) {
-    itemInside.innerHTML = '';
+    itemInside.innerHTML = ''
     chrome.storage.local.get([itemInside.id], function (res) {
         try{
             let link = res[itemInside.id][0]["link"]
