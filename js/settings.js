@@ -1,20 +1,16 @@
 function openSettings() {
-    $('.app-container').css('margin-right', '370px')
     $.getJSON('manifest.json', function (json) {
-        let ver = document.getElementById('version')
-        ver.innerText = 'v' + json['version']
+        document.getElementById('version').innerText = 'v' + json['version']
     })
-
+    $('.app-container').css('margin-right', '370px')
     $('.settings.window').css('right','0px')
     $('.settings.cancel-overlay').css('right', '370px')
-    updateBinds()
 }
 
 function closeSettings() {
     $('.app-container').css('margin-right', '0px')
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
-    updateBinds()
 }
 
 $('#range-rows').on('input', function (e) {

@@ -108,7 +108,7 @@ function makeGrid(cols, rows, fromfile=false) {
         // Нужно сначала создать сетку нужного размера
         // А потом асинхронно добавлять туда детей (заполнять закладки)
         //
-        console.log('MakeGrid')
+        // console.log('MakeGrid')
 
         // Remove bottom menu
         deleteBottomMenu()
@@ -125,10 +125,6 @@ function makeGrid(cols, rows, fromfile=false) {
 
         // Removing and add rows
         let existedRows = getExistedColsRows(grid)[0]
-
-        console.log("existedRows", existedRows)
-
-
         if (rows < existedRows){
             for (let r = existedRows-1; r >= rows; r--) {
                 grid.children[r].remove()
@@ -146,7 +142,7 @@ function makeGrid(cols, rows, fromfile=false) {
         }
         // Removing and add cols
         let existedCols = getExistedColsRows(grid)[1]
-        console.log("existedCols", existedCols)
+        // console.log("existedCols", existedCols)
         if (cols < existedCols) {
             for (let r = 0; r < rows; r++) {
                 for (let c = existedCols - 1; c >= cols; c--) {
@@ -169,11 +165,6 @@ function makeGrid(cols, rows, fromfile=false) {
 
         beautyfyView()
         updateBinds()
-
-        existedRows = getExistedColsRows(grid)[0]
-        existedCols = getExistedColsRows(grid)[1]
-        console.log("existedRows", existedRows)
-        console.log("existedCols", existedCols)
         addBootomMenu(cols)
         loadAllIcons()
 }

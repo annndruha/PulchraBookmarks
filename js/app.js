@@ -1,10 +1,13 @@
+$.getJSON('manifest.json', function (json) {
+    chrome.storage.local.set({'version': json['version']}, function () {
+        console.log('Pulchra bookmarks v' + json['version'])
+    })
+})
+
 chrome.storage.local.get(['cols', 'rows'], function (res) {
     makeGrid(parseInt(res['cols']), parseInt(res['rows']))
 })
 
-$.getJSON('manifest.json', function (json) {
-    chrome.storage.local.set({'version':json['version']}, function () {console.log(json['version'])})
-})
 
 function pasteSettingsValues() {
     chrome.storage.local.get(['cols'], function (res) {
@@ -16,21 +19,27 @@ function pasteSettingsValues() {
         document.getElementById('range-rows').setAttribute('value', res['rows'])
     })
     chrome.storage.local.get(['new-tab'], function (res) {
-        if (res['new-tab']){document.getElementById('checkbox-new-tab').setAttribute('checked', '')}
-        else {document.getElementById('checkbox-new-tab').removeAttribute('checked')}
+        if (res['new-tab']) {
+            document.getElementById('checkbox-new-tab').setAttribute('checked', '')
+        } else {
+            document.getElementById('checkbox-new-tab').removeAttribute('checked')
+        }
     })
     chrome.storage.local.get(['show-quick'], function (res) {
-        if (res['show-quick']){document.getElementById('checkbox-show-quick').setAttribute('checked', '')}
-        else {document.getElementById('checkbox-show-quick').removeAttribute('checked')}
+        if (res['show-quick']) {
+            document.getElementById('checkbox-show-quick').setAttribute('checked', '')
+        } else {
+            document.getElementById('checkbox-show-quick').removeAttribute('checked')
+        }
     })
 }
 
 function openLink(open_link) {
     if (varDefined(open_link)) {
         chrome.storage.local.get(['new-tab'], function (res) {
-            if(res['new-tab']){
+            if (res['new-tab']) {
                 chrome.tabs.create({'url': open_link})
-            }else {
+            } else {
                 chrome.tabs.update({active: true, url: open_link})
             }
         })
@@ -39,19 +48,8 @@ function openLink(open_link) {
         alert('Empty link')
     }
 }
-function updateBinds(){
-    $('.grid-item-inside').off('click').on('click', function (e) {
-        e.stopPropagation()
-        let link = this.getAttribute('link')
-        let open_link = getOpenLink(link)
-        if (varDefined(open_link)){
-            openLink(open_link)
-        }
-        else {
-            editBookmark(this.getAttribute('id'))
-        }
 
-    })
+function updateBinds() {
     $('#chrome-downloads').off('click').on('click', function () {
         openLink('chrome://downloads/')
     })
@@ -81,7 +79,7 @@ $(window).on('resize', () => {
     beautyfyView()
 })
 
-$('.settings').on('transitionend', () =>{
+$('.settings').on('transitionend', () => {
     beautyfyView()
 })
 
