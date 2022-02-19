@@ -1,6 +1,6 @@
 function openSettings() {
     $('.app-container').css('margin-right', '370px')
-    $('.settings.window').css('right','0px')
+    $('.settings.window').css('right', '0px')
     $('.settings.cancel-overlay').css('right', '370px')
 }
 
@@ -11,18 +11,20 @@ function closeSettings() {
 }
 
 $('#range-rows').on('input', function (e) {
-    let rows =parseInt(e.target.value)
-    document.getElementById('rows').innerText = rows.toString()
+    let rows = parseInt(e.target.value)
     let cols = parseInt(document.getElementById('cols').innerText)
-    chrome.storage.local.set({['rows']: rows}, () => {})
+    document.getElementById('rows').innerText = rows.toString()
+    chrome.storage.local.set({['rows']: rows}, () => {
+    })
     makeGrid(cols, rows)
 })
 
 $('#range-cols').on('input', function (e) {
     let cols = parseInt(e.target.value)
-    document.getElementById('cols').innerText = cols.toString()
     let rows = parseInt(document.getElementById('rows').innerText)
-    chrome.storage.local.set({['cols']: cols}, () => {})
+    document.getElementById('cols').innerText = cols.toString()
+    chrome.storage.local.set({['cols']: cols}, () => {
+    })
     makeGrid(cols, rows)
 })
 
@@ -39,12 +41,11 @@ $('.cancel-overlay').on('click', (e) => {
 $('#new-tab').on('click', function (e) {
     e.stopPropagation()
     chrome.storage.local.get(['new-tab'], (res) => {
-        if(res['new-tab']) {
-            chrome.storage.local.set({['new-tab']: false}, function () {})
+        if (res['new-tab']) {
+            chrome.storage.local.set({['new-tab']: false}, () => {})
             document.getElementById('checkbox-new-tab').removeAttribute('checked')
-        }
-        else {
-            chrome.storage.local.set({['new-tab']: true}, function () {})
+        } else {
+            chrome.storage.local.set({['new-tab']: true}, () => {})
             document.getElementById('checkbox-new-tab').setAttribute('checked', '')
         }
     })
@@ -53,13 +54,13 @@ $('#new-tab').on('click', function (e) {
 $('#show-quick').on('click', function (e) {
     e.stopPropagation()
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
-    if (res['show-quick']) {
-        chrome.storage.local.set({['show-quick']: false}, function () {})
-        document.getElementById('checkbox-show-quick').removeAttribute('checked')
-    } else {
-        chrome.storage.local.set({['show-quick']: true}, function () {})
-        document.getElementById('checkbox-show-quick').setAttribute('checked', '')
-    }
-    updateBottomMenu(res['cols'])
+        if (res['show-quick']) {
+            chrome.storage.local.set({['show-quick']: false}, () => {})
+            document.getElementById('checkbox-show-quick').removeAttribute('checked')
+        } else {
+            chrome.storage.local.set({['show-quick']: true}, () => {})
+            document.getElementById('checkbox-show-quick').setAttribute('checked', '')
+        }
+        updateBottomMenu(res['cols'])
     })
 })

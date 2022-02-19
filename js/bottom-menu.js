@@ -1,20 +1,9 @@
 function updateNottomMenuBinds() {
-    $('#chrome-downloads').off('click').on('click', function () {
-        openLink('chrome://downloads/')
-    })
-    $('#chrome-bookmarks').off('click').on('click', function () {
-        openLink('chrome://bookmarks/')
-    })
-    $('#chrome-history').off('click').on('click', function () {
-        openLink('chrome://history/')
-    })
-    $('#chrome-settings').off('click').on('click', function () {
-        openLink('chrome://settings/')
-    })
-    $('#settings-open-button').off('click').on('click', function (e) {
-        e.stopPropagation()
-        openSettings()
-    })
+    $('#chrome-downloads').off('click').on('click', () => {openLink('chrome://downloads/')})
+    $('#chrome-bookmarks').off('click').on('click', () => {openLink('chrome://bookmarks/')})
+    $('#chrome-history').off('click').on('click', () => {openLink('chrome://history/')})
+    $('#chrome-settings').off('click').on('click', () => {openLink('chrome://settings/')})
+    $('#settings-open-button').off('click').on('click', () => {openSettings()})
 }
 
 function addBootomMenu(cols) {

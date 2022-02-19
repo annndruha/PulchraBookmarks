@@ -8,7 +8,7 @@ function saveToFile() {
         $('<a></a>', {
             'download': 'pulchra-' + now_str + '.json',
             'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(res, null, '\t'))
-        }).appendTo('body').click(function () {
+        }).appendTo('body').click(() => {
             $(this).remove()
         })[0].click()
     })
