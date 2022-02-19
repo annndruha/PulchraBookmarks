@@ -1,6 +1,5 @@
 function updateNottomMenuBinds() {
     $('#chrome-downloads').off('click').on('click', function () {
-        console.log('whyyy')
         openLink('chrome://downloads/')
     })
     $('#chrome-bookmarks').off('click').on('click', function () {
@@ -14,7 +13,6 @@ function updateNottomMenuBinds() {
     })
     $('#settings-open-button').off('click').on('click', function (e) {
         e.stopPropagation()
-        console.log('whyyy2')
         openSettings()
     })
 }

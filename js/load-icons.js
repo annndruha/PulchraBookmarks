@@ -12,18 +12,21 @@ function loadAllIcons() {
 }
 
 function loadIcon(id) {
-    let link = document.getElementById(id).getAttribute('link')
-    let google_img = new Image()
-    if (varDefined(link)) {
-        $('#' + id).css("background-color", "rgba(255, 255, 255)").css("cursor", "pointer")
-        let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
-        google_img.src = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128'
-        google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id, true)
-        google_img.onerror = () => waitToLoadFavicon(google_img, fav_link, id, false)
-    } else {
-        if (document.getElementById('icon-' + id)) {
-            document.getElementById('icon-' + id).remove()
+    try {
+        let link = document.getElementById(id).getAttribute('link')
+        let google_img = new Image()
+        if (varDefined(link)) {
+            $('#' + id).css("background-color", "rgba(255, 255, 255)").css("cursor", "pointer")
+            let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
+            google_img.src = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128'
+            google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id, true)
+            google_img.onerror = () => waitToLoadFavicon(google_img, fav_link, id, false)
+        } else {
+            if (document.getElementById('icon-' + id)) {
+                document.getElementById('icon-' + id).remove()
+            }
         }
+    } catch (e) {
     }
 }
 

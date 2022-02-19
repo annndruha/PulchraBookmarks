@@ -14,9 +14,7 @@ $('#range-rows').on('input', function (e) {
     let rows =parseInt(e.target.value)
     document.getElementById('rows').innerText = rows.toString()
     let cols = parseInt(document.getElementById('cols').innerText)
-    chrome.storage.local.set({['rows']: rows}, function () {
-        console.log('rows set:', rows)
-    })
+    chrome.storage.local.set({['rows']: rows}, () => {})
     makeGrid(cols, rows)
 })
 
@@ -24,16 +22,18 @@ $('#range-cols').on('input', function (e) {
     let cols = parseInt(e.target.value)
     document.getElementById('cols').innerText = cols.toString()
     let rows = parseInt(document.getElementById('rows').innerText)
-    chrome.storage.local.set({['cols']: cols}, function () {
-        console.log('cols set:', cols)
-    })
+    chrome.storage.local.set({['cols']: cols}, () => {})
     makeGrid(cols, rows)
 })
 
 $('#close-settings-button').on('click', function (e) {
     e.stopPropagation()
     closeSettings()
-    console.log('Close Settings')
+})
+
+$('.cancel-overlay').on('click', (e) => {
+    e.stopPropagation()
+    closeSettings()
 })
 
 $('#new-tab').on('click', function (e) {

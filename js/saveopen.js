@@ -18,13 +18,9 @@ function loadFromFile() {
     let fileReader = new FileReader()
     fileReader.readAsDataURL($('#upload_input').prop('files')[0])
     fileReader.onload = () => {
-        let dataURI = fileReader.result
-        const decoded = atob(dataURI.substring(29))
-        const json = JSON.parse(decoded)
+        const json = JSON.parse(atob(fileReader.result.substring(29)))
         chrome.storage.local.clear()
-        chrome.storage.local.set(json, function () {
-        })
-        console.log(json['cols'])
+        chrome.storage.local.set(json, () => {})
         makeGrid(parseInt(json['cols']), parseInt(json['rows']), true)
         initSettingsValues()
     }
@@ -35,15 +31,6 @@ $('#save-to-file').on('click', function (e) {
     saveToFile()
 })
 
-$('#save-to-file.item-left').on('click', function (e) {
-    e.stopPropagation()
-    saveToFile()
-})
-
-$('#save-to-file.item-right').on('click', function (e) {
-    e.stopPropagation()
-    saveToFile()
-})
 
 $('#upload_input').on('change', function (e) {
     e.stopPropagation()

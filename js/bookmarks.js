@@ -108,7 +108,6 @@ function makeGrid(cols, rows, fromfile=false) {
         // Нужно сначала создать сетку нужного размера
         // А потом асинхронно добавлять туда детей (заполнять закладки)
         //
-        // console.log('MakeGrid')
 
         // Remove bottom menu
         deleteBottomMenu()
@@ -116,10 +115,8 @@ function makeGrid(cols, rows, fromfile=false) {
 
         if (fromfile){
             let Rows = getExistedColsRows(grid)[0]
-            console.log("Rows", Rows)
             for (let r = Rows-1; r >= 0; r--) {
                 grid.children[r].remove()
-                console.log("Remove row:", r)
             }
         }
 
@@ -142,7 +139,6 @@ function makeGrid(cols, rows, fromfile=false) {
         }
         // Removing and add cols
         let existedCols = getExistedColsRows(grid)[1]
-        // console.log("existedCols", existedCols)
         if (cols < existedCols) {
             for (let r = 0; r < rows; r++) {
                 for (let c = existedCols - 1; c >= cols; c--) {
@@ -155,7 +151,6 @@ function makeGrid(cols, rows, fromfile=false) {
                 let id = ''
                 for (let c = existedCols; c < cols; c++) {
                     id = r.toString() + c.toString()
-                    console.log("Create mark:", id)
                     item = makeMark(id)
                     item.className = 'grid-item'
                     grid.children[r].appendChild(item)
