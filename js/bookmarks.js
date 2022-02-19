@@ -31,7 +31,12 @@ function makeIconTemplate(itemInside) {
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
     if (itemInside.hasAttribute('icon-link')){
-        icon.setAttribute('src', itemInside.getAttribute('icon-link'))
+        if (varDefined(itemInside.getAttribute('icon-link'))){
+            icon.setAttribute('src', itemInside.getAttribute('icon-link'))
+        }
+        else {
+            icon.setAttribute('src', 'images/icons/autorenew.svg')
+        }
     }
     else {
         icon.setAttribute('src', 'images/icons/autorenew.svg')

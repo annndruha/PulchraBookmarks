@@ -16,12 +16,13 @@ function loadIcon(id) {
     try {
         let itemInside = document.getElementById(id)
         if (itemInside.hasAttribute('icon-link')){
+            $('#' + id).css("background-color", "rgba(255, 255, 255)").css("cursor", "pointer")
+            let imgOld = document.getElementById('icon-' + id)
             if (varDefined(itemInside.getAttribute('icon-link'))){
-                let imgOld = document.getElementById('icon-' + id)
                 imgOld.src = document.getElementById(id).getAttribute('icon-link')
-                $('#' + id).css("background-color", "rgba(255, 255, 255)").css("cursor", "pointer")
             }
             else {
+                imgOld.src = 'images/icons/autorenew.svg'
                 autoIcon(id)
             }
         }
