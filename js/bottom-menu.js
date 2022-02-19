@@ -1,4 +1,4 @@
-function updateNottomMenuBinds(){
+function updateNottomMenuBinds() {
     $('#chrome-downloads').off('click').on('click', function () {
         console.log('whyyy')
         openLink('chrome://downloads/')
@@ -26,7 +26,9 @@ function addBootomMenu(cols) {
     item.id = 'grid-item-settings'
     chrome.storage.local.get(['show-quick'], function (res) {
         item = makeSettingsButton(item)
-        if (res['show-quick']) {item = makeBottonMenuLeft(item)}
+        if (res['show-quick']) {
+            item = makeBottonMenuLeft(item)
+        }
         grid_row.id = 'grid-row'
         grid_row.appendChild(item).className = 'grid-item'
         grid_row.id = 'row-settings'

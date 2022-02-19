@@ -17,10 +17,9 @@ function getDomain(link) {
 function getOpenLink(link) {
     let openlink = ''
     if (varDefined(link)) {
-        if (!(link.includes('://'))){
+        if (!(link.includes('://'))) {
             openlink = 'https://' + link
-        }
-        else{
+        } else {
             openlink = link
         }
     }
