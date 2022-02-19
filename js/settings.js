@@ -41,16 +41,16 @@ $('#close-settings-button').on('click', function (e) {
 
 $('#new-tab').on('click', function (e) {
     e.stopPropagation()
-    if( $('#checkbox-new-tab').click().is(':checked') ) {
-        chrome.storage.local.set({['new-tab']: true}, function () {})
-    }
-    else {
-        chrome.storage.local.set({['new-tab']: false}, function () {})
-    }
-})
-
-$('#new-tab.item-right.switch.slider-round').on('click', () => {
-    console.log('#new-tab.item-right')
+    chrome.storage.local.get(['new-tab'], (res) => {
+        if(res['new-tab']) {
+            chrome.storage.local.set({['new-tab']: false}, function () {})
+            document.getElementById('checkbox-new-tab').removeAttribute('checked')
+        }
+        else {
+            chrome.storage.local.set({['new-tab']: true}, function () {})
+            document.getElementById('checkbox-new-tab').setAttribute('checked', '')
+        }
+    })
 })
 
 $('#show-quick').on('click', function (e) {
