@@ -1,7 +1,4 @@
 function openSettings() {
-    $.getJSON('manifest.json', function (json) {
-        document.getElementById('version').innerText = 'v' + json['version']
-    })
     $('.app-container').css('margin-right', '370px')
     $('.settings.window').css('right','0px')
     $('.settings.cancel-overlay').css('right', '370px')

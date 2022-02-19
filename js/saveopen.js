@@ -26,12 +26,7 @@ function loadFromFile() {
         })
         console.log(json['cols'])
         makeGrid(parseInt(json['cols']), parseInt(json['rows']), true)
-        pasteSettingsValues()
-        $.getJSON('manifest.json', function (json) {
-            chrome.storage.local.set({'version': json['version']}, function () {
-                console.log(json['version'])
-            })
-        })
+        initSettingsValues()
     }
 }
 

@@ -1,15 +1,9 @@
-$.getJSON('manifest.json', function (json) {
-    chrome.storage.local.set({'version': json['version']}, function () {
-        console.log('Pulchra bookmarks v' + json['version'])
-    })
-})
-
 chrome.storage.local.get(['cols', 'rows'], function (res) {
     makeGrid(parseInt(res['cols']), parseInt(res['rows']))
 })
 
 
-function pasteSettingsValues() {
+function initSettingsValues() {
     chrome.storage.local.get(['cols'], function (res) {
         document.getElementById('cols').innerText = res['cols']
         document.getElementById('range-cols').setAttribute('value', res['cols'])
@@ -32,10 +26,15 @@ function pasteSettingsValues() {
             document.getElementById('checkbox-show-quick').removeAttribute('checked')
         }
     })
+    $.getJSON('manifest.json', function (json) {
+        document.getElementById('version').innerText = 'v' + json['version']
+        console.log('Pulchra bookmarks v' + json['version'])
+        chrome.storage.local.set({'version': json['version']}, () => {})
+    })
 }
 
 $(window).on('ready load change', () => {
-    pasteSettingsValues()
+    initSettingsValues()
     beautyfyView()
 })
 
