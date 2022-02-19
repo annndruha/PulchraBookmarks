@@ -26,18 +26,16 @@ $('#range-cols').on('input', function (e) {
     makeGrid(cols, rows)
 })
 
-$('#close-settings-button').on('click', function (e) {
+$('#close-settings-button, .cancel-overlay').on('click', function (e) {
     e.stopPropagation()
     closeSettings()
 })
 
-$('.cancel-overlay').on('click', (e) => {
-    e.stopPropagation()
-    closeSettings()
-})
+$('#checkbox-new-tab, #checkbox-show-quick').on('click', () => {}, true) // Super important string with true
 
-$('#new-tab').on('click', function (e) {
+$('#new-tab').on('click', (e) => {
     e.stopPropagation()
+    e.preventDefault()
     chrome.storage.local.get(['new-tab'], (res) => {
         if (res['new-tab']) {
             chrome.storage.local.set({['new-tab']: false}, () => {})
@@ -49,8 +47,9 @@ $('#new-tab').on('click', function (e) {
     })
 })
 
-$('#show-quick').on('click', function (e) {
+$('#show-quick').on('click', (e) => {
     e.stopPropagation()
+    e.preventDefault()
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
         if (res['show-quick']) {
             chrome.storage.local.set({['show-quick']: false}, () => {})
