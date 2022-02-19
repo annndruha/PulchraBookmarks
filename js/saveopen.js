@@ -15,6 +15,7 @@ function saveToFile() {
 }
 
 function loadFromFile() {
+    try {
     let fileReader = new FileReader()
     fileReader.readAsDataURL($('#upload_input').prop('files')[0])
     fileReader.onload = () => {
@@ -23,6 +24,7 @@ function loadFromFile() {
         chrome.storage.local.set(json, () => {})
         initSettingsValues(true)
     }
+    } catch (e) {}
 }
 
 $('#save-to-file').on('click', function (e) {
