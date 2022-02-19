@@ -14,8 +14,7 @@ $('#range-rows').on('input', function (e) {
     let rows = parseInt(e.target.value)
     let cols = parseInt(document.getElementById('cols').innerText)
     document.getElementById('rows').innerText = rows.toString()
-    chrome.storage.local.set({['rows']: rows}, () => {
-    })
+    chrome.storage.local.set({['rows']: rows}, () => {})
     makeGrid(cols, rows)
 })
 
@@ -23,8 +22,7 @@ $('#range-cols').on('input', function (e) {
     let cols = parseInt(e.target.value)
     let rows = parseInt(document.getElementById('rows').innerText)
     document.getElementById('cols').innerText = cols.toString()
-    chrome.storage.local.set({['cols']: cols}, () => {
-    })
+    chrome.storage.local.set({['cols']: cols}, () => {})
     makeGrid(cols, rows)
 })
 

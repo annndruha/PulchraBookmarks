@@ -30,7 +30,6 @@ $('#save-to-file').on('click', function (e) {
     saveToFile()
 })
 
-
 $('#upload_input').on('change', function (e) {
     e.stopPropagation()
     loadFromFile()

@@ -5,13 +5,10 @@ function editBookmark(menu_img_id) {
     let placeholder = varDefined(link) ? link : ''
 
     let newLink = prompt('Enter new link:\n(Erase line to delete)', placeholder)
-    if (newLink === null) {
-        return
-    }
+    if (newLink === null) {return}
 
     bookmark.setAttribute('link', newLink)
-    chrome.storage.local.set({[id]: {0: {"link": newLink}}}, () => {
-    })
+    chrome.storage.local.set({[id]: {0: {"link": newLink}}}, () => {})
 
     fillMark(bookmark)
     loadIcon(id)
