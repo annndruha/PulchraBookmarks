@@ -34,45 +34,9 @@ function pasteSettingsValues() {
     })
 }
 
-function openLink(open_link) {
-    if (varDefined(open_link)) {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            if (res['new-tab']) {
-                chrome.tabs.create({'url': open_link})
-            } else {
-                chrome.tabs.update({active: true, url: open_link})
-            }
-        })
-        console.log('User open: ' + open_link)
-    } else {
-        alert('Empty link')
-    }
-}
-
-function updateBinds() {
-    $('#chrome-downloads').off('click').on('click', function () {
-        openLink('chrome://downloads/')
-    })
-    $('#chrome-bookmarks').off('click').on('click', function () {
-        openLink('chrome://bookmarks/')
-    })
-    $('#chrome-history').off('click').on('click', function () {
-        openLink('chrome://history/')
-    })
-    $('#chrome-settings').off('click').on('click', function () {
-        openLink('chrome://settings/')
-    })
-    $('#settings-open-button').off('click').on('click', function (e) {
-        e.stopPropagation()
-        openSettings()
-        console.log('Open Settings')
-    })
-}
-
 $(window).on('ready load change', () => {
     pasteSettingsValues()
     beautyfyView()
-    updateBinds()
 })
 
 $(window).on('resize', () => {

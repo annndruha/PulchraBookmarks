@@ -30,3 +30,18 @@ function getOpenLink(link) {
 function isNumeric(value) {
     return /^\d+$/.test(value)
 }
+
+function openLink(open_link) {
+    if (varDefined(open_link)) {
+        chrome.storage.local.get(['new-tab'], function (res) {
+            if (res['new-tab']) {
+                chrome.tabs.create({'url': open_link})
+            } else {
+                chrome.tabs.update({active: true, url: open_link})
+            }
+        })
+        console.log('User open: ' + open_link)
+    } else {
+        alert('Empty link')
+    }
+}

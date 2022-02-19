@@ -1,19 +1,39 @@
+function updateNottomMenuBinds(){
+    $('#chrome-downloads').off('click').on('click', function () {
+        console.log('whyyy')
+        openLink('chrome://downloads/')
+    })
+    $('#chrome-bookmarks').off('click').on('click', function () {
+        openLink('chrome://bookmarks/')
+    })
+    $('#chrome-history').off('click').on('click', function () {
+        openLink('chrome://history/')
+    })
+    $('#chrome-settings').off('click').on('click', function () {
+        openLink('chrome://settings/')
+    })
+    $('#settings-open-button').off('click').on('click', function (e) {
+        e.stopPropagation()
+        console.log('whyyy2')
+        openSettings()
+    })
+}
+
 function addBootomMenu(cols) {
     let grid = document.getElementById('grid')
     let grid_row = document.createElement('div')
     let item = document.createElement('div')
     item.id = 'grid-item-settings'
     chrome.storage.local.get(['show-quick'], function (res) {
-        if (res['show-quick']) {
-            item = makeBottonMenuLeft(item)
-        }
+        item = makeSettingsButton(item)
+        if (res['show-quick']) {item = makeBottonMenuLeft(item)}
+        grid_row.id = 'grid-row'
+        grid_row.appendChild(item).className = 'grid-item'
+        grid_row.id = 'row-settings'
+        grid.appendChild(grid_row).className = 'grid-row'
+        $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
+        updateNottomMenuBinds()
     })
-    item = makeSettingsButton(item)
-    grid_row.id = 'grid-row'
-    grid_row.appendChild(item).className = 'grid-item'
-    grid_row.id = 'row-settings'
-    grid.appendChild(grid_row).className = 'grid-row'
-    $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
 }
 
 function makeBottonMenuLeft(parent) {
