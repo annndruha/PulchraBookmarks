@@ -16,15 +16,12 @@ function makeAddBookmark(id){
     return subMenu
 }
 
-function makeText(text, id) {
+function makeText(link, id) {
+    let text = getDomain(link)
     let text_div = document.createElement('div')
     let textCopy = text
-    text = text.split('.')
-    if (isNumeric(text[text.length - 1])) {
-        text_div.textContent = textCopy
-    } else {
-        text_div.textContent = textCopy.replace('.' + text[text.length - 1], '')
-    }
+    text = text.split('.')[text.length - 1]
+    text_div.textContent = (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
     text_div.id = 'text-' + id
     return text_div
 }
@@ -42,7 +39,6 @@ function createTemplate(itemInside){
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', "")
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
-    // $('#'+itemInside.id).css("background-color", "transparent")
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
@@ -52,7 +48,7 @@ function createTemplate(itemInside){
 
 function createMark(itemInside, link){
     itemInside.setAttribute('link', link)
-    let textDiv = makeText(getDomain(link), itemInside.id)
+    let textDiv = makeText(link, itemInside.id)
     itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
 
     let iconDiv = makeIconTemplate(itemInside.id)
@@ -73,7 +69,7 @@ function createMark(itemInside, link){
     itemInside.className = 'grid-item-inside'
 }
 
-function fillMark(itemInside) {
+function recreateMark(itemInside) {
     itemInside.innerHTML = ''
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
@@ -89,7 +85,7 @@ function makeMark(id) {
     let item = document.createElement('div')
     let itemInside = document.createElement('div')
     itemInside.id = id
-    fillMark(itemInside)
+    recreateMark(itemInside)
     item.appendChild(itemInside)
     return item
 }

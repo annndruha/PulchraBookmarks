@@ -10,6 +10,6 @@ function editBookmark(menu_img_id) {
     bookmark.setAttribute('link', newLink)
     chrome.storage.local.set({[id]: {0: {"link": newLink}}}, () => {})
 
-    fillMark(bookmark)
+    recreateMark(bookmark)
     loadIcon(id)
 }
