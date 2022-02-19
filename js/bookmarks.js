@@ -26,10 +26,16 @@ function makeText(link, id) {
     return text_div
 }
 
-function makeIconTemplate(id) {
+function makeIconTemplate(itemInside) {
+    let id = itemInside.id
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
-    icon.setAttribute('src', 'images/icons/autorenew.svg')
+    if (itemInside.hasAttribute('icon-link')){
+        icon.setAttribute('src', itemInside.getAttribute('icon-link'))
+    }
+    else {
+        icon.setAttribute('src', 'images/icons/autorenew.svg')
+    }
     icon.id = 'icon-' + id
     icon_div.appendChild(icon).className = 'icon'
     return icon_div
@@ -51,7 +57,7 @@ function createMark(itemInside, link){
     let textDiv = makeText(link, itemInside.id)
     itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
 
-    let iconDiv = makeIconTemplate(itemInside.id)
+    let iconDiv = makeIconTemplate(itemInside)
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
 
     let subMenu = makeSubMenu(itemInside.id)
@@ -74,8 +80,15 @@ function recreateMark(itemInside) {
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
             let link = res[itemInside.id][0]["link"]
-            if (varDefined(link)) {createMark(itemInside, link)}
-            else {createTemplate(itemInside)}
+            let iconLink = res[itemInside.id][0]['icon-link']
+            if (varDefined(iconLink)) {
+                itemInside.setAttribute("icon-link", iconLink)
+            }
+            if (varDefined(link)) {
+                createMark(itemInside, link)
+            } else {
+                createTemplate(itemInside)
+            }
         }
         catch (e) {
             if (e instanceof TypeError) {createTemplate(itemInside)}
