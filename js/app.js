@@ -1,4 +1,12 @@
-function initSettingsValues() {
+function initSettingsValues(fromfile = false) {
+    if (!fromfile) {
+        $.getJSON('manifest.json', function (json) {
+            document.getElementById('version').innerText = 'v' + json['version']
+            console.log('Pulchra bookmarks v' + json['version'])
+            chrome.storage.local.set({'version': json['version']}, () => {
+            })
+        })
+    }
     chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick'], function (res) {
         document.getElementById('cols').innerText = res['cols']
         document.getElementById('range-cols').setAttribute('value', res['cols'])
@@ -17,19 +25,13 @@ function initSettingsValues() {
         } else {
             document.getElementById('checkbox-show-quick').removeAttribute('checked')
         }
-    })
-    $.getJSON('manifest.json', function (json) {
-        document.getElementById('version').innerText = 'v' + json['version']
-        console.log('Pulchra bookmarks v' + json['version'])
-        chrome.storage.local.set({'version': json['version']}, () => {})
+
+        makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
     })
 }
 
 $(window).on('ready', () => { // load change
     initSettingsValues()
-    chrome.storage.local.get(['cols', 'rows'], function (res) {
-        makeGrid(parseInt(res['cols']), parseInt(res['rows']))
-    })
     beautyfyView()
 })
 

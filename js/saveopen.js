@@ -21,8 +21,7 @@ function loadFromFile() {
         const json = JSON.parse(atob(fileReader.result.substring(29)))
         chrome.storage.local.clear()
         chrome.storage.local.set(json, () => {})
-        makeGrid(parseInt(json['cols']), parseInt(json['rows']), true)
-        initSettingsValues()
+        initSettingsValues(true)
     }
 }
 
