@@ -55,12 +55,14 @@ $('#new-tab.item-right.switch.slider-round').on('click', () => {
 
 $('#show-quick').on('click', function (e) {
     e.stopPropagation()
-    if( $('#checkbox-show-quick').click().is(':checked') ) {
-        chrome.storage.local.set({['show-quick']: true}, function () {})
-    }
-    else {
+    chrome.storage.local.get(['show-quick', 'cols'], function (res) {
+    if (res['show-quick']) {
         chrome.storage.local.set({['show-quick']: false}, function () {})
+        document.getElementById('checkbox-show-quick').removeAttribute('checked')
+    } else {
+        chrome.storage.local.set({['show-quick']: true}, function () {})
+        document.getElementById('checkbox-show-quick').setAttribute('checked', '')
     }
-    chrome.storage.local.get(['cols'], function (res) {
-    updateBottomMenu(res['cols'])})
+    updateBottomMenu(res['cols'])
+    })
 })

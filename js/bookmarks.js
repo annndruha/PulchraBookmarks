@@ -164,7 +164,7 @@ function makeGrid(cols, rows, fromfile=false) {
         }
 
         beautyfyView()
-        addBootomMenu(cols)
+        updateBottomMenu(cols)
         loadAllIcons()
 }
 

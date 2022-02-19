@@ -1,3 +1,5 @@
+// noinspection JSJQueryEfficiency
+
 function saveToFile() {
     chrome.storage.local.get(null, (res) => {
         let now = new Date()
