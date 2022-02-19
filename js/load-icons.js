@@ -11,6 +11,7 @@ function loadAllIcons() {
     })
 }
 
+
 function loadIcon(id) {
     try {
         let link = document.getElementById(id).getAttribute('link')
@@ -27,6 +28,8 @@ function loadIcon(id) {
             }
         }
     } catch (e) {
+        if (e instanceof TypeError) {}
+        else {console.log(e)}
     }
 }
 

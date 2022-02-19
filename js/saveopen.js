@@ -24,7 +24,9 @@ function loadFromFile() {
         chrome.storage.local.set(json, () => {})
         initSettingsValues(true)
     }
-    } catch (e) {}
+    } catch (e) {
+        if (e instanceof TypeError) {} else {console.log(e)}
+    }
 }
 
 $('#save-to-file').on('click', function (e) {

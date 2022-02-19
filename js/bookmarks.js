@@ -77,7 +77,10 @@ function recreateMark(itemInside) {
             if (varDefined(link)) {createMark(itemInside, link)}
             else {createTemplate(itemInside)}
         }
-        catch (e) {createTemplate(itemInside)}
+        catch (e) {
+            if (e instanceof TypeError) {createTemplate(itemInside)}
+            else {console.log(e)}
+        }
     })
 }
 
@@ -97,8 +100,11 @@ function getExistedColsRows(grid) {
         return [rows, cols]
     }
     catch (e){
-        let cols = 0
-        return [rows, cols]
+        if (e instanceof TypeError) {
+            let cols = 0
+            return [rows, cols]
+        }
+        else {console.log(e)}
     }
 }
 
