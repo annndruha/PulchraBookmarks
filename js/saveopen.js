@@ -3,7 +3,7 @@ function saveToFile(){
         let now = new Date()
         let months = now.getMonth() + 1
         let now_str = now.getDate() + '.' + months +'.'+ now.getFullYear()
-        $('<a />', {
+        $('<a></a>', {
             'download': 'pulchra-' + now_str + '.json',
             'href' : 'data:application/json,' + encodeURIComponent(JSON.stringify(res, null, '\t'))
         }).appendTo('body')
