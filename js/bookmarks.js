@@ -38,47 +38,51 @@ function makeIconTemplate(id) {
     return icon_div
 }
 
+function createTemplate(itemInside){
+    let iconDiv = makeAddBookmark(itemInside.id)
+    itemInside.setAttribute('link', "")
+    itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
+    // $('#'+itemInside.id).css("background-color", "transparent")
+    $('#'+itemInside.id).off('click').on('click', function (e) {
+        e.stopPropagation()
+        editBookmark(this.id)
+    }).css("background-color", "transparent")
+    itemInside.className = 'grid-item-inside empty-icon'
+}
+
+function createMark(itemInside, link){
+    itemInside.setAttribute('link', link)
+    let textDiv = makeText(getDomain(link), itemInside.id)
+    itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
+
+    let iconDiv = makeIconTemplate(itemInside.id)
+    itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
+
+    let subMenu = makeSubMenu(itemInside.id)
+    itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
+    $('#img-'+itemInside.id).off('click').on('click', function (e) {
+        e.stopPropagation()
+        editBookmark(this.id)
+    })
+    $('#'+itemInside.id).off('click').on('click', function (e) {
+        e.stopPropagation()
+        let link = this.getAttribute('link')
+        let open_link = getOpenLink(link)
+        openLink(open_link)
+    })
+    itemInside.className = 'grid-item-inside'
+}
+
 function fillMark(itemInside) {
     itemInside.innerHTML = ''
     chrome.storage.local.get([itemInside.id], function (res) {
-        try{
+        try {
             let link = res[itemInside.id][0]["link"]
-            itemInside.setAttribute('link', link)
-
-            let textDiv = makeText(getDomain(link), itemInside.id)
-            itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
-
-            let iconDiv = makeIconTemplate(itemInside.id)
-            itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
-
-            let subMenu = makeSubMenu(itemInside.id)
-            itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
-            $('#img-'+itemInside.id).off('click').on('click', function (e) {
-                e.stopPropagation()
-                editBookmark(this.id)
-            })
-            $('#'+itemInside.id).off('click').on('click', function (e) {
-                e.stopPropagation()
-                let link = this.getAttribute('link')
-                let open_link = getOpenLink(link)
-                openLink(open_link)
-            })
-            itemInside.className = 'grid-item-inside'
+            if (varDefined(link)) {createMark(itemInside, link)}
+            else {createTemplate(itemInside)}
         }
-        catch (e) {
-            let iconDiv = makeAddBookmark(itemInside.id)
-            itemInside.setAttribute('link', "")
-            itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
-            // $('#'+itemInside.id).css("background-color", "transparent")
-            $('#'+itemInside.id).off('click').on('click', function (e) {
-                e.stopPropagation()
-                editBookmark(this.id)
-            }).css("background-color", "transparent")
-            itemInside.className = 'grid-item-inside empty-icon'
-        }
+        catch (e) {createTemplate(itemInside)}
     })
-
-
 }
 
 function makeMark(id) {
