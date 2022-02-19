@@ -53,36 +53,16 @@ function updateBinds(){
 
     })
     $('#chrome-downloads').off('click').on('click', function () {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            if(res['new-tab']){
-                chrome.tabs.create({'url': 'chrome://downloads/'})
-            }else {
-                chrome.tabs.update({active: true, url: 'chrome://downloads/'})
-            }})
+        openLink('chrome://downloads/')
     })
     $('#chrome-bookmarks').off('click').on('click', function () {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            if(res['new-tab']){
-                chrome.tabs.create({'url': 'chrome://bookmarks/'})
-            }else {
-                chrome.tabs.update({active: true, url: 'chrome://bookmarks/'})
-            }})
+        openLink('chrome://bookmarks/')
     })
     $('#chrome-history').off('click').on('click', function () {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            if(res['new-tab']){
-                chrome.tabs.create({'url': 'chrome://history/'})
-            }else {
-                chrome.tabs.update({active: true, url: 'chrome://history/'})
-            }})
+        openLink('chrome://history/')
     })
     $('#chrome-settings').off('click').on('click', function () {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            if(res['new-tab']){
-                chrome.tabs.create({'url': 'chrome://settings/'})
-            }else {
-                chrome.tabs.update({active: true, url: 'chrome://settings/'})
-            }})
+        openLink('chrome://settings/')
     })
     $('#settings-open-button').off('click').on('click', function (e) {
         e.stopPropagation()
@@ -95,7 +75,6 @@ $(window).on('ready load change', () => {
     pasteSettingsValues()
     beautyfyView()
     updateBinds()
-    // saveToFile()
 })
 
 $(window).on('resize', () => {
