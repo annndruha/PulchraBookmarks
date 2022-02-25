@@ -20,6 +20,7 @@ function loadIcon(id) {
             let imgOld = document.getElementById('icon-' + id)
             if (varDefined(itemInside.getAttribute('icon-link'))){
                 imgOld.src = document.getElementById(id).getAttribute('icon-link')
+                // chrome.storage.local.set({[id]: {0: {"icon-link": imgOld.src}}}, () => {})
             }
             else {
                 imgOld.src = 'images/icons/autorenew.svg'
@@ -81,4 +82,8 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
     } else {
         imgOld.src = '../images/icons/language.svg'
     }
+
+    let bm = document.getElementById(id)
+    let link = bm.getAttribute('link')
+    chrome.storage.local.set({[id]: {0: {"link": link, "cache-icon-link": imgOld.src}}}, () => {})
 }

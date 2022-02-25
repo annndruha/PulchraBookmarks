@@ -30,9 +30,12 @@ function makeIconTemplate(itemInside) {
     let id = itemInside.id
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
-    if (itemInside.hasAttribute('icon-link')){
+    if (itemInside.hasAttribute('icon-link') || itemInside.hasAttribute('cache-icon-link')){
         if (varDefined(itemInside.getAttribute('icon-link'))){
             icon.setAttribute('src', itemInside.getAttribute('icon-link'))
+        }
+        else if (varDefined(itemInside.getAttribute('cache-icon-link'))) {
+            icon.setAttribute('src', itemInside.getAttribute('cache-icon-link'))
         }
         else {
             icon.setAttribute('src', 'images/icons/autorenew.svg')
@@ -86,8 +89,12 @@ function recreateMark(itemInside) {
         try {
             let link = res[itemInside.id][0]["link"]
             let iconLink = res[itemInside.id][0]['icon-link']
+            let cashedIconLink = res[itemInside.id][0]['cache-icon-link']
             if (varDefined(iconLink)) {
                 itemInside.setAttribute("icon-link", iconLink)
+            }
+            if (varDefined(cashedIconLink)) {
+                itemInside.setAttribute("icon-link", cashedIconLink)
             }
             if (varDefined(link)) {
                 createMark(itemInside, link)
