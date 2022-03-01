@@ -89,12 +89,12 @@ function recreateMark(itemInside) {
         try {
             let link = res[itemInside.id][0]["link"]
             let iconLink = res[itemInside.id][0]['icon-link']
-            let cashedIconLink = res[itemInside.id][0]['cache-icon-link']
+            let cachedIconLink = res[itemInside.id][0]['cache-icon-link']
             if (varDefined(iconLink)) {
                 itemInside.setAttribute("icon-link", iconLink)
             }
-            if (varDefined(cashedIconLink)) {
-                itemInside.setAttribute("icon-link", cashedIconLink)
+            if (varDefined(cachedIconLink)) {
+                itemInside.setAttribute("cache-icon-link", cachedIconLink)
             }
             if (varDefined(link)) {
                 createMark(itemInside, link)
