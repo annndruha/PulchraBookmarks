@@ -27,7 +27,7 @@ function createRootElementTree() {
             $(root_popup).css('left', root_item.offsetLeft + 'px')
             $(root_popup).append(dumpTreeNodes(rootitemNodes[0]['children']))
         } else {
-            chrome.tabs.create({url: rootitemNodes[0].url})
+            openLink(rootitemNodes[0].url)
         }
     })
 }
@@ -42,16 +42,8 @@ function dumpTreeNodes(bookmarkNodes) {
 
 function dumpNode(bookmarkNode) {
     if (bookmarkNode.title) {
-        // let anchor = $('<a>');
-        // anchor.attr('href', bookmarkNode.url);
-        // anchor.text(bookmarkNode.title);
         let anchor = $('<div>')
         anchor.text(bookmarkNode.title)
-
-        // anchor.click(function () {
-        //     chrome.tabs.create({ url: bookmarkNode.url })
-        // })
-
         let span = $('<span>')
         span.hover().append(anchor) //
         let li = $(bookmarkNode.title ? '<li>' : '<div>').append(span)
