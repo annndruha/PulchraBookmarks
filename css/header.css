@@ -33,3 +33,11 @@
     cursor: pointer;
     opacity: 0.6;
 }
+
+#root_popup {
+    top: 40px;
+    position: fixed;
+    overflow-block: scroll;
+    overflow: scroll;
+    background-color: white;
+}
