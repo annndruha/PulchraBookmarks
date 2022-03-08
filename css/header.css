@@ -43,3 +43,11 @@
     overflow-y:scroll;
     background-color: white;
 }
+
+li {
+    cursor: pointer;
+}
+
+/*ul ul {*/
+/*    display: none;*/
+/*}*/

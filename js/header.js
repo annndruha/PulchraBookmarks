@@ -6,13 +6,13 @@ function createBookmarks() {
             let root_item = $(root_str)
             $('#bookmarks').append(root_item.text(root[i].title))
             $('#root-header-' + root[i].id).on('click', createRootElementTree)
-            $('.app-container').on('click', deleteRootElementTree)
+            //$('.app-container').on('click', deleteRootElementTree)
         }
     })
 }
 
-function deleteRootElementTree(){
-    document.getElementById("root_popup").remove();
+function deleteRootElementTree() {
+    //document.getElementById("root_popup").remove();
 }
 
 function createRootElementTree() {
@@ -24,7 +24,7 @@ function createRootElementTree() {
             root_popup.id = "root_popup"
             app_container.appendChild(root_popup).className = 'root_popup'
             let root_item = document.getElementById(this.id)
-            $(root_popup).css('left', root_item.offsetLeft +'px')
+            $(root_popup).css('left', root_item.offsetLeft + 'px')
             $(root_popup).append(dumpTreeNodes(rootitemNodes[0]['children']))
         } else {
             chrome.tabs.create({url: rootitemNodes[0].url})
@@ -33,7 +33,7 @@ function createRootElementTree() {
 }
 
 function dumpTreeNodes(bookmarkNodes) {
-    let list = $('<ul>')
+    let list = $('<ul class="sublist">')
     for (let i = 0; i < bookmarkNodes.length; i++) { //bookmarkNodes.length
         list.append(dumpNode(bookmarkNodes[i]))
     }
@@ -53,10 +53,21 @@ function dumpNode(bookmarkNode) {
         let span = $('<span>')
         span.hover().append(anchor)
         let li = $(bookmarkNode.title ? '<li>' : '<div>').append(span)
-
+        li.attr('status', 'closed')
         if (bookmarkNode.children && bookmarkNode.children.length > 0) {
-            li.append(dumpTreeNodes(bookmarkNode.children))
+            li.on('click', (e) => {
+                e.stopPropagation()
+                if (li.attr('status') === 'closed') {
+                    li.attr('status', 'opened')
+                    li.append(dumpTreeNodes(bookmarkNode.children))
+                }
+                else {
+                    li.attr('status', 'closed')
+                    li.children('.sublist').remove()
+                }
+            })
         }
+
         return li;
     }
 }
