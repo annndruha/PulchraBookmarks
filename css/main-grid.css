@@ -10,6 +10,7 @@ body {
 .app-container {
     padding: 0;
     transition: margin 500ms, padding 500ms;
+    height: 100vh;
 }
 
 .content {

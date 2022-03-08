@@ -14,6 +14,7 @@
 .header-item {
     padding-top: 8px;
     padding-right: 10px;
+    padding-bottom: 8px;
 }
 
 .header-item:hover {
@@ -36,8 +37,9 @@
 
 #root_popup {
     top: 40px;
-    position: fixed;
-    overflow-block: scroll;
-    overflow: scroll;
+    max-height: 600px;
+    max-width: 700px;
+    position:fixed;
+    overflow-y:scroll;
     background-color: white;
 }
