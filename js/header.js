@@ -6,13 +6,13 @@ function createBookmarks() {
             let root_item = $(root_str)
             $('#bookmarks').append(root_item.text(root[i].title))
             $('#root-header-' + root[i].id).on('click', createRootElementTree)
-            //$('.app-container').on('click', deleteRootElementTree)
+            $('.app-container').on('click', deleteRootElementTree)
         }
     })
 }
 
 function deleteRootElementTree() {
-    //document.getElementById("root_popup").remove();
+    document.getElementById("root_popup").remove();
 }
 
 function createRootElementTree() {
@@ -42,16 +42,18 @@ function dumpTreeNodes(bookmarkNodes) {
 
 function dumpNode(bookmarkNode) {
     if (bookmarkNode.title) {
-        let anchor = $('<a>');
-        anchor.attr('href', bookmarkNode.url);
-        anchor.text(bookmarkNode.title);
+        // let anchor = $('<a>');
+        // anchor.attr('href', bookmarkNode.url);
+        // anchor.text(bookmarkNode.title);
+        let anchor = $('<div>')
+        anchor.text(bookmarkNode.title)
 
         // anchor.click(function () {
         //     chrome.tabs.create({ url: bookmarkNode.url })
         // })
 
         let span = $('<span>')
-        span.hover().append(anchor)
+        span.hover().append(anchor) //
         let li = $(bookmarkNode.title ? '<li>' : '<div>').append(span)
         li.attr('status', 'closed')
         if (bookmarkNode.children && bookmarkNode.children.length > 0) {
@@ -65,6 +67,13 @@ function dumpNode(bookmarkNode) {
                     li.attr('status', 'closed')
                     li.children('.sublist').remove()
                 }
+            })
+        }
+        else {
+            anchor.attr('link', bookmarkNode.url)
+            anchor.on('click', (e) => {
+                e.stopPropagation()
+                openLink(anchor.attr('link'))
             })
         }
 

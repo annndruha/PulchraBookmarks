@@ -40,14 +40,10 @@
     max-height: 600px;
     max-width: 700px;
     position:fixed;
-    overflow-y:scroll;
+    overflow-y:auto;
     background-color: white;
 }
 
 li {
     cursor: pointer;
 }
-
-/*ul ul {*/
-/*    display: none;*/
-/*}*/
