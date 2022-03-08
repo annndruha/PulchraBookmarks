@@ -2,12 +2,14 @@ function openSettings() {
     $('.app-container').css('margin-right', '370px')
     $('.settings.window').css('right', '0px')
     $('.settings.cancel-overlay').css('right', '370px')
+    $('#settings-open-button').css('opacity', '0')
 }
 
 function closeSettings() {
     $('.app-container').css('margin-right', '0px')
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
+    $('#settings-open-button').css('opacity', '1')
 }
 
 $('#range-rows').on('input', function (e) {

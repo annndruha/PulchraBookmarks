@@ -4,7 +4,6 @@
     height: 20px;
     color: white;
     text-shadow: 0 0 3px black;
-    flex-direction: row-reverse;
 }
 
 .bottom-menu-left {

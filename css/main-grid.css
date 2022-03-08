@@ -8,6 +8,11 @@ body {
 }
 
 .app-container {
+    padding: 0;
+    transition: margin 500ms, padding 500ms;
+}
+
+.content {
     padding: 100px 0 0 0;
     transition: margin 500ms, padding 500ms;
 }
