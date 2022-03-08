@@ -15,6 +15,7 @@
   },
   "action": {},
   "permissions": [
-    "storage"
+    "storage",
+    "bookmarks"
   ]
 }

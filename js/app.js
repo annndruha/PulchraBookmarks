@@ -28,6 +28,7 @@ function initSettingsValues(fromfile = false) {
 $(window).on('ready', () => { // load change
     initSettingsValues()
     beautyfyView()
+    dumpBookmarks()
 })
 
 $(window).on('resize', () => {

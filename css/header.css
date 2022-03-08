@@ -3,9 +3,11 @@
 }
 
 .header-item-left {
-    height: 20px;
+    /*height: 20px;*/
     color: white;
     text-shadow: 0 0 3px black;
+    /*text-overflow: ellipsis;*/
+    /*overflow:hidden;*/
 }
 
 .header-item-right {
@@ -15,3 +17,13 @@
     width: 18px;
     height: 18px;
 }
+
+.header-item-right:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/*.bottom-menu-left {*/
+/*    text-overflow: ellipsis;*/
+/*    overflow:hidden;*/
+/*}*/
