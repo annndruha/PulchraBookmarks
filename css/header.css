@@ -8,7 +8,7 @@
     color: white;
     text-shadow: 0 0 3px black;
     text-overflow: ellipsis;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .header-item {
@@ -23,11 +23,11 @@
 }
 
 .header-right {
-    padding-left: 3px;
-    padding-right: 5px;
     filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
     width: 18px;
     height: 18px;
+    padding-top: 2px;
+    padding-right: 4px;
 }
 
 .header-right:hover {
@@ -39,16 +39,16 @@
     top: 40px;
     max-height: 600px;
     max-width: 700px;
-    position:fixed;
-    overflow-y:auto;
+    position: fixed;
+    overflow-y: auto;
     background-color: white;
-    border-radius:  1em;
+    border-radius: 1em;
     box-shadow: 0 0 3px black;
 }
 
 .header-text {
     text-overflow: ellipsis;
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
     height: 20px;
     border-radius: 10px;
@@ -60,7 +60,7 @@
     background-color: #eee;
 }
 
-.pseudo-list-icon{
+.pseudo-list-icon {
     position: relative;
     width: 0;
     height: 0;
@@ -85,7 +85,8 @@ li {
     cursor: pointer;
     padding-right: 20px;
 }
-ul{
+
+ul {
     padding-left: 30px;
     list-style: none;
 }

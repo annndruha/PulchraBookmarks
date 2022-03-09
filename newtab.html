@@ -44,6 +44,14 @@
                 <img class="settings-icon" id="close-settings-button" src="images/icons/close.svg" alt="">
             </div>
         </div>
+        <div class="row rowgroup">
+            <div class="rowgroup-title">
+                <span>Visual</span>
+            </div>
+        </div>
+        <div class="row rowgroup-separator">
+            <div class="separator"></div>
+        </div>
         <div class="row">
             <div class="item-left">
             <span>
@@ -72,13 +80,13 @@
                 <label id="cols" for="range-cols">N</label>
             </div>
         </div>
-        <div class="row rowhover" id="new-tab">
+        <div class="row rowhover" id="show-header">
             <div class="item-left">
-                <span>Open in new tab</span>
+                <span>Show bookmarks bar</span>
             </div>
             <div class="item-right">
                 <label class="switch">
-                    <input type="checkbox" id="checkbox-new-tab">
+                    <input type="checkbox" id="checkbox-show-header">
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -93,6 +101,34 @@
                     <span class="slider round"></span>
                 </label>
             </div>
+        </div>
+        <div class="row rowgroup">
+            <div class="rowgroup-title">
+                <span>Behavior</span>
+            </div>
+        </div>
+        <div class="row rowgroup-separator">
+            <div class="separator"></div>
+        </div>
+        <div class="row rowhover" id="new-tab">
+            <div class="item-left">
+                <span>Open in new tab</span>
+            </div>
+            <div class="item-right">
+                <label class="switch">
+                    <input type="checkbox" id="checkbox-new-tab">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div id="settings-bottom-block">
+        <div class="row rowgroup">
+            <div class="rowgroup-title">
+                <span>Backup</span>
+            </div>
+        </div>
+        <div class="row rowgroup-separator">
+            <div class="separator"></div>
         </div>
         <div class="row rowhover" id="save-to-file">
             <div class="item-left">
@@ -115,17 +151,6 @@
                 </div>
             </div>
         </div>
-        <div class="row rowhover" id="show-header">
-            <div class="item-left">
-                <span>Show bookmarks bar</span>
-            </div>
-            <div class="item-right">
-                <label class="switch">
-                    <input type="checkbox" id="checkbox-show-header">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
         <div class="row rowhover" id="save-to-cloud">
             <div class="item-left">
                 <span>Save to cloud</span>
@@ -141,6 +166,7 @@
             <div class="item-right">
                 <img id="icon-cloud-load" class="settings-icon" src="images/icons/backup.svg" alt="">
             </div>
+        </div>
         </div>
     </div>
 </div>

@@ -12,6 +12,12 @@
     cursor: default;
 }
 
+#settings-bottom-block {
+    position: absolute;
+    padding-bottom: 20px;
+    bottom: 0;
+}
+
 .settings.cancel-overlay {
     right: 5000px;
     width: 100vw;
@@ -35,22 +41,21 @@
 }
 
 #title-row {
-    padding-top: 15px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 #logo {
+    position: absolute;
+    top: 8px;
     width: 30px;
     height: 30px;
 }
 
 #title {
-    padding-top: 8px;
+    padding-left: 30px;
 }
 
-#close-settings-button {
-    padding-top: 6px;
-}
 
 #version {
     color: #888888;
@@ -74,19 +79,13 @@
 }
 
 .slider-long {
-    /*padding-right: 10px;*/
     border-radius: 1em;
     padding-right: 5px;
     padding-left: 5px;
     padding-top: 2px;
 }
 
-/*#range-rows, #range-cols{*/
-/*    padding-left: 5px;*/
-/*    padding-right: 5px;*/
-/*}*/
-
-.slider-long:hover{
+.slider-long:hover {
     background-color: #eee;
 }
 
@@ -102,8 +101,9 @@
 }
 
 .settings-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    padding-right: 4px;
 }
 
 .rowhover {
@@ -119,22 +119,23 @@
     background-color: #eee;
 }
 
-.input-row-1{
+.input-row-1 {
     width: 652px;
     height: 34px;
     position: absolute;
-    top: 235px;
+    bottom: 88px;
     opacity: 0;
     overflow: hidden;
 }
 
-.input-row-2{
+.input-row-2 {
     width: 652px;
     height: 34px;
     position: absolute;
     left: -283px;
     overflow: hidden;
 }
+
 #upload_input {
     cursor: pointer;
     font-size: 50px;
@@ -143,21 +144,44 @@
     overflow: hidden;
 }
 
-#load-from-file{
+#load-from-file {
     padding: 0;
     height: 34px;
     width: 370px;
     overflow: hidden;
 }
 
-#load-text{
+#load-text {
     position: absolute;
     left: 15px;
     padding-top: 8px;
 }
-#load-icon{
+
+#load-icon {
     position: absolute;
     right: 10px;
     padding-top: 5px;
-    height:24px;
+    height: 24px;
+}
+
+.rowgroup-separator {
+    height: 2px;
+    padding: 0 10px 0 10px;
+}
+
+.separator {
+    position: absolute;
+    width: 340px;
+    left: 15px;
+    height: 2px;
+    background-color: #eee;
+}
+
+.rowgroup {
+    height: 12px;
+}
+
+.rowgroup-title {
+    color: #888888;
+    font-size: 0.8em;
 }
