@@ -1,3 +1,16 @@
+function updateHeaderMenu() {
+    deleteHeaderMenu()
+    chrome.storage.local.get(['show-header'], function (res) {
+        if (res['show-header']) {
+            createBookmarks()
+        }
+    })
+}
+
+function deleteHeaderMenu() {
+    $('#bookmarks').empty()
+}
+
 function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
         let root = bookmarkTreeNodes[0]["children"][0]["children"]

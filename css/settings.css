@@ -106,12 +106,12 @@
     height: 24px;
 }
 
-#save-to-file, #load-from-file, #save-to-cloud, #load-from-cloud, #show-quick, #new-tab, #range-rows, #range-cols {
+.rowhover {
     cursor: pointer;
     border-radius: 1em;
 }
 
-#save-to-file:hover, #load-from-file:hover, #save-to-cloud:hover, #load-from-cloud:hover, #show-quick:hover, #new-tab:hover {
+.rowhover:hover {
     background-color: #eee;
 }
 

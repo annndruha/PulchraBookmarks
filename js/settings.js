@@ -33,7 +33,7 @@ $('#close-settings-button, .cancel-overlay').on('click', function (e) {
     closeSettings()
 })
 
-$('#checkbox-new-tab, #checkbox-show-quick').on('click', () => {}, true) // Super important string with true
+$('#checkbox-new-tab, #checkbox-show-quick, #checkbox-show-header').on('click', () => {}, true) // Super important string with true
 
 $('#new-tab').on('click', (e) => {
     e.stopPropagation()
@@ -61,5 +61,20 @@ $('#show-quick').on('click', (e) => {
             document.getElementById('checkbox-show-quick').setAttribute('checked', '')
         }
         updateBottomMenu(res['cols'])
+    })
+})
+
+$('#show-header').on('click', (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    chrome.storage.local.get(['show-header'], function (res) {
+        if (res['show-header']) {
+            chrome.storage.local.set({['show-header']: false}, () => {})
+            document.getElementById('checkbox-show-header').removeAttribute('checked')
+        } else {
+            chrome.storage.local.set({['show-header']: true}, () => {})
+            document.getElementById('checkbox-show-header').setAttribute('checked', '')
+        }
+        updateHeaderMenu()
     })
 })
