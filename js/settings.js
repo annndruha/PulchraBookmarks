@@ -1,12 +1,12 @@
 function openSettings() {
-    $('.app-container').css('margin-right', '370px')
+    $('.app-container').css('margin-right', '370px').css('overflow-y', 'hidden')
     $('.settings.window').css('right', '0px')
     $('.settings.cancel-overlay').css('right', '370px')
     $('#settings-open-button').css('opacity', '0')
 }
 
 function closeSettings() {
-    $('.app-container').css('margin-right', '0px')
+    $('.app-container').css('margin-right', '0px').css('overflow-y', 'auto')
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
     $('#settings-open-button').css('opacity', '1')
@@ -78,3 +78,13 @@ $('#show-header').on('click', (e) => {
         updateHeaderMenu()
     })
 })
+
+// $('.changegrid').hover(
+//     () => { // In hover
+//     $('.empty-icon').css('border','1px solid #fff')},
+//     () => { // Out hover
+//         $('.empty-icon').css('border','none')
+//         updateHovers()
+//     // .css('filter', 'drop-shadow(0px 0px 3px #000)')
+//     }
+// )

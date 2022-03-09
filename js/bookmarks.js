@@ -56,7 +56,7 @@ function createTemplate(itemInside){
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
-    }).css("background-color", "transparent")
+    }) //.css("background-color", "transparent")
     itemInside.className = 'grid-item-inside empty-icon'
 }
 
@@ -192,6 +192,7 @@ function makeGrid(cols, rows, fromfile=false) {
         beautyfyView()
         updateBottomMenu(cols)
         updateHeaderMenu()
+        // updateHovers()
         loadAllIcons()
 }
 
@@ -227,3 +228,14 @@ function beautyfyView() {
         $('.pseudo-grid-item').css('padding-right', keys[key]['pi']).css('padding-left', keys[key]['pi'])
     })
 }
+
+// function updateHovers(){
+//     $('.grid-item').hover(
+//         () => { // In hover
+//             console.log($(this).children('.empty-icon'))
+//             $(this).find('.empty-icon').css('border','1px solid #fff').css('background-color', '#fff')
+//             },
+//         () => { // Out hover
+//             $(this).find('.empty-icon').css('border','none')}
+//     )//.css('border','none')
+// }
