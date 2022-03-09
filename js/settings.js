@@ -2,12 +2,14 @@ function openSettings() {
     $('.app-container').css('margin-right', '370px')
     $('.settings.window').css('right', '0px')
     $('.settings.cancel-overlay').css('right', '370px')
+    $('#settings-open-button').css('opacity', '0')
 }
 
 function closeSettings() {
     $('.app-container').css('margin-right', '0px')
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
+    $('#settings-open-button').css('opacity', '1')
 }
 
 $('#range-rows').on('input', function (e) {
@@ -31,7 +33,7 @@ $('#close-settings-button, .cancel-overlay').on('click', function (e) {
     closeSettings()
 })
 
-$('#checkbox-new-tab, #checkbox-show-quick').on('click', () => {}, true) // Super important string with true
+$('#checkbox-new-tab, #checkbox-show-quick, #checkbox-show-header').on('click', () => {}, true) // Super important string with true
 
 $('#new-tab').on('click', (e) => {
     e.stopPropagation()
@@ -59,5 +61,20 @@ $('#show-quick').on('click', (e) => {
             document.getElementById('checkbox-show-quick').setAttribute('checked', '')
         }
         updateBottomMenu(res['cols'])
+    })
+})
+
+$('#show-header').on('click', (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    chrome.storage.local.get(['show-header'], function (res) {
+        if (res['show-header']) {
+            chrome.storage.local.set({['show-header']: false}, () => {})
+            document.getElementById('checkbox-show-header').removeAttribute('checked')
+        } else {
+            chrome.storage.local.set({['show-header']: true}, () => {})
+            document.getElementById('checkbox-show-header').setAttribute('checked', '')
+        }
+        updateHeaderMenu()
     })
 })

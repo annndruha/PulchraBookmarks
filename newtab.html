@@ -9,12 +9,19 @@
     <link rel="stylesheet" href="css/main-grid.css">
     <link rel="stylesheet" href="css/bottom-menu.css">
     <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>
 <div class="app-container" id="app-container">
     <div class="bookmarks-header">
-
+        <div class="row" id="header-row">
+            <div class="header-left" id="bookmarks">
+            </div>
+            <div class="header-right">
+                <img class="settings-icon" id="settings-open-button" src="images/icons/menu.svg" alt="">
+            </div>
+        </div>
     </div>
     <div class="content">
         <div class="grid" id="grid">
@@ -65,7 +72,7 @@
                 <label id="cols" for="range-cols">N</label>
             </div>
         </div>
-        <div class="row" id="new-tab">
+        <div class="row rowhover" id="new-tab">
             <div class="item-left">
                 <span>Open in new tab</span>
             </div>
@@ -76,7 +83,7 @@
                 </label>
             </div>
         </div>
-        <div class="row" id="show-quick">
+        <div class="row rowhover" id="show-quick">
             <div class="item-left">
                 <span>Show quick access</span>
             </div>
@@ -87,7 +94,7 @@
                 </label>
             </div>
         </div>
-        <div class="row" id="save-to-file">
+        <div class="row rowhover" id="save-to-file">
             <div class="item-left">
                 <span>Save to file</span>
             </div>
@@ -95,7 +102,7 @@
                 <img class="settings-icon" src="images/icons/file_download.svg" alt="">
             </div>
         </div>
-        <div class="row" id="load-from-file">
+        <div class="row rowhover" id="load-from-file">
             <div class="item-left" id="load-text">
                 <span>Load from file</span>
             </div>
@@ -108,7 +115,18 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="save-to-cloud">
+        <div class="row rowhover" id="show-header">
+            <div class="item-left">
+                <span>Show bookmarks bar</span>
+            </div>
+            <div class="item-right">
+                <label class="switch">
+                    <input type="checkbox" id="checkbox-show-header">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row rowhover" id="save-to-cloud">
             <div class="item-left">
                 <span>Save to cloud</span>
             </div>
@@ -116,7 +134,7 @@
                 <img id="icon-cloud-save" class="settings-icon" src="images/icons/cloud_download.svg" alt="">
             </div>
         </div>
-        <div class="row" id="load-from-cloud">
+        <div class="row rowhover" id="load-from-cloud">
             <div class="item-left" id="load-text-cloud">
                 <span>Load from cloud</span>
             </div>
@@ -127,6 +145,7 @@
     </div>
 </div>
 <script type="text/javascript" src="third-js/jquery.min.js"></script>
+<script type="text/javascript" src="third-js/jquery-ui-1.12.1.js"></script>
 <script type="text/javascript" src="js/links-func.js"></script>
 <script type="text/javascript" src="js/bottom-menu.js"></script>
 <script type="text/javascript" src="js/load-icons.js"></script>
@@ -134,6 +153,7 @@
 <script type="text/javascript" src="js/edit-menu.js"></script>
 <script type="text/javascript" src="js/settings.js"></script>
 <script type="text/javascript" src="js/saveopen.js"></script>
+<script type="text/javascript" src="js/header.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

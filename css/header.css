@@ -1,0 +1,91 @@
+#header-row {
+    padding-top: 10px;
+}
+
+.header-left {
+    padding-top: 3px;
+    height: 18px;
+    color: white;
+    text-shadow: 0 0 3px black;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+.header-item {
+    padding-top: 8px;
+    padding-right: 15px;
+    padding-bottom: 8px;
+}
+
+.header-item:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.header-right {
+    padding-left: 3px;
+    padding-right: 5px;
+    filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
+    width: 18px;
+    height: 18px;
+}
+
+.header-right:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#root_popup {
+    top: 40px;
+    max-height: 600px;
+    max-width: 700px;
+    position:fixed;
+    overflow-y:auto;
+    background-color: white;
+    border-radius:  1em;
+    box-shadow: 0 0 3px black;
+}
+
+.header-text {
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+.header-text:hover {
+    background-color: #eee;
+}
+
+.pseudo-list-icon{
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+.list-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -16px;
+}
+
+.site-icon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: -13px;
+    top: 3px;
+}
+
+li {
+    cursor: pointer;
+    padding-right: 20px;
+}
+ul{
+    padding-left: 30px;
+    list-style: none;
+}

@@ -1,4 +1,4 @@
-function updateNottomMenuBinds() {
+function updateBottomMenuBinds() {
     $('#chrome-downloads').off('click').on('click', () => {openLink('chrome://downloads/')})
     $('#chrome-bookmarks').off('click').on('click', () => {openLink('chrome://bookmarks/')})
     $('#chrome-history').off('click').on('click', () => {openLink('chrome://history/')})
@@ -12,7 +12,6 @@ function addBootomMenu(cols) {
     let item = document.createElement('div')
     item.id = 'grid-item-settings'
     chrome.storage.local.get(['show-quick'], function (res) {
-        item = makeSettingsButton(item)
         if (res['show-quick']) {
             item = makeBottonMenuLeft(item)
         }
@@ -21,7 +20,7 @@ function addBootomMenu(cols) {
         grid_row.id = 'row-settings'
         grid.appendChild(grid_row).className = 'grid-row'
         $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
-        updateNottomMenuBinds()
+        updateBottomMenuBinds()
     })
 }
 
@@ -48,16 +47,6 @@ function makeBottonMenuLeft(parent) {
     span_settings.textContent = 'Settings'
     bottom_menu.appendChild(span_settings).className = 'bm-item left'
     parent.appendChild(bottom_menu).className = 'bottom-menu-left'
-    return parent
-}
-
-function makeSettingsButton(parent) {
-    let bottom_menu = document.createElement('div')
-    let settings = document.createElement('img')
-    settings.id = 'settings-open-button'
-    settings.src = 'images/icons/settings.svg'
-    bottom_menu.appendChild(settings).className = 'bm-item right'
-    parent.appendChild(bottom_menu).className = 'bottom-menu-right'
     return parent
 }
 
