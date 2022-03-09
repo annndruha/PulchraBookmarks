@@ -1,5 +1,7 @@
 # Pulchra bookmarks - Chrome extention (BETA)
 
+[![](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png)](https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb)
+
 ### Установка из этого репозитория:
 * Нажмите на <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="30">и скачайте zip-архив <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="30">
 * Распакуйте в любое удобное место
