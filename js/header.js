@@ -4,11 +4,18 @@ function createBookmarks() {
         for (let i = 0; i < root.length; i++) {
             let root_str = '<span class="header-item" id="root-header-' + root[i].id + '">'
             let root_item = $(root_str)
+            // if (hasChields(root[i].id)){
+            //     $('#bookmarks').append(getListIcon())
+            // }
             $('#bookmarks').append(root_item.text(root[i].title))
             $('#root-header-' + root[i].id).on('click', createRootElementTree)
             $('.app-container').on('click', deleteRootElementTree)
         }
     })
+}
+
+function hasChields(item){
+    return !!(item.children && item.children.length > 0);
 }
 
 function deleteRootElementTree() {
