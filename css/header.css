@@ -1,5 +1,11 @@
 #header-row {
     padding-top: 10px;
+    padding-left: 10px;
+}
+
+#bookmarks{
+    display: flex;
+    flex-direction: row;
 }
 
 .header-left {
@@ -12,9 +18,7 @@
 }
 
 .header-item {
-    padding-top: 8px;
-    padding-right: 15px;
-    padding-bottom: 8px;
+    padding-right: 20px;
 }
 
 .header-item:hover {
@@ -71,6 +75,15 @@
     width: 20px;
     height: 20px;
     left: -16px;
+}
+
+.header-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -16px;
+    top: -20px;
+    filter: invert(1);
 }
 
 .site-icon {

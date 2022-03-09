@@ -14,13 +14,14 @@ function deleteHeaderMenu() {
 function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
         let root = bookmarkTreeNodes[0]["children"][0]["children"]
+        console.log(root)
         for (let i = 0; i < root.length; i++) {
-            let root_str = '<span class="header-item" id="root-header-' + root[i].id + '">'
-            let root_item = $(root_str)
-            // if (hasChields(root[i].id)){
-            //     $('#bookmarks').append(getListIcon())
-            // }
-            $('#bookmarks').append(root_item.text(root[i].title))
+            let root_item = $('<div class="header-item" id="root-header-' + root[i].id + '">')
+            root_item.text(root[i].title)
+            if (hasChields(root[i])) {
+                root_item.append(getListIcon('closed', 'none', 'header-icon'))
+            }
+            $('#bookmarks').append(root_item)
             $('#root-header-' + root[i].id).on('click', createRootElementTree)
             $('.app-container').on('click', deleteRootElementTree)
         }
@@ -60,9 +61,9 @@ function dumpTreeNodes(bookmarkNodes) {
     return list
 }
 
-function getListIcon(status='closed', link='none'){
+function getListIcon(status='closed', link='none', cl='list-icon'){
     let pseudofoldericon = $('<div class="pseudo-list-icon">')
-    let foldericon = $('<img class="list-icon">')
+    let foldericon = $('<img alt="" class='+cl+'>')
     if (status === 'closed')
     {
         foldericon.attr('src', 'images/icons/arrow_right.svg')
@@ -74,7 +75,13 @@ function getListIcon(status='closed', link='none'){
     }
     else if (status === 'site'){
         // foldericon.attr('src', 'images/icons/language.svg')
-        foldericon.attr('class', 'site-icon')
+        if (cl !== 'list-icon')
+        {
+            foldericon.attr('class', cl)
+        }
+        else {
+            foldericon.attr('class', 'site-icon')
+        }
         foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128')
         pseudofoldericon.append(foldericon)
     }
