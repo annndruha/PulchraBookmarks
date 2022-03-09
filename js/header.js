@@ -53,7 +53,9 @@ function getListIcon(status='closed', link='none'){
         pseudofoldericon.append(foldericon)
     }
     else if (status === 'site'){
-        foldericon.attr('src', 'images/icons/language.svg')
+        // foldericon.attr('src', 'images/icons/language.svg')
+        foldericon.attr('class', 'site-icon')
+        foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128')
         pseudofoldericon.append(foldericon)
     }
     return pseudofoldericon
@@ -61,7 +63,7 @@ function getListIcon(status='closed', link='none'){
 
 function dumpNode(bookmarkNode) {
     if (bookmarkNode.title) {
-        let anchor = $('<div>')
+        let anchor = $('<div class="header-text">')
         anchor.text(bookmarkNode.title)
         let span = $('<span class="span-header">')
         span.hover().append(anchor) //
@@ -89,9 +91,8 @@ function dumpNode(bookmarkNode) {
                 e.stopPropagation()
                 openLink(anchor.attr('link'))
             })
-            pseudoli.append(getListIcon('site'))
+            pseudoli.append(getListIcon('site', anchor.attr('link')))
         }
-
         return pseudoli.append(li);
     }
 }

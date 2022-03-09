@@ -38,7 +38,7 @@
 #root_popup {
     top: 40px;
     max-height: 600px;
-    max-width: 700px;
+    max-width: 1000px;
     position:fixed;
     overflow-y:auto;
     background-color: white;
@@ -46,9 +46,11 @@
     box-shadow: 0 0 3px black;
 }
 
-.span-header{
+.header-text {
     text-overflow: ellipsis;
     overflow:hidden;
+    white-space: nowrap;
+    height: 20px;
 }
 
 .pseudo-list-icon{
@@ -59,8 +61,15 @@
 
 .list-icon {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    left: -23px;
+}
+
+.site-icon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
     left: -20px;
 }
 
