@@ -40,35 +40,58 @@ function dumpTreeNodes(bookmarkNodes) {
     return list
 }
 
+function getListIcon(status='closed', link='none'){
+    let pseudofoldericon = $('<div class="pseudo-list-icon">')
+    let foldericon = $('<img class="list-icon">')
+    if (status === 'closed')
+    {
+        foldericon.attr('src', 'images/icons/arrow_right.svg')
+        pseudofoldericon.append(foldericon)
+    }
+    else if (status === 'opened'){
+        foldericon.attr('src', 'images/icons/arrow_drop.svg')
+        pseudofoldericon.append(foldericon)
+    }
+    else if (status === 'site'){
+        foldericon.attr('src', 'images/icons/language.svg')
+        pseudofoldericon.append(foldericon)
+    }
+    return pseudofoldericon
+}
+
 function dumpNode(bookmarkNode) {
     if (bookmarkNode.title) {
         let anchor = $('<div>')
         anchor.text(bookmarkNode.title)
-        let span = $('<span>')
+        let span = $('<span class="span-header">')
         span.hover().append(anchor) //
-        let li = $(bookmarkNode.title ? '<li>' : '<div>').append(span)
+
+        let pseudoli = $('<div class="pseudoli">')
+        let li = $(bookmarkNode.title ? '<li>' : '<div>')
         li.attr('status', 'closed')
+        li.append(span)
         if (bookmarkNode.children && bookmarkNode.children.length > 0) {
             li.on('click', (e) => {
                 e.stopPropagation()
                 if (li.attr('status') === 'closed') {
                     li.attr('status', 'opened')
-                    li.append(dumpTreeNodes(bookmarkNode.children))
-                }
-                else {
+                    li.append(dumpTreeNodes(bookmarkNode.children, li.attr('status')))
+                } else {
                     li.attr('status', 'closed')
                     li.children('.sublist').remove()
                 }
             })
-        }
-        else {
+            pseudoli.append(getListIcon(li.attr('status')))
+
+        } else {
             anchor.attr('link', bookmarkNode.url)
             anchor.on('click', (e) => {
                 e.stopPropagation()
                 openLink(anchor.attr('link'))
             })
+            pseudoli.append(getListIcon('site'))
         }
 
-        return li;
+        return pseudoli.append(li);
     }
 }

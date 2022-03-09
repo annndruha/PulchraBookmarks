@@ -13,7 +13,7 @@
 
 .header-item {
     padding-top: 8px;
-    padding-right: 10px;
+    padding-right: 15px;
     padding-bottom: 8px;
 }
 
@@ -44,6 +44,24 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 3px black;
+}
+
+.span-header{
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+.pseudo-list-icon{
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+.list-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: -20px;
 }
 
 li {
