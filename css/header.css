@@ -94,12 +94,12 @@
     top: 3px;
 }
 
-li {
+.my-li {
     cursor: pointer;
     padding-right: 20px;
 }
 
-ul {
+.sublist {
     padding-left: 30px;
     list-style: none;
 }

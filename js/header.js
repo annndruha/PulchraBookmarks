@@ -96,7 +96,7 @@ function dumpNode(bookmarkNode) {
         span.hover().append(anchor) //
 
         let pseudoli = $('<div class="pseudoli">')
-        let li = $(bookmarkNode.title ? '<li>' : '<div>')
+        let li = $(bookmarkNode.title ? '<li class="my-li">' : '<div>')
         li.attr('status', 'closed')
         li.append(span)
         if (bookmarkNode.children && bookmarkNode.children.length > 0) {

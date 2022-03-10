@@ -1,0 +1,26 @@
+.click-menu-root {
+    display: none;
+    z-index: 1000;
+    /*position: absolute;*/
+    position: fixed;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.click-menu-root li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.click-menu-root li:hover {
+    background-color: #aaa;
+}

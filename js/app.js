@@ -33,6 +33,7 @@ function initSettingsValues(fromfile = false) {
 $(window).on('ready', () => { // load change
     initSettingsValues()
     beautyfyView()
+    updateRightClick()
 })
 
 $(window).on('resize', () => {
