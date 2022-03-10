@@ -1,9 +1,6 @@
 function updateBottomMenuBinds() {
-    $('#chrome-downloads').off('click').on('click', () => {openLink('chrome://downloads/')})
-    $('#chrome-bookmarks').off('click').on('click', () => {openLink('chrome://bookmarks/')})
-    $('#chrome-history').off('click').on('click', () => {openLink('chrome://history/')})
-    $('#chrome-settings').off('click').on('click', () => {openLink('chrome://settings/')})
-    $('#settings-open-button').off('click').on('click', () => {openSettings()})
+    $('.bm-item').off('click').on('click', function () {openLink($(this).attr('link'))})
+    bottomItemRightClick()
 }
 
 function addBootomMenu(cols) {
@@ -30,21 +27,25 @@ function makeBottonMenuLeft(parent) {
     let span_downloads = document.createElement('span')
     span_downloads.id = 'chrome-downloads'
     span_downloads.textContent = 'Downloads'
+    span_downloads.setAttribute('link', 'chrome://downloads/')
     bottom_menu.appendChild(span_downloads).className = 'bm-item'
 
     let span_bookmarks = document.createElement('span')
     span_bookmarks.id = 'chrome-bookmarks'
     span_bookmarks.textContent = 'Bookmarks'
+    span_bookmarks.setAttribute('link', 'chrome://bookmarks/')
     bottom_menu.appendChild(span_bookmarks).className = 'bm-item'
 
     let span_history = document.createElement('span')
     span_history.id = 'chrome-history'
     span_history.textContent = 'History'
+    span_history.setAttribute('link', 'chrome://history/')
     bottom_menu.appendChild(span_history).className = 'bm-item'
 
     let span_settings = document.createElement('span')
     span_settings.id = 'chrome-settings'
     span_settings.textContent = 'Settings'
+    span_settings.setAttribute('link', 'chrome://settings/')
     bottom_menu.appendChild(span_settings).className = 'bm-item'
     parent.appendChild(bottom_menu).className = 'bottom-menu-left'
     return parent

@@ -30,10 +30,21 @@ function isNumeric(value) {
     return /^\d+$/.test(value)
 }
 
-function openLink(open_link) {
+function openLink(open_link, newtab='auto') {
     if (varDefined(open_link)) {
         chrome.storage.local.get(['new-tab'], function (res) {
-            if (res['new-tab']) {
+            let innewtab = ''
+            if (newtab === 'auto'){
+                innewtab = res['new-tab']
+            }
+            else if (newtab === true){
+                innewtab = true
+            }
+            else {
+                innewtab = false
+            }
+            innewtab = newtab === true;
+            if (innewtab) {
                 chrome.tabs.create({'url': open_link})
             } else {
                 chrome.tabs.update({active: true, url: open_link})

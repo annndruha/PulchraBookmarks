@@ -1,26 +1,23 @@
-function updateRightClick(){
-    //bottomItemRightClick()
-    //gridItemRightClick()
-}
-
 function bottomItemRightClick(){
-    $('.').bind("contextmenu", function (event) {
+    $(".bm-item").bind("contextmenu", function (event) {
         event.preventDefault()
-        $("#click-menu-bottom-menu").finish().toggle(100).
-        css({top: event.pageY + "px", left: event.pageX + "px"})
+        let link = $(this).attr('link').toString()
+
+        $("#click-menu-bottom-menu").finish().toggle(100).css({top: event.pageY + "px", left: event.pageX + "px"})
+        $("#click-menu-bottom-menu div").off('click').on('click', {param: 'link'}, function (e){
+            e.stopPropagation()
+            openLink(link, true)
+            $("#click-menu-bottom-menu").hide(100)
+        })
+
     }).bind("mousedown", function (e) {
         if (!$(e.target).parents("#click-menu-bottom-menu").length > 0) {
             $("#click-menu-bottom-menu").hide(100)}
     })
-
-    $("#click-menu-bottom-menu div").on('click', function(){
-        switch($(this).attr("data-action")) {
-            case "new-tab": alert("new-tab"); break;
-            case "edit": alert("edit"); break;
-            case "delete": alert("delete"); break;
-        }
-        $("#click-menu-bottom-menu").hide(100)
-    })
+    // $("#click-menu-bottom-menu div").on('click', link, function(){
+    //     openLink(link,true)
+    //     $("#click-menu-bottom-menu").hide(100)
+    // })
 }
 
 function gridItemRightClick(){
