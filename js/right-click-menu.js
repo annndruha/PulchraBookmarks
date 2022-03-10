@@ -1,53 +1,55 @@
 $(document).on('click', function () {
-    $(".click-menu").hide(100)
+    $(".click-menu").hide(0)
 })
 
 $(document).bind('contextmenu', function (e){
     e.preventDefault()
-    $(".click-menu").hide(100)
+    $(".click-menu").hide(0)
 })
+
+function hideAllRightClick(){
+    $(".click-menu").hide(0)
+}
 
 function bottomItemRightClick() {
     $(".bm-item").bind("contextmenu", function (e) {
         e.preventDefault()
         e.stopPropagation()
+        hideAllRightClick()
         let link = $(this).attr('link').toString()
         $("#click-menu-bottom-menu").off('click').on('click', {param: 'link'}, function (e) {
             e.stopPropagation()
-            $(this).hide(100)
+            hideAllRightClick()
             openLink(link, true)
-        }).finish().toggle(100).css({top: e.pageY + "px", left: e.pageX + "px"})
+        }).css({top: e.pageY + "px", left: e.pageX + "px"}).show(100)
     })
 }
 
-// function gridItemRightClick() {
-//     $(".grid-item").bind("contextmenu", function (event) {
-//         event.preventDefault()
-//         let id = $(this).find('.grid-item-inside').attr('id').toString()
-//         let link = $(this).find('.grid-item-inside').attr('link').toString()
-//         $("#click-menu-grid-item").off('click').on('click', {param1: 'link', param2:'id'}, function (e) {
-//             e.stopPropagation()
-//             $(this).hide(100)
-//             console.log($(this).attr('class'))
-//             //console.log($(this).attr("data-action"))
-//             switch ($(this).attr("data-action")) {
-//                 case "new-tab":
-//                     openLink(link, true)
-//                     break
-//                 case "edit":
-//                     editBookmark('img-'+id)
-//                     break
-//                 case "delete":
-//                     alert("delete");
-//                     break
-//             }
-//         }).finish().toggle(100).css({top: event.pageY + "px", left: event.pageX + "px"})
-//     }).bind("mousedown", function (e) {
-//         if (!$(e.target).parents("#click-menu-grid-item").length > 0) {
-//             $("#click-menu-grid-item").hide(100)
-//         }
-//     })
-// }
+function gridItemRightClick() {
+    $(".grid-item").bind("contextmenu", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        hideAllRightClick()
+        let id = $(this).find('.grid-item-inside').attr('id').toString()
+        let link = $(this).find('.grid-item-inside').attr('link').toString()
+        $("#click-menu-grid-item").css({top: e.pageY + "px", left: e.pageX + "px"}).show(100)
+        $(".click-menu-row").off('click').on('click', {param1: 'link', param2:'id'}, function (e) {
+            e.stopPropagation()
+            hideAllRightClick()
+            switch ($(this).attr("data-action")) {
+                case "new-tab":
+                    openLink(link, true)
+                    break
+                case "edit":
+                    editBookmark('img-'+id)
+                    break
+                case "delete":
+                    alert("delete");
+                    break
+            }
+        })
+    })
+}
 
 
 // function gridItemRightClick(){

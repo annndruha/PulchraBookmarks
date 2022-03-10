@@ -14,7 +14,6 @@ function deleteHeaderMenu() {
 function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
         let root = bookmarkTreeNodes[0]["children"][0]["children"]
-        console.log(root)
         for (let i = 0; i < root.length; i++) {
             let root_item = $('<div class="header-item" id="root-header-' + root[i].id + '">')
             root_item.text(root[i].title)
