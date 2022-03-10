@@ -10,6 +10,7 @@ function makeSubMenu(id) {
 function makeAddBookmark(id){
     let subMenu = document.createElement('div')
     let img = document.createElement('img')
+    img.setAttribute('draggable', 'false')
     img.setAttribute('src', 'images/icons/add_circle_outline.svg')
     img.id = 'img-' + id
     subMenu.appendChild(img).className = 'grid-item-inside-add-img'
@@ -30,6 +31,7 @@ function makeIconTemplate(itemInside) {
     let id = itemInside.id
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
+    icon.setAttribute('draggable', 'false')
     if (itemInside.hasAttribute('icon-link') || itemInside.hasAttribute('cache-icon-link')){
         if (varDefined(itemInside.getAttribute('icon-link'))){
             icon.setAttribute('src', itemInside.getAttribute('icon-link'))
