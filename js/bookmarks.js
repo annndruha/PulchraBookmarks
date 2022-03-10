@@ -52,11 +52,11 @@ function makeIconTemplate(itemInside) {
 function createTemplate(itemInside){
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', "")
-    itemInside.appendChild(iconDiv).className = 'grid-item-inside-add'
+    itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
-    }) //.css("background-color", "transparent")
+    }).css("background-color", "transparent")
     itemInside.className = 'grid-item-inside empty-icon'
 }
 
@@ -85,6 +85,7 @@ function createMark(itemInside, link){
 
 function recreateMark(itemInside) {
     itemInside.innerHTML = ''
+    console.log(itemInside)
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
             let link = res[itemInside.id][0]["link"]
@@ -116,6 +117,13 @@ function makeMark(id) {
     recreateMark(itemInside)
     item.appendChild(itemInside)
     return item
+}
+
+function deleteMark(id){
+    chrome.storage.local.set({[id]: {0: {"link": ''}}}, () => {
+        let bookmark = document.getElementById(id)
+        recreateMark(bookmark)
+    })
 }
 
 function getExistedColsRows(grid) {

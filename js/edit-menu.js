@@ -6,6 +6,10 @@ function editBookmark(menu_img_id) {
 
     let newLink = prompt('Enter new link:\n(Erase line to delete)', placeholder)
     if (newLink === null) {return}
+    if (newLink === ''){
+        deleteMark(id)
+        return
+    }
     bookmark.setAttribute('link', newLink)
 
     // let newIconLink = prompt('Enter link for icon:\n(Erase line to delete)', '')
