@@ -193,6 +193,7 @@ function makeGrid(cols, rows, fromfile=false) {
         updateBottomMenu(cols)
         updateHeaderMenu()
         loadAllIcons()
+        gridItemRightClick()
 }
 
 function beautyfyView() {
