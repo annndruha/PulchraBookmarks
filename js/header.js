@@ -32,7 +32,8 @@ function hasChields(item){
 }
 
 function deleteRootElementTree() {
-    document.getElementById("root_popup").remove();
+    let root_popup = document.getElementById("root_popup")
+    if (varDefined(root_popup)){root_popup.remove()}
 }
 
 function createRootElementTree() {
@@ -81,7 +82,12 @@ function getListIcon(status='closed', link='none', cl='list-icon'){
         else {
             foldericon.attr('class', 'site-icon')
         }
-        foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128')
+        foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=32')
+        // foldericon.on('load', {'param': 'foldericon'}, () => {
+        //     if (foldericon.get(0).naturalWidth === 16) {
+        //         foldericon.attr('src', '../images/icons/language.svg')
+        //     }
+        // })
         pseudofoldericon.append(foldericon)
     }
     return pseudofoldericon
