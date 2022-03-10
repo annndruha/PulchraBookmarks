@@ -85,7 +85,6 @@ function createMark(itemInside, link){
 
 function recreateMark(itemInside) {
     itemInside.innerHTML = ''
-    console.log(itemInside)
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
             let link = res[itemInside.id][0]["link"]
