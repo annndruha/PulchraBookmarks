@@ -1,7 +1,13 @@
+$(document).on('click', function () {
+    $(".click-menu").hide(100)
+})
+
+$(document).bind('contextmenu', function (e){
+    e.preventDefault()
+    $(".click-menu").hide(100)
+})
+
 function bottomItemRightClick() {
-    // $("#app-container").bind("contextmenu", function (event){
-    //     $("#click-menu-bottom-menu").hide(100)
-    // })
     $(".bm-item").bind("contextmenu", function (e) {
         e.preventDefault()
         e.stopPropagation()
@@ -12,13 +18,7 @@ function bottomItemRightClick() {
             openLink(link, true)
         }).finish().toggle(100).css({top: e.pageY + "px", left: e.pageX + "px"})
     })
-    //     .bind("mousedown", function (e) {
-    //     //if (!$(e.target).parents("#click-menu-bottom-menu").length > 0) {
-    //         $("#click-menu-bottom-menu").hide(100)
-    //     //}
-    // })
 }
-
 
 // function gridItemRightClick() {
 //     $(".grid-item").bind("contextmenu", function (event) {
