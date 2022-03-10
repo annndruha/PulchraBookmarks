@@ -1,26 +1,31 @@
 .click-menu-root {
     display: none;
     z-index: 1000;
-    /*position: absolute;*/
     position: fixed;
     overflow: hidden;
-    border: 1px solid #CCC;
     white-space: nowrap;
-    font-family: sans-serif;
-    background: #FFF;
-    color: #333;
-    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    border-radius: 1em;
     padding: 0;
+    filter: drop-shadow(0px 0px 3px #000);
 }
 
-.click-menu-root li {
-    padding: 8px 12px;
+.click-menu-row {
+    display: flex;
+    padding: 5px 15px 5px 10px;
+    height: 24px;
     cursor: pointer;
     list-style-type: none;
-    transition: all .3s ease;
+    transition: all .2s ease;
     user-select: none;
+    border-radius: 1em;
 }
 
-.click-menu-root li:hover {
-    background-color: #aaa;
+.click-menu-row:hover {
+    background-color: #eee;
+}
+
+.click-menu-inrow{
+    padding-top: 3px;
 }

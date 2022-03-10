@@ -3,7 +3,7 @@ function updateRightClick(){
 }
 
 function clickMenuRoot(){
-    $('body').bind("contextmenu", function (event) {
+    $('#app-container').bind("contextmenu", function (event) {
         event.preventDefault();
         $(".click-menu-root").finish().toggle(100).
         css({
@@ -20,6 +20,6 @@ function clickMenuRoot(){
     $(".click-menu-root li").on('click', function(){
         switch($(this).attr("data-action")) {
             case "first": alert("first"); break;}
-        $(".click-menu-root").hide(100);
-    });
+        $(".click-menu-root").hide(100)
+    })
 }
