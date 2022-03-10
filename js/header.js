@@ -65,7 +65,7 @@ function getListIcon(status='closed', link='none', cl='list-icon'){
     let foldericon = $('<img alt="" class='+cl+'>')
     if (status === 'closed')
     {
-        foldericon.attr('src', 'images/icons/arrow_right.svg')
+        foldericon.attr('src', 'images/icons/folder_open.svg')
         pseudofoldericon.append(foldericon)
     }
     else if (status === 'opened'){

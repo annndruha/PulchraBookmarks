@@ -18,7 +18,7 @@
 }
 
 .header-item {
-    padding-right: 20px;
+    padding-right: 25px;
 }
 
 .header-item:hover {
@@ -72,16 +72,17 @@
 
 .list-icon {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     left: -16px;
+    top: 2px;
 }
 
 .header-icon {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -16px;
+    width: 18px;
+    height: 18px;
+    left: -18px;
     top: -20px;
     filter: invert(1);
 }
@@ -90,7 +91,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    left: -13px;
+    left: -15px;
     top: 3px;
 }
 
