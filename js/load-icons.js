@@ -10,7 +10,7 @@ function loadAllIcons() {
 }
 
 
-function loadIcon(id) {
+function loadIcon(id, linkchanged=false) {
     try {
         let itemInside = document.getElementById(id)
         if (itemInside.hasAttribute('icon-link')){
@@ -19,12 +19,16 @@ function loadIcon(id) {
                 imgOld.src = document.getElementById(id).getAttribute('icon-link')
             }
             else {
-                imgOld.src = 'images/icons/autorenew.svg'
-                autoIcon(id)
+                autoIcon(id, linkchanged)
             }
         }
         else {
-            autoIcon(id)
+            if  (linkchanged){
+                autoIcon(id, linkchanged)
+            }
+            else if(!itemInside.hasAttribute('cache-icon-link')){
+                autoIcon(id)
+            }
         }
     } catch (e) {
         if (e instanceof TypeError) {}
@@ -32,8 +36,15 @@ function loadIcon(id) {
     }
 }
 
-function autoIcon(id){
-    let link = document.getElementById(id).getAttribute('link')
+function autoIcon(id, linkchanged=false){
+    let bm = document.getElementById(id)
+    let link = bm.getAttribute('link')
+    if (linkchanged) {
+        bm.setAttribute('cache-icon-link', 'images/icons/autorenew.svg')
+        let imgOld = document.getElementById('icon-' + id)
+        imgOld.src = 'images/icons/autorenew.svg'
+    }
+
     let google_img = new Image()
     if (varDefined(link)) {
         let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
@@ -80,7 +91,5 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
 
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
-    if (imgOld.src !== 'images/icons/autorenew.svg'){
-        chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
-    }
+    chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
 }
