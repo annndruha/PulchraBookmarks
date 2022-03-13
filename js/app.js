@@ -30,12 +30,12 @@ function initSettingsValues(fromfile = false) {
     })
 }
 
-$(window).on('ready', () => { // load change
+document.addEventListener("DOMContentLoaded", () => {
     initSettingsValues()
     beautyfyView()
 })
 
-$(window).on('resize', () => {
+window.addEventListener('resize', () => {
     beautyfyView()
 })
 

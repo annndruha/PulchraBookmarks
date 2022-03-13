@@ -33,8 +33,6 @@ $('#close-settings-button, .cancel-overlay').on('click', function (e) {
     closeSettings()
 })
 
-$('#checkbox-new-tab, #checkbox-show-quick, #checkbox-show-header').on('click', () => {}, true) // Super important string with true
-
 $('#new-tab').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
