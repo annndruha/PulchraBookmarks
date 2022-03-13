@@ -44,10 +44,10 @@ function saveToCloud() {
         chrome.storage.sync.set(res, () => {
             console.log('Save bookmarks in cloud')
             let save_icon = document.getElementById('icon-cloud-save')
-            save_icon.setAttribute("src", "images/icons/cloud_done.svg")
+            save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
             setTimeout(function () {
                 let load_icon = document.getElementById('icon-cloud-save')
-                load_icon.setAttribute("src", "images/icons/backup.svg")
+                load_icon.setAttribute('src', 'images/icons/backup.svg')
             }, 1500);
         })
     })
@@ -63,13 +63,13 @@ function loadFromCloud() {
             initSettingsValues(true)
 
             let load_icon = document.getElementById('icon-cloud-load')
-            load_icon.setAttribute("src", "images/icons/cloud_done.svg")
+            load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
             setTimeout(function () {
                 let load_icon = document.getElementById('icon-cloud-load')
-                load_icon.setAttribute("src", "images/icons/cloud_download.svg")
+                load_icon.setAttribute('src', 'images/icons/cloud_download.svg')
             }, 1500);
         } else {
-            alert("Cloud hasn't any data")
+            alert('Cloud hasn\'t any data')
         }
     })
 }
