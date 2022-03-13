@@ -15,7 +15,6 @@ function loadIcon(id) {
         let itemInside = document.getElementById(id)
         if (itemInside.hasAttribute('icon-link')){
             let imgOld = document.getElementById('icon-' + id)
-            $('#' + id).css('background-color', 'rgba(255, 255, 255)').css('cursor', 'pointer')
             if (varDefined(itemInside.getAttribute('icon-link'))){
                 imgOld.src = document.getElementById(id).getAttribute('icon-link')
             }
@@ -37,7 +36,6 @@ function autoIcon(id){
     let link = document.getElementById(id).getAttribute('link')
     let google_img = new Image()
     if (varDefined(link)) {
-        $('#' + id).css('background-color', 'rgba(255, 255, 255)').css('cursor', 'pointer')
         let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
         google_img.src = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=128'
         google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id, true)

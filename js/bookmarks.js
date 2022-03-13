@@ -59,7 +59,7 @@ function createTemplate(itemInside){
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
-    }).css('background-color', 'transparent')
+    })
     itemInside.className = 'grid-item-inside empty-icon'
 }
 
