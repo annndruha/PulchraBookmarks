@@ -20,6 +20,10 @@ function createBookmarks() {
             if (hasChields(root[i])) {
                 root_item.append(getListIcon('closed', 'none', 'header-icon'))
             }
+            else {
+                root_item.attr('link', root[i].url)
+                LinkRightClick(root_item)
+            }
             $('#bookmarks').append(root_item)
             $('#root-header-' + root[i].id).on('click', createRootElementTree)
             $('.app-container').on('click', deleteRootElementTree)
@@ -124,7 +128,9 @@ function dumpNode(bookmarkNode) {
                 openLink(anchor.attr('link'))
             })
             pseudoli.append(getListIcon('site', anchor.attr('link')))
+            pseudoli.attr('link', bookmarkNode.url)
+            LinkRightClick(pseudoli)
         }
-        return pseudoli.append(li);
+        return pseudoli.append(li)
     }
 }

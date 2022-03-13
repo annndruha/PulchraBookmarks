@@ -1,7 +1,7 @@
 function updateBottomMenuBinds() {
     $('.bm-item').off('click').on('click', function () {openLink($(this).attr('link'))})
     $('#settings-open-button').off('click').on('click', () => {openSettings()})
-    bottomItemRightClick()
+    LinkRightClick(".bm-item")
 }
 
 function addBootomMenu(cols) {
