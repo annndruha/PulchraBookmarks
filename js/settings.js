@@ -77,6 +77,11 @@ $('#show-header').on('click', (e) => {
     })
 })
 
+$('#reload-icons').on('click', function (e) {
+    e.stopPropagation()
+    loadAllIcons(true)
+})
+
 // $('.changegrid').hover(
 //     () => { // In hover
 //     $('.empty-icon').css('border','1px solid #fff')},

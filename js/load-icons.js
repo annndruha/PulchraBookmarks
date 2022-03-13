@@ -1,9 +1,9 @@
-function loadAllIcons() {
+function loadAllIcons(linkchanged = false) {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         for (let r = 0; r < res['rows']; r++) {
             for (let c = 0; c < res['cols']; c++) {
                 let id = r.toString() + c.toString()
-                loadIcon(id)
+                loadIcon(id, linkchanged)
             }
         }
     })
