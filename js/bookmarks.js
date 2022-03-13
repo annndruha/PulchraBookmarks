@@ -60,7 +60,7 @@ function createTemplate(itemInside){
         e.stopPropagation()
         editBookmark(this.id)
     })
-    itemInside.className = 'grid-item-inside empty-icon'
+    itemInside.className = 'grid-item-inside empty-icon-bm empty-icon'
 }
 
 function createMark(itemInside, link){
@@ -238,14 +238,3 @@ function beautyfyView() {
         $('.pseudo-grid-item').css('padding-right', keys[key]['pi']).css('padding-left', keys[key]['pi'])
     })
 }
-
-// function updateHovers(){
-//     $('.grid-item').hover(
-//         () => { // In hover
-//             console.log($(this).children('.empty-icon'))
-//             $(this).find('.empty-icon').css('border','1px solid #fff').css('background-color', '#fff')
-//             },
-//         () => { // Out hover
-//             $(this).find('.empty-icon').css('border','none')}
-//     )//.css('border','none')
-// }

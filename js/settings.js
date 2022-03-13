@@ -18,6 +18,7 @@ $('#range-rows').on('input', function (e) {
     document.getElementById('rows').innerText = rows.toString()
     chrome.storage.local.set({['rows']: rows}, () => {})
     makeGrid(cols, rows)
+    setTimeout(() => {$('.empty-icon-bm').css('border','1px solid #fff')}, 20)
 })
 
 $('#range-cols').on('input', function (e) {
@@ -26,6 +27,7 @@ $('#range-cols').on('input', function (e) {
     document.getElementById('cols').innerText = cols.toString()
     chrome.storage.local.set({['cols']: cols}, () => {})
     makeGrid(cols, rows)
+    setTimeout(() => {$('.empty-icon-bm').css('border','1px solid #fff')}, 20)
 })
 
 $('#close-settings-button, .cancel-overlay').on('click', function (e) {
@@ -82,12 +84,11 @@ $('#reload-icons').on('click', function (e) {
     loadAllIcons(true)
 })
 
-// $('.changegrid').hover(
-//     () => { // In hover
-//     $('.empty-icon').css('border','1px solid #fff')},
-//     () => { // Out hover
-//         $('.empty-icon').css('border','none')
-//         updateHovers()
-//     // .css('filter', 'drop-shadow(0px 0px 3px #000)')
-//     }
-// )
+$('.changegrid').hover(
+    () => { // In hover
+    $('.empty-icon-bm').css('border','1px solid #fff')},
+    () => { // Out hover
+    console.log('unhover')
+    $('.empty-icon-bm').css('border','none')
+    }
+)
