@@ -1,9 +1,7 @@
 function loadAllIcons() {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
-        let cols = res['cols']
-        let rows = res['rows']
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
+        for (let r = 0; r < res['rows']; r++) {
+            for (let c = 0; c < res['cols']; c++) {
                 let id = r.toString() + c.toString()
                 loadIcon(id)
             }
@@ -16,8 +14,8 @@ function loadIcon(id) {
     try {
         let itemInside = document.getElementById(id)
         if (itemInside.hasAttribute('icon-link')){
-            $('#' + id).css('background-color', 'rgba(255, 255, 255)').css('cursor', 'pointer')
             let imgOld = document.getElementById('icon-' + id)
+            $('#' + id).css('background-color', 'rgba(255, 255, 255)').css('cursor', 'pointer')
             if (varDefined(itemInside.getAttribute('icon-link'))){
                 imgOld.src = document.getElementById(id).getAttribute('icon-link')
             }
@@ -84,5 +82,7 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
 
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
-    chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
+    if (imgOld.src !== 'images/icons/autorenew.svg'){
+        chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
+    }
 }

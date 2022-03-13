@@ -54,6 +54,7 @@ function makeIconTemplate(itemInside) {
 function createTemplate(itemInside){
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', '')
+    itemInside.setAttribute('cache-icon-link', '')
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
