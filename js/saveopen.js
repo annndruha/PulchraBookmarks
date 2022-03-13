@@ -1,13 +1,35 @@
 // noinspection JSJQueryEfficiency
+function getPureJSON(json){
+    for (let r = 0; r < json['rows']; r++) {
+        for (let c = 0; c < json['cols']; c++) {
+            let id = r.toString() + c.toString()
+            delete json[id][0]['cache-icon-link']
+        }
+    }
+    for (let r = json['rows']; r < 10; r++) {
+        for (let c = 0; c <  10; c++) {
+            let id = r.toString() + c.toString()
+            delete json[id]
+        }
+    }
+    for (let r = 0; r < 10; r++) {
+        for (let c = json['cols']; c < 10; c++) {
+            let id = r.toString() + c.toString()
+            delete json[id]
+        }
+    }
+    return json
+}
+
 
 function saveToFile() {
     chrome.storage.local.get(null, (res) => {
         let now = new Date()
-        let months = now.getMonth() + 1
-        let now_str = now.getDate() + '.' + months + '.' + now.getFullYear()
+        let now_str = now.toLocaleDateString("ru-RU")
+        let json = getPureJSON(res)
         $('<a></a>', {
             'download': 'pulchra-' + now_str + '.json',
-            'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(res, null, '\t'))
+            'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
         }).appendTo('body').click(() => {
             $(this).remove()
         })[0].click()
@@ -18,10 +40,12 @@ function saveToFile() {
 function loadFromFile() {
     try {
         let fileReader = new FileReader()
-        fileReader.readAsDataURL($('#upload_input').prop('files')[0])
+        let files = document.getElementById('upload_input').files[0]
+        fileReader.readAsDataURL(files)
         fileReader.onload = () => {
             try {
-                const json = JSON.parse(atob(fileReader.result.substring(29)))
+                const cjson = JSON.parse(atob(fileReader.result.substring(29)))
+                let json = getPureJSON(cjson)
                 chrome.storage.local.clear()
                 chrome.storage.local.set(json, () => {
                 })
@@ -41,7 +65,8 @@ function loadFromFile() {
 
 function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
-        chrome.storage.sync.set(res, () => {
+        let json = getPureJSON(res)
+        chrome.storage.sync.set(json, () => {
             console.log('Save bookmarks in cloud')
             let save_icon = document.getElementById('icon-cloud-save')
             save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
@@ -55,10 +80,11 @@ function saveToCloud() {
 
 function loadFromCloud() {
     chrome.storage.sync.get(null, (res) => {
-        if (varDefined(res['rows'])) {
+        let json = getPureJSON(res)
+        if (varDefined(json['rows'])) {
             console.log('Load bookmarks from cloud')
             chrome.storage.local.clear()
-            chrome.storage.local.set(res, () => {
+            chrome.storage.local.set(json, () => {
             })
             initSettingsValues(true)
 
