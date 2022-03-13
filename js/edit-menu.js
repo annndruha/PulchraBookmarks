@@ -20,7 +20,7 @@ function editBookmark(menu_img_id) {
     //     bookmark.setAttribute('icon-link', newIconLink)
     //     chrome.storage.local.set({[id]: {0: {"link": newLink, "icon-link": newIconLink}}}, () => {})
     // }
-    chrome.storage.local.set({[id]: {0: {"link": newLink}}}, () => {})
+    chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
     recreateMark(bookmark)
     loadIcon(id)
 }

@@ -53,12 +53,12 @@ function makeIconTemplate(itemInside) {
 
 function createTemplate(itemInside){
     let iconDiv = makeAddBookmark(itemInside.id)
-    itemInside.setAttribute('link', "")
+    itemInside.setAttribute('link', '')
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         editBookmark(this.id)
-    }).css("background-color", "transparent")
+    }).css('background-color', 'transparent')
     itemInside.className = 'grid-item-inside empty-icon'
 }
 
@@ -89,14 +89,14 @@ function recreateMark(itemInside) {
     itemInside.innerHTML = ''
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
-            let link = res[itemInside.id][0]["link"]
+            let link = res[itemInside.id][0]['link']
             let iconLink = res[itemInside.id][0]['icon-link']
             let cachedIconLink = res[itemInside.id][0]['cache-icon-link']
             if (varDefined(iconLink)) {
-                itemInside.setAttribute("icon-link", iconLink)
+                itemInside.setAttribute('icon-link', iconLink)
             }
             if (varDefined(cachedIconLink)) {
-                itemInside.setAttribute("cache-icon-link", cachedIconLink)
+                itemInside.setAttribute('cache-icon-link', cachedIconLink)
             }
             if (varDefined(link)) {
                 createMark(itemInside, link)
@@ -121,7 +121,7 @@ function makeMark(id) {
 }
 
 function deleteMark(id){
-    chrome.storage.local.set({[id]: {0: {"link": ''}}}, () => {
+    chrome.storage.local.set({[id]: {0: {'link': ''}}}, () => {
         let bookmark = document.getElementById(id)
         recreateMark(bookmark)
     })

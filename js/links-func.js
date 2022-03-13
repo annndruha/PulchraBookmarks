@@ -32,25 +32,21 @@ function isNumeric(value) {
 
 function openLink(open_link, newtab='auto') {
     if (varDefined(open_link)) {
-        chrome.storage.local.get(['new-tab'], function (res) {
-            let innewtab = ''
-            if (newtab === 'auto'){
-                innewtab = res['new-tab']
-            }
-            else if (newtab === true){
-                innewtab = true
-            }
-            else {
-                innewtab = false
-            }
-            innewtab = newtab === true;
-            if (innewtab) {
-                chrome.tabs.create({'url': open_link})
-            } else {
-                chrome.tabs.update({active: true, url: open_link})
-            }
-        })
-        console.log('User open: ' + open_link)
+        if (newtab === 'auto')
+        {
+            chrome.storage.local.get(['new-tab'], function (res) {
+                if (res['new-tab']) {
+                    chrome.tabs.create({'url': open_link})
+                } else {
+                    chrome.tabs.update({active: true, url: open_link})
+                }})
+        }
+        else if (newtab === true) {
+            chrome.tabs.create({'url': open_link})
+        }
+        else {
+            chrome.tabs.update({active: true, url: open_link})
+        }
     } else {
         alert('Empty link')
     }

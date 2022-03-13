@@ -1,7 +1,7 @@
 function updateBottomMenuBinds() {
     $('.bm-item').off('click').on('click', function () {openLink($(this).attr('link'))})
     $('#settings-open-button').off('click').on('click', () => {openSettings()})
-    LinkRightClick(".bm-item")
+    LinkRightClick('.bm-item')
 }
 
 function addBootomMenu(cols) {
@@ -17,7 +17,7 @@ function addBootomMenu(cols) {
         grid_row.appendChild(item).className = 'grid-item'
         grid_row.id = 'row-settings'
         grid.appendChild(grid_row).className = 'grid-row'
-        $('#grid-item-settings').css("width", (220 * cols - 20).toString() + "px")
+        $('#grid-item-settings').css('width', (220 * cols - 20).toString() + 'px')
         updateBottomMenuBinds()
     })
 }

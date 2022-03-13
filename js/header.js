@@ -13,14 +13,13 @@ function deleteHeaderMenu() {
 
 function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
-        let root = bookmarkTreeNodes[0]["children"][0]["children"]
+        let root = bookmarkTreeNodes[0]['children'][0]['children']
         for (let i = 0; i < root.length; i++) {
             let root_item = $('<div class="header-item" id="root-header-' + root[i].id + '">')
             root_item.text(root[i].title)
             if (hasChields(root[i])) {
-                root_item.append(getListIcon('closed', 'none', 'header-icon'))
-            }
-            else {
+                root_item.append(addListIcon(false, true))
+            } else {
                 root_item.attr('link', root[i].url)
                 LinkRightClick(root_item)
             }
@@ -31,13 +30,15 @@ function createBookmarks() {
     })
 }
 
-function hasChields(item){
-    return !!(item.children && item.children.length > 0);
+function hasChields(item) {
+    return !!(item.children && item.children.length > 0)
 }
 
 function deleteRootElementTree() {
-    let root_popup = document.getElementById("root_popup")
-    if (varDefined(root_popup)){root_popup.remove()}
+    let root_popup = document.getElementById('root_popup')
+    if (varDefined(root_popup)) {
+        root_popup.remove()
+    }
 }
 
 function createRootElementTree() {
@@ -46,7 +47,7 @@ function createRootElementTree() {
         if (rootitemNodes[0].children) {
             let root_popup = document.createElement('div')
             let app_container = document.getElementById('app-container')
-            root_popup.id = "root_popup"
+            root_popup.id = 'root_popup'
             app_container.appendChild(root_popup).className = 'root_popup'
             let root_item = document.getElementById(this.id)
             $(root_popup).css('left', root_item.offsetLeft + 'px')
@@ -59,42 +60,30 @@ function createRootElementTree() {
 
 function dumpTreeNodes(bookmarkNodes) {
     let list = $('<ul class="sublist">')
-    for (let i = 0; i < bookmarkNodes.length; i++) { //bookmarkNodes.length
+    for (let i = 0; i < bookmarkNodes.length; i++) {
         list.append(dumpNode(bookmarkNodes[i]))
     }
     return list
 }
 
-function getListIcon(status='closed', link='none', cl='list-icon'){
+function addListIcon(link = false, header = false) {
+    let cl = (header) ? 'header-icon' : 'list-icon'
     let pseudofoldericon = $('<div class="pseudo-list-icon">')
-    let foldericon = $('<img alt="" class='+cl+'>')
-    if (status === 'closed')
-    {
-        foldericon.attr('src', 'images/icons/folder_open.svg')
-        pseudofoldericon.append(foldericon)
-    }
-    else if (status === 'opened'){
-        foldericon.attr('src', 'images/icons/arrow_drop.svg')
-        pseudofoldericon.append(foldericon)
-    }
-    else if (status === 'site'){
-        // foldericon.attr('src', 'images/icons/language.svg')
-        if (cl !== 'list-icon')
-        {
-            foldericon.attr('class', cl)
-        }
-        else {
-            foldericon.attr('class', 'site-icon')
-        }
+    let foldericon = $('<img alt="" class=' + cl + '>')
+    if (link) {
         foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=32')
-        // foldericon.on('load', {'param': 'foldericon'}, () => {
-        //     if (foldericon.get(0).naturalWidth === 16) {
-        //         foldericon.attr('src', '../images/icons/language.svg')
-        //     }
-        // })
-        pseudofoldericon.append(foldericon)
+    } else {
+        foldericon.attr('src', 'images/icons/folder_open.svg')
     }
+    pseudofoldericon.append(foldericon)
     return pseudofoldericon
+}
+
+function updateListIcon(pseudoli) {
+    let status = $(pseudoli).attr('status')
+    let icon = $(pseudoli).find('.list-icon')
+    let src = (status === 'closed') ? 'folder_open.svg' : 'folder.svg'
+    icon.attr('src', 'images/icons/' + src)
 }
 
 function dumpNode(bookmarkNode) {
@@ -107,19 +96,24 @@ function dumpNode(bookmarkNode) {
         let pseudoli = $('<div class="pseudoli">')
         let li = $(bookmarkNode.title ? '<li class="my-li">' : '<div>')
         li.attr('status', 'closed')
+        pseudoli.attr('status', 'closed')
         li.append(span)
         if (bookmarkNode.children && bookmarkNode.children.length > 0) {
             li.on('click', (e) => {
                 e.stopPropagation()
                 if (li.attr('status') === 'closed') {
                     li.attr('status', 'opened')
+                    pseudoli.attr('status', 'opened')
+                    updateListIcon(pseudoli)
                     li.append(dumpTreeNodes(bookmarkNode.children, li.attr('status')))
                 } else {
                     li.attr('status', 'closed')
+                    pseudoli.attr('status', 'closed')
+                    updateListIcon(pseudoli)
                     li.children('.sublist').remove()
                 }
             })
-            pseudoli.append(getListIcon(li.attr('status')))
+            pseudoli.append(addListIcon())
 
         } else {
             anchor.attr('link', bookmarkNode.url)
@@ -127,7 +121,7 @@ function dumpNode(bookmarkNode) {
                 e.stopPropagation()
                 openLink(anchor.attr('link'))
             })
-            pseudoli.append(getListIcon('site', anchor.attr('link')))
+            pseudoli.append(addListIcon(anchor.attr('link')))
             pseudoli.attr('link', bookmarkNode.url)
             LinkRightClick(pseudoli)
         }
