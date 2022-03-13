@@ -17,11 +17,16 @@ function LinkRightClick(what_to_attach) {
         e.stopPropagation()
         hideAllRightClick()
         let link = $(this).attr('link').toString()
-        $('#click-menu-bottom-menu').off('click').on('click', {param: 'link'}, function (e) {
+        $('#click-menu-bottom-menu').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show(100)
+        $('.click-menu-row').off('click').on('click', {param1: 'link'}, function (e) {
             e.stopPropagation()
             hideAllRightClick()
-            openLink(link, true)
-        }).css({top: e.pageY + 'px', left: e.pageX + 'px'}).show(100)
+            switch ($(this).attr('data-action')) {
+                case 'new-tab':
+                    openLink(link, true)
+                    break
+            }
+        })
     })
 }
 

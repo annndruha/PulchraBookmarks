@@ -31,6 +31,7 @@ function isNumeric(value) {
 }
 
 function openLink(open_link, newtab='auto') {
+    open_link = getOpenLink(open_link)
     if (varDefined(open_link)) {
         if (newtab === 'auto')
         {
