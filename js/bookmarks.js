@@ -1,12 +1,3 @@
-function makeSubMenu(id) {
-    let subMenu = document.createElement('div')
-    let img = document.createElement('img')
-    img.setAttribute('src', 'images/icons/edit.svg')
-    img.id = 'img-' + id
-    subMenu.appendChild(img).className = 'grid-item-inside-menu-img'
-    return subMenu
-}
-
 function makeAddBookmark(id){
     let subMenu = document.createElement('div')
     let img = document.createElement('img')
@@ -70,13 +61,7 @@ function createMark(itemInside, link){
 
     let iconDiv = makeIconTemplate(itemInside)
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
-
-    let subMenu = makeSubMenu(itemInside.id)
-    itemInside.appendChild(subMenu).className = 'grid-item-inside-menu'
-    $('#img-'+itemInside.id).off('click').on('click', function (e) {
-        e.stopPropagation()
-        editBookmark(this.id)
-    })
+    
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
         let link = this.getAttribute('link')

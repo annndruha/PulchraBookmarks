@@ -50,7 +50,7 @@ function createRootElementTree() {
             root_popup.id = 'root_popup'
             app_container.appendChild(root_popup).className = 'root_popup'
             let root_item = document.getElementById(this.id)
-            $(root_popup).css('left', root_item.offsetLeft + 'px')
+            $(root_popup).css('left', root_item.offsetLeft -20 + 'px')
             $(root_popup).append(dumpTreeNodes(rootitemNodes[0]['children']))
         } else {
             openLink(rootitemNodes[0].url)
