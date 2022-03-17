@@ -12,3 +12,15 @@ body {
     transition: margin 500ms, padding 500ms;
     height: 100vh;
 }
+
+::-webkit-scrollbar {
+    display: none;
+    /*width: 0.7em;*/
+    /*background-color: transparent;*/
+    /*margin-right: 0.5em;*/
+}
+
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color: darkgrey;*/
+/*    border-radius: 1em;*/
+/*}*/
