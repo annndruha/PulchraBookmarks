@@ -27,7 +27,7 @@
 }
 
 .header-right {
-    filter: invert(1) drop-shadow(0px 0px 3px rgb(0 0 0 / 0.4));
+    filter: invert(1) drop-shadow(0px 0px 3px black);
     width: 18px;
     height: 18px;
     padding-top: 2px;
@@ -84,7 +84,7 @@
     height: 18px;
     left: -20px;
     top: -20px;
-    filter: invert(1);
+    filter: invert(1) drop-shadow(0px 0px 2px black);
 }
 
 .site-icon {
