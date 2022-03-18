@@ -119,6 +119,19 @@
     background-color: #eee;
 }
 
+.input-row-back-out:hover ~ #load-background {
+    background-color: #eee;
+}
+
+.input-row-back-out {
+    width: 652px;
+    height: 34px;
+    position: absolute;
+    top: 78px;
+    opacity: 0;
+    overflow: hidden;
+}
+
 .input-row-1 {
     width: 652px;
     height: 34px;
@@ -136,7 +149,7 @@
     overflow: hidden;
 }
 
-#upload_input {
+#upload_input, #upload_background {
     cursor: pointer;
     font-size: 50px;
     width: 652px;
@@ -144,20 +157,20 @@
     overflow: hidden;
 }
 
-#load-from-file {
+#load-from-file, #load-background {
     padding: 0;
     height: 34px;
     width: 370px;
     overflow: hidden;
 }
 
-#load-text {
+#load-text, #load-text-background {
     position: absolute;
     left: 15px;
     padding-top: 8px;
 }
 
-#load-icon {
+#load-icon, #load-icon-background {
     position: absolute;
     right: 10px;
     padding-top: 5px;

@@ -1,7 +1,8 @@
 body {
     background-image: url(../images/backgrounds/windows.jpg);
-    /*background-image: url(../images/backgrounds/white.jpg);*/
-    /*background-image: url(../images/backgrounds/black.jpg);*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font: 1.0em Arial, sans-serif;
     padding: 0;
     margin: 0;

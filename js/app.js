@@ -29,7 +29,9 @@ function initSettingsValues(fromfile = false) {
         makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
     })
     chrome.storage.local.get(['background'], function (res) {
-        $('body').css('background-image', 'url('+res['background']+')')
+        if (varDefined(res['background'])){
+            $('body').css('background-image', 'url('+res['background']+')')
+        }
     })
 }
 
