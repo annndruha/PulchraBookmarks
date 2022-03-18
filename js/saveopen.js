@@ -63,6 +63,33 @@ function loadFromFile() {
     }
 }
 
+function loadBackground() {
+    try {
+        let fileReader = new FileReader()
+        let files = document.getElementById('upload_input').files[0]
+        fileReader.readAsDataURL(files)
+        fileReader.onload = () => {
+            try {
+                fileReader.result
+                // const cjson = JSON.parse(atob(fileReader.result.substring(29)))
+                // let json = getPureJSON(cjson)
+                // chrome.storage.local.clear()
+                chrome.storage.local.set({'background':fileReader.result}, () => {})
+                // initSettingsValues(true)
+                //console.log(fileReader.result)
+                $('body').css('background-image', 'url('+fileReader.result+')')
+            } catch (e) {
+                alert('Broken file!\n' + e.toString())
+            }
+        }
+    } catch (e) {
+        if (e instanceof TypeError) {
+        } else {
+            console.log(e)
+        }
+    }
+}
+
 function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)
@@ -107,7 +134,8 @@ $('#save-to-file').on('click', function (e) {
 
 $('#upload_input').on('change', function (e) {
     e.stopPropagation()
-    loadFromFile()
+    // loadFromFile()
+    loadBackground()
 })
 
 $('#save-to-cloud').on('click', function (e) {
