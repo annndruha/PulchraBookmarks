@@ -88,7 +88,5 @@ $('.changegrid').hover(
     () => { // In hover
     $('.empty-icon-bm').css('border','1px solid #fff')},
     () => { // Out hover
-    console.log('unhover')
-    $('.empty-icon-bm').css('border','none')
-    }
+    $('.empty-icon-bm').css('border','none')}
 )

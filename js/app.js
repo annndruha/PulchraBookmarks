@@ -32,6 +32,9 @@ function initSettingsValues(fromfile = false) {
         if (varDefined(res['background'])){
             $('body').css('background-image', 'url('+res['background']+')')
         }
+        else {
+            $('body').css('background-image', 'url(../images/backgrounds/windows.jpg)')
+        }
     })
 }
 
