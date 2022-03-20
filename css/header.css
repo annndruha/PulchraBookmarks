@@ -17,8 +17,15 @@
     overflow: hidden;
 }
 
+/*.header-item {*/
+/*    padding-right: 30px;*/
+/*}*/
 .header-item {
-    padding-right: 30px;
+    padding-left: 10px;
+}
+
+.header-folder{
+    padding-left: 30px;
 }
 
 .header-item:hover {
@@ -40,7 +47,7 @@
 }
 
 #root_popup {
-    top: 40px;
+    top: 35px;
     max-height: 600px;
     max-width: 700px;
     position: fixed;

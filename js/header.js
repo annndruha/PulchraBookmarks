@@ -15,7 +15,15 @@ function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
         let root = bookmarkTreeNodes[0]['children'][0]['children']
         for (let i = 0; i < root.length; i++) {
-            let root_item = $('<div class="header-item" id="root-header-' + root[i].id + '">')
+            let cl = ""
+            if (hasChields(root[i]))
+            {
+                cl = "header-item header-folder"
+            }
+            else {
+                cl = "header-item"
+            }
+            let root_item = $('<div class="'+cl+'" id="root-header-' + root[i].id + '">')
             root_item.text(root[i].title)
             if (hasChields(root[i])) {
                 root_item.append(addListIcon(false, true))
@@ -50,7 +58,7 @@ function createRootElementTree() {
             root_popup.id = 'root_popup'
             app_container.appendChild(root_popup).className = 'root_popup'
             let root_item = document.getElementById(this.id)
-            $(root_popup).css('left', root_item.offsetLeft -20 + 'px')
+            $(root_popup).css('left', root_item.offsetLeft + 10 + 'px')
             $(root_popup).append(dumpTreeNodes(rootitemNodes[0]['children']))
         } else {
             openLink(rootitemNodes[0].url)
