@@ -30,6 +30,9 @@ function setJsonToLocalStorage(json) {
                         initSettingsValues(true)
                     })
                 }
+                else {
+                    initSettingsValues(true)
+                }
             })
         })
     })
