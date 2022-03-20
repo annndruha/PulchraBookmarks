@@ -21,6 +21,20 @@ function getPureJSON(json){
     return json
 }
 
+function setJsonToLocalStorage(json) {
+    chrome.storage.local.get(['background'], function (val) {
+        chrome.storage.local.clear(() => {
+            chrome.storage.local.set(json, () => {
+                if (varDefined(val['background'])){
+                    chrome.storage.local.set({'background':val['background']}, () => {
+                        initSettingsValues(true)
+                    })
+                }
+            })
+        })
+    })
+}
+
 
 function saveToFile() {
     chrome.storage.local.get(null, (res) => {
@@ -47,17 +61,7 @@ function loadFromFile() {
             try {
                 const cjson = JSON.parse(atob(fileReader.result.substring(29)))
                 let json = getPureJSON(cjson)
-                chrome.storage.local.get(['background'], function (val) {
-                    chrome.storage.local.clear(() => {
-                        chrome.storage.local.set(json, () => {
-                            if (varDefined(val['background'])){
-                                chrome.storage.local.set({'background':val['background']}, () => {
-                                    initSettingsValues(true)
-                                })
-                            }
-                        })
-                    })
-                })
+                setJsonToLocalStorage(json)
                 console.log('Load bookmarks from file')
             } catch (e) {
                 alert('Broken file!\n' + e.toString())
@@ -114,17 +118,7 @@ function loadFromCloud() {
         let json = getPureJSON(res)
         if (varDefined(json['rows'])) {
             console.log('Load bookmarks from cloud')
-            chrome.storage.local.get(['background'], function (val) {
-                chrome.storage.local.clear(() => {
-                    chrome.storage.local.set(json, () => {
-                        if (varDefined(val['background'])){
-                            chrome.storage.local.set({'background':val['background']}, () => {
-                                initSettingsValues(true)
-                            })
-                        }
-                    })
-                })
-            })
+            setJsonToLocalStorage(json)
             let load_icon = document.getElementById('icon-cloud-load')
             load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
             setTimeout(function () {

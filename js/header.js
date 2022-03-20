@@ -77,7 +77,7 @@ function dumpTreeNodes(bookmarkNodes) {
 function addListIcon(link = false, header = false) {
     let cl = (header) ? 'header-icon' : 'list-icon'
     let pseudofoldericon = $('<div class="pseudo-list-icon">')
-    let foldericon = $('<img alt="" class=' + cl + '>')
+    let foldericon = $('<img alt="" src="" class=' + cl + '>')
     if (link) {
         foldericon.attr('src', 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=32')
     } else {
