@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/right-click-menu.css">
+    <link rel="stylesheet" href="css/edit-menu.css">
 </head>
 
 <body>
@@ -221,6 +222,36 @@
     <div class="click-menu-row" data-action="edit">
         <img class="click-menu-inrow settings-icon" src="images/icons/edit.svg" alt="">
         <span class="click-menu-inrow click-menu-text">Edit</span>
+    </div>
+</div>
+<div class="edit_popup" id="edit_popup">
+    <div class="edit_popup-inner">
+    <div class="row " id="edit-title">
+        <div class="item-left">
+            <img class="edit-menu-inrow" id="edit-logo" draggable="false" src="images/branding/logo128.png" alt="">
+            <span class="edit-menu-inrow edit-menu-text">Edit bookmark</span>
+        </div>
+        <div class="item-right">
+            <img class="settings-icon" id="close-edit-button" src="images/icons/close.svg" alt="">
+        </div>
+    </div>
+    <div class="row">
+        <span class="edit-menu-inrow edit-menu-text">Link:</span>
+        <label for="edit-link-text"></label><input id="edit-link-text">
+    </div>
+    <div class="row">
+        <span class="edit-menu-inrow edit-menu-text">Text:</span>
+        <label for="edit-bookmark-text"></label><input id="edit-bookmark-text">
+    </div>
+    <div class="row">
+        <span class="edit-menu-inrow edit-menu-text">Icon:</span>
+        <label for="edit-icon-text"></label><input id="edit-icon-text">
+    </div>
+    <div class="row">
+        <div id="preview">
+        <img id="icon-preview" draggable="false" src="images/icons/language.svg" alt="">
+        </div>
+    </div>
     </div>
 </div>
 <script type="text/javascript" src="third-js/jquery-3.6.0.min.js"></script>

@@ -1,0 +1,50 @@
+#edit_popup {
+    /*top: -500px;*/
+    top: calc(50vh - 125px);
+    left: calc(50vw - 300px);
+    /*left: -500px;*/
+    width: 600px;
+    height: 250px;
+    position: fixed;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0 0 3px black;
+}
+
+.edit_popup-inner{
+    padding: 10px;
+}
+
+.edit-menu-text{
+    padding-top: 3px;
+    padding-right: 10px;
+    cursor: default;
+}
+
+#edit-title{
+    cursor: default;
+}
+
+#close-edit-button{
+    cursor: pointer;
+}
+
+#edit-logo {
+    padding-right: 5px;
+}
+
+#edit-link-text, #edit-bookmark-text, #edit-icon-text{
+    font-size: 1em;
+    width: 500px;
+    height: 25px;
+    border-radius: 1em;
+    border: #aaaaaa;
+    box-shadow: 0 0 3px black;
+    padding-left: 10px;
+}
+
+#icon-preview{
+    width: 50px;
+    height: 50px;
+}
