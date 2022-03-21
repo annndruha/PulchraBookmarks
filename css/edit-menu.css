@@ -1,9 +1,9 @@
 #edit_popup {
-    /*top: -500px;*/
-    top: calc(50vh - 95px);
-    left: calc(50vw - 300px);
-    /*left: -500px;*/
+    top: -500px;
+    left: -500px;
     width: 600px;
+    /*top: calc(50vh - 95px);*/
+    /*left: calc(50vw - 300px);*/
     /*height: 200px;*/
     position: fixed;
     overflow-y: auto;

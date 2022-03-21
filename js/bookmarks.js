@@ -3,7 +3,7 @@ function makeAddBookmark(id){
     let img = document.createElement('img')
     img.setAttribute('draggable', 'false')
     img.setAttribute('src', 'images/icons/add_circle_outline.svg')
-    img.id = 'img-' + id
+    img.id = 'icon-' + id
     subMenu.appendChild(img).className = 'grid-item-inside-add-img'
     return subMenu
 }

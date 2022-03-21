@@ -1,11 +1,12 @@
 function editBookmark(menu_img_id) {
-    let id = menu_img_id.replace('img-', '')
+    let id = menu_img_id.replace('icon-', '')
     let bookmark = document.getElementById(id)
     let link = bookmark.getAttribute('link')
+    let iconlink = bookmark.getAttribute('icon-link')
     let placeholder = varDefined(link) ? link : ''
 
     // let newLink = prompt('Enter new link:\n(Erase line to delete)', placeholder)
-    createEditPopup(id, placeholder)
+    createEditPopup(id, placeholder, iconlink)
     // if (newLink === null) {return}
     // if (newLink === ''){
     //     deleteMark(id)
@@ -34,33 +35,91 @@ function deleteEditPopup() {
         .css('left','-500px')
 }
 
-function createEditPopup(id, placeholder) {
+function createEditPopup(id, placeholder, iconlink) {
     $('#edit_popup')
         .css('top','calc(50vh - 95px)')
-        .css('left','calc(50vw - 300px)')
+        .css('left','calc(50vw - 300px)').attr('id-to-edit', id)
+    let link_value = document.getElementById("edit-link-text")
+    link_value.value = placeholder
+    link_value.placeholder = 'Link for this bookmark'
 
-    $('#edit-link-text').attr('value', placeholder)
+    let bm_value = document.getElementById("edit-bookmark-text")
+    bm_value.value = makeText(placeholder).textContent
+    bm_value.placeholder = 'Bookmark text'
 
-    let text_to_show = makeText(placeholder)
-    $('#edit-bookmark-text').attr('value', text_to_show.textContent)
-    $('#preview').attr('link', placeholder)
-    autoIcon('preview', true)
+    let icon_value = document.getElementById("edit-icon-text")
+    icon_value.placeholder = 'Automatic icon'
+    icon_value.value = ''
+
+    let preview_div = document.getElementById("preview")
+    preview_div.setAttribute('link', placeholder)
+
+    if (varDefined(iconlink)){
+        preview_div.setAttribute('icon-link', iconlink)
+        icon_value.value = iconlink
+    }
+    else {
+        preview_div.setAttribute('icon-link', '')
+        icon_value.value = ''
+    }
+    loadIcon('preview', true)
     $('.app-container').on('click', deleteEditPopup)
 }
 
 
 $('#edit-link-text').on('input', function (e) {
-    let text_to_show = makeText(e.target.value)
-    $('#edit-bookmark-text').attr('value', text_to_show.textContent)
+    let bm_value = document.getElementById("edit-bookmark-text")
+    bm_value.value = makeText(e.target.value).textContent
 
-    $('#preview').attr('link', e.target.value)
-    autoIcon('preview', true)
-    $('#icon-preview').attr('src', '')
+    let preview_div = document.getElementById("preview")
+    preview_div.setAttribute('link', e.target.value)
+    loadIcon('preview', true)
 })
 
-function saveEdit(){
+$('#edit-icon-text').on('input', function (e) {
+    let bm_value = document.getElementById("edit-icon-text")
+    let iconlink = bm_value.value
+    let preview_div = document.getElementById("preview")
+    if (varDefined(iconlink)){
+        preview_div.setAttribute('icon-link', iconlink)
+    }
+    else {
+        preview_div.setAttribute('icon-link', '')
+    }
+    loadIcon('preview', true)
+})
 
+function saveEdit(e){
+    // chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
+    let edit_popup = document.getElementById('edit_popup')
+    let id = edit_popup.getAttribute('id-to-edit')
+    let bookmark = document.getElementById(id)
+
+    let link_value = document.getElementById("edit-link-text")
+    let newLink = link_value.value
+    if (!varDefined(newLink)){
+        deleteMark(id)
+        return
+    }
+
+    let bm_value = document.getElementById("edit-icon-text")
+    let newIconLink = bm_value.value
+
+    bookmark.setAttribute('link', newLink)
+    if (varDefined(newIconLink))
+    {
+        bookmark.setAttribute('icon-link', newIconLink)
+        chrome.storage.local.set({[id]: {0: {"link": newLink, "icon-link": newIconLink}}}, () => {})
+    }
+    chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
+    loadIcon(id, true)
+    recreateMark(bookmark)
+    deleteEditPopup()
 }
+
+$('#edit-save-button').on('click', function (e) {
+    saveEdit(e)
+})
 
 $('#close-edit-button').on('click', function (e) {
     deleteEditPopup()
