@@ -44,7 +44,7 @@ function createEditPopup(id, placeholder, iconlink) {
     link_value.placeholder = 'Link for this bookmark'
 
     let bm_value = document.getElementById("edit-bookmark-text")
-    bm_value.value = makeText(placeholder).textContent
+    bm_value.value = makeText('preview', placeholder).textContent
     bm_value.placeholder = 'Bookmark text'
 
     let icon_value = document.getElementById("edit-icon-text")
@@ -69,7 +69,7 @@ function createEditPopup(id, placeholder, iconlink) {
 
 $('#edit-link-text').on('input', function (e) {
     let bm_value = document.getElementById("edit-bookmark-text")
-    bm_value.value = makeText(e.target.value).textContent
+    bm_value.value = makeText('preview', e.target.value).textContent
 
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', e.target.value)
@@ -90,7 +90,6 @@ $('#edit-icon-text').on('input', function (e) {
 })
 
 function saveEdit(e){
-    // chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
     let edit_popup = document.getElementById('edit_popup')
     let id = edit_popup.getAttribute('id-to-edit')
     let bookmark = document.getElementById(id)
@@ -102,16 +101,31 @@ function saveEdit(e){
         return
     }
 
-    let bm_value = document.getElementById("edit-icon-text")
-    let newIconLink = bm_value.value
+    let icon_value = document.getElementById("edit-icon-text")
+    let newIconLink = icon_value.value
 
+    let bm_value = document.getElementById("edit-bookmark-text")
+    let newText = bm_value.value
+
+    let value_to_save = {0: {"link": newLink}}
     bookmark.setAttribute('link', newLink)
     if (varDefined(newIconLink))
     {
         bookmark.setAttribute('icon-link', newIconLink)
-        chrome.storage.local.set({[id]: {0: {"link": newLink, "icon-link": newIconLink}}}, () => {})
+        value_to_save[0]["icon-link"] = newIconLink
     }
-    chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
+    else {
+        bookmark.removeAttribute('icon-link')
+    }
+    // if (newText !== makeText('preview', newLink).textContent)
+    // {
+    value_to_save[0]["title"] = newText
+    chrome.storage.local.set({[id]: value_to_save}, () => {
+        chrome.storage.local.get([id], function (res) {
+            console.log(res[id])
+        })
+    })
+
     loadIcon(id, true)
     recreateMark(bookmark)
     deleteEditPopup()
