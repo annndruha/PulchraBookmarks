@@ -36,7 +36,7 @@ function deleteEditPopup() {
 
 function createEditPopup(id, placeholder) {
     $('#edit_popup')
-        .css('top','calc(50vh - 125px)')
+        .css('top','calc(50vh - 95px)')
         .css('left','calc(50vw - 300px)')
 
     $('#edit-link-text').attr('value', placeholder)

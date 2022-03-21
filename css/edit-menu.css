@@ -1,10 +1,10 @@
 #edit_popup {
     /*top: -500px;*/
-    top: calc(50vh - 125px);
+    top: calc(50vh - 95px);
     left: calc(50vw - 300px);
     /*left: -500px;*/
     width: 600px;
-    height: 250px;
+    /*height: 200px;*/
     position: fixed;
     overflow-y: auto;
     background-color: white;
@@ -12,18 +12,29 @@
     box-shadow: 0 0 3px black;
 }
 
+.edit-menu-row{
+    padding-right: 70px;
+}
+
 .edit_popup-inner{
-    padding: 10px;
+    padding: 10px 10px 10px 5px;
 }
 
 .edit-menu-text{
     padding-top: 3px;
     padding-right: 10px;
+    padding-left: 5px;
     cursor: default;
 }
 
 #edit-title{
     cursor: default;
+}
+
+#preview {
+    position: absolute;
+    right: 10px;
+    top: 70px;
 }
 
 #close-edit-button{
@@ -36,10 +47,10 @@
 
 #edit-link-text, #edit-bookmark-text, #edit-icon-text{
     font-size: 1em;
-    width: 500px;
+    width: 420px;
     height: 25px;
     border-radius: 1em;
-    border: #aaaaaa;
+    border: #fff;
     box-shadow: 0 0 3px black;
     padding-left: 10px;
 }
@@ -47,4 +58,19 @@
 #icon-preview{
     width: 50px;
     height: 50px;
+    padding-right: 5px;
+}
+
+#edit-save-button{
+    cursor: pointer;
+    border-radius: 1em;
+    /*padding-top: 3px;*/
+}
+
+/*#edit-save-icon {*/
+/*    padding-top: 5px;*/
+/*}*/
+
+#edit-save-button:hover {
+    background-color: #eee;
 }
