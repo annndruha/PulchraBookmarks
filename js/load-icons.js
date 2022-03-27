@@ -31,20 +31,27 @@ function loadIcon(id, linkchanged=false) {
             }
         }
     } catch (e) {
-        if (e instanceof TypeError) {}
-        else {console.log(e)}
+        // if (e instanceof TypeError) {}
+        // else {console.log(e)}
+
+        console.log(e)
     }
 }
 
 function autoIcon(id, linkchanged=false){
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
+    let imgOld = document.getElementById('icon-' + id)
     if (linkchanged) {
-        bm.setAttribute('cache-icon-link', 'images/icons/autorenew.svg')
-        let imgOld = document.getElementById('icon-' + id)
-        imgOld.src = 'images/icons/autorenew.svg'
+        if (id !== 'preview') {
+            bm.setAttribute('cache-icon-link', 'images/icons/autorenew.svg')
+            imgOld.src = 'images/icons/autorenew.svg'
+        }
+        else {
+            bm.setAttribute('cache-icon-link', 'images/icons/language.svg')
+            imgOld.src = 'images/icons/language.svg'
+        }
     }
-
     let google_img = new Image()
     if (varDefined(link)) {
         let fav_link = getOpenLink(getDomain(link)) + '/favicon.ico'
@@ -52,8 +59,10 @@ function autoIcon(id, linkchanged=false){
         google_img.onload = () => waitToLoadFavicon(google_img, fav_link, id, true)
         google_img.onerror = () => waitToLoadFavicon(google_img, fav_link, id, false)
     } else {
-        if (document.getElementById('icon-' + id)) {
-            document.getElementById('icon-' + id).remove()
+        if (id !== 'preview') {
+            if (document.getElementById('icon-' + id)) {
+                document.getElementById('icon-' + id).remove()
+            }
         }
     }
 }
@@ -89,7 +98,12 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
         imgOld.src = '../images/icons/language.svg'
     }
 
-    let bm = document.getElementById(id)
-    let link = bm.getAttribute('link')
-    chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
+    if (id !== 'preview') {
+        chrome.storage.local.get([id], function (res) {
+            let storage_value = res[id]
+            storage_value[0]['cache-icon-link'] = imgOld.src
+            chrome.storage.local.set({[id]: storage_value}, () => {
+            })
+        })
+    }
 }

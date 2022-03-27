@@ -3,17 +3,21 @@ function makeAddBookmark(id){
     let img = document.createElement('img')
     img.setAttribute('draggable', 'false')
     img.setAttribute('src', 'images/icons/add_circle_outline.svg')
-    img.id = 'img-' + id
+    img.id = 'icon-' + id
     subMenu.appendChild(img).className = 'grid-item-inside-add-img'
     return subMenu
 }
 
-function makeText(link, id) {
+function textFromLink(link) {
     let text = getDomain(link)
-    let text_div = document.createElement('div')
     let textCopy = text
     text = text.split('.')[text.length - 1]
-    text_div.textContent = (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
+    return (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
+}
+
+function makeText(id, link, title='') {
+    let text_div = document.createElement('div')
+    text_div.textContent = (varDefined(title)) ? title : textFromLink(link)
     text_div.id = 'text-' + id
     return text_div
 }
@@ -54,9 +58,9 @@ function createTemplate(itemInside){
     itemInside.className = 'grid-item-inside empty-icon-bm empty-icon'
 }
 
-function createMark(itemInside, link){
+function createMark(itemInside, link, title){
     itemInside.setAttribute('link', link)
-    let textDiv = makeText(link, itemInside.id)
+    let textDiv = makeText(itemInside.id, link, title)
     itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
 
     let iconDiv = makeIconTemplate(itemInside)
@@ -76,6 +80,7 @@ function recreateMark(itemInside) {
     chrome.storage.local.get([itemInside.id], function (res) {
         try {
             let link = res[itemInside.id][0]['link']
+            let title = res[itemInside.id][0]['title']
             let iconLink = res[itemInside.id][0]['icon-link']
             let cachedIconLink = res[itemInside.id][0]['cache-icon-link']
             if (varDefined(iconLink)) {
@@ -85,7 +90,7 @@ function recreateMark(itemInside) {
                 itemInside.setAttribute('cache-icon-link', cachedIconLink)
             }
             if (varDefined(link)) {
-                createMark(itemInside, link)
+                createMark(itemInside, link, title)
             } else {
                 createTemplate(itemInside)
             }

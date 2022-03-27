@@ -1,0 +1,88 @@
+#edit_popup {
+    top: -500px;
+    left: -500px;
+    width: 600px;
+    /*top: calc(50vh - 95px);*/
+    /*left: calc(50vw - 300px);*/
+    /*height: 200px;*/
+    position: fixed;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0 0 3px black;
+}
+
+.close-edit{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    background: black;
+    opacity: 0.4;
+}
+
+.edit-menu-row{
+    padding-right: 70px;
+}
+
+.edit_popup-inner{
+    padding: 10px 10px 10px 5px;
+}
+
+.edit-menu-text{
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-left: 5px;
+    cursor: default;
+}
+
+#edit-title{
+    cursor: default;
+}
+
+#preview {
+    position: absolute;
+    right: 10px;
+    top: 70px;
+}
+
+#close-edit-button{
+    cursor: pointer;
+}
+
+#edit-logo {
+    padding-right: 5px;
+}
+
+#edit-link-text, #edit-bookmark-text, #edit-icon-text{
+    font-size: 1em;
+    width: 420px;
+    height: 25px;
+    border-radius: 1em;
+    border: #fff;
+    box-shadow: 0 0 3px black;
+    padding-left: 10px;
+}
+
+#icon-preview{
+    width: 50px;
+    height: 50px;
+    padding-right: 5px;
+}
+
+#edit-save-button{
+    cursor: pointer;
+    border-radius: 1em;
+    /*padding-top: 3px;*/
+}
+
+/*#edit-save-icon {*/
+/*    padding-top: 5px;*/
+/*}*/
+
+#edit-save-button:hover {
+    background-color: #eee;
+}

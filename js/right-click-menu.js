@@ -53,7 +53,7 @@ function gridItemRightClick() {
                     openLink(link, true)
                     break
                 case 'edit':
-                    setTimeout(() => {editBookmark('img-'+id)}, 20)
+                    setTimeout(() => {editBookmark('icon-'+id)}, 20)
                     break
                 case 'delete':
                     deleteMark(id)
