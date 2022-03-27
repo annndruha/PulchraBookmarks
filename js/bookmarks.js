@@ -8,17 +8,16 @@ function makeAddBookmark(id){
     return subMenu
 }
 
+function textFromLink(link) {
+    let text = getDomain(link)
+    let textCopy = text
+    text = text.split('.')[text.length - 1]
+    return (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
+}
+
 function makeText(id, link, title='') {
     let text_div = document.createElement('div')
-    if (varDefined(title)){
-        text_div.textContent = title
-    }
-    else {
-        let text = getDomain(link)
-        let textCopy = text
-        text = text.split('.')[text.length - 1]
-        text_div.textContent = (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
-    }
+    text_div.textContent = (varDefined(title)) ? title : textFromLink(link)
     text_div.id = 'text-' + id
     return text_div
 }

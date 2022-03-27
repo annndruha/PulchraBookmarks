@@ -12,6 +12,18 @@
     box-shadow: 0 0 3px black;
 }
 
+.close-edit{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    background: black;
+    opacity: 0.4;
+}
+
 .edit-menu-row{
     padding-right: 70px;
 }

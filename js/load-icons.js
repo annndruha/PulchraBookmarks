@@ -98,7 +98,12 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
         imgOld.src = '../images/icons/language.svg'
     }
 
-    let bm = document.getElementById(id)
-    let link = bm.getAttribute('link')
-    chrome.storage.local.set({[id]: {0: {'link': link, 'cache-icon-link': imgOld.src}}}, () => {})
+    if (id !== 'preview') {
+        chrome.storage.local.get([id], function (res) {
+            let storage_value = res[id]
+            storage_value[0]['cache-icon-link'] = imgOld.src
+            chrome.storage.local.set({[id]: storage_value}, () => {
+            })
+        })
+    }
 }
