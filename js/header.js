@@ -28,12 +28,19 @@ function createBookmarks() {
             if (hasChields(root[i])) {
                 root_item.append(addListIcon(false, true))
             } else {
-                root_item.attr('link', root[i].url)
-                LinkRightClick(root_item)
+                if (varDefined(root[i].url)){
+                    root_item.attr('link', root[i].url)
+                    LinkRightClick(root_item)
+                }
+                else {
+                    root_item = null; // If empty folder
+                }
             }
-            $('#bookmarks').append(root_item)
-            $('#root-header-' + root[i].id).on('click', createRootElementTree)
-            $('.app-container').on('click', deleteRootElementTree)
+            if (varDefined(root_item)){
+                $('#bookmarks').append(root_item)
+                $('#root-header-' + root[i].id).on('click', createRootElementTree)
+                $('.app-container').on('click', deleteRootElementTree)
+            }
         }
     })
 }
@@ -124,11 +131,19 @@ function dumpNode(bookmarkNode) {
             pseudoli.append(addListIcon())
 
         } else {
-            anchor.attr('link', bookmarkNode.url)
-            anchor.on('click', (e) => {
-                e.stopPropagation()
-                openLink(anchor.attr('link'))
-            })
+            if (varDefined(bookmarkNode.url)){
+                anchor.attr('link', bookmarkNode.url)
+                anchor.on('click', (e) => {
+                    e.stopPropagation()
+                    openLink(anchor.attr('link'))
+                })
+            }
+            else {
+                anchor.on('click', (e) => {
+                    e.stopPropagation()
+                    alert('Empty folder')
+                })
+            }
             pseudoli.append(addListIcon(anchor.attr('link')))
             pseudoli.attr('link', bookmarkNode.url)
             LinkRightClick(pseudoli)

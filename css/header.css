@@ -6,9 +6,6 @@
 #bookmarks{
     display: flex;
     flex-direction: row;
-}
-
-.header-left {
     padding-top: 3px;
     height: 18px;
     color: white;
