@@ -64,10 +64,10 @@ function loadBestIcon(link, id){
     let links = [getOpenLink(getDomain(link)) + '/favicon.ico',
                 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=64']
 
-    let google_img = new Image()
-    google_img.src = links[1]
-    google_img.onload = () => waitToLoadFavicon(google_img, links[0], id, true)
-    google_img.onerror = () => waitToLoadFavicon(google_img, links[0], id, false)
+    let img = new Image()
+    img.src = links[1]
+    img.onload = () => waitToLoadFavicon(img, links[0], id, true)
+    img.onerror = () =>  waitToLoadFavicon(img, links[0], id, false)
 }
 
 function waitToLoadFavicon(google_img, fav_link, id, loaded1) {
