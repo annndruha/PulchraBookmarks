@@ -8,6 +8,7 @@
     flex-direction: row;
     padding-top: 3px;
     height: 18px;
+    white-space: nowrap;
     color: white;
     text-shadow: 0 0 3px black;
     text-overflow: ellipsis;

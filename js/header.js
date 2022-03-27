@@ -29,6 +29,9 @@ function createBookmarks() {
                 root_item.append(addListIcon(false, true))
             } else {
                 if (varDefined(root[i].url)){
+                    if (root[i].title.length > 23){
+                        root_item.text(root[i].title.substring(0, 23) + '...')
+                    }
                     root_item.attr('link', root[i].url)
                     LinkRightClick(root_item)
                 }
