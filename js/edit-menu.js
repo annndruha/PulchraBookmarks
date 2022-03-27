@@ -89,6 +89,7 @@ function saveEdit(){
     let newLink = link_value.value
     if (!varDefined(newLink)){
         deleteMark(id)
+        deleteEditPopup()
         return
     }
 

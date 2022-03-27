@@ -31,9 +31,6 @@ function loadIcon(id, linkchanged=false) {
             }
         }
     } catch (e) {
-        // if (e instanceof TypeError) {}
-        // else {console.log(e)}
-
         console.log(e)
     }
 }
@@ -42,7 +39,7 @@ function autoIcon(id, linkchanged=false){
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
     let imgOld = document.getElementById('icon-' + id)
-    if (linkchanged) {
+    if (linkchanged) { // Placeholders
         if (id !== 'preview') {
             bm.setAttribute('cache-icon-link', 'images/icons/autorenew.svg')
             imgOld.src = 'images/icons/autorenew.svg'
