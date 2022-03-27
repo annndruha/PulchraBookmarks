@@ -15,6 +15,12 @@ function editBookmark(menu_img_id) {
 
 
 function deleteEditPopup() {
+    let link_value = document.getElementById("edit-link-text")
+    link_value.value = ''
+    let bm_value = document.getElementById("edit-bookmark-text")
+    bm_value.value = ''
+    let icon_value = document.getElementById("edit-icon-text")
+    icon_value.value = ''
     $('#edit_popup')
         .css('top','-500px')
         .css('left','-500px')
@@ -43,11 +49,11 @@ function createEditPopup(id, placeholder, iconlink) {
     chrome.storage.local.get([id], function (res) {
         bm_value.value = (varDefined(res[id][0]['title'])) ? res[id][0]['title'] : textFromLink(placeholder)
     })
-    bm_value.placeholder = 'Bookmark text'
+    bm_value.placeholder = 'Bookmark title'
 
     // Text-link to icon
     let icon_value = document.getElementById("edit-icon-text")
-    icon_value.placeholder = 'Automatic icon'
+    icon_value.placeholder = 'Automatic icon (or link to svg, png, jpg)'
     icon_value.value = (varDefined(iconlink)) ? iconlink : ''
 
     // Icon itself

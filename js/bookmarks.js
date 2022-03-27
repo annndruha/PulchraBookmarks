@@ -8,13 +8,12 @@ function makeAddBookmark(id){
     return subMenu
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function textFromLink(link) {
     let text = getDomain(link)
     let text_splitted= text.split('.')
+    if (text_splitted.length === 1){
+        return text
+    }
     let text_end = text_splitted[text_splitted.length - 1]
 
     let result = ''
