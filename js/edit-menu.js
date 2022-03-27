@@ -4,28 +4,13 @@ function editBookmark(menu_img_id) {
     let link = bookmark.getAttribute('link')
     let iconlink = bookmark.getAttribute('icon-link')
     let placeholder = varDefined(link) ? link : ''
-
-    // let newLink = prompt('Enter new link:\n(Erase line to delete)', placeholder)
     createEditPopup(id, placeholder, iconlink)
-    // if (newLink === null) {return}
-    // if (newLink === ''){
-    //     deleteMark(id)
-    //     return
-    // }
-    // bookmark.setAttribute('link', newLink)
-
-    // let newIconLink = prompt('Enter link for icon:\n(Erase line to delete)', '')
-    // console.log(newIconLink)
-    // if (newIconLink === null) {return}
-    // if (varDefined(newIconLink))
-    // {
-    //     bookmark.setAttribute('icon-link', newIconLink)
-    //     chrome.storage.local.set({[id]: {0: {"link": newLink, "icon-link": newIconLink}}}, () => {})
-    // }
-
-    // chrome.storage.local.set({[id]: {0: {'link': newLink}}}, () => {})
-    // loadIcon(id, true)
-    // recreateMark(bookmark)
+    $('#edit_popup')
+        .css('top','calc(50vh - 95px)')
+        .css('left','calc(50vw - 300px)').attr('id-to-edit', id)
+    $('.close-edit').css('display', 'block').on('click', function () {
+        deleteEditPopup()
+    })
 }
 
 
@@ -37,21 +22,16 @@ function deleteEditPopup() {
 }
 
 function createEditPopup(id, placeholder, iconlink) {
-    $('#edit_popup')
-        .css('top','calc(50vh - 95px)')
-        .css('left','calc(50vw - 300px)').attr('id-to-edit', id)
-    $('.close-edit').css('display', 'block').on('click', function () {
-        deleteEditPopup()
-    })
     let link_value = document.getElementById("edit-link-text")
     link_value.value = placeholder
     link_value.placeholder = 'Link for this bookmark'
 
     let bm_value = document.getElementById("edit-bookmark-text")
 
-    // TODO: Load existed text
-    bm_value.value = makeText('preview', placeholder).textContent
-
+    chrome.storage.local.get([id], function (res) {
+        console.log(res)
+        bm_value.value = (varDefined(res[id][0]['title'])) ? res[id][0]['title'] : textFromLink(placeholder)
+    })
     bm_value.placeholder = 'Bookmark text'
 
     let icon_value = document.getElementById("edit-icon-text")
@@ -77,7 +57,7 @@ function createEditPopup(id, placeholder, iconlink) {
 
 $('#edit-link-text').on('input', function (e) {
     let bm_value = document.getElementById("edit-bookmark-text")
-    bm_value.value = makeText('preview', e.target.value).textContent
+    bm_value.value = textFromLink(e.target.value)
 
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', e.target.value)
