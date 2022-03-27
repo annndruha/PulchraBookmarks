@@ -21,60 +21,72 @@ function deleteEditPopup() {
     $('.close-edit').css('display', 'none')
 }
 
+function updateIconPreview(){
+    // // iconlink, currentlink
+    // let currentlink = document.getElementById("edit-link-text").value
+    // let iconlink = document.getElementById("edit-icon-text").value
+    //
+    //
+    // let preview_div = document.getElementById("preview")
+    // preview_div.setAttribute('link', currentlink)
+    // let icon_value = document.getElementById("edit-icon-text")
+    // icon_value.placeholder = 'Automatic icon'
+    // if (varDefined(iconlink)){
+    //     preview_div.setAttribute('icon-link', iconlink)
+    //     icon_value.value = iconlink
+    // }
+    // else {
+    //     preview_div.setAttribute('icon-link', '')
+    //     icon_value.value = ''
+    // }
+    // loadIcon('preview', true)
+}
+
 function createEditPopup(id, placeholder, iconlink) {
+    // Link for bookmark
     let link_value = document.getElementById("edit-link-text")
     link_value.value = placeholder
     link_value.placeholder = 'Link for this bookmark'
 
+    // Title
     let bm_value = document.getElementById("edit-bookmark-text")
-
     chrome.storage.local.get([id], function (res) {
-        console.log(res)
         bm_value.value = (varDefined(res[id][0]['title'])) ? res[id][0]['title'] : textFromLink(placeholder)
     })
     bm_value.placeholder = 'Bookmark text'
 
+    // Text-link to icon
     let icon_value = document.getElementById("edit-icon-text")
     icon_value.placeholder = 'Automatic icon'
-    icon_value.value = ''
+    icon_value.value = (varDefined(iconlink)) ? iconlink : ''
 
+    // Icon itself
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', placeholder)
-
-    if (varDefined(iconlink)){
-        preview_div.setAttribute('icon-link', iconlink)
-        icon_value.value = iconlink
-    }
-    else {
-        preview_div.setAttribute('icon-link', '')
-        icon_value.value = ''
-    }
+    preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
     loadIcon('preview', true)
-    $('.app-container').on('click', deleteEditPopup)
 
+    $('.app-container').on('click', deleteEditPopup)
 }
 
 
 $('#edit-link-text').on('input', function (e) {
     let bm_value = document.getElementById("edit-bookmark-text")
     bm_value.value = textFromLink(e.target.value)
-
-    let preview_div = document.getElementById("preview")
-    preview_div.setAttribute('link', e.target.value)
-    loadIcon('preview', true)
+    updateIconPreview('', e.target.value)
 })
 
 $('#edit-icon-text').on('input', function () {
-    let bm_value = document.getElementById("edit-icon-text")
-    let iconlink = bm_value.value
-    let preview_div = document.getElementById("preview")
-    if (varDefined(iconlink)){
-        preview_div.setAttribute('icon-link', iconlink)
-    }
-    else {
-        preview_div.setAttribute('icon-link', '')
-    }
-    loadIcon('preview', true)
+    // let bm_value = document.getElementById("edit-icon-text")
+    // let iconlink = bm_value.value
+    // let preview_div = document.getElementById("preview")
+    // if (varDefined(iconlink)){
+    //     preview_div.setAttribute('icon-link', iconlink)
+    // }
+    // else {
+    //     preview_div.setAttribute('icon-link', '')
+    // }
+    // loadIcon('preview', true)
 })
 
 function saveEdit(){
@@ -107,13 +119,8 @@ function saveEdit(){
     }
     if (newText !== textFromLink(newLink)) {
         storage_value[0]["title"] = newText
-        chrome.storage.local.set({[id]: storage_value}, () => {
-            chrome.storage.local.get([id], function (res) {
-                console.log(res[id])
-            })
-        })
     }
-
+    chrome.storage.local.set({[id]: storage_value}, () => {})
     loadIcon(id, true)
     recreateMark(bookmark)
     deleteEditPopup()

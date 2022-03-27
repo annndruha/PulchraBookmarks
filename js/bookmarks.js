@@ -83,10 +83,10 @@ function recreateMark(itemInside) {
             let title = res[itemInside.id][0]['title']
             let iconLink = res[itemInside.id][0]['icon-link']
             let cachedIconLink = res[itemInside.id][0]['cache-icon-link']
-            if (varDefined(iconLink)) {
+            if (varDefined(iconLink)){
                 itemInside.setAttribute('icon-link', iconLink)
             }
-            if (varDefined(cachedIconLink)) {
+            if (varDefined(cachedIconLink)){
                 itemInside.setAttribute('cache-icon-link', cachedIconLink)
             }
             if (varDefined(link)) {
