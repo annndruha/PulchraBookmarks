@@ -18,6 +18,9 @@ function getPureJSON(json){
             delete json[id]
         }
     }
+    $.getJSON('manifest.json', function (res) {
+        json['version'] = res['version']
+    })
     return json
 }
 

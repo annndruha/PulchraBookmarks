@@ -8,11 +8,29 @@ function makeAddBookmark(id){
     return subMenu
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function textFromLink(link) {
     let text = getDomain(link)
-    let textCopy = text
-    text = text.split('.')[text.length - 1]
-    return (isNumeric(text)) ? textCopy : textCopy.replace('.' + text, '')
+    let text_splitted= text.split('.')
+    let text_end = text_splitted[text_splitted.length - 1]
+
+    let result = ''
+    if (isNumeric(text_end)){
+        result = text
+    }
+    else {
+        result = text_splitted.slice(0, -1)
+        if (result.length === 1){
+            result = result[0].capitalize()
+        }
+        else {
+            result = result.join('.')
+        }
+    }
+    return  result
 }
 
 function makeText(id, link, title='') {
