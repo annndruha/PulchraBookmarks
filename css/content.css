@@ -59,6 +59,7 @@
 }
 
 .icon {
+    border-radius: 0.5em;
     position: absolute;
     top: 18px;
     width: 50px;

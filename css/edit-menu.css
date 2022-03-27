@@ -45,7 +45,7 @@
 
 #preview {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 70px;
 }
 
@@ -68,20 +68,15 @@
 }
 
 #icon-preview{
+    border-radius: 0.5em;
     width: 50px;
     height: 50px;
-    padding-right: 5px;
 }
 
 #edit-save-button{
     cursor: pointer;
     border-radius: 1em;
-    /*padding-top: 3px;*/
 }
-
-/*#edit-save-icon {*/
-/*    padding-top: 5px;*/
-/*}*/
 
 #edit-save-button:hover {
     background-color: #eee;

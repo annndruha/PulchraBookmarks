@@ -90,11 +90,11 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
             imgOld.src = fav_img.src
         }
     } else if (loaded1) {
-        if (google_img.naturalWidth !== 16) {
-            imgOld.src = google_img.src
-        } else {
-            imgOld.src = '../images/icons/language.svg'
-        }
+        // if (google_img.naturalWidth !== 16) {
+        imgOld.src = google_img.src
+        // } else {
+        //     imgOld.src = '../images/icons/language.svg'
+        // }
     } else if (loaded2) {
         imgOld.src = fav_img.src
     } else {
