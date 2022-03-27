@@ -6,7 +6,7 @@ function initSettingsValues(fromfile = false) {
             chrome.storage.local.set({'version': json['version']}, () => {})
         })
     }
-    chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick', 'show-header'], function (res) {
+    chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick', 'show-header', 'show-clock'], function (res) {
         document.getElementById('cols').innerText = res['cols']
         document.getElementById('range-cols').setAttribute('value', res['cols'])
         document.getElementById('rows').innerText = res['rows']
@@ -26,6 +26,11 @@ function initSettingsValues(fromfile = false) {
         } else {
             document.getElementById('checkbox-show-header').removeAttribute('checked')
         }
+        if (res['show-clock']) {
+            document.getElementById('checkbox-show-clock').setAttribute('checked', '')
+        } else {
+            document.getElementById('checkbox-show-clock').removeAttribute('checked')
+        }
         makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
     })
     chrome.storage.local.get(['background'], function (res) {
@@ -41,6 +46,7 @@ function initSettingsValues(fromfile = false) {
 document.addEventListener("DOMContentLoaded", () => {
     initSettingsValues()
     beautyfyView()
+    initClock()
 })
 
 window.addEventListener('resize', () => {

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/right-click-menu.css">
     <link rel="stylesheet" href="css/edit-menu.css">
+    <link rel="stylesheet" href="css/clock.css">
 </head>
 
 <body>
@@ -29,6 +30,9 @@
                 <img class="settings-icon" id="settings-open-button" src="images/icons/menu.svg" alt="">
             </div>
         </div>
+    </div>
+    <div class="clock-div">
+        <div class="clock-text" id="clock"></div>
     </div>
     <div class="content">
         <div class="grid" id="grid">
@@ -117,6 +121,17 @@
             <div class="item-right">
                 <label class="switch">
                     <input type="checkbox" id="checkbox-show-quick">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row rowhover" id="show-clock">
+            <div class="item-left">
+                <span>Show clock</span>
+            </div>
+            <div class="item-right">
+                <label class="switch">
+                    <input type="checkbox" id="checkbox-show-clock">
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -276,6 +291,7 @@
 <script type="text/javascript" src="js/settings.js"></script>
 <script type="text/javascript" src="js/saveopen.js"></script>
 <script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="js/clock.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
