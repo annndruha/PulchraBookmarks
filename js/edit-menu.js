@@ -22,24 +22,14 @@ function deleteEditPopup() {
 }
 
 function updateIconPreview(){
-    // // iconlink, currentlink
-    // let currentlink = document.getElementById("edit-link-text").value
-    // let iconlink = document.getElementById("edit-icon-text").value
-    //
-    //
-    // let preview_div = document.getElementById("preview")
-    // preview_div.setAttribute('link', currentlink)
-    // let icon_value = document.getElementById("edit-icon-text")
-    // icon_value.placeholder = 'Automatic icon'
-    // if (varDefined(iconlink)){
-    //     preview_div.setAttribute('icon-link', iconlink)
-    //     icon_value.value = iconlink
-    // }
-    // else {
-    //     preview_div.setAttribute('icon-link', '')
-    //     icon_value.value = ''
-    // }
-    // loadIcon('preview', true)
+    let link_value = document.getElementById("edit-link-text").value
+    let iconlink = document.getElementById("edit-icon-text").value
+
+    // Icon itself
+    let preview_div = document.getElementById("preview")
+    preview_div.setAttribute('link', link_value)
+    preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
+    loadIcon('preview', true)
 }
 
 function createEditPopup(id, placeholder, iconlink) {
@@ -73,10 +63,11 @@ function createEditPopup(id, placeholder, iconlink) {
 $('#edit-link-text').on('input', function (e) {
     let bm_value = document.getElementById("edit-bookmark-text")
     bm_value.value = textFromLink(e.target.value)
-    updateIconPreview('', e.target.value)
+    updateIconPreview()
 })
 
 $('#edit-icon-text').on('input', function () {
+    updateIconPreview()
     // let bm_value = document.getElementById("edit-icon-text")
     // let iconlink = bm_value.value
     // let preview_div = document.getElementById("preview")

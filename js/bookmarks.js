@@ -86,8 +86,14 @@ function recreateMark(itemInside) {
             if (varDefined(iconLink)){
                 itemInside.setAttribute('icon-link', iconLink)
             }
+            else {
+                itemInside.removeAttribute('icon-link')
+            }
             if (varDefined(cachedIconLink)){
                 itemInside.setAttribute('cache-icon-link', cachedIconLink)
+            }
+            else {
+                itemInside.removeAttribute('cache-icon-link')
             }
             if (varDefined(link)) {
                 createMark(itemInside, link, title)
