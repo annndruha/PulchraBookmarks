@@ -67,6 +67,11 @@
     padding-left: 10px;
 }
 
+#key-preview{
+    color: #aaa;
+    padding-right: 50px;
+}
+
 #icon-preview{
     border-radius: 0.5em;
     width: 50px;

@@ -16,6 +16,8 @@ function editBookmark(menu_img_id) {
 }
 
 function deleteEditPopup() {
+    let shortcut_value = document.getElementById("key-preview")
+    shortcut_value.textContent = ''
     let link_value = document.getElementById("edit-link-text")
     link_value.value = ''
     let bm_value = document.getElementById("edit-bookmark-text")
@@ -41,6 +43,12 @@ function updateIconPreview() {
 }
 
 function createEditPopup(id, placeholder, iconlink) {
+    // Keyboard shortcut
+    if (varDefined(getKeyByValue(keybinds, '#'+id))){
+        let shortcut_value = document.getElementById("key-preview")
+        shortcut_value.textContent = "Keyboard shortcut: '" + getKeyByValue(keybinds, '#'+id) +"'"
+    }
+
     // Link for bookmark
     let link_value = document.getElementById("edit-link-text")
     link_value.value = placeholder
