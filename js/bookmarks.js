@@ -14,20 +14,14 @@ function textFromLink(link) {
     if (text_splitted.length === 1){
         return text
     }
-    let text_end = text_splitted[text_splitted.length - 1]
 
-    let result = ''
-    if (isNumeric(text_end)){
+    let result
+    if (isNumeric(text_splitted[text_splitted.length - 1])){
         result = text
     }
     else {
         result = text_splitted.slice(0, -1)
-        if (result.length === 1){
-            result = result[0].capitalize()
-        }
-        else {
-            result = result.join('.')
-        }
+        result = (result.length === 1) ? result[0].capitalize() : result.join('.')
     }
     return  result
 }

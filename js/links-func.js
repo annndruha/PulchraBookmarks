@@ -1,29 +1,19 @@
-function varDefined(link) {
-    return link !== 'undefined' && link !== 'null' && link !== null && link !== undefined && link !== ''
+function varDefined(v) {
+    return v !== 'undefined' && v !== 'null' && v !== null && v !== undefined && v !== ''
 }
 
 function getDomain(link) {
     if (varDefined(link)) {
         if (link.includes('://')) {
-            let name = link.split('/')
-            return name[2].replace('www.', '')
+            return link.split('/')[2].replace('www.', '')
         } else if (link.includes(':\\\\')) {
-            let name = link.split('\\')
-            return name[2].replace('www.', '')
+            return link.split('\\')[2].replace('www.', '')
         } else return link
     } else return ''
 }
 
 function getOpenLink(link) {
-    let openlink = ''
-    if (varDefined(link)) {
-        if (!(link.includes('://'))) {
-            openlink = 'https://' + link
-        } else {
-            openlink = link
-        }
-    }
-    return openlink
+    return (varDefined(link)) ? (!(link.includes('://'))) ? 'https://' + link : link : ''
 }
 
 function isNumeric(value) {
