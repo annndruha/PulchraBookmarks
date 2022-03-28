@@ -36,7 +36,7 @@ function createBookmarks() {
                     LinkRightClick(root_item)
                 }
                 else {
-                    root_item = null; // If empty folder
+                    root_item = null // If empty folder
                 }
             }
             if (varDefined(root_item)){

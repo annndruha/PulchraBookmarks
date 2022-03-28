@@ -60,12 +60,13 @@ function saveToFile() {
 
 function loadFromFile() {
     try {
-        let fileReader = new FileReader()
         let files = document.getElementById('upload_input').files[0]
+        let fileReader = new FileReader()
         fileReader.readAsDataURL(files)
         fileReader.onload = () => {
             try {
-                const cjson = JSON.parse(atob(fileReader.result.substring(29)))
+                console.log(fileReader.result.substring(29))
+                const cjson = JSON.parse(b64DecodeUnicode(fileReader.result.substring(29)))
                 let json = getPureJSON(cjson)
                 setJsonToLocalStorage(json)
                 console.log('Load bookmarks from file')
@@ -114,7 +115,7 @@ function saveToCloud() {
             setTimeout(function () {
                 let load_icon = document.getElementById('icon-cloud-save')
                 load_icon.setAttribute('src', 'images/icons/backup.svg')
-            }, 1500);
+            }, 1500)
         })
     })
 }
@@ -130,7 +131,7 @@ function loadFromCloud() {
             setTimeout(function () {
                 let load_icon = document.getElementById('icon-cloud-load')
                 load_icon.setAttribute('src', 'images/icons/cloud_download.svg')
-            }, 1500);
+            }, 1500)
         } else {
             alert('Cloud hasn\'t any data')
         }
