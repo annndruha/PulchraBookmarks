@@ -17,7 +17,7 @@ function LinkRightClick(what_to_attach) {
         e.stopPropagation()
         hideAllRightClick()
         let link = $(this).attr('link').toString()
-        $('#click-menu-bottom-menu').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show(100)
+        $('#click-menu-bottom-menu').css({top: e.clientY + 'px', left: e.clientX + 'px'}).show(100)
         $('.click-menu-row').off('click').on('click', {param1: 'link'}, function (e) {
             e.stopPropagation()
             hideAllRightClick()
@@ -39,10 +39,10 @@ function gridItemRightClick() {
         let link = $(this).find('.grid-item-inside').attr('link').toString()
 
         if($(this).find('.empty-icon').length !== 0){
-            $('#click-menu-grid-item-edit').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show(100)
+            $('#click-menu-grid-item-edit').css({top: e.clientY + 'px', left: e.clientX + 'px'}).show(100)
         }
         else {
-            $('#click-menu-grid-item').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show(100)
+            $('#click-menu-grid-item').css({top: e.clientY + 'px', left: e.clientX + 'px'}).show(100)
         }
 
         $('.click-menu-row').off('click').on('click', {param1: 'link', param2:'id'}, function (e) {

@@ -3,15 +3,15 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     font: 1.0em Arial, sans-serif;
     padding: 0;
     margin: 0;
 }
 
 .app-container {
-    padding: 0;
+    padding: 0 0 20px;
     transition: margin 500ms, padding 500ms;
-    height: 100vh;
 }
 
 ::-webkit-scrollbar {

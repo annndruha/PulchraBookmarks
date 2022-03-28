@@ -33,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initClock()
 })
 
+document.addEventListener('scroll', function (event) {
+    hideAllRightClick()
+}, true)
+
 window.addEventListener('resize', () => {
     beautyfyView()
 })
@@ -45,6 +49,7 @@ $(document).on('keyup',function(e) {
     if(e.key === "Escape") {
         closeSettings()
         deleteEditPopup()
+        hideAllRightClick()
         deleteRootElementTree()
     }
     if ($('#edit_popup').attr('data-status') === 'closed'){

@@ -31,6 +31,7 @@ function getOpenLink(link) {
 }
 
 function openLink(open_link, newtab='auto') {
+    hideAllRightClick()
     open_link = getOpenLink(open_link)
     if (varDefined(open_link)) {
         if (newtab === 'auto')
