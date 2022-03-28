@@ -63,23 +63,18 @@ function createEditPopup(id, placeholder, iconlink) {
 }
 
 function saveEdit() {
-    let edit_popup = document.getElementById('edit_popup')
-    let id = edit_popup.getAttribute('id-to-edit')
+    let id = document.getElementById('edit_popup').getAttribute('id-to-edit')
     let bookmark = document.getElementById(id)
 
-    let link_value = document.getElementById("edit-link-text")
-    let newLink = link_value.value
+    let newLink = document.getElementById("edit-link-text").value
+    let newText = document.getElementById("edit-bookmark-text").value
+    let newIconLink = document.getElementById("edit-icon-text").value
+
     if (!varDefined(newLink)) {
         deleteMark(id)
         deleteEditPopup()
         return
     }
-
-    let icon_value = document.getElementById("edit-icon-text")
-    let newIconLink = icon_value.value
-
-    let bm_value = document.getElementById("edit-bookmark-text")
-    let newText = bm_value.value
 
     let storage_value = {0: {"link": newLink}}
     bookmark.setAttribute('link', newLink)
@@ -92,8 +87,7 @@ function saveEdit() {
     if (newText !== textFromLink(newLink)) {
         storage_value[0]["title"] = newText
     }
-    chrome.storage.local.set({[id]: storage_value}, () => {
-    })
+    chrome.storage.local.set({[id]: storage_value}, () => {})
     loadIcon(id, true)
     recreateMark(bookmark)
     deleteEditPopup()
