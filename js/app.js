@@ -40,3 +40,14 @@ window.addEventListener('resize', () => {
 $('.settings').on('transitionend', () => {
     beautyfyView()
 })
+
+$(document).on('keyup',function(e) {
+    if(e.key === "Enter") {
+        saveEdit()
+    }
+    if(e.key === "Escape") {
+        closeSettings()
+        deleteEditPopup()
+        deleteRootElementTree()
+    }
+})
