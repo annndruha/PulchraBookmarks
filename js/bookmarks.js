@@ -15,6 +15,14 @@ function makeText(id, link, title='') {
     return text_div
 }
 
+function makeKeyBindText(id) {
+    let text_div = document.createElement('div')
+    if (varDefined(getKeyByValue(keybinds, '#'+id))){
+        text_div.textContent = getKeyByValue(keybinds, '#'+id)
+    }
+    return text_div
+}
+
 function makeIconTemplate(itemInside) {
     let id = itemInside.id
     let icon_div = document.createElement('div')
@@ -55,6 +63,9 @@ function createMark(itemInside, link, title){
     itemInside.setAttribute('link', link)
     let textDiv = makeText(itemInside.id, link, title)
     itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
+
+    let keyDiv = makeKeyBindText(itemInside.id)
+    itemInside.appendChild(keyDiv).className = 'grid-item-inside-key'
 
     let iconDiv = makeIconTemplate(itemInside)
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'

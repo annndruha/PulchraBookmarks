@@ -5,9 +5,11 @@ function editBookmark(menu_img_id) {
     let iconlink = bookmark.getAttribute('icon-link')
     let placeholder = varDefined(link) ? link : ''
     createEditPopup(id, placeholder, iconlink)
+
     $('#edit_popup')
         .css('top', 'calc(50vh - 95px)')
         .css('left', 'calc(50vw - 300px)').attr('id-to-edit', id)
+        .attr('data-status', 'opened')
     $('.close-edit').css('display', 'block').on('click', function () {
         deleteEditPopup()
     })
@@ -23,6 +25,7 @@ function deleteEditPopup() {
     $('#edit_popup')
         .css('top', '-500px')
         .css('left', '-500px')
+        .attr('data-status', 'closed')
     $('.close-edit').css('display', 'none')
 }
 

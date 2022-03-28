@@ -28,6 +28,19 @@
     transition: padding 500ms;
 }
 
+.grid-item-inside-key {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    color: #aaa;
+    opacity: 0;
+}
+
+.grid-item-inside:hover > .grid-item-inside-key{
+    animation: 0.7s ease 0s normal forwards 1 fadein;
+    opacity: 1;
+}
+
 .grid-item:hover > .empty-icon {
     opacity: 1;
     border-radius: 1em;
@@ -106,5 +119,5 @@
     opacity: 0;
     width: 45px;
     height: 45px;
-    filter: invert(1) /*drop-shadow(0px 0px 2px black)*/
+    filter: invert(1)
 }

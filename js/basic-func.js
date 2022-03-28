@@ -6,6 +6,10 @@ function isNumeric(v) {
     return /^\d+$/.test(v)
 }
 
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 function setCheckbox(checkbox_name, v){
     if (v){
         $('#' + checkbox_name).attr('checked', '')

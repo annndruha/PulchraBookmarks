@@ -42,12 +42,17 @@ $('.settings').on('transitionend', () => {
 })
 
 $(document).on('keyup',function(e) {
-    if(e.key === "Enter") {
-        saveEdit()
-    }
     if(e.key === "Escape") {
         closeSettings()
         deleteEditPopup()
         deleteRootElementTree()
+    }
+    if ($('#edit_popup').attr('data-status') === 'closed'){
+        $(keybinds[e.key]).click()
+    }
+    else {
+        if(e.key === "Enter") {
+            saveEdit()
+        }
     }
 })
