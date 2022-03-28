@@ -1,14 +1,9 @@
-function setTime(){
+function updateTime(){
     let now = new Date()
     $('#clock').text(now.toLocaleTimeString("ru-RU", {hour: '2-digit', minute:'2-digit'}))
-}
-
-
-function updateTime(){
-    setTime()
     setTimeout(function () {
         updateTime()
-    }, 500)
+    }, 100)
 }
 
 function initClock(){
