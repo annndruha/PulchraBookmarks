@@ -8,24 +8,6 @@ function makeAddBookmark(id){
     return subMenu
 }
 
-function textFromLink(link) {
-    let text = getDomain(link)
-    let text_splitted= text.split('.')
-    if (text_splitted.length === 1){
-        return text
-    }
-
-    let result
-    if (isNumeric(text_splitted[text_splitted.length - 1])){
-        result = text
-    }
-    else {
-        result = text_splitted.slice(0, -1)
-        result = (result.length === 1) ? result[0].capitalize() : result.join('.')
-    }
-    return  result
-}
-
 function makeText(id, link, title='') {
     let text_div = document.createElement('div')
     text_div.textContent = (varDefined(title)) ? title : textFromLink(link)

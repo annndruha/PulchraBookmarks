@@ -31,13 +31,13 @@ $('#show-clock').on('click', (e) => {
     chrome.storage.local.get(['show-clock'], function (res) {
         if (res['show-clock']) {
             chrome.storage.local.set({['show-clock']: false}, () => {})
-            document.getElementById('checkbox-show-clock').removeAttribute('checked')
+            setCheckbox('checkbox-show-clock', false)
             $('.clock-div').css('display', 'none')
             $('.content').css('padding-top', '120px')
 
         } else {
             chrome.storage.local.set({['show-clock']: true}, () => {})
-            document.getElementById('checkbox-show-clock').setAttribute('checked', '')
+            setCheckbox('checkbox-show-clock', true)
             $('.clock-div').css('display', 'block')
             $('.content').css('padding-top', '35px')
         }

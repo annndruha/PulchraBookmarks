@@ -51,10 +51,10 @@ $('#new-tab').on('click', (e) => {
     chrome.storage.local.get(['new-tab'], (res) => {
         if (res['new-tab']) {
             chrome.storage.local.set({['new-tab']: false}, () => {})
-            document.getElementById('checkbox-new-tab').removeAttribute('checked')
+            setCheckbox('checkbox-new-tab', false)
         } else {
             chrome.storage.local.set({['new-tab']: true}, () => {})
-            document.getElementById('checkbox-new-tab').setAttribute('checked', '')
+            setCheckbox('checkbox-new-tab', true)
         }
     })
 })
@@ -65,10 +65,10 @@ $('#show-quick').on('click', (e) => {
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
         if (res['show-quick']) {
             chrome.storage.local.set({['show-quick']: false}, () => {})
-            document.getElementById('checkbox-show-quick').removeAttribute('checked')
+            setCheckbox('checkbox-show-quick', false)
         } else {
             chrome.storage.local.set({['show-quick']: true}, () => {})
-            document.getElementById('checkbox-show-quick').setAttribute('checked', '')
+            setCheckbox('checkbox-show-quick', true)
         }
         updateBottomMenu(res['cols'])
     })
@@ -80,10 +80,10 @@ $('#show-header').on('click', (e) => {
     chrome.storage.local.get(['show-header'], function (res) {
         if (res['show-header']) {
             chrome.storage.local.set({['show-header']: false}, () => {})
-            document.getElementById('checkbox-show-header').removeAttribute('checked')
+            setCheckbox('checkbox-show-header', false)
         } else {
             chrome.storage.local.set({['show-header']: true}, () => {})
-            document.getElementById('checkbox-show-header').setAttribute('checked', '')
+            setCheckbox('checkbox-show-header', true)
         }
         updateHeaderMenu()
     })
