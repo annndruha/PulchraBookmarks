@@ -2,6 +2,7 @@
     --back: #fff;
     --hover: #f3f3f3;
     --border: #e5e5e5;
+    --border-bottom: #d0d0d0;
     --accent: #1a1a1a;
     --not-accent: #646464;
     --focus: #005fb8;
@@ -9,8 +10,32 @@
     --border-radius-big: 8px;
 }
 
+@font-face {
+    font-family: 'Segoe UI';
+    url('fonts/Segoe UI.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Segoe Fluent Icons';
+    url("fonts/Segoe Fluent Icons.ttf") format("truetype");
+    /*font-weight: normal;*/
+    font-style: normal;
+}
+
+.my-icons {
+    font-family: 'Segoe Fluent Icons', system-ui;
+    vertical-align: middle;
+}
+.my-icons.ChevronDown:before {
+    content: '\e70d';
+}
+
 body{
     background-color: var(--hover);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
 }
 
 input[type='checkbox'] {
@@ -18,49 +43,61 @@ input[type='checkbox'] {
 }
 
 .wrap-collabsible {
-    margin: 1.2rem 0;
     padding: 10px;
+}
+
+.collapsible-line{
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible-line-title{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-no-accent{
+    font-size: 0.8em;
+    color: var(--not-accent);
 }
 
 .lbl-toggle {
     display: block;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 1rem;
+    border: 1px solid var(--border);
+    padding: 1.1em 1em;
     color: var(--accent);
     background: var(--back);
     cursor: pointer;
-    border-radius: 7px;
+    border-radius: 4px;
     transition: all 0.25s ease-out;
 }
 
 .lbl-toggle:hover {
     background: var(--hover);
+    border-bottom: 1px solid var(--border-bottom);
 }
 
-.lbl-toggle::before {
-    content: ' ';
-    display: inline-block;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 5px solid currentColor;
-    vertical-align: middle;
-    margin-right: .7rem;
-    transform: translateY(-2px);
-    transition: transform .2s ease-out;
-}
+/*.lbl-toggle::before {*/
+/*    content: ' ';*/
+/*    display: inline-block;*/
+/*    vertical-align: middle;*/
+/*    margin-right: .7rem;*/
+/*    transform: translateY(-2px);*/
+/*    transition: transform .2s ease-out;*/
+/*}*/
 
-.toggle:checked + .lbl-toggle::before {
-    transform: rotate(90deg) translateX(-3px);
-}
+/*.toggle:checked + .lbl-toggle::before {*/
+/*    transform: rotate(90deg) translateX(-3px);*/
+/*}*/
+
+/*.toggle:checked ~ .my-icons.ChevronDown{*/
+/*    content: '\e70e';*/
+/*}*/
 
 .collapsible-content {
-    max-height: 0px;
+    max-height: 0;
     overflow: hidden;
-    transition: max-height .25s ease-in-out;
+    transition: max-height 0.25s ease-in-out;
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
@@ -73,11 +110,16 @@ input[type='checkbox'] {
 }
 
 .collapsible-content .content-inner {
-    background: rgba(0, 105, 255, .2);
-    border-bottom: 1px solid rgba(0, 105, 255, .45);
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    padding: .5rem 1rem;
+    background: var(--back);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px;
+}
+
+.collapsible-content .content-inner-last {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .collapsible-content p {
