@@ -3,6 +3,7 @@
     --hover: #f3f3f3;
     --border: #e5e5e5;
     --border-bottom: #d0d0d0;
+    --border-slider: #898989;
     --accent: #1a1a1a;
     --not-accent: #646464;
     --focus: #005fb8;
@@ -134,4 +135,70 @@ input[type='checkbox'] {
 .content-inner-icon{
     padding-right: 1em;
     padding-left: 1em;
+}
+
+.content-inner-element{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+/*Switch*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--hover);
+    transition: .1s;
+    border-radius: 1em;
+}
+
+.slider {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: 1px solid var(--border-slider);
+}
+
+.slider:before {
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    content: "";
+    height: 13px;
+    width: 13px;
+    background-color: var(--not-accent);
+    transition: .1s;
+    border-radius: 1em;
+}
+
+.checkbox-text:before {
+    content: 'Off';
+    /*padding-left: 50px;*/
+    position: absolute;
+    left: -40px;
+    top: -2px;
+}
+
+input:checked ~ .slider{
+    background-color: var(--focus);
+}
+
+input:checked ~ .slider:before {
+    transform: translateX(20px);
+    background-color: var(--back);
+}
+
+input:checked ~ .checkbox-text:before {
+    content: 'On'
 }
