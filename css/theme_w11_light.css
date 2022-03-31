@@ -18,15 +18,16 @@
 @font-face {
     font-family: 'Segoe Fluent Icons';
     url("fonts/Segoe Fluent Icons.ttf") format("truetype");
-    /*font-weight: normal;*/
     font-style: normal;
 }
 
 .my-icons {
     font-family: 'Segoe Fluent Icons', system-ui;
-    vertical-align: middle;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
-.my-icons.ChevronDown:before {
+.ChevronDown:before {
     content: '\e70d';
 }
 
@@ -69,7 +70,7 @@ input[type='checkbox'] {
     background: var(--back);
     cursor: pointer;
     border-radius: 4px;
-    transition: all 0.25s ease-out;
+    transition: all 0.15s ease-out;
 }
 
 .lbl-toggle:hover {
@@ -86,8 +87,10 @@ input[type='checkbox'] {
 /*    transition: transform .2s ease-out;*/
 /*}*/
 
-/*.toggle:checked + .lbl-toggle::before {*/
-/*    transform: rotate(90deg) translateX(-3px);*/
+/*.toggle:checked ~ .collapsible-line {*/
+/*    !*transform: rotate(90deg) translateX(-3px);*!*/
+/*    color: #0075ff;*/
+/*    background-color: #0075ff;*/
 /*}*/
 
 /*.toggle:checked ~ .my-icons.ChevronDown{*/
@@ -97,12 +100,17 @@ input[type='checkbox'] {
 .collapsible-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease-in-out;
+    transition: max-height 0.15s ease-in-out;
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-    max-height: 350px;
+    max-height: 300px;
 }
+
+.toggle:checked + .lbl-toggle .collapsible-line .my-icons .ChevronDown::before {
+    content: '\e70e';
+}
+
 
 .toggle:checked + .lbl-toggle {
     border-bottom-right-radius: 0;
