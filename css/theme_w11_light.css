@@ -55,8 +55,8 @@ body{
     content: '\efa5';
 }
 
-.ImageExport:before{
-    content: '\ee71';
+.Photo:before{
+    content: '\e91b';
 }
 
 /*collabsible*/
@@ -77,6 +77,7 @@ input[type='checkbox'] {
 .collapsible-line-title{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .title-no-accent{
@@ -107,7 +108,7 @@ input[type='checkbox'] {
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-    max-height: 300px;
+    max-height: 1000px;
 }
 
 .toggle:checked + .lbl-toggle .collapsible-line .my-icons .ChevronDown::before {
@@ -145,6 +146,7 @@ input[type='checkbox'] {
 .content-inner-text{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .content-inner-icon{
@@ -216,3 +218,70 @@ input:checked ~ .slider:before {
 input:checked ~ .checkbox-text:before {
     content: 'On'
 }
+
+/*upload*/
+
+input[type="file"] {
+    display: none;
+}
+
+.upload {
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-bottom);
+    display: inline-block;
+    cursor: pointer;
+    width: 150px;
+    height: 28px;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.upload:hover{
+    background-color: var(--hover);
+}
+
+/*List*/
+/* Кнопка выпадающего списка */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
