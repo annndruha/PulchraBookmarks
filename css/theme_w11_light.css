@@ -13,17 +13,27 @@
 
 @font-face {
     font-family: 'Segoe UI';
-    url('fonts/Segoe UI.ttf')  format('truetype');
+url('fonts/Segoe UI.ttf')  format('truetype');
 }
 
 @font-face {
     font-family: 'Segoe Fluent Icons';
-    url("fonts/Segoe Fluent Icons.ttf") format("truetype");
+url("fonts/Segoe Fluent Icons.ttf") format("truetype");
     font-style: normal;
 }
 
+body{
+    background-color: var(--hover);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    padding: 50px;
+    margin: 0;
+}
+
+/*Icons*/
 .my-icons {
     font-family: 'Segoe Fluent Icons', system-ui;
+    font-size: x-large;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -45,20 +55,18 @@
     content: '\efa5';
 }
 
-body{
-    background-color: var(--hover);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
+.ImageExport:before{
+    content: '\ee71';
 }
 
+/*collabsible*/
 input[type='checkbox'] {
     display: none;
 }
 
 .wrap-collabsible {
-    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .collapsible-line{
@@ -79,7 +87,7 @@ input[type='checkbox'] {
 .lbl-toggle {
     display: block;
     border: 1px solid var(--border);
-    padding: 1.1em 1em;
+    padding: 0.8em 1em;
     color: var(--accent);
     background: var(--back);
     cursor: pointer;
@@ -117,7 +125,6 @@ input[type='checkbox'] {
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    /*padding: 10px;*/
 }
 
 .collapsible-content .content-inner-last {
@@ -128,7 +135,7 @@ input[type='checkbox'] {
 .content-inner{
     display: flex;
     justify-content: space-between;
-    padding: 1em 2em;
+    padding: 0.8em 3em;
 }
 
 .content-inner-title{
@@ -141,14 +148,13 @@ input[type='checkbox'] {
 }
 
 .content-inner-icon{
-    padding-right: 1em;
-    padding-left: 1em;
+    padding-right: 0.5em;
 }
 
 .content-inner-element{
     display: flex;
     justify-content: space-between;
-    padding: 1em 2em;
+    padding: 0.5em 0;
 }
 
 /*Switch*/
@@ -199,10 +205,11 @@ input[type='checkbox'] {
 
 input:checked ~ .slider{
     background-color: var(--focus);
+    border: 1px transparent;
 }
 
 input:checked ~ .slider:before {
-    transform: translateX(20px);
+    transform: translateX(20px) translateY(-1px);
     background-color: var(--back);
 }
 
