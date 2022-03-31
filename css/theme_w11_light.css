@@ -33,8 +33,16 @@
     content: '\e70d';
 }
 
-.ColorSolid:before{
-    content: '\f354';
+.PenWorkspace:before{
+    content: '\edc6';
+}
+
+.KeyboardClassic:before{
+    content: '\e765';
+}
+
+.Touchpad:before{
+    content: '\efa5';
 }
 
 body{
@@ -184,7 +192,6 @@ input[type='checkbox'] {
 
 .checkbox-text:before {
     content: 'Off';
-    /*padding-left: 50px;*/
     position: absolute;
     left: -40px;
     top: -2px;
