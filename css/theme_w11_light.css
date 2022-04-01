@@ -30,7 +30,8 @@ body{
     margin: 0;
 }
 
-/*Icons*/
+/*====================================================================================================================*/
+/*===ICONS===*/
 .my-icons {
     font-family: 'Segoe Fluent Icons', system-ui;
     font-size: x-large;
@@ -51,15 +52,20 @@ body{
     content: '\e765';
 }
 
-.Touchpad:before{
-    content: '\efa5';
+.Refresh:before{
+    content: '\e72c';
 }
 
 .Photo:before{
     content: '\e91b';
 }
 
-/*collabsible*/
+.ColorSolid:before{
+    content: '\f354';
+}
+
+/*====================================================================================================================*/
+/*===HEADERS AND LINES===*/
 input[type='checkbox'] {
     display: none;
 }
@@ -69,26 +75,14 @@ input[type='checkbox'] {
     padding-bottom: 5px;
 }
 
-.collapsible-line{
-    display: flex;
-    justify-content: space-between;
-}
-
-.collapsible-line-title{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .title-no-accent{
     font-size: 0.8em;
     color: var(--not-accent);
 }
 
-.lbl-toggle {
+.collapsible-label {
     display: block;
     border: 1px solid var(--border);
-    padding: 0.8em 1em;
     color: var(--accent);
     background: var(--back);
     cursor: pointer;
@@ -96,7 +90,7 @@ input[type='checkbox'] {
     transition: all 0.15s ease-out;
 }
 
-.lbl-toggle:hover {
+.collapsible-label:hover {
     background: var(--hover);
     border-bottom: 1px solid var(--border-bottom);
 }
@@ -107,16 +101,16 @@ input[type='checkbox'] {
     transition: max-height 0.15s ease-in-out;
 }
 
-.toggle:checked + .lbl-toggle + .collapsible-content {
+.toggle:checked + .collapsible-label + .collapsible-content {
     max-height: 1000px;
 }
 
-.toggle:checked + .lbl-toggle .collapsible-line .my-icons .ChevronDown::before {
+.toggle:checked + .collapsible-label .content-inner .my-icons .ChevronDown::before {
     content: '\e70e';
 }
 
 
-.toggle:checked + .lbl-toggle {
+.toggle:checked + .collapsible-label {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -136,7 +130,11 @@ input[type='checkbox'] {
 .content-inner{
     display: flex;
     justify-content: space-between;
-    padding: 0.8em 3em;
+    padding: 0.8em 4em;
+}
+
+.content-inner-collapsible {
+    padding: 0.8em 1.5em;
 }
 
 .content-inner-title{
@@ -159,7 +157,8 @@ input[type='checkbox'] {
     padding: 0.5em 0;
 }
 
-/*Switch*/
+/*====================================================================================================================*/
+/*===SWITCH BUTTON===*/
 .switch {
     position: relative;
     display: inline-block;
@@ -219,8 +218,8 @@ input:checked ~ .checkbox-text:before {
     content: 'On'
 }
 
-/*upload*/
-
+/*====================================================================================================================*/
+/*===UPLOAD BUTTON===*/
 input[type="file"] {
     display: none;
 }
@@ -243,67 +242,130 @@ input[type="file"] {
     background-color: var(--hover);
 }
 
-/*List*/
-.select-list{
-    /*border-radius: 4px;*/
-    /*width: 150px;*/
-    /*height: 28px;*/
-    /*border-top: 1px solid var(--border);*/
-    /*border-left: 1px solid var(--border);*/
-    /*border-right: 1px solid var(--border);*/
-    /*border-bottom: 1px solid var(--border-bottom);*/
+/*====================================================================================================================*/
+/*===LINE BUTTON===*/
+.inner-button:hover{
+    cursor: pointer;
+    background-color: var(--hover);
 }
 
-.select-list-2{
-    border-radius: 4px;
-    width: 150px;
-    height: 28px;
-    border-top: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border-bottom);
+/*====================================================================================================================*/
+/*===RANGE===*/
+/*input[type="range"] {*/
+/*    -webkit-appearance: none;*/
+/*    appearance: none;*/
+/*    background: transparent;*/
+/*    cursor: pointer;*/
+/*    width: 15rem;*/
+/*}*/
+
+/*input[type="range"]::-webkit-slider-runnable-track {*/
+/*    background: var(--focus);*/
+/*    height: 4px;*/
+/*    border-radius: 2px;*/
+/*}*/
+
+/*input[type="range"]::-webkit-slider-thumb {*/
+/*    -webkit-appearance: none;*/
+/*    appearance: none;*/
+/*    margin-top: -8px;*/
+/*    border-radius: 10px;*/
+/*    background-color: var(--back);*/
+/*    border: 1px solid var(--border);*/
+/*    outline: 4px solid var(--focus);*/
+/*    box-shadow: -100vw 0 0 100vw dodgerblue;*/
+/*    box-sizing: border-box;*/
+/*    outline-offset: -12px;*/
+/*    height: 20px;*/
+/*    width: 20px;*/
+/*}*/
+
+
+/*input[type="range"]:hover::-webkit-slider-thumb {*/
+/*    outline: 6px solid var(--focus);*/
+/*    outline-offset: -10px;*/
+/*}*/
+/*====================================================================================================================*/
+input[type="range"] {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 4px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 2px;
 }
 
+::-webkit-slider-runnable-track {
+    background: var(--border-slider);
+}
 
+/*!**/
+/* * 1. Set to 0 width and remove border for a slider without a thumb*/
+/* *!*/
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999; /* 1 */
 
-/* Кнопка выпадающего списка */
-/*.dropbtn {*/
-/*    background-color: #4CAF50;*/
-/*    color: white;*/
-/*    padding: 16px;*/
-/*    font-size: 16px;*/
-/*    border: none;*/
-/*}*/
+    /*-webkit-appearance: none;*/
+    /*appearance: none;*/
+    /*!*margin-top: -8px;*/
+    /*border-radius: 10px;*/
+    /*background-color: var(--back);*/
+    /*border: 1px solid var(--border);*/
+    /*outline: 4px solid var(--focus);*/
+    /*outline-offset: -12px;*/
+    /*height: 20px;*/
+    /*width: 20px;*/
+}
 
-/*!* Контейнер <div> - необходим для размещения выпадающего содержимого *!*/
-/*.dropdown {*/
-/*    position: relative;*/
-/*    display: inline-block;*/
-/*}*/
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
 
-/*!* Выпадающее содержимое (скрыто по умолчанию) *!*/
-/*.dropdown-content {*/
-/*    display: none;*/
-/*    position: absolute;*/
-/*    background-color: #f1f1f1;*/
-/*    min-width: 160px;*/
-/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
-/*    z-index: 1;*/
-/*}*/
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
 
-/*!* Ссылки внутри выпадающего списка *!*/
-/*.dropdown-content a {*/
-/*    color: black;*/
-/*    padding: 12px 16px;*/
-/*    text-decoration: none;*/
-/*    display: block;*/
-/*}*/
+::-ms-fill-lower {
+    background: dodgerblue;
+}
 
-/*!* Изменение цвета выпадающих ссылок при наведении курсора *!*/
-/*.dropdown-content a:hover {background-color: #ddd;}*/
+::-ms-thumb {
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
 
-/*!* Показать выпадающее меню при наведении курсора *!*/
-/*.dropdown:hover .dropdown-content {display: block;}*/
+::-ms-ticks-after {
+    display: none;
+}
 
-/*!* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка *!*/
-/*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
+::-ms-ticks-before {
+    display: none;
+}
+
+::-ms-track {
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip {
+    display: none;
+}
