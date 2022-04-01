@@ -1,0 +1,14 @@
+:root {
+    --background: #202020;
+    --back: #2b2b2b;
+    --hover: #323232;
+    --hover-button: #434343;
+    --border: #1d1d1d;
+    --border-bottom: #1d1d1d;
+    --border-slider: #9a9a9a;
+    --accent: #ffffff;
+    --not-accent: #ffffff;
+    --focus: #60cdff;
+    --border-radius: 4px;
+    --border-radius-big: 8px;
+}

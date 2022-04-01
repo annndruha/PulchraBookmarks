@@ -1,0 +1,14 @@
+:root {
+    --background: #fff;
+    --back: #fff;
+    --hover: #f3f3f3;
+    --hover-button: #f8f8f8;
+    --border: #e5e5e5;
+    --border-bottom: #d0d0d0;
+    --border-slider: #898989;
+    --accent: #1a1a1a;
+    --not-accent: #646464;
+    --focus: #005fb8;
+    --border-radius: 4px;
+    --border-radius-big: 8px;
+}

@@ -5,7 +5,8 @@
     <title>Setting UI</title>
     <link rel="icon" href="images/icons/favicon.svg">
     <link rel="shortcut icon" href="/images/icons/favicon.svg">
-    <link rel="stylesheet" href="css/theme_w11_light.css">
+    <link rel="stylesheet" id="colorsheet" href="css/colorsheet_w11_light.css">
+    <link rel="stylesheet" id="stylesheet" href="css/stylesheet_w11.css">
 </head>
 <body>
 <div class="wrap-collabsible">
@@ -91,12 +92,11 @@
                 </div>
             </div>
             <div class="content-inner-element">
-                <label class="select-list">
-                    <select>
-                        <option>Windows 11 </option>
-                        <option>Пункт 2</option>
-                    </select>
-                </label>
+                <label for="theme"></label>
+                <select class="select" id="theme">
+                    <option class="option">Windows 11 Light</option>
+                    <option class="option">Windows 11 Dark</option>
+                </select>
             </div>
         </div>
         <div class="content-inner">
@@ -125,16 +125,10 @@
                     <span class="title-no-accent">Icons are cashed by default, you can reload icons</span>
                 </div>
             </div>
-<!--            <div class="content-inner-element">-->
-<!--                <label class="switch">-->
-<!--                    <input type="checkbox">-->
-<!--                    <span class="checkbox-text"></span>-->
-<!--                    <span class="slider"></span>-->
-<!--                </label>-->
-<!--            </div>-->
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="slider.js"></script>
 </html>
