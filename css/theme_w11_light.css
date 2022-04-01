@@ -244,44 +244,66 @@ input[type="file"] {
 }
 
 /*List*/
+.select-list{
+    /*border-radius: 4px;*/
+    /*width: 150px;*/
+    /*height: 28px;*/
+    /*border-top: 1px solid var(--border);*/
+    /*border-left: 1px solid var(--border);*/
+    /*border-right: 1px solid var(--border);*/
+    /*border-bottom: 1px solid var(--border-bottom);*/
+}
+
+.select-list-2{
+    border-radius: 4px;
+    width: 150px;
+    height: 28px;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-bottom);
+}
+
+
+
 /* Кнопка выпадающего списка */
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
+/*.dropbtn {*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*    padding: 16px;*/
+/*    font-size: 16px;*/
+/*    border: none;*/
+/*}*/
 
-/* Контейнер <div> - необходим для размещения выпадающего содержимого */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+/*!* Контейнер <div> - необходим для размещения выпадающего содержимого *!*/
+/*.dropdown {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*}*/
 
-/* Выпадающее содержимое (скрыто по умолчанию) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+/*!* Выпадающее содержимое (скрыто по умолчанию) *!*/
+/*.dropdown-content {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    background-color: #f1f1f1;*/
+/*    min-width: 160px;*/
+/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*    z-index: 1;*/
+/*}*/
 
-/* Ссылки внутри выпадающего списка */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+/*!* Ссылки внутри выпадающего списка *!*/
+/*.dropdown-content a {*/
+/*    color: black;*/
+/*    padding: 12px 16px;*/
+/*    text-decoration: none;*/
+/*    display: block;*/
+/*}*/
 
-/* Изменение цвета выпадающих ссылок при наведении курсора */
-.dropdown-content a:hover {background-color: #ddd;}
+/*!* Изменение цвета выпадающих ссылок при наведении курсора *!*/
+/*.dropdown-content a:hover {background-color: #ddd;}*/
 
-/* Показать выпадающее меню при наведении курсора */
-.dropdown:hover .dropdown-content {display: block;}
+/*!* Показать выпадающее меню при наведении курсора *!*/
+/*.dropdown:hover .dropdown-content {display: block;}*/
 
-/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+/*!* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка *!*/
+/*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
