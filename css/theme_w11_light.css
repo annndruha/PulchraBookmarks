@@ -256,7 +256,7 @@ input[type="file"] {
 /*    appearance: none;*/
 /*    background: transparent;*/
 /*    cursor: pointer;*/
-/*    width: 15rem;*/
+/*    width: 200px;*/
 /*}*/
 
 /*input[type="range"]::-webkit-slider-runnable-track {*/
@@ -272,100 +272,83 @@ input[type="file"] {
 /*    border-radius: 10px;*/
 /*    background-color: var(--back);*/
 /*    border: 1px solid var(--border);*/
+
+/*    !*box-shadow: -100vw 0 0 100vw dodgerblue;*!*/
+/*    !*box-sizing: border-box;*!*/
+
 /*    outline: 4px solid var(--focus);*/
-/*    box-shadow: -100vw 0 0 100vw dodgerblue;*/
-/*    box-sizing: border-box;*/
 /*    outline-offset: -12px;*/
 /*    height: 20px;*/
 /*    width: 20px;*/
 /*}*/
 
-
 /*input[type="range"]:hover::-webkit-slider-thumb {*/
 /*    outline: 6px solid var(--focus);*/
 /*    outline-offset: -10px;*/
 /*}*/
+
+/*.tipo-tumble {*/
+/*    background-color: #0075ff;*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*}*/
+
+/*input[type="range"]::-ms-fill-lower {*/
+/*    background: #0075ff;*/
+/*}*/
+
+/*input[type="range"]::-ms-fill-upper {*/
+/*    background: #000000;*/
+/*}*/
+
 /*====================================================================================================================*/
-input[type="range"] {
-    margin: auto;
-    -webkit-appearance: none;
-    position: relative;
-    overflow: hidden;
+
+
+:root{
+    --min: 1;
+    --max: 10;
+    --value: 5;
+}
+
+input[type=range].styled-slider {
     height: 4px;
-    width: 200px;
-    cursor: pointer;
-    border-radius: 2px;
-}
-
-::-webkit-slider-runnable-track {
-    background: var(--border-slider);
-}
-
-/*!**/
-/* * 1. Set to 0 width and remove border for a slider without a thumb*/
-/* *!*/
-::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 20px; /* 1 */
-    height: 40px;
-    background: #fff;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
-    border: 2px solid #999; /* 1 */
-
-    /*-webkit-appearance: none;*/
-    /*appearance: none;*/
-    /*!*margin-top: -8px;*/
-    /*border-radius: 10px;*/
-    /*background-color: var(--back);*/
-    /*border: 1px solid var(--border);*/
-    /*outline: 4px solid var(--focus);*/
-    /*outline-offset: -12px;*/
-    /*height: 20px;*/
-    /*width: 20px;*/
 }
 
-::-moz-range-track {
-    height: 40px;
-    background: #ddd;
+input[type=range].styled-slider.slider-progress {
+    --range: calc(var(--max) - var(--min));
+    --ratio: calc((var(--value) - var(--min)) / var(--range));
+    --sx: calc(0.5 * 20px + var(--ratio) * (100% - 20px));
 }
 
-::-moz-range-thumb {
-    background: #fff;
-    height: 40px;
+input[type=range].styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
     width: 20px;
-    border: 3px solid #999;
-    border-radius: 0 !important;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
-    box-sizing: border-box;
-}
-
-::-ms-fill-lower {
-    background: dodgerblue;
-}
-
-::-ms-thumb {
-    background: #fff;
-    border: 2px solid #999;
-    height: 40px;
-    width: 20px;
-    box-sizing: border-box;
-}
-
-::-ms-ticks-after {
-    display: none;
-}
-
-::-ms-ticks-before {
-    display: none;
-}
-
-::-ms-track {
-    background: #ddd;
-    color: transparent;
-    height: 40px;
+    height: 20px;
+    border-radius: 1em;
+    background: #FFFFFF;
     border: none;
+    box-shadow: 0 0 1px black;
+    margin-top: calc(4px * 0.5 - 20px * 0.5);
+    outline: 4px solid var(--focus);
+    outline-offset: -12px;
+    animation: 0.1s ease 0s normal forwards 1 fadein;
+    transition: outline 0.1s ease;
 }
 
-::-ms-tooltip {
-    display: none;
+input[type="range"].styled-slider:hover::-webkit-slider-thumb {
+    outline: 6px solid var(--focus);
+    outline-offset: -10px;
+}
+
+input[type=range].styled-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border: none;
+    background: #efefef;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
+    background: linear-gradient(var(--focus),var(--focus)) 0/var(--sx) 100% no-repeat, var(--border-slider);
 }
