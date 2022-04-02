@@ -28,12 +28,12 @@ function makeIconTemplate(itemInside) {
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
     icon.setAttribute('draggable', 'false')
-    if (itemInside.hasAttribute('icon-link') || itemInside.hasAttribute('cache-icon-link')){
-        if (varDefined(itemInside.getAttribute('icon-link'))){
-            icon.setAttribute('src', itemInside.getAttribute('icon-link'))
+    if (itemInside.hasAttribute('icon-link') || itemInside.hasAttribute('cache-icon')){
+        if (varDefined(itemInside.getAttribute('cache-icon'))) {
+            icon.setAttribute('src', itemInside.getAttribute('cache-icon'))
         }
-        else if (varDefined(itemInside.getAttribute('cache-icon-link'))) {
-            icon.setAttribute('src', itemInside.getAttribute('cache-icon-link'))
+        else if (varDefined(itemInside.getAttribute('icon-link'))){
+            icon.setAttribute('src', itemInside.getAttribute('icon-link'))
         }
         else {
             icon.setAttribute('src', 'images/icons/autorenew.svg')
@@ -50,7 +50,7 @@ function makeIconTemplate(itemInside) {
 function createTemplate(itemInside){
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', '')
-    itemInside.setAttribute('cache-icon-link', '')
+    itemInside.setAttribute('cache-icon', '')
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
@@ -86,18 +86,18 @@ function recreateMark(itemInside) {
             let link = res[itemInside.id][0]['link']
             let title = res[itemInside.id][0]['title']
             let iconLink = res[itemInside.id][0]['icon-link']
-            let cachedIconLink = res[itemInside.id][0]['cache-icon-link']
+            let cachedIcon = res[itemInside.id][0]['cache-icon']
             if (varDefined(iconLink)){
                 itemInside.setAttribute('icon-link', iconLink)
             }
             else {
                 itemInside.removeAttribute('icon-link')
             }
-            if (varDefined(cachedIconLink)){
-                itemInside.setAttribute('cache-icon-link', cachedIconLink)
+            if (varDefined(cachedIcon)){
+                itemInside.setAttribute('cache-icon', cachedIcon)
             }
             else {
-                itemInside.removeAttribute('cache-icon-link')
+                itemInside.removeAttribute('cache-icon')
             }
             if (varDefined(link)) {
                 createMark(itemInside, link, title)

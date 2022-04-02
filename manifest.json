@@ -17,5 +17,8 @@
   "permissions": [
     "storage",
     "bookmarks"
+  ],
+  "host_permissions": [
+    "https://*/"
   ]
 }
