@@ -137,3 +137,14 @@ function toBase64(src, callback) {
             }
         })
 }
+
+// fetch(link, {
+//     method:'GET',
+//     charset: 'UTF-8'
+// }).then(function (response) {
+//     return response.text()
+// }).then(function (html) {
+//     let parser = new DOMParser();
+//     let doc = parser.parseFromString(html, 'text/html')
+//     console.log(link, doc.title)
+// })
