@@ -4,6 +4,7 @@ function getPureJSON(json){
         for (let c = 0; c < json['cols']; c++) {
             let id = r.toString() + c.toString()
             delete json[id][0]['cache-icon']
+            delete json[id][0]['cache-icon-link']
         }
     }
     for (let r = json['rows']; r < 10; r++) {

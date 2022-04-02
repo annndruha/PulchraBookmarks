@@ -19,7 +19,7 @@ $('#logo, #title').on('click', function (e) {
 
 $('#version').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://github.com/dev-team-msu/pulchra-bookmarks')
+    openLink('https://github.com/annndruha/pulchra-bookmarks')
 })
 
 $('#range-rows').on('input', function (e) {
