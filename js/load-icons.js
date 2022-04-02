@@ -73,18 +73,11 @@ function clearIconCache(id) {
 }
 
 function findBestIcon(id){
-    console.log(id)
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
     if (varDefined(link)) {
         loadBestIcon(id, link)
     }
-    // else if (id !== 'preview')
-    // {
-    //     if (document.getElementById('icon-' + id)) {
-    //         document.getElementById('icon-' + id).remove()
-    //     }
-    // }
 }
 
 function loadBestIcon(id, link){
@@ -133,24 +126,14 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
     }
 }
 
-function toBase64(src, callback, outputFormat) {
-    let img = new Image()
-    img.crossOrigin = 'Anonymous'
-    img.onload = function() {
-        let canvas = document.createElement('CANVAS')
-        let ctx = canvas.getContext('2d')
-        canvas.height = this.naturalHeight
-        canvas.width = this.naturalWidth
-        ctx.drawImage(this, 0, 0)
-        let dataURL = canvas.toDataURL(outputFormat)
-        callback(dataURL)
-    }
-    // img.onerror = function(e) {
-    //     console.log(e)
-    // }
-    img.src = src
-    if (img.complete || img.complete === undefined) {
-        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-        img.src = src
-    }
+function toBase64(src, callback) {
+    fetch(src)
+        .then(response => response.blob())
+        .then(imageBlob => {
+            let reader = new FileReader()
+            reader.readAsDataURL(imageBlob)
+            reader.onloadend = function() {
+                callback(reader.result)
+            }
+        })
 }
