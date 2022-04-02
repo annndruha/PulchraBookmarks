@@ -206,7 +206,6 @@ function makeGrid(cols, rows, fromfile=false) {
 
         beautyfyView()
         updateBottomMenu(cols)
-        loadAllIcons(false)
         updateHeaderMenu()
         gridItemRightClick()
 }

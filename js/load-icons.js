@@ -1,46 +1,41 @@
-function loadAllIcons(reload = true) {
+function loadAllIcons() {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         for (let r = 0; r < res['rows']; r++) {
             for (let c = 0; c < res['cols']; c++) {
                 let id = r.toString() + c.toString()
-                loadIcon(id, reload)
+                loadIcon(id)
             }
         }
     })
 }
 
 
-function loadIcon(id, reload = true) {
-    if (reload) {
-        setPlaseholder(id)
-        clearIconCache(id)
-        iconSolver(id)
-    }
-    else {
-        iconSolver(id)
-    }
-}
-
-function iconSolver(id) {
+function loadIcon(id) {
     let bm = document.getElementById(id)
-    if (bm.hasAttribute('cache-icon')) {
-        if (varDefined(bm.getAttribute('cache-icon'))){
-            setIcon(id, bm.getAttribute('cache-icon'))
+    if (bm.hasAttribute('link')) {
+        if (varDefined(bm.getAttribute('link'))){
+            setPlaseholder(id)
+            clearIconCache(id)
+            if (bm.hasAttribute('cache-icon')) {
+                if (varDefined(bm.getAttribute('cache-icon'))){
+                    setIcon(id, bm.getAttribute('cache-icon'))
+                }
+                else {
+                    findBestIcon(id)
+                }
+            }
+            else if (bm.hasAttribute('icon-link')){
+                if (varDefined(bm.getAttribute('icon-link'))){
+                    cacheIcon(id, bm.getAttribute('icon-link'))
+                }
+                else {
+                    findBestIcon(id)
+                }
+            }
+            else {
+                findBestIcon(id)
+            }
         }
-        else {
-            findBestIcon(id)
-        }
-    }
-    else if (bm.hasAttribute('icon-link')){
-        if (varDefined(bm.getAttribute('icon-link'))){
-            cacheIcon(id, bm.getAttribute('icon-link'))
-        }
-        else {
-            findBestIcon(id)
-        }
-    }
-    else {
-        findBestIcon(id)
     }
 }
 
@@ -78,17 +73,18 @@ function clearIconCache(id) {
 }
 
 function findBestIcon(id){
+    console.log(id)
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
     if (varDefined(link)) {
         loadBestIcon(id, link)
     }
-    else if (id !== 'preview')
-    {
-        if (document.getElementById('icon-' + id)) {
-            document.getElementById('icon-' + id).remove()
-        }
-    }
+    // else if (id !== 'preview')
+    // {
+    //     if (document.getElementById('icon-' + id)) {
+    //         document.getElementById('icon-' + id).remove()
+    //     }
+    // }
 }
 
 function loadBestIcon(id, link){
