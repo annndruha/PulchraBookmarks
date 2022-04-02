@@ -1,3 +1,26 @@
+function setStorageAndReload(storageData, message){
+    chrome.storage.local.set(storageData, () => {
+        console.log(message)
+        initSettingsValues()
+        beautyfyView()
+        initClock()
+        setTimeout(loadAllIcons, 200)
+    })
+}
+
+function firstInstall(){ // Storage clear
+    chrome.storage.sync.get(null, (res)=> {
+        if (varDefined(res['rows'])){
+            setStorageAndReload(res, 'Bookmarks loaded from cloud')
+        }
+        else {
+            $.getJSON('default-icons.json', function (json) {
+                setStorageAndReload(json, 'Bookmarks loaded from template')
+            })
+        }
+    })
+}
+
 function initSettingsValues(fromfile = false) {
     if (!fromfile) {
         $.getJSON('manifest.json', function (json) {
@@ -28,9 +51,16 @@ function initSettingsValues(fromfile = false) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    initSettingsValues()
-    beautyfyView()
-    initClock()
+    chrome.storage.local.get(['rows'], function (res) {
+        if (varDefined(res['rows'])){
+            initSettingsValues()
+            beautyfyView()
+            initClock()
+        }
+        else {
+            firstInstall()
+        }
+    })
 })
 
 document.addEventListener('scroll', function (event) {
