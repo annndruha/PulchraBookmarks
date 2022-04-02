@@ -39,7 +39,7 @@ function updateIconPreview() {
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', link_value)
     preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview', true)
+    loadIcon('preview')
 }
 
 function createEditPopup(id, placeholder, iconlink) {
@@ -70,7 +70,7 @@ function createEditPopup(id, placeholder, iconlink) {
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', placeholder)
     preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview', true)
+    loadIcon('preview')
 }
 
 function saveEdit() {
@@ -99,7 +99,7 @@ function saveEdit() {
         storage_value[0]["title"] = newText
     }
     chrome.storage.local.set({[id]: storage_value}, () => {})
-    loadIcon(id, true)
+    loadIcon(id)
     recreateMark(bookmark)
     deleteEditPopup()
 }

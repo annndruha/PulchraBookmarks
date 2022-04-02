@@ -1,50 +1,30 @@
-function loadAllIcons(reload = false) {
+function loadAllIcons() {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         for (let r = 0; r < res['rows']; r++) {
             for (let c = 0; c < res['cols']; c++) {
                 let id = r.toString() + c.toString()
-                loadIcon(id, reload)
+                loadIcon(id)
             }
         }
     })
 }
 
 
-function loadIcon(id, reload=false) {
-    // try {
-        // if (itemInside.hasAttribute('icon-link')){
-        //     let imgOld = document.getElementById('icon-' + id)
-        //     if (varDefined(itemInside.getAttribute('icon-link'))){
-        //         imgOld.src = document.getElementById(id).getAttribute('icon-link')
-        //     }
-        //     else {
-        //         autoIcon(id, reload)
-        //     }
-        // }
-        // else {
-        //     if  (reload){
-        //         autoIcon(id, reload)
-        //     }
-        //     else if(!itemInside.hasAttribute('cache-icon')){
-        //         autoIcon(id)
-        //     }
-        // }
-        let itemInside = document.getElementById(id)
-        if(reload) {
-            setPlaseholder(id)
-            clearIconCache(id)
-            if (itemInside.hasAttribute('icon-link')){
-                if (varDefined(itemInside.getAttribute('icon-link'))){
-                    cacheIcon(id, itemInside.getAttribute('icon-link'))
-                }
-                else {
-                    findBestIcon(id)
-                }
-            }
-            else {
-                findBestIcon(id)
-            }
+function loadIcon(id) {
+    let itemInside = document.getElementById(id)
+    setPlaseholder(id)
+    clearIconCache(id)
+    if (itemInside.hasAttribute('icon-link')){
+        if (varDefined(itemInside.getAttribute('icon-link'))){
+            cacheIcon(id, itemInside.getAttribute('icon-link'))
         }
+        else {
+            findBestIcon(id)
+        }
+    }
+    else {
+        findBestIcon(id)
+    }
 }
 
 function setPlaseholder(id) {
@@ -160,7 +140,3 @@ function toDataURL(src, callback, outputFormat) {
         img.src = src
     }
 }
-
-// toDataURL('../images/icons/language.svg', function (res) {
-//     console.log(res)
-// })

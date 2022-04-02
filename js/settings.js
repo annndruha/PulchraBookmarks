@@ -91,7 +91,7 @@ $('#show-header').on('click', (e) => {
 
 $('#reload-icons').on('click', function (e) {
     e.stopPropagation()
-    loadAllIcons(true)
+    loadAllIcons()
 })
 
 $('.changegrid').hover(
