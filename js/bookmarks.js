@@ -53,7 +53,6 @@ function makeIconTemplate(itemInside) {
 }
 
 function createTemplate(itemInside){
-    console.log(itemInside.id)
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', '')
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
