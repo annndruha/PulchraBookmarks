@@ -1,12 +1,14 @@
 function makeAddBookmark(id){
-    let subMenu = document.createElement('div')
+    let iconDiv = document.createElement('div')
     let img = document.createElement('img')
     img.setAttribute('draggable', 'false')
     img.setAttribute('src', 'images/icons/add_circle_outline.svg')
     img.id = 'icon-' + id
-    subMenu.appendChild(img).className = 'grid-item-inside-add-img'
-    console.log(subMenu)
-    return subMenu
+    img.className = 'grid-item-inside-add-img'
+    console.log(img)
+    iconDiv.appendChild(img)
+    console.log(iconDiv)
+    return iconDiv
 }
 
 function makeText(id, link, title='') {
