@@ -1,66 +1,98 @@
-function loadAllIcons(linkchanged = false) {
+function loadAllIcons(reload = false) {
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         for (let r = 0; r < res['rows']; r++) {
             for (let c = 0; c < res['cols']; c++) {
                 let id = r.toString() + c.toString()
-                loadIcon(id, linkchanged)
+                loadIcon(id, reload)
             }
         }
     })
 }
 
 
-function loadIcon(id, linkchanged=false) {
-    try {
+function loadIcon(id, reload=false) {
+    // try {
+        // if (itemInside.hasAttribute('icon-link')){
+        //     let imgOld = document.getElementById('icon-' + id)
+        //     if (varDefined(itemInside.getAttribute('icon-link'))){
+        //         imgOld.src = document.getElementById(id).getAttribute('icon-link')
+        //     }
+        //     else {
+        //         autoIcon(id, reload)
+        //     }
+        // }
+        // else {
+        //     if  (reload){
+        //         autoIcon(id, reload)
+        //     }
+        //     else if(!itemInside.hasAttribute('cache-icon')){
+        //         autoIcon(id)
+        //     }
+        // }
         let itemInside = document.getElementById(id)
-        if (itemInside.hasAttribute('icon-link')){
-            let imgOld = document.getElementById('icon-' + id)
-            if (varDefined(itemInside.getAttribute('icon-link'))){
-                imgOld.src = document.getElementById(id).getAttribute('icon-link')
+        if(reload) {
+            setPlaseholder(id)
+            clearIconCache(id)
+            if (itemInside.hasAttribute('icon-link')){
+                if (varDefined(itemInside.getAttribute('icon-link'))){
+                    cacheIcon(id, itemInside.getAttribute('icon-link'))
+                }
+                else {
+                    findBestIcon(id)
+                }
             }
             else {
-                autoIcon(id, linkchanged)
+                findBestIcon(id)
             }
         }
-        else {
-            if  (linkchanged){
-                autoIcon(id, linkchanged)
-            }
-            else if(!itemInside.hasAttribute('cache-icon')){
-                autoIcon(id)
-            }
-        }
-    } catch (e) {
-        console.log(e)
-    }
 }
 
-function autoIcon(id, linkchanged=false){
+function setPlaseholder(id) {
+    let imgOld = document.getElementById('icon-' + id)
+    imgOld.src = '' + (id !== 'preview') ? 'images/icons/autorenew.svg' : 'images/icons/language.svg'
+}
+
+function setIcon(id, data) {
+    let imgOld = document.getElementById('icon-' + id)
+    imgOld.src = data
+}
+
+function cacheIcon(id, link){
+    chrome.storage.local.get([id], function (res) {
+        let storage_value = res[id]
+        toDataURL(link, function (iconBase64) {
+            setIcon(id, iconBase64)
+            storage_value[0]['cache-icon'] = iconBase64
+            chrome.storage.local.set({[id]: storage_value}, () => {})
+        })
+    })
+}
+
+function clearIconCache(id) {
+    let bm = document.getElementById(id)
+    bm.removeAttribute('cache-icon')
+    chrome.storage.local.get([id], function (res) {
+        let storage_value = res[id]
+        delete storage_value[0]['cache-icon']
+        chrome.storage.local.set({[id]: storage_value}, () => {})
+    })
+}
+
+function findBestIcon(id){
     let bm = document.getElementById(id)
     let link = bm.getAttribute('link')
-    let imgOld = document.getElementById('icon-' + id)
-    if (linkchanged) { // Placeholders
-        if (id !== 'preview') {
-            bm.setAttribute('cache-icon', 'images/icons/autorenew.svg')
-            imgOld.src = 'images/icons/autorenew.svg'
-        }
-        else {
-            bm.setAttribute('cache-icon', 'images/icons/language.svg')
-            imgOld.src = 'images/icons/language.svg'
-        }
-    }
     if (varDefined(link)) {
-        loadBestIcon(link, id)
-    } else {
-        if (id !== 'preview') {
-            if (document.getElementById('icon-' + id)) {
-                document.getElementById('icon-' + id).remove()
-            }
+        loadBestIcon(id, link)
+    }
+    else if (id !== 'preview')
+    {
+        if (document.getElementById('icon-' + id)) {
+            document.getElementById('icon-' + id).remove()
         }
     }
 }
 
-function loadBestIcon(link, id){
+function loadBestIcon(id, link){
     let links = [getOpenLink(getDomain(link)) + '/favicon.ico',
                 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=64']
 
@@ -102,13 +134,8 @@ function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
     }
 
     if (id !== 'preview') {
-        chrome.storage.local.get([id], function (res) {
-            let storage_value = res[id]
-            toDataURL(imgOld.src, function (iconBase64) {
-                storage_value[0]['cache-icon'] = iconBase64
-                chrome.storage.local.set({[id]: storage_value}, () => {})
-            })
-        })
+        cacheIcon(id, imgOld.src)
+        console.log(imgOld.src)
     }
 }
 
@@ -125,14 +152,13 @@ function toDataURL(src, callback, outputFormat) {
         callback(dataURL)
     }
     img.onerror = function() {
-
         callback("PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjRweCIgZmlsbD0iI2FhYWFhYSI+PHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMS45OSAyQzYuNDcgMiAyIDYuNDggMiAxMnM0LjQ3IDEwIDkuOTkgMTBDMTcuNTIgMjIgMjIgMTcuNTIgMjIgMTJTMTcuNTIgMiAxMS45OSAyem02LjkzIDZoLTIuOTVjLS4zMi0xLjI1LS43OC0yLjQ1LTEuMzgtMy41NiAxLjg0LjYzIDMuMzcgMS45MSA0LjMzIDMuNTZ6TTEyIDQuMDRjLjgzIDEuMiAxLjQ4IDIuNTMgMS45MSAzLjk2aC0zLjgyYy40My0xLjQzIDEuMDgtMi43NiAxLjkxLTMuOTZ6TTQuMjYgMTRDNC4xIDEzLjM2IDQgMTIuNjkgNCAxMnMuMS0xLjM2LjI2LTJoMy4zOGMtLjA4LjY2LS4xNCAxLjMyLS4xNCAyIDAgLjY4LjA2IDEuMzQuMTQgMkg0LjI2em0uODIgMmgyLjk1Yy4zMiAxLjI1Ljc4IDIuNDUgMS4zOCAzLjU2LTEuODQtLjYzLTMuMzctMS45LTQuMzMtMy41NnptMi45NS04SDUuMDhjLjk2LTEuNjYgMi40OS0yLjkzIDQuMzMtMy41NkM4LjgxIDUuNTUgOC4zNSA2Ljc1IDguMDMgOHpNMTIgMTkuOTZjLS44My0xLjItMS40OC0yLjUzLTEuOTEtMy45NmgzLjgyYy0uNDMgMS40My0xLjA4IDIuNzYtMS45MSAzLjk2ek0xNC4zNCAxNEg5LjY2Yy0uMDktLjY2LS4xNi0xLjMyLS4xNi0yIDAtLjY4LjA3LTEuMzUuMTYtMmg0LjY4Yy4wOS42NS4xNiAxLjMyLjE2IDIgMCAuNjgtLjA3IDEuMzQtLjE2IDJ6bS4yNSA1LjU2Yy42LTEuMTEgMS4wNi0yLjMxIDEuMzgtMy41NmgyLjk1Yy0uOTYgMS42NS0yLjQ5IDIuOTMtNC4zMyAzLjU2ek0xNi4zNiAxNGMuMDgtLjY2LjE0LTEuMzIuMTQtMiAwLS42OC0uMDYtMS4zNC0uMTQtMmgzLjM4Yy4xNi42NC4yNiAxLjMxLjI2IDJzLS4xIDEuMzYtLjI2IDJoLTMuMzh6Ii8+PC9zdmc+")
     }
-    // img.src = src
-    // if (img.complete || img.complete === undefined) {
-    //     img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-    //     img.src = src
-    // }
+    img.src = src
+    if (img.complete || img.complete === undefined) {
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+        img.src = src
+    }
 }
 
 // toDataURL('../images/icons/language.svg', function (res) {

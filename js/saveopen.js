@@ -69,6 +69,7 @@ function loadFromFile() {
                 const cjson = JSON.parse(b64DecodeUnicode(fileReader.result.substring(29)))
                 let json = getPureJSON(cjson)
                 setJsonToLocalStorage(json)
+                loadAllIcons(true)
                 console.log('Load bookmarks from file')
             } catch (e) {
                 alert('Broken file!\n' + e.toString())
@@ -126,6 +127,7 @@ function loadFromCloud() {
         if (varDefined(json['rows'])) {
             console.log('Load bookmarks from cloud')
             setJsonToLocalStorage(json)
+            loadAllIcons(true)
             let load_icon = document.getElementById('icon-cloud-load')
             load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
             setTimeout(function () {
