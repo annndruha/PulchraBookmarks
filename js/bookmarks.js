@@ -5,6 +5,7 @@ function makeAddBookmark(id){
     img.setAttribute('src', 'images/icons/add_circle_outline.svg')
     img.id = 'icon-' + id
     subMenu.appendChild(img).className = 'grid-item-inside-add-img'
+    console.log(subMenu)
     return subMenu
 }
 
@@ -28,11 +29,16 @@ function makeIconTemplate(itemInside) {
     let icon_div = document.createElement('div')
     let icon = document.createElement('img')
     icon.setAttribute('draggable', 'false')
-    if (itemInside.hasAttribute('icon-link') || itemInside.hasAttribute('cache-icon')){
+    if (itemInside.hasAttribute('cache-icon')){
         if (varDefined(itemInside.getAttribute('cache-icon'))) {
             icon.setAttribute('src', itemInside.getAttribute('cache-icon'))
         }
-        else if (varDefined(itemInside.getAttribute('icon-link'))){
+        else {
+            icon.setAttribute('src', 'images/icons/autorenew.svg')
+        }
+    }
+    else if (itemInside.hasAttribute('icon-link')){
+        if (varDefined(itemInside.getAttribute('icon-link'))){
             icon.setAttribute('src', itemInside.getAttribute('icon-link'))
         }
         else {
@@ -48,9 +54,9 @@ function makeIconTemplate(itemInside) {
 }
 
 function createTemplate(itemInside){
+    console.log(itemInside.id)
     let iconDiv = makeAddBookmark(itemInside.id)
     itemInside.setAttribute('link', '')
-    itemInside.setAttribute('cache-icon', '')
     itemInside.appendChild(iconDiv).className = 'grid-item-inside-add empty-icon'
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
@@ -106,7 +112,8 @@ function recreateMark(itemInside) {
             }
         }
         catch (e) {
-            if (e instanceof TypeError) {createTemplate(itemInside)}
+            if (e instanceof TypeError) {
+                createTemplate(itemInside)}
             else {console.log(e)}
         }
     })
@@ -201,6 +208,7 @@ function makeGrid(cols, rows, fromfile=false) {
 
         beautyfyView()
         updateBottomMenu(cols)
+        loadAllIcons(false)
         updateHeaderMenu()
         gridItemRightClick()
 }
