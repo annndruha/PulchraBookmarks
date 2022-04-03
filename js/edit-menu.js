@@ -38,8 +38,16 @@ function updateIconPreview() {
     // Icon itself
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', link_value)
-    preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview')
+    if (varDefined(iconlink)){
+        preview_div.setAttribute('icon-link', iconlink)
+        loadIcon('preview')
+    }
+    else if (varDefined(link_value)){
+        loadIcon('preview')
+    }
+    else {
+        setIcon('preview', 'images/icons/help.svg')
+    }
 }
 
 function createEditPopup(id, placeholder, iconlink) {
@@ -70,7 +78,7 @@ function createEditPopup(id, placeholder, iconlink) {
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', placeholder)
     preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview')
+    updateIconPreview()
 }
 
 function saveEdit() {
