@@ -54,8 +54,10 @@ url("fonts/Segoe Fluent Icons.ttf") format("truetype");
     font-family: 'Segoe UI', Arial, sans-serif;
     font-weight: 400;
     color: var(--accent);
-    /*padding: 10px;*/
     margin: 0;
+    /*overflow-wrap: inherit;*/
+    /*overflow-y: hidden;*/
+    /*TODO: Scrool*/
 }
 
 /*====================================================================================================================*/

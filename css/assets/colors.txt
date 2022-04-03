@@ -1,8 +1,0 @@
-w11 light:
-
-hover: f3f3f3
-text: 1a1a1a
-text-not-accent: 646464
-checkbox-inactive: 646464
-checkbox-active: 005fb8
-underlines: 005fb8

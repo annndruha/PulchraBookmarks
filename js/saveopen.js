@@ -112,12 +112,13 @@ function saveToCloud() {
         delete json['background']
         chrome.storage.sync.set(json, () => {
             console.log('Save bookmarks in cloud')
-            let save_icon = document.getElementById('icon-cloud-save')
-            save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-            setTimeout(function () {
-                let load_icon = document.getElementById('icon-cloud-save')
-                load_icon.setAttribute('src', 'images/icons/backup.svg')
-            }, 1500)
+            // TODO: Save confirm
+            // let save_icon = document.getElementById('icon-cloud-save')
+            // save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
+            // setTimeout(function () {
+            //     let load_icon = document.getElementById('icon-cloud-save')
+            //     load_icon.setAttribute('src', 'images/icons/backup.svg')
+            // }, 1500)
         })
     })
 }
@@ -128,12 +129,13 @@ function loadFromCloud() {
         if (varDefined(json['rows'])) {
             console.log('Load bookmarks from cloud')
             setJsonToLocalStorage(json)
-            let load_icon = document.getElementById('icon-cloud-load')
-            load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-            setTimeout(function () {
-                let load_icon = document.getElementById('icon-cloud-load')
-                load_icon.setAttribute('src', 'images/icons/cloud_download.svg')
-            }, 1500)
+            // TODO: Load confirm
+            // let load_icon = document.getElementById('icon-cloud-load')
+            // load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
+            // setTimeout(function () {
+            //     let load_icon = document.getElementById('icon-cloud-load')
+            //     load_icon.setAttribute('src', 'images/icons/cloud_download.svg')
+            // }, 1500)
         } else {
             alert('Cloud hasn\'t any data')
         }
