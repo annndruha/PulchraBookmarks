@@ -178,11 +178,11 @@ input[type=checkbox] {
 .content-inner{
     display: flex;
     justify-content: space-between;
-    padding: 0.8em 4em;
+    padding: 0.8em 2em;
 }
 
 .content-inner-collapsible {
-    padding: 0.8em 1.5em;
+    padding: 0.8em 1em;
 }
 
 .content-inner-title{
@@ -361,4 +361,20 @@ input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
 
 .option{
     background-color: var(--hover);
+}
+
+/*====================================================================================================================*/
+/*===Header===*/
+.settings-header {
+    padding: 0 10px 5px 0;
+}
+
+.header-logo {
+    width: 50px;
+    height: 50px;
+    padding: 0 5px;
+}
+
+.settings-header-text {
+    font-size: 1.2em;
 }
