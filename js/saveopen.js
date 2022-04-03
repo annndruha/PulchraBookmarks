@@ -62,7 +62,7 @@ function saveToFile() {
 
 function loadFromFile() {
     try {
-        let files = document.getElementById('upload_input').files[0]
+        let files = document.getElementById('upload_bookmarks').files[0]
         let fileReader = new FileReader()
         fileReader.readAsDataURL(files)
         fileReader.onload = () => {
@@ -145,7 +145,7 @@ $('#save-to-file').on('click', function (e) {
     saveToFile()
 })
 
-$('#upload_input').on('change', function (e) {
+$('#upload_bookmarks').on('change', function (e) {
     e.stopPropagation()
     loadFromFile()
 })

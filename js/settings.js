@@ -12,12 +12,12 @@ function closeSettings() {
     $('#settings-open-button').css('opacity', '1')
 }
 
-$('#logo, #title').on('click', function (e) {
+$('#store-link').on('click', function (e) {
     e.stopPropagation()
     openLink('https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb')
 })
 
-$('#version').on('click', function (e) {
+$('#git-link').on('click', function (e) {
     e.stopPropagation()
     openLink('https://github.com/annndruha/pulchra-bookmarks')
 })
@@ -43,7 +43,7 @@ $('#close-settings-button, .cancel-overlay').on('click', function (e) {
     closeSettings()
 })
 
-$('#new-tab').on('click', (e) => {
+$('#checkbox-new-tab').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['new-tab'], (res) => {
@@ -57,7 +57,7 @@ $('#new-tab').on('click', (e) => {
     })
 })
 
-$('#show-quick').on('click', (e) => {
+$('#checkbox-show-quick').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
@@ -72,7 +72,7 @@ $('#show-quick').on('click', (e) => {
     })
 })
 
-$('#show-header').on('click', (e) => {
+$('#checkbox-show-header').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['show-header'], function (res) {
@@ -99,3 +99,23 @@ $('.changegrid').hover(
     () => { // Out hover
         document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'}
 )
+
+//TODO: What is it and how it fix
+for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+    e.style.setProperty('--value', e.value);
+    e.style.setProperty('--min', e.min === '' ? '0' : e.min);
+    e.style.setProperty('--max', e.max === '' ? '100' : e.max);
+    e.addEventListener('input', () => e.style.setProperty('--value', e.value));
+}
+
+$('#theme').on('change', function () {
+    let theme = $(this).val()
+    if(theme === 'Windows 11 Light') {
+        // $('body').css('background-color', '#000')
+        document.getElementById('colorsheet').href = 'css/colorsheet_w11_light.css'
+    }
+    if (theme === 'Windows 11 Dark'){
+        // $('body').css('background-color', '#fff')
+        document.getElementById('colorsheet').href = 'css/colorsheet_w11_dark.css'
+    }
+})

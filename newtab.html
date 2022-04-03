@@ -49,14 +49,14 @@
             <div class="content-inner settings-header">
                 <div class="content-inner-title settings-header">
                     <div class="my-icons content-inner-icon">
-                        <img id="logo" class="header-logo" src="images/branding/pulchra-bookmarks.svg" alt="">
+                        <img id="logo" draggable="false" class="header-logo" src="images/branding/pulchra-bookmarks.svg" alt="">
                     </div>
                     <div class="content-inner-text settings-header-text">
                         <span id="title">Pulchra bookmarks</span>
                         <div class="header-small-row">
                             <span class="title-no-accent" id="version">vNaN</span>
-                            <img class="store-icons" src="images/branding/github.png" alt="">
-                            <img class="store-icons" src="images/branding/chromewebstore.png" alt="">
+                            <img id="git-link" draggable="false" class="store-icons" src="images/branding/github.png" alt="">
+                            <img id="store-link" draggable="false" class="store-icons" src="images/branding/chromewebstore.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -152,9 +152,10 @@
                             </div>
                         </div>
                         <div class="content-inner-element">
-                            <input type="range" class="styled-slider slider-progress" id="range-rows" name="volume" min="1"
+                            <span id="rows">N</span>
+                            <input type="range" class="styled-slider slider-progress changegrid" id="range-rows" name="volume" min="1"
                                    max="10">
-                            <label id="rows" for="range-rows">
+                            <label for="range-rows">
                             </label>
                         </div>
                     </div>
@@ -169,9 +170,10 @@
                             </div>
                         </div>
                         <div class="content-inner-element">
-                            <input type="range" class="styled-slider slider-progress" id="range-cols" name="volume" min="1"
+                            <span id="cols">N</span>
+                            <input type="range" class="styled-slider slider-progress changegrid" id="range-cols" name="volume" min="1"
                                    max="10">
-                            <label id="cols" for="range-cols">
+                            <label for="range-cols">
                             </label>
                         </div>
                     </div>
@@ -344,8 +346,8 @@
                             </div>
                         </div>
                         <div class="content-inner-element">
-                            <input type="file" id="upload_file" class="upload" accept=".png, .jpg" name="upload"/>
-                            <label id="load-from-file" for="upload_file" class="upload">
+                            <input type="file" id="upload_bookmarks" class="upload" accept=".json" name="upload"/>
+                            <label id="load-from-file" for="upload_bookmarks" class="upload">
                                 Select file
                             </label>
                         </div>
@@ -433,7 +435,6 @@
 <script type="text/javascript" src="js/load-icons.js"></script>
 <script type="text/javascript" src="js/bookmarks.js"></script>
 <script type="text/javascript" src="js/right-click-menu.js"></script>
-<script type="text/javascript" src="slider.js"></script>
 <script type="text/javascript" src="js/edit-menu.js"></script>
 <script type="text/javascript" src="js/settings.js"></script>
 <script type="text/javascript" src="js/saveopen.js"></script>

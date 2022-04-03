@@ -60,6 +60,10 @@
 /*    font-size: 0.8em;*/
 /*}*/
 
+#git-link:hover, #store-link:hover {
+    cursor: pointer;
+}
+
 .item-left {
     display: flex;
     flex-wrap: nowrap;

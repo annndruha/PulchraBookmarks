@@ -20,7 +20,7 @@ function initClock(){
 }
 
 
-$('#show-clock').on('click', (e) => {
+$('#checkbox-show-clock').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['show-clock'], function (res) {
