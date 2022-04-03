@@ -49,10 +49,10 @@
             <div class="content-inner settings-header">
                 <div class="content-inner-title settings-header">
                     <div class="my-icons content-inner-icon">
-                        <img class="header-logo" src="images/branding/pulchra-bookmarks.svg" alt="">
+                        <img id="logo" class="header-logo" src="images/branding/pulchra-bookmarks.svg" alt="">
                     </div>
                     <div class="content-inner-text settings-header-text">
-                        <span>Pulchra bookmarks</span>
+                        <span id="title">Pulchra bookmarks</span>
                         <div class="header-small-row">
                             <span class="title-no-accent" id="version">vNaN</span>
                             <img class="store-icons" src="images/branding/github.png" alt="">
@@ -187,7 +187,7 @@
                         </div>
                         <div class="content-inner-element">
                             <label class="switch">
-                                <input type="checkbox" checked>
+                                <input id="checkbox-show-header" type="checkbox">
                                 <span class="checkbox-text"></span>
                                 <span class="slider"></span>
                             </label>
@@ -205,7 +205,7 @@
                         </div>
                         <div class="content-inner-element">
                             <label class="switch">
-                                <input type="checkbox">
+                                <input id="checkbox-show-quick" type="checkbox">
                                 <span class="checkbox-text"></span>
                                 <span class="slider"></span>
                             </label>
@@ -223,7 +223,7 @@
                         </div>
                         <div class="content-inner-element">
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="checkbox-show-clock">
                                 <span class="checkbox-text"></span>
                                 <span class="slider"></span>
                             </label>
@@ -262,14 +262,14 @@
                         </div>
                         <div class="content-inner-element">
                             <label class="switch">
-                                <input type="checkbox" checked>
+                                <input id="checkbox-new-tab" type="checkbox">
                                 <span class="checkbox-text"></span>
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
-                    <div class="content-inner inner-button content-inner-last">
-                        <div class="content-inner-title ">
+                    <div class="content-inner inner-button content-inner-last" id="reload-icons">
+                        <div class="content-inner-title">
                             <div class="my-icons content-inner-icon">
                                 <div class="Refresh"></div>
                             </div>
@@ -300,7 +300,7 @@
                     </div>
                 </label>
                 <div class="collapsible-content">
-                    <div class="content-inner inner-button content-inner-last">
+                    <div id="save-to-cloud" class="content-inner inner-button content-inner-last">
                         <div class="content-inner-title ">
                             <div class="my-icons content-inner-icon">
                                 <div class="Cloud"></div>
@@ -311,7 +311,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-inner inner-button content-inner-last">
+                    <div id="load-from-cloud" class="content-inner inner-button content-inner-last">
                         <div class="content-inner-title ">
                             <div class="my-icons content-inner-icon">
                                 <div class="CloudDownload"></div>
@@ -322,7 +322,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-inner inner-button content-inner-last">
+                    <div id="save-to-file" class="content-inner inner-button content-inner-last">
                         <div class="content-inner-title ">
                             <div class="my-icons content-inner-icon">
                                 <div class="Download"></div>
@@ -345,7 +345,7 @@
                         </div>
                         <div class="content-inner-element">
                             <input type="file" id="upload_file" class="upload" accept=".png, .jpg" name="upload"/>
-                            <label for="upload_file" class="upload">
+                            <label id="load-from-file" for="upload_file" class="upload">
                                 Select file
                             </label>
                         </div>
