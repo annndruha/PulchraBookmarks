@@ -9,12 +9,52 @@ url("fonts/Segoe Fluent Icons.ttf") format("truetype");
     font-style: normal;
 }
 
-body{
+/*body{*/
+/*    !*background-color: var(--background);*!*/
+/*    font-family: 'Segoe UI', Arial, sans-serif;*/
+/*    font-weight: 400;*/
+/*    color: var(--accent);*/
+/*    !*padding: 50px;*!*/
+/*    margin: 0;*/
+/*}*/
+
+.settings {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    transition: right 0.5s;
+}
+
+.settings.cancel-overlay {
+    right: 5000px;
+    width: 100vw;
+    padding: 0;
+    background: black;
+    opacity: 0.4;
+}
+
+.settins-overlay {
     background-color: var(--background);
     font-family: 'Segoe UI', Arial, sans-serif;
     font-weight: 400;
     color: var(--accent);
-    padding: 50px;
+    margin: 0;
+}
+
+.where-padding {
+    padding: 10px;
+}
+
+.window {
+    right: -500px;
+    width: 500px;
+    cursor: default;
+
+    background-color: var(--background);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    color: var(--accent);
+    /*padding: 10px;*/
     margin: 0;
 }
 

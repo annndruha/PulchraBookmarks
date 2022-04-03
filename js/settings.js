@@ -1,13 +1,13 @@
 function openSettings() {
-    $('.app-container').css('margin-right', '370px').css('overflow-y', 'hidden')
+    $('.app-container').css('margin-right', '500px').css('overflow-y', 'hidden')
     $('.settings.window').css('right', '0px')
-    $('.settings.cancel-overlay').css('right', '370px')
+    $('.settings.cancel-overlay').css('right', '500px')
     $('#settings-open-button').css('opacity', '0')
 }
 
 function closeSettings() {
     $('.app-container').css('margin-right', '0px').css('overflow-y', 'auto')
-    $('.settings.window').css('right', '-500px')
+    $('.settings.window').css('right', '-1000px')
     $('.settings.cancel-overlay').css('right', '5000px')
     $('#settings-open-button').css('opacity', '1')
 }
