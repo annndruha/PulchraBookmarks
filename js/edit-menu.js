@@ -34,15 +34,14 @@ function deleteEditPopup() {
 function updateIconPreview() {
     let link_value = document.getElementById("edit-link-text").value
     let iconlink = document.getElementById("edit-icon-text").value
-
-    // Icon itself
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', link_value)
-    if (varDefined(iconlink)){
+    if (varDefined(link_value) && varDefined(iconlink)){
         preview_div.setAttribute('icon-link', iconlink)
         loadIcon('preview')
     }
-    else if (varDefined(link_value)){
+    else if (varDefined(link_value) && !varDefined(iconlink)){
+        preview_div.removeAttribute('icon-link')
         loadIcon('preview')
     }
     else {

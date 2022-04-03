@@ -50,17 +50,16 @@ function setIcon(id, data) {
 }
 
 function cacheIcon(id, iconBase64){
-    if (id !== 'preview'){
-        chrome.storage.local.get([id], function (res) {
-            let storage_value = res[id]
-            storage_value[0]['cache-icon'] = iconBase64
-            chrome.storage.local.set({[id]: storage_value}, () => {})
-            setIcon(id, iconBase64)
-        })
-    }
-    else {
+    if (id === 'preview') {
         setIcon(id, iconBase64)
+        return
     }
+    chrome.storage.local.get([id], function (res) {
+        let storage_value = res[id]
+        storage_value[0]['cache-icon'] = iconBase64
+        chrome.storage.local.set({[id]: storage_value}, () => {})
+        setIcon(id, iconBase64)
+    })
 }
 
 function clearIconCache(id) {
