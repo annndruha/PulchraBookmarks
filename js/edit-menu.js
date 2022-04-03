@@ -34,12 +34,19 @@ function deleteEditPopup() {
 function updateIconPreview() {
     let link_value = document.getElementById("edit-link-text").value
     let iconlink = document.getElementById("edit-icon-text").value
-
-    // Icon itself
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', link_value)
-    preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview', true)
+    if (varDefined(link_value) && varDefined(iconlink)){
+        preview_div.setAttribute('icon-link', iconlink)
+        loadIcon('preview')
+    }
+    else if (varDefined(link_value) && !varDefined(iconlink)){
+        preview_div.removeAttribute('icon-link')
+        loadIcon('preview')
+    }
+    else {
+        setIcon('preview', 'images/icons/help.svg')
+    }
 }
 
 function createEditPopup(id, placeholder, iconlink) {
@@ -70,7 +77,7 @@ function createEditPopup(id, placeholder, iconlink) {
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', placeholder)
     preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
-    loadIcon('preview', true)
+    updateIconPreview()
 }
 
 function saveEdit() {
@@ -99,7 +106,7 @@ function saveEdit() {
         storage_value[0]["title"] = newText
     }
     chrome.storage.local.set({[id]: storage_value}, () => {})
-    loadIcon(id, true)
+    loadIcon(id)
     recreateMark(bookmark)
     deleteEditPopup()
 }

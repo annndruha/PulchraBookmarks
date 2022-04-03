@@ -19,7 +19,7 @@ $('#logo, #title').on('click', function (e) {
 
 $('#version').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://github.com/dev-team-msu/pulchra-bookmarks')
+    openLink('https://github.com/annndruha/pulchra-bookmarks')
 })
 
 $('#range-rows').on('input', function (e) {
@@ -28,7 +28,6 @@ $('#range-rows').on('input', function (e) {
     document.getElementById('rows').innerText = rows.toString()
     chrome.storage.local.set({['rows']: rows}, () => {})
     makeGrid(cols, rows)
-    setTimeout(() => {$('.empty-icon-bm').css('border','1px solid #fff')}, 20)
 })
 
 $('#range-cols').on('input', function (e) {
@@ -37,7 +36,6 @@ $('#range-cols').on('input', function (e) {
     document.getElementById('cols').innerText = cols.toString()
     chrome.storage.local.set({['cols']: cols}, () => {})
     makeGrid(cols, rows)
-    setTimeout(() => {$('.empty-icon-bm').css('border','1px solid #fff')}, 20)
 })
 
 $('#close-settings-button, .cancel-overlay').on('click', function (e) {
@@ -91,12 +89,13 @@ $('#show-header').on('click', (e) => {
 
 $('#reload-icons').on('click', function (e) {
     e.stopPropagation()
-    loadAllIcons(true)
+    loadAllIcons()
 })
 
 $('.changegrid').hover(
     () => { // In hover
-    $('.empty-icon-bm').css('border','1px solid #fff')},
+        document.getElementById('emptysheet').href = 'css/empty-icon-bm-show.css'},
+
     () => { // Out hover
-    $('.empty-icon-bm').css('border','none')}
+        document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'}
 )

@@ -3,7 +3,7 @@ function getPureJSON(json){
     for (let r = 0; r < json['rows']; r++) {
         for (let c = 0; c < json['cols']; c++) {
             let id = r.toString() + c.toString()
-            delete json[id][0]['cache-icon-link']
+            delete json[id][0]['cache-icon']
         }
     }
     for (let r = json['rows']; r < 10; r++) {
@@ -31,10 +31,12 @@ function setJsonToLocalStorage(json) {
                 if (varDefined(val['background'])){
                     chrome.storage.local.set({'background':val['background']}, () => {
                         initSettingsValues(true)
+                        setTimeout(loadAllIcons, 200)
                     })
                 }
                 else {
                     initSettingsValues(true)
+                    setTimeout(loadAllIcons, 200)
                 }
             })
         })

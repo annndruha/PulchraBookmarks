@@ -31,7 +31,7 @@ function LinkRightClick(what_to_attach) {
 }
 
 function gridItemRightClick() {
-    $('.grid-item').bind('contextmenu', function (e) {
+    $('.grid-item').unbind('contextmenu').bind('contextmenu', function (e) {
         e.preventDefault()
         e.stopPropagation()
         hideAllRightClick()
