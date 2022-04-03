@@ -28,6 +28,16 @@ body{
     flex-direction: column;
 }
 
+.close-icon {
+    font-size: larger;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.close-icon:hover{
+    opacity: 0.6;
+}
+
 .ChevronDown:before {
     content: '\e70d';
 }
@@ -110,6 +120,10 @@ body{
 
 .CloudDownload:before {
     content: '\ebd3';
+}
+
+.ChromeClose:before {
+    content: '\e8bb';
 }
 
 /*====================================================================================================================*/
@@ -377,4 +391,16 @@ input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
 
 .settings-header-text {
     font-size: 1.2em;
+}
+
+.store-icons {
+    width: 15px;
+    height: 15px;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.header-small-row {
+    display: flex;
+    flex-direction: row;
 }
