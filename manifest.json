@@ -8,7 +8,7 @@
     "newtab": "newtab.html"
   },
   "icons":{
-    "128": "images/branding/logo128.png"
+    "128": "images/branding/pulchra-bookmarks128.png"
   },
   "background": {
     "service_worker": "js/background.js"
