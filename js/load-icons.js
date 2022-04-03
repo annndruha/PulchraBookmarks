@@ -9,7 +9,6 @@ function loadAllIcons() {
     })
 }
 
-
 function loadIcon(id) {
     let bm = document.getElementById(id)
     if (bm.hasAttribute('link')) {
@@ -46,17 +45,19 @@ function setPlaseholder(id) {
 
 function setIcon(id, data) {
     let imgOld = document.getElementById('icon-' + id)
+    if (imgOld === null) {return} // When remake grid so fast
     imgOld.src = data
 }
 
-function cacheIcon(id, link){
+function cacheIcon(id, iconBase64){
+    if(id === '30'){
+        console.log(iconBase64)
+    }
     chrome.storage.local.get([id], function (res) {
         let storage_value = res[id]
-        toBase64(link, function (iconBase64) {
-            setIcon(id, iconBase64)
-            storage_value[0]['cache-icon'] = iconBase64
-            chrome.storage.local.set({[id]: storage_value}, () => {})
-        })
+        storage_value[0]['cache-icon'] = iconBase64
+        chrome.storage.local.set({[id]: storage_value}, () => {})
+        setIcon(id, iconBase64)
     })
 }
 
@@ -81,61 +82,69 @@ function findBestIcon(id){
 }
 
 function loadBestIcon(id, link){
-    let links = [getOpenLink(getDomain(link)) + '/favicon.ico',
-                'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=64']
+    let link1 = getOpenLink(getDomain(link)) + '/favicon.ico'
+    let link2 = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=64'
 
-    let img = new Image()
-    img.src = links[1]
-    img.onload = () => waitToLoadFavicon(img, links[0], id, true)
-    img.onerror = () =>  waitToLoadFavicon(img, links[0], id, false)
-}
-
-function waitToLoadFavicon(google_img, fav_link, id, loaded1) {
-    let fav_img = new Image()
-    fav_img.src = fav_link
-    fav_img.onload = () => remakeIcon(google_img, fav_img, id, loaded1, true)
-    fav_img.onerror = () => remakeIcon(google_img, fav_img, id, loaded1, false)
+    toBase64(id, link1, onLoadCallback)
+    toBase64(id, link2, onLoadCallback)
 }
 
 
-function remakeIcon(google_img, fav_img, id, loaded1, loaded2) {
+
+
+// function waitToLoadFavicon(google_img, fav_link, id, loaded1) {
+//     let fav_img = new Image()
+//     fav_img.src = fav_link
+//     fav_img.onload = () => remakeIcon(google_img, fav_img, id, loaded1, true)
+//     fav_img.onerror = () => remakeIcon(google_img, fav_img, id, loaded1, false)
+// }
+
+let google_err_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsSAAALEgHS3X78AAACiElEQVQ4EaVTzU8TURCf2tJuS7tQtlRb6UKBIkQwkRRSEzkQgyEc6lkOKgcOph78Y+CgjXjDs2i44FXY9AMTlQRUELZapVlouy3d7kKtb0Zr0MSLTvL2zb75eL838xtTvV6H/xELBptMJojeXLCXyobnyog4YhzXYvmCFi6qVSfaeRdXdrfaU1areV5KykmX06rcvzumjY/1ggkR3Jh+bNf1mr8v1D5bLuvR3qDgFbvbBJYIrE1mCIoCrKxsHuzK+Rzvsi29+6DEbTZz9unijEYI8ObBgXOzlcrx9OAlXyDYKUCzwwrDQx1wVDGg089Dt+gR3mxmhcUnaWeoxwMbm/vzDFzmDEKMMNhquRqduT1KwXiGt0vre6iSeAUHNDE0d26NBtAXY9BACQyjFusKuL2Ry+IPb/Y9ZglwuVscdHaknUChqLF/O4jn3V5dP4mhgRJgwSYm+gV0Oi3XrvYB30yvhGa7BS70eGFHPoTJyQHhMK+F0ZesRVVznvXw5Ixv7/C10moEo6OZXbWvlFAF9FVZDOqEABUMRIkMd8GnLwVWg9/RkJF9sA4oDfYQAuzzjqzwvnaRUFxn/X2ZlmGLXAE7AL52B4xHgqAUqrC1nSNuoJkQtLkdqReszz/9aRvq90NOKdOS1nch8TpL555WDp49f3uAMXhACRjD5j4ykuCtf5PP7Fm1b0DIsl/VHGezzP1KwOiZQobFF9YyjSRYQETRENSlVzI8iK9mWlzckpSSCQHVALmN9Az1euDho9Xo8vKGd2rqooA8yBcrwHgCqYR0kMkWci08t/R+W4ljDCanWTg9TJGwGNaNk3vYZ7VUdeKsYJGFNkfSzjXNrSX20s4/h6kB81/271ghG17l+rPTAAAAAElFTkSuQmCC"
+
+
+function onLoadCallback(id, src, base64img, err = null){
     let imgOld = document.getElementById('icon-' + id)
-    if (imgOld === null) { // When remake grid so fast
-        return
-    }
-    if (loaded1 && loaded2) {
-        if (google_img.naturalWidth >= fav_img.naturalWidth) {
-            imgOld.src = google_img.src
-        } else {
-            imgOld.src = fav_img.src
+    if (imgOld === null) {return} // When remake grid so fast
+    // if (varDefined(err)){
+    //     cacheIcon(id, 'images/icons/language.svg')
+    // }
+    let img = new Image()
+    img.onload = function () {
+        // console.log(this.naturalWidth, src)
+        if (this.naturalWidth > imgOld.naturalWidth){
+            if (this.src !== google_err_img){
+                cacheIcon(id, base64img)
+            }
+            else {
+                cacheIcon(id, 'images/icons/language.svg')
+            }
         }
-    } else if (loaded1) {
-        if (google_img.naturalWidth !== 16) {
-            imgOld.src = google_img.src
-        } else {
-            imgOld.src = '../images/icons/language.svg'
-        }
-    } else if (loaded2) {
-        imgOld.src = fav_img.src
-    } else {
-        imgOld.src = '../images/icons/language.svg'
+        // if (varDefined(err) && imgOld.naturalWidth === 67){
+        //     cacheIcon(id, 'images/icons/language.svg')
+        // }
     }
-
-    if (id !== 'preview') {
-        cacheIcon(id, imgOld.src)
-    }
+    img.src = base64img
 }
 
-function toBase64(src, callback) {
+function toBase64(id, src, callback) {
     fetch(src)
-        .then(response => response.blob())
+        .then(function(response){
+            // if (response.ok){
+            return response.blob()
+            // else {
+            //     Promise.reject('is not ok: ' + response.status)
+            // }
+        }) //.catch(err => console.log(err))
         .then(imageBlob => {
-            let reader = new FileReader()
-            reader.readAsDataURL(imageBlob)
-            reader.onloadend = function() {
-                callback(reader.result)
-            }
-        })
+                let reader = new FileReader()
+                reader.readAsDataURL(imageBlob)
+                reader.onloadend = function() {
+                    callback(id, src, reader.result)
+                }
+                reader.onerror = function (){
+                    callback(id, src, google_err_img, err)
+                }
+        }).catch(err => console.log(err)) //callback(id, src, google_err_img, err)
 }
 
 // fetch(link, {
