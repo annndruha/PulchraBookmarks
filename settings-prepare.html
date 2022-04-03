@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting UI</title>
+    <link rel="icon" href="images/icons/favicon.svg">
+    <link rel="shortcut icon" href="/images/icons/favicon.svg">
+    <link rel="stylesheet" id="colorsheet" href="css/colorsheet_w11_light.css">
+    <link rel="stylesheet" id="stylesheet" href="css/stylesheet_w11.css">
+</head>
+<body>
+<div class="wrap-collabsible">
+    <input id="collapsible-theme" class="toggle" type="checkbox">
+    <label for="collapsible-theme" class="collapsible-label">
+        <div class="content-inner content-inner-collapsible">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Color"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Theme and colors</span>
+                    <span class="title-no-accent">Change background, theme, colors</span>
+                </div>
+            </div>
+            <div class="my-icons collapsible-icon">
+                <div class="ChevronDown"></div>
+            </div>
+        </div>
+    </label>
+    <div class="collapsible-content">
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Photo"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Upload background</span>
+                    <span class="title-no-accent">JPG or PNG image</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <input type="file" id="upload_background" class="upload" accept=".png, .jpg" name="upload"/>
+                <label for="upload_background" class="upload">
+                    Select file
+                </label>
+            </div>
+        </div>
+        <div class="content-inner content-inner-last">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Light"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Theme</span>
+                    <span class="title-no-accent">Select theme</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <label for="theme"></label>
+                <select class="select" id="theme">
+                    <option class="option">Windows 11 Light</option>
+                    <option class="option">Windows 11 Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrap-collabsible">
+    <input id="collapsible" class="toggle" type="checkbox">
+    <label for="collapsible" class="collapsible-label">
+        <div class="content-inner content-inner-collapsible">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="GridView"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Bookmarks</span>
+                    <span class="title-no-accent">Change grid and elements</span>
+                </div>
+            </div>
+            <div class="my-icons collapsible-icon">
+                <div class="ChevronDown"></div>
+            </div>
+        </div>
+    </label>
+    <div class="collapsible-content">
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="GripperBarHorizontal"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Lines</span>
+                    <span class="title-no-accent">From 1 to 10</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <input type="range" class="styled-slider slider-progress" id="range-rows" name="volume" min="1" max="10">
+                <label id="rows" for="range-rows">
+                </label>
+            </div>
+        </div>
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="GripperBarVertical"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Columns</span>
+                    <span class="title-no-accent">From 1 to 10</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <input type="range" class="styled-slider slider-progress" id="range-cols" name="volume" min="1" max="10">
+                <label id="cols" for="range-cols">
+                </label>
+            </div>
+        </div>
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Bookmarks"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Chrome bookmarks</span>
+                    <span class="title-no-accent">Show bookmarks row in head of the page</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="checkbox-text"></span>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="DockBottom"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Quick access</span>
+                    <span class="title-no-accent">Downloads, History, Settings etc.</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="checkbox-text"></span>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="content-inner content-inner-last">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="EmojiTabFavorites"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Clock</span>
+                    <span class="title-no-accent">Show clock</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="checkbox-text"></span>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+<!--        <div class="content-inner">-->
+<!--            <div class="content-inner-title">-->
+<!--                <div class="my-icons content-inner-icon">-->
+<!--                    <div class="Photo"></div>-->
+<!--                </div>-->
+<!--                <div class="content-inner-text">-->
+<!--                    <span>Upload background</span>-->
+<!--                    <span class="title-no-accent">Upload your own background</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content-inner-element">-->
+<!--                <input type="file" id="upload_background" class="upload" accept=".png, .jpg" name="upload"/>-->
+<!--                <label for="upload_background" class="upload">-->
+<!--                    Custom Upload-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="content-inner">-->
+<!--            <div class="content-inner-title">-->
+<!--                <div class="my-icons content-inner-icon">-->
+<!--                    <div class="Photo"></div>-->
+<!--                </div>-->
+<!--                <div class="content-inner-text">-->
+<!--                    <span>Выпадающий список</span>-->
+<!--                    <span class="title-no-accent">Upload your own background</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content-inner-element">-->
+<!--                <label for="theme"></label>-->
+<!--                <select class="select" id="theme">-->
+<!--                    <option class="option">Windows 11 Light</option>-->
+<!--                    <option class="option">Windows 11 Dark</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="content-inner">-->
+<!--            <div class="content-inner-title">-->
+<!--                <div class="my-icons content-inner-icon">-->
+<!--                    <div class="Photo"></div>-->
+<!--                </div>-->
+<!--                <div class="content-inner-text">-->
+<!--                    <span>Upload background</span>-->
+<!--                    <span class="title-no-accent">Upload your own background</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content-inner-element">-->
+<!--                <input type="range" class="styled-slider slider-progress" id="range-rows" name="volume" min="1" max="10">-->
+<!--                <label id="rows" for="range-rows">-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="content-inner inner-button content-inner-last">-->
+<!--            <div class="content-inner-title ">-->
+<!--                <div class="my-icons content-inner-icon">-->
+<!--                    <div class="Refresh"></div>-->
+<!--                </div>-->
+<!--                <div class="content-inner-text">-->
+<!--                    <span>Refresh icons</span>-->
+<!--                    <span class="title-no-accent">Icons are cashed by default, you can reload icons</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+<div class="wrap-collabsible">
+    <input id="collapsible-behavour" class="toggle" type="checkbox">
+    <label for="collapsible-behavour" class="collapsible-label">
+        <div class="content-inner content-inner-collapsible">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Click"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Behavior</span>
+                    <span class="title-no-accent">Relaod icons, open in new tab</span>
+                </div>
+            </div>
+            <div class="my-icons collapsible-icon">
+                <div class="ChevronDown"></div>
+            </div>
+        </div>
+    </label>
+    <div class="collapsible-content">
+        <div class="content-inner">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="OpenInNewWindow"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Open in new tab</span>
+                    <span class="title-no-accent">On left click open in new tab</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="checkbox-text"></span>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="content-inner inner-button content-inner-last">
+            <div class="content-inner-title ">
+                <div class="my-icons content-inner-icon">
+                    <div class="Refresh"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Refresh icons</span>
+                    <span class="title-no-accent">Icons are cashed by default, you can reload icons</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrap-collabsible">
+    <input id="collapsible-backup" class="toggle" type="checkbox">
+    <label for="collapsible-backup" class="collapsible-label">
+        <div class="content-inner content-inner-collapsible">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Save"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Backup</span>
+                    <span class="title-no-accent">Save and load bookmarks</span>
+                </div>
+            </div>
+            <div class="my-icons collapsible-icon">
+                <div class="ChevronDown"></div>
+            </div>
+        </div>
+    </label>
+    <div class="collapsible-content">
+        <div class="content-inner inner-button content-inner-last">
+            <div class="content-inner-title ">
+                <div class="my-icons content-inner-icon">
+                    <div class="Cloud"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Save to cloud</span>
+                    <span class="title-no-accent">Save to Google Chrome account</span>
+                </div>
+            </div>
+        </div>
+        <div class="content-inner inner-button content-inner-last">
+            <div class="content-inner-title ">
+                <div class="my-icons content-inner-icon">
+                    <div class="CloudDownload"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Load from cloud</span>
+                    <span class="title-no-accent">Load from Google Chrome account</span>
+                </div>
+            </div>
+        </div>
+        <div class="content-inner inner-button content-inner-last">
+            <div class="content-inner-title ">
+                <div class="my-icons content-inner-icon">
+                    <div class="Download"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Save to file</span>
+                    <span class="title-no-accent">Save boorkmarks and settings to json</span>
+                </div>
+            </div>
+        </div>
+        <div class="content-inner content-inner-last">
+            <div class="content-inner-title">
+                <div class="my-icons content-inner-icon">
+                    <div class="Upload"></div>
+                </div>
+                <div class="content-inner-text">
+                    <span>Load from file</span>
+                    <span class="title-no-accent">Pulchra json file</span>
+                </div>
+            </div>
+            <div class="content-inner-element">
+                <input type="file" id="upload_file" class="upload" accept=".png, .jpg" name="upload"/>
+                <label for="upload_file" class="upload">
+                    Select file
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="slider.js"></script>
+</html>

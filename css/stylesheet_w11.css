@@ -48,8 +48,68 @@ body{
     content: '\e91b';
 }
 
-.ColorSolid:before{
-    content: '\f354';
+.Color:before{
+    content: '\e790';
+}
+
+.GripperBarVertical:before{
+    content: '\e784'; /*Columns*/
+}
+
+.GripperBarHorizontal:before{
+    content: '\e76f'; /*Lines*/
+}
+
+.PenWorkspace:before{
+    content: '\edc6'; /*Theme*/
+}
+
+.GridView:before{
+    content: '\f0e2';
+}
+
+.Light:before {
+    content: '\e793';
+}
+
+.EmojiTabFavorites:before {
+    content: '\ed5a';
+}
+
+.OpenInNewWindow:before {
+    content: '\e8a7';
+}
+
+.Bookmarks:before {
+    content: '\e8a4';
+}
+
+.DockBottom:before {
+    content: '\e90e';
+}
+
+.Click:before {
+    content: '\e8b0';
+}
+
+.Download:before {
+    content: '\e896';
+}
+
+.Upload:before {
+    content: '\e898';
+}
+
+.Save:before {
+    content: '\e74e';
+}
+
+.Cloud:before {
+    content: '\e753';
+}
+
+.CloudDownload:before {
+    content: '\ebd3';
 }
 
 /*====================================================================================================================*/
