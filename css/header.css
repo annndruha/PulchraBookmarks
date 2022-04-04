@@ -77,9 +77,10 @@
     max-width: 700px;
     position: fixed;
     overflow-y: auto;
-    background-color: white;
+    background-color: var(--background);
     border-radius: 1em;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px var(--shadow);
+    color: var(--accent);
 }
 
 .header-text {
@@ -93,7 +94,7 @@
 }
 
 .header-text:hover {
-    background-color: #eee;
+    background-color: var(--hover);
 }
 
 .pseudo-list-icon {
