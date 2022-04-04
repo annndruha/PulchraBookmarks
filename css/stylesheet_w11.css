@@ -446,3 +446,7 @@ input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
     display: flex;
     flex-direction: row;
 }
+
+#git-link:hover, #store-link:hover {
+    cursor: pointer;
+}

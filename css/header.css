@@ -15,9 +15,36 @@
     overflow: hidden;
 }
 
-/*.header-item {*/
-/*    padding-right: 30px;*/
-/*}*/
+.item-left {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    text-align: left;
+    padding-top: 3px;
+}
+
+.item-right {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    text-align: right;
+    padding-top: 2px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    height: 24px;
+    padding: 5px 10px 5px 15px;
+}
+
+.item-right {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
 .header-item {
     padding-left: 10px;
 }
