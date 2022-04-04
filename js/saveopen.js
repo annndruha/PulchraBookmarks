@@ -112,13 +112,14 @@ function saveToCloud() {
         delete json['background']
         chrome.storage.sync.set(json, () => {
             console.log('Save bookmarks in cloud')
-            // TODO: Save confirm
-            // let save_icon = document.getElementById('icon-cloud-save')
-            // save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-            // setTimeout(function () {
-            //     let load_icon = document.getElementById('icon-cloud-save')
-            //     load_icon.setAttribute('src', 'images/icons/backup.svg')
-            // }, 1500)
+            let save_icon = document.getElementById('cloud-save-icon')
+            let old_icon = save_icon.children[0]
+            let done_icon = document.createElement('div')
+            done_icon.className = 'CheckMark'
+            save_icon.replaceChildren(done_icon)
+            setTimeout(function () {
+                save_icon.replaceChildren(old_icon)
+            }, 1000)
         })
     })
 }
@@ -129,13 +130,14 @@ function loadFromCloud() {
         if (varDefined(json['rows'])) {
             console.log('Load bookmarks from cloud')
             setJsonToLocalStorage(json)
-            // TODO: Load confirm
-            // let load_icon = document.getElementById('icon-cloud-load')
-            // load_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-            // setTimeout(function () {
-            //     let load_icon = document.getElementById('icon-cloud-load')
-            //     load_icon.setAttribute('src', 'images/icons/cloud_download.svg')
-            // }, 1500)
+            let load_icon = document.getElementById('cloud-load-icon')
+            let old_icon = load_icon.children[0]
+            let done_icon = document.createElement('div')
+            done_icon.className = 'CheckMark'
+            load_icon.replaceChildren(done_icon)
+            setTimeout(function () {
+                load_icon.replaceChildren(old_icon)
+            }, 1000)
         } else {
             alert('Cloud hasn\'t any data')
         }

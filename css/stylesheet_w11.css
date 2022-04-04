@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Segoe UI';
-url('fonts/Segoe UI.ttf')  format('truetype');
+    url('fonts/Segoe UI.ttf')  format('truetype');
 }
 
 @font-face {
     font-family: 'Segoe Fluent Icons';
-url("fonts/Segoe Fluent Icons.ttf") format("truetype");
+    url("fonts/Segoe Fluent Icons.ttf") format("truetype");
     font-style: normal;
 }
 
@@ -166,6 +166,10 @@ url("fonts/Segoe Fluent Icons.ttf") format("truetype");
 
 .ChromeClose:before {
     content: '\e8bb';
+}
+
+.CheckMark:before {
+    content: '\e73e';
 }
 
 /*====================================================================================================================*/
