@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/bottom-menu.css">
-    <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/right-click-menu.css">
     <link rel="stylesheet" href="css/edit-menu.css">
@@ -152,11 +151,13 @@
                             </div>
                         </div>
                         <div class="content-inner-element">
-                            <span id="rows">N</span>
-                            <input type="range" class="styled-slider slider-progress changegrid" id="range-rows" name="volume" min="1"
-                                   max="10">
-                            <label for="range-rows">
-                            </label>
+                            <div class="content-horizontal">
+                                <span class="slider-number" id="rows">N</span>
+                                <input type="range" class="styled-slider slider-progress changegrid" id="range-rows" name="volume" min="1"
+                                       max="10">
+                                <label for="range-rows">
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="content-inner">
@@ -170,11 +171,13 @@
                             </div>
                         </div>
                         <div class="content-inner-element">
-                            <span id="cols">N</span>
-                            <input type="range" class="styled-slider slider-progress changegrid" id="range-cols" name="volume" min="1"
-                                   max="10">
-                            <label for="range-cols">
-                            </label>
+                            <div class="content-horizontal">
+                                <span class="slider-number" id="cols">N</span>
+                                <input type="range" class="styled-slider slider-progress changegrid" id="range-cols" name="volume" min="1"
+                                       max="10">
+                                <label for="range-cols">
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="content-inner">
@@ -388,7 +391,7 @@
     <div class="edit_popup-inner">
     <div class="row " id="edit-title">
         <div class="item-left">
-            <img class="edit-menu-inrow" id="edit-logo" draggable="false" src="images/branding/logo128.png" alt="">
+            <img class="edit-menu-inrow" id="edit-logo" draggable="false" src="images/branding/pulchra-bookmarks.svg" alt="">
             <span class="edit-menu-inrow edit-menu-text">Edit bookmark</span>
         </div>
         <div class="item-right">

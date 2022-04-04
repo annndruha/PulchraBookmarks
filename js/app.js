@@ -34,6 +34,8 @@ function initSettingsValues(fromfile = false) {
         $('#range-cols').attr('value', res['cols'])
         $('#rows').text(res['rows'])
         $('#range-rows').attr('value', res['rows'])
+        initRange()
+
         setCheckbox('checkbox-new-tab', res['new-tab'])
         setCheckbox('checkbox-show-quick', res['show-quick'])
         setCheckbox('checkbox-show-header', res['show-header'])

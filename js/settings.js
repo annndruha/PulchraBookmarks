@@ -119,12 +119,14 @@ $('.changegrid').hover(
         document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'}
 )
 
-//TODO: What is it and how it fix
-for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
-    e.style.setProperty('--value', e.value);
-    e.style.setProperty('--min', e.min === '' ? '0' : e.min);
-    e.style.setProperty('--max', e.max === '' ? '100' : e.max);
-    e.addEventListener('input', () => e.style.setProperty('--value', e.value));
+
+function initRange() {
+    for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+        e.style.setProperty('--value', e.value)
+        e.style.setProperty('--min', e.min === '' ? '0' : e.min)
+        e.style.setProperty('--max', e.max === '' ? '100' : e.max)
+        e.addEventListener('input', () => e.style.setProperty('--value', e.value))
+    }
 }
 
 function setTheme(theme){

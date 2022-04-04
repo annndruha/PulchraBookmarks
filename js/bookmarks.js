@@ -203,11 +203,11 @@ function makeGrid(cols, rows, fromfile=false) {
                 }
             }
         }
-
-        beautyfyView()
+        
         updateBottomMenu(cols)
         updateHeaderMenu()
         gridItemRightClick()
+        beautyfyView()
 }
 
 function beautyfyView() {

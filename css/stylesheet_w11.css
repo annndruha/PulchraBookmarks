@@ -356,6 +356,16 @@ input[type=file] {
 
 /*====================================================================================================================*/
 /*===RANGE===*/
+.content-horizontal{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.slider-number{
+    padding-right: 5px;
+}
+
 :root{
     --min: 1;
     --max: 10;
@@ -366,6 +376,7 @@ input[type=range].styled-slider {
     height: 4px;
     border-radius: 2px;
     -webkit-appearance: none;
+    margin-top: 10px;
 }
 
 input[type=range].styled-slider.slider-progress {
