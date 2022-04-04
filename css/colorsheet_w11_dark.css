@@ -11,4 +11,7 @@
     --focus: #60cdff;
     --border-radius: 4px;
     --border-radius-big: 8px;
+
+    --bookmark-background: #202020; /*TODO: Add cool transparent*/
+    --bookmark-text: #ddd;
 }

@@ -4,6 +4,7 @@
     height: 20px;
     color: white;
     text-shadow: 0 0 3px black;
+    transition: margin 500ms, padding-right 500ms, padding-left 500ms;
 }
 
 .bottom-menu-left {
