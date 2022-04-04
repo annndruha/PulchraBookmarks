@@ -29,7 +29,7 @@ function initSettingsValues(fromfile = false) {
             chrome.storage.local.set({'version': json['version']}, () => {})
         })
     }
-    chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick', 'show-header', 'show-clock'], function (res) {
+    chrome.storage.local.get(null, function (res) {
         $('#cols').text(res['cols'])
         $('#range-cols').attr('value', res['cols'])
         $('#rows').text(res['rows'])
@@ -38,6 +38,7 @@ function initSettingsValues(fromfile = false) {
         setCheckbox('checkbox-show-quick', res['show-quick'])
         setCheckbox('checkbox-show-header', res['show-header'])
         setCheckbox('checkbox-show-clock', res['show-clock'])
+        setTheme(res['theme'])
         makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
     })
     chrome.storage.local.get(['background'], function (res) {

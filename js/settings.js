@@ -43,7 +43,7 @@ $('#close-settings-button, .cancel-overlay').on('click', function (e) {
     closeSettings()
 })
 
-$('#checkbox-new-tab').on('click', (e) => {
+$('#new-tab').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['new-tab'], (res) => {
@@ -57,7 +57,7 @@ $('#checkbox-new-tab').on('click', (e) => {
     })
 })
 
-$('#checkbox-show-quick').on('click', (e) => {
+$('#show-quick').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
@@ -72,7 +72,7 @@ $('#checkbox-show-quick').on('click', (e) => {
     })
 })
 
-$('#checkbox-show-header').on('click', (e) => {
+$('#show-header').on('click', (e) => {
     e.stopPropagation()
     e.preventDefault()
     chrome.storage.local.get(['show-header'], function (res) {
@@ -84,6 +84,25 @@ $('#checkbox-show-header').on('click', (e) => {
             setCheckbox('checkbox-show-header', true)
         }
         updateHeaderMenu()
+    })
+})
+
+$('#show-clock').on('click', (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    chrome.storage.local.get(['show-clock'], function (res) {
+        if (res['show-clock']) {
+            chrome.storage.local.set({['show-clock']: false}, () => {})
+            setCheckbox('checkbox-show-clock', false)
+            $('.clock-div').css('display', 'none')
+            $('.content').css('padding-top', '120px')
+
+        } else {
+            chrome.storage.local.set({['show-clock']: true}, () => {})
+            setCheckbox('checkbox-show-clock', true)
+            $('.clock-div').css('display', 'block')
+            $('.content').css('padding-top', '35px')
+        }
     })
 })
 
@@ -108,14 +127,15 @@ for (let e of document.querySelectorAll('input[type="range"].slider-progress')) 
     e.addEventListener('input', () => e.style.setProperty('--value', e.value));
 }
 
+function setTheme(theme){
+    let theme_list ={'Windows 11 Light' : 'css/colorsheet_w11_light.css',
+                     'Windows 11 Dark': 'css/colorsheet_w11_dark.css'}
+    document.getElementById('colorsheet').href = theme_list[theme]
+    chrome.storage.local.set({['theme']: theme}, () => {})
+    document.getElementById('theme').value = theme
+}
+
 $('#theme').on('change', function () {
     let theme = $(this).val()
-    if(theme === 'Windows 11 Light') {
-        // $('body').css('background-color', '#000')
-        document.getElementById('colorsheet').href = 'css/colorsheet_w11_light.css'
-    }
-    if (theme === 'Windows 11 Dark'){
-        // $('body').css('background-color', '#fff')
-        document.getElementById('colorsheet').href = 'css/colorsheet_w11_dark.css'
-    }
+    setTheme(theme)
 })
