@@ -1,3 +1,15 @@
+:root {
+    --empty-bm-border: none;
+}
+
+.empty-icon-bm {
+    opacity: 1;
+    border-radius: 1em;
+    border: var(--empty-bm-border);
+    box-sizing: border-box;
+    filter: drop-shadow(0px 0px 1px #000);
+}
+
 body {
     /*background-color: black;*/
     background-position: center;
