@@ -133,15 +133,32 @@ function initRange() {
     }
 }
 
+function setBackground(){
+    let theme_back_list ={'Windows 11 Light' : 'url(../images/backgrounds/windows.jpg)',
+        'Windows 11 Dark': 'url(../images/backgrounds/windows_dark.jpg)'}
+    chrome.storage.local.get(['background', 'theme'], function (res) {
+        if (varDefined(res['background'])){
+            $('body').css('background-image', 'url('+res['background']+')')
+        }
+        else {
+            $('body').css('background-image', theme_back_list[res['theme']])
+        }
+    })
+}
+
+
 function setTheme(theme){
     let theme_list ={'Windows 11 Light' : 'css/colorsheet_w11_light.css',
                      'Windows 11 Dark': 'css/colorsheet_w11_dark.css'}
     document.getElementById('colorsheet').href = theme_list[theme]
-    chrome.storage.local.set({['theme']: theme}, () => {})
     document.getElementById('theme').value = theme
+    chrome.storage.local.set({['theme']: theme}, () => {
+        setBackground()
+    })
 }
 
 $('#theme').on('change', function () {
     let theme = $(this).val()
     setTheme(theme)
 })
+

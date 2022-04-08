@@ -43,12 +43,13 @@ function initSettingsValues(fromfile = false) {
         setTheme(res['theme'])
         makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
     })
-    chrome.storage.local.get(['background'], function (res) {
+    chrome.storage.local.get(['background', 'theme'], function (res) {
         if (varDefined(res['background'])){
             $('body').css('background-image', 'url('+res['background']+')')
         }
         else {
-            $('body').css('background-image', 'url(../images/backgrounds/windows.jpg)')
+            $('body').css('background-image', 'url(../images/backgrounds/windows_dark.jpg)')
+
         }
     })
 }
