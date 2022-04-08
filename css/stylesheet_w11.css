@@ -6,15 +6,12 @@
 
 @font-face {
     font-family: 'Segoe UI';
-    url('fonts/Segoe UI.ttf')  format('truetype');
-    font-size: 1.0em;
+    src: local('fonts/Segoe UI.ttf');
 }
 
 @font-face {
     font-family: 'Segoe Fluent Icons';
-    url("fonts/Segoe Fluent Icons.ttf") format("truetype");
-    font-style: normal;
-    font-size: 1.0em;
+    src: local("fonts/Segoe Fluent Icons.ttf");
 }
 
 .settings {
@@ -32,18 +29,9 @@
     opacity: 0.4;
 }
 
-.settins-overlay {
-    background-color: var(--background);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-weight: 400;
-    color: var(--accent);
-    margin: 0;
-}
-
 .window {
-    background-color: var(--background);
     font-family: 'Segoe UI', Arial, sans-serif;
-    font-weight: 400;
+    background-color: var(--background);
     color: var(--accent);
     right: -500px;
     width: 500px;
