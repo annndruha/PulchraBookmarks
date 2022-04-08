@@ -79,6 +79,8 @@
 }
 
 #edit-save-button-elements{
+    display: flex;
+    justify-content: left;
     cursor: pointer;
     padding-top: 3px;
 }
@@ -90,9 +92,8 @@
 #edit-save-button{
     cursor: pointer;
     border-radius: 1em;
-    padding-right: 30px;
 }
 
 #edit-save-button:hover {
-    background-color: #eee;
+    background-color: var(--hover);
 }

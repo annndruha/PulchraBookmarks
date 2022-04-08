@@ -1,4 +1,6 @@
 function editBookmark(menu_img_id) {
+    hideAllRightClick()
+    deleteRootElementTree()
     let id = menu_img_id.replace('icon-', '')
     let bookmark = document.getElementById(id)
     let link = bookmark.getAttribute('link')

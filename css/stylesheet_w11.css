@@ -73,6 +73,10 @@ body {
     flex-direction: column;
 }
 
+.line-icons {
+    font-size: large;
+}
+
 .close-icon {
     font-size: larger;
     padding-right: 10px;
@@ -175,6 +179,21 @@ body {
     content: '\e73e';
 }
 
+.Edit:before {
+    content: '\e70f';
+}
+
+.Delete:before {
+    content: '\e74d';
+}
+
+.FolderOpen:before {
+    content: '\e838';
+}
+
+.Folder:before {
+    content: '\e8b7';
+}
 /*====================================================================================================================*/
 /*===HEADERS AND LINES===*/
 input[type=checkbox] {
