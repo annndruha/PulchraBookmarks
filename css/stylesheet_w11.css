@@ -14,33 +14,10 @@
     src: local("fonts/Segoe Fluent Icons.ttf");
 }
 
-.settings {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    transition: right 0.5s;
-}
-
-.settings.cancel-overlay {
-    right: 5000px;
-    width: 100vw;
-    padding: 0;
-    background: black;
-    opacity: 0.4;
-}
-
 .window {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: var(--background);
     color: var(--accent);
-    right: -500px;
-    width: 500px;
-    cursor: default;
-    margin: 0;
-}
-
-.where-padding {
-    padding: 10px;
 }
 
 /*====================================================================================================================*/
@@ -48,23 +25,6 @@
 .icons {
     font-family: 'Segoe Fluent Icons', system-ui;
     font-size: x-large;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-}
-
-.close-icon {
-    font-size: larger;
-    padding-right: 10px;
-    cursor: pointer;
-}
-
-.close-icon:hover{
-    opacity: 0.6;
-}
-
-.line-icons {
-    font-size: large;
 }
 
 .ChevronDown:before {
@@ -176,28 +136,16 @@
 }
 /*====================================================================================================================*/
 /*===HEADERS AND LINES===*/
-input[type=checkbox] {
-    display: none;
-}
-
-.wrap-collabsible {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
 .title-no-accent{
     font-size: 0.8em;
     color: var(--not-accent);
 }
 
 .collapsible-label {
-    display: block;
     border: 1px solid var(--border);
     color: var(--accent);
     background: var(--back);
-    cursor: pointer;
     border-radius: var(--border-radius);
-    transition: max-height 0.15s ease-out;
 }
 
 .collapsible-label:hover {
@@ -205,20 +153,9 @@ input[type=checkbox] {
     border-bottom: 1px solid var(--border-bottom);
 }
 
-.collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.15s ease-in-out;
-}
-
-.toggle:checked + .collapsible-label + .collapsible-content {
-    max-height: 1000px;
-}
-
 .toggle:checked + .collapsible-label .content-inner .icons .ChevronDown::before {
     content: '\e70e';
 }
-
 
 .toggle:checked + .collapsible-label {
     border-bottom-right-radius: 0;
@@ -237,75 +174,19 @@ input[type=checkbox] {
     border-bottom-right-radius: var(--border-radius);
 }
 
-.content-inner{
-    display: flex;
-    justify-content: space-between;
-    padding: 0.8em 2em;
-}
-
-.content-inner-collapsible {
-    padding: 0.8em 1em;
-}
-
-.content-inner-title{
-    display: flex;
-}
-
-.content-inner-text{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.content-inner-icon{
-    padding-right: 0.5em;
-}
-
-.content-inner-element{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 0.5em 0;
-}
-
 /*====================================================================================================================*/
 /*===SWITCH BUTTON===*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-}
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
     background-color: var(--hover);
-    transition: .1s;
-    border-radius: 1em;
 }
 
 .slider {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     border: 1px solid var(--border-slider);
 }
 
 .slider:before {
-    position: absolute;
-    left: 2px;
-    bottom: 2px;
-    content: "";
-    height: 13px;
-    width: 13px;
     background-color: var(--not-accent);
-    transition: .1s;
-    border-radius: 1em;
 }
 
 .checkbox-text:before {
@@ -321,7 +202,6 @@ input:checked ~ .slider{
 }
 
 input:checked ~ .slider:before {
-    transform: translateX(20px) translateY(-1px);
     background-color: var(--back);
 }
 
@@ -340,11 +220,12 @@ input[type=file] {
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border-bottom);
+
+    border-radius: var(--border-radius);
     display: inline-block;
     cursor: pointer;
     width: 150px;
     height: 28px;
-    border-radius: var(--border-radius);
     text-align: center;
     padding-top: 4px;
 }
