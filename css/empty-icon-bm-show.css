@@ -1,7 +1,11 @@
+:root {
+    --empty-bm-border: 1px solid #fff;
+}
+
 .empty-icon-bm {
     opacity: 1;
     border-radius: 1em;
-    border: 1px solid #fff;
+    border: var(--empty-bm-border);
     box-sizing: border-box;
     filter: drop-shadow(0px 0px 1px #000);
 }

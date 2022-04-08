@@ -112,11 +112,14 @@ $('#reload-icons').on('click', function (e) {
 })
 
 $('.changegrid').hover(
-    () => { // In hover
-        document.getElementById('emptysheet').href = 'css/empty-icon-bm-show.css'},
-
-    () => { // Out hover
-        document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'}
+    (e) => { // In hover
+        // document.getElementById('emptysheet').href = 'css/empty-icon-bm-show.css'
+        e.style.setProperty('--empty-bm-border', "1px solid #fff")
+    },
+    (e) => { // Out hover
+        e.style.setProperty('--empty-bm-border', "none")
+        // document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'
+    }
 )
 
 
