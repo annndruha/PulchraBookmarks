@@ -1,25 +1,21 @@
+:root{
+    --min: 1;
+    --max: 10;
+    --value: 5;
+}
+
 @font-face {
     font-family: 'Segoe UI';
     url('fonts/Segoe UI.ttf')  format('truetype');
+    font-size: 1.0em;
 }
 
 @font-face {
     font-family: 'Segoe Fluent Icons';
     url("fonts/Segoe Fluent Icons.ttf") format("truetype");
     font-style: normal;
+    font-size: 1.0em;
 }
-
-body {
-    background-color: var(--background);
-}
-/*body{*/
-/*    !*background-color: var(--background);*!*/
-/*    font-family: 'Segoe UI', Arial, sans-serif;*/
-/*    font-weight: 400;*/
-/*    color: var(--accent);*/
-/*    !*padding: 50px;*!*/
-/*    margin: 0;*/
-/*}*/
 
 .settings {
     position: fixed;
@@ -44,37 +40,29 @@ body {
     margin: 0;
 }
 
-.where-padding {
-    padding: 10px;
-}
-
 .window {
-    right: -500px;
-    width: 500px;
-    cursor: default;
-
     background-color: var(--background);
     font-family: 'Segoe UI', Arial, sans-serif;
     font-weight: 400;
     color: var(--accent);
+    right: -500px;
+    width: 500px;
+    cursor: default;
     margin: 0;
-    /*overflow-wrap: inherit;*/
-    /*overflow-y: hidden;*/
-    /*TODO: Scrool*/
+}
+
+.where-padding {
+    padding: 10px;
 }
 
 /*====================================================================================================================*/
 /*===ICONS===*/
-.my-icons {
+.icons {
     font-family: 'Segoe Fluent Icons', system-ui;
     font-size: x-large;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-}
-
-.line-icons {
-    font-size: large;
 }
 
 .close-icon {
@@ -85,6 +73,10 @@ body {
 
 .close-icon:hover{
     opacity: 0.6;
+}
+
+.line-icons {
+    font-size: large;
 }
 
 .ChevronDown:before {
@@ -235,7 +227,7 @@ input[type=checkbox] {
     max-height: 1000px;
 }
 
-.toggle:checked + .collapsible-label .content-inner .my-icons .ChevronDown::before {
+.toggle:checked + .collapsible-label .content-inner .icons .ChevronDown::before {
     content: '\e70e';
 }
 
@@ -390,12 +382,6 @@ input[type=file] {
 
 .slider-number{
     padding-right: 5px;
-}
-
-:root{
-    --min: 1;
-    --max: 10;
-    --value: 5;
 }
 
 input[type=range].styled-slider {
