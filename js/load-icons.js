@@ -15,7 +15,7 @@ function loadIcon(id) {
         if (varDefined(bm.getAttribute('link'))){
             setPlaseholder(id)
             clearIconCache(id)
-            if (bm.hasAttribute('cache-icon')) {
+            if (bm.hasAttribute('cache-icon')) { // TODO: Remove link from cache-icon, set in to True/False
                 if (varDefined(bm.getAttribute('cache-icon'))){
                     setIcon(id, bm.getAttribute('cache-icon'))
                 }
@@ -25,7 +25,7 @@ function loadIcon(id) {
             }
             else if (bm.hasAttribute('icon-link')){
                 if (varDefined(bm.getAttribute('icon-link'))){
-                    cacheIcon(id, bm.getAttribute('icon-link'))
+                    toBase64(id, bm.getAttribute('icon-link'), onUserIconCallback)
                 }
                 else {
                     findBestIcon(id)
@@ -86,14 +86,30 @@ function loadBestIcon(id, link){
     let link1 = getOpenLink(getDomain(link)) + '/favicon.ico'
     let link2 = 'https://s2.googleusercontent.com/s2/favicons?domain=' + getOpenLink(link) + '&sz=64'
 
-    toBase64(id, link1, onLoadCallback)
-    toBase64(id, link2, onLoadCallback)
+    toBase64(id, link1, onBestCallback)
+    toBase64(id, link2, onBestCallback)
 }
 
-let google_err_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsSAAALEgHS3X78AAACiElEQVQ4EaVTzU8TURCf2tJuS7tQtlRb6UKBIkQwkRRSEzkQgyEc6lkOKgcOph78Y+CgjXjDs2i44FXY9AMTlQRUELZapVlouy3d7kKtb0Zr0MSLTvL2zb75eL838xtTvV6H/xELBptMJojeXLCXyobnyog4YhzXYvmCFi6qVSfaeRdXdrfaU1areV5KykmX06rcvzumjY/1ggkR3Jh+bNf1mr8v1D5bLuvR3qDgFbvbBJYIrE1mCIoCrKxsHuzK+Rzvsi29+6DEbTZz9unijEYI8ObBgXOzlcrx9OAlXyDYKUCzwwrDQx1wVDGg089Dt+gR3mxmhcUnaWeoxwMbm/vzDFzmDEKMMNhquRqduT1KwXiGt0vre6iSeAUHNDE0d26NBtAXY9BACQyjFusKuL2Ry+IPb/Y9ZglwuVscdHaknUChqLF/O4jn3V5dP4mhgRJgwSYm+gV0Oi3XrvYB30yvhGa7BS70eGFHPoTJyQHhMK+F0ZesRVVznvXw5Ixv7/C10moEo6OZXbWvlFAF9FVZDOqEABUMRIkMd8GnLwVWg9/RkJF9sA4oDfYQAuzzjqzwvnaRUFxn/X2ZlmGLXAE7AL52B4xHgqAUqrC1nSNuoJkQtLkdqReszz/9aRvq90NOKdOS1nch8TpL555WDp49f3uAMXhACRjD5j4ykuCtf5PP7Fm1b0DIsl/VHGezzP1KwOiZQobFF9YyjSRYQETRENSlVzI8iK9mWlzckpSSCQHVALmN9Az1euDho9Xo8vKGd2rqooA8yBcrwHgCqYR0kMkWci08t/R+W4ljDCanWTg9TJGwGNaNk3vYZ7VUdeKsYJGFNkfSzjXNrSX20s4/h6kB81/271ghG17l+rPTAAAAAElFTkSuQmCC"
+const google_err_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsSAAALEgHS3X78AAACiElEQVQ4EaVTzU8TURCf2tJuS7tQtlRb6UKBIkQwkRRSEzkQgyEc6lkOKgcOph78Y+CgjXjDs2i44FXY9AMTlQRUELZapVlouy3d7kKtb0Zr0MSLTvL2zb75eL838xtTvV6H/xELBptMJojeXLCXyobnyog4YhzXYvmCFi6qVSfaeRdXdrfaU1areV5KykmX06rcvzumjY/1ggkR3Jh+bNf1mr8v1D5bLuvR3qDgFbvbBJYIrE1mCIoCrKxsHuzK+Rzvsi29+6DEbTZz9unijEYI8ObBgXOzlcrx9OAlXyDYKUCzwwrDQx1wVDGg089Dt+gR3mxmhcUnaWeoxwMbm/vzDFzmDEKMMNhquRqduT1KwXiGt0vre6iSeAUHNDE0d26NBtAXY9BACQyjFusKuL2Ry+IPb/Y9ZglwuVscdHaknUChqLF/O4jn3V5dP4mhgRJgwSYm+gV0Oi3XrvYB30yvhGa7BS70eGFHPoTJyQHhMK+F0ZesRVVznvXw5Ixv7/C10moEo6OZXbWvlFAF9FVZDOqEABUMRIkMd8GnLwVWg9/RkJF9sA4oDfYQAuzzjqzwvnaRUFxn/X2ZlmGLXAE7AL52B4xHgqAUqrC1nSNuoJkQtLkdqReszz/9aRvq90NOKdOS1nch8TpL555WDp49f3uAMXhACRjD5j4ykuCtf5PP7Fm1b0DIsl/VHGezzP1KwOiZQobFF9YyjSRYQETRENSlVzI8iK9mWlzckpSSCQHVALmN9Az1euDho9Xo8vKGd2rqooA8yBcrwHgCqYR0kMkWci08t/R+W4ljDCanWTg9TJGwGNaNk3vYZ7VUdeKsYJGFNkfSzjXNrSX20s4/h6kB81/271ghG17l+rPTAAAAAElFTkSuQmCC"
 
 
-function onLoadCallback(id, src, base64img){
+function onUserIconCallback(id, src, base64img){
+    let imgOld = document.getElementById('icon-' + id)
+    if (imgOld === null) {return} // When remake grid so fast
+    let img = new Image()
+    img.onload = function () {
+        if (this.src !== google_err_img){
+            cacheIcon(id, base64img)
+        }
+        else {
+            cacheIcon(id, 'images/icons/language.svg')
+        }
+    }
+    img.src = base64img
+}
+
+
+function onBestCallback(id, src, base64img){
     let imgOld = document.getElementById('icon-' + id)
     if (imgOld === null) {return} // When remake grid so fast
     let img = new Image()

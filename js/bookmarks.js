@@ -97,7 +97,7 @@ function recreateMark(itemInside) {
             else {
                 itemInside.removeAttribute('icon-link')
             }
-            if (varDefined(cachedIcon)){
+            if (varDefined(cachedIcon)){ // TODO: Remove link from cache-icon, set in to True/False
                 itemInside.setAttribute('cache-icon', cachedIcon)
             }
             else {
