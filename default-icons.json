@@ -1,57 +1,59 @@
 {
 	"10": {
 		"0": {
-			"link": "https://drive.google.com/drive/u/0/my-drive",
-			"title": "Google Drive"
+			"link": "https://mail.google.com/mail",
+			"title": "Gmail"
 		}
 	},
 	"11": {
 		"0": {
-			"icon-link": "https://about.twitter.com/etc/designs/about2-twitter/public/img/favicon.ico",
-			"link": "https://twitter.com/"
+			"link": "https://mail.yandex.ru",
+			"title": "Mail Yandex"
 		}
 	},
 	"12": {
 		"0": {
-			"link": "https://youtube.com/"
+			"link": "https://www.imdb.com/"
 		}
 	},
 	"13": {
 		"0": {
-			"icon-link": "https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png",
-			"link": "https://www.instagram.com/"
+			"icon-link": "https://www.wikipedia.org/static/favicon/wikipedia.ico",
+			"link": "https://ru.wikipedia.org/wiki"
 		}
 	},
 	"14": {
 		"0": {
-			"link": "https://www.spotify.com/"
+			"link": "https://music.yandex.ru/home"
 		}
 	},
 	"20": {
 		"0": {
-			"icon-link": "https://www.facebook.com/images/fb_icon_325x325.png",
-			"link": "https://www.facebook.com/"
+			"link": "https://drive.google.com/drive/u/0/my-drive",
+			"title": "Google Drive"
 		}
 	},
 	"21": {
 		"0": {
-			"link": "https://www.amazon.com/"
+			"link": "https://translate.google.com/",
+			"title": "Google Translate "
 		}
 	},
 	"22": {
 		"0": {
-			"link": "https://www.pinterest.com/"
+			"icon-link": "https://upload.wikimedia.org/wikipedia/commons/4/48/Meduza_M_Logo.png",
+			"link": "https://meduza.io/"
 		}
 	},
 	"23": {
 		"0": {
-			"link": "https://www.imdb.com/"
+			"icon-link": "https://github.githubassets.com/pinned-octocat.svg",
+			"link": "https://github.com/dev-team-msu/pulchra-bookmarks"
 		}
 	},
 	"24": {
 		"0": {
-			"icon-link": "https://github.githubassets.com/pinned-octocat.svg",
-			"link": "https://github.com/dev-team-msu/pulchra-bookmarks"
+			"link": "https://web.telegram.org/"
 		}
 	},
 	"00": {
@@ -62,24 +64,25 @@
 	},
 	"01": {
 		"0": {
-			"icon-link": "https://www.wikipedia.org/static/favicon/wikipedia.ico",
-			"link": "https://wikipedia.org/"
+			"link": "https://yandex.ru/"
 		}
 	},
 	"02": {
 		"0": {
-			"link": "https://translate.google.com/",
-			"title": "Google Translate"
+			"link": "https://hd.kinopoisk.ru/",
+			"title": "Кинопоиск HD"
 		}
 	},
 	"03": {
 		"0": {
-			"link": "https://netflix.com"
+			"icon-link": "https://s2.googleusercontent.com/s2/favicons?domain=https://vk.com&sz=128",
+			"link": "https://vk.com/im",
+			"title": "ВКонтакте"
 		}
 	},
 	"04": {
 		"0": {
-			"link": "https://www.reddit.com/"
+			"link": "https://youtube.com/"
 		}
 	},
 	"cols": 5,
@@ -88,5 +91,5 @@
 	"show-clock": true,
 	"show-header": true,
 	"show-quick": true,
-	"version": "0.9.1"
+	"version": "0.9.3"
 }

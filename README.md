@@ -11,7 +11,7 @@
 * Всё готово! Тестируйте!
 
 ### Как это выглядит:
-<img src="https://user-images.githubusercontent.com/51162917/161398886-00caea4a-8a53-4d3d-9077-57415b520a36.png" width=100% alt="">
+<img src="https://user-images.githubusercontent.com/51162917/162797673-5fa7c40a-1262-40d4-9dab-b6dbfe0fef2e.png" width=100% alt="">
 
 ### Цели:
 * Интерфейс:
