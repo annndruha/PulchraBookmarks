@@ -48,12 +48,17 @@
 #logo {
     position: absolute;
     top: 8px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 #title {
-    padding-left: 30px;
+    padding-left: 40px;
+}
+
+#git-link, #store-link {
+    width: 15px;
+    height: 15px;
 }
 
 #git-link:hover, #store-link:hover {
@@ -61,9 +66,14 @@
 }
 
 #version {
-    cursor: url('../images/branding/github.svg'),auto;
+    padding-left: 40px;
     color: #888888;
     font-size: 0.8em;
+}
+
+.verticalflex {
+    display: flex;
+    flex-direction: column;
 }
 
 .item-left {
