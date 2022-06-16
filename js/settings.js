@@ -12,15 +12,16 @@ function closeSettings() {
     $('#settings-open-button').css('opacity', '1')
 }
 
-$('#logo, #title').on('click', function (e) {
+$('#store-link').on('click', function (e) {
     e.stopPropagation()
     openLink('https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb')
 })
 
-$('#version').on('click', function (e) {
+$('#git-link').on('click', function (e) {
     e.stopPropagation()
     openLink('https://github.com/annndruha/pulchra-bookmarks')
 })
+
 
 $('#range-rows').on('input', function (e) {
     let rows = parseInt(e.target.value)

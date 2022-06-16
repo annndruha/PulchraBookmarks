@@ -50,14 +50,15 @@
     top: 8px;
     width: 30px;
     height: 30px;
-    cursor: url('../images/branding/chromewebstore.png'),auto;
 }
 
 #title {
     padding-left: 30px;
-    cursor: url('../images/branding/chromewebstore.png'),auto;
 }
 
+#git-link:hover, #store-link:hover {
+    cursor: pointer;
+}
 
 #version {
     cursor: url('../images/branding/github.svg'),auto;
