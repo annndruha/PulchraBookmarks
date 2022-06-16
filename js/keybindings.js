@@ -43,3 +43,23 @@ let keybinds = {
     "." : "#38",
     "/" : "#39",
 }
+
+function initKeybinds(){
+    chrome.storage.local.get(['keybinds'], function (res) {
+        if (res['keybinds']) {
+            enableKeybinds()
+        } else {
+            disableKeybinds()
+        }
+    })
+}
+
+function disableKeybinds() {
+    $('#key-preview').css('display', 'none')
+    $('.grid-item-inside-key').css('display', 'none')
+}
+
+function enableKeybinds() {
+    $('#key-preview').css('display', 'block')
+    $('.grid-item-inside-key').css('display', 'block')
+}

@@ -29,12 +29,13 @@ function initSettingsValues(fromfile = false) {
             chrome.storage.local.set({'version': json['version']}, () => {})
         })
     }
-    chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick', 'show-header', 'show-clock'], function (res) {
+    chrome.storage.local.get(['cols', 'rows', 'new-tab', 'show-quick', 'show-header', 'show-clock', 'keybinds'], function (res) {
         $('#cols').text(res['cols'])
         $('#range-cols').attr('value', res['cols'])
         $('#rows').text(res['rows'])
         $('#range-rows').attr('value', res['rows'])
         setCheckbox('checkbox-new-tab', res['new-tab'])
+        setCheckbox('checkbox-keybinds', res['keybinds'])
         setCheckbox('checkbox-show-quick', res['show-quick'])
         setCheckbox('checkbox-show-header', res['show-header'])
         setCheckbox('checkbox-show-clock', res['show-clock'])
@@ -83,7 +84,12 @@ $(document).on('keyup',function(e) {
         deleteRootElementTree()
     }
     if ($('#edit_popup').attr('data-status') === 'closed'){
-        $(keybinds[e.key]).click()
+        console.log('Pressed', e.key)
+        chrome.storage.local.get(['keybinds'], function (res) {
+            if (res['keybinds']) {
+                $(keybinds[e.key]).click()
+            }
+        })
     }
     else {
         if(e.key === "Enter") {

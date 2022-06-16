@@ -87,6 +87,23 @@ $('#show-header').on('click', (e) => {
     })
 })
 
+$('#keybinds').on('click', function (e) {
+    e.stopPropagation()
+    e.preventDefault()
+    chrome.storage.local.get(['keybinds'], function (res) {
+        if (res['keybinds']) {
+            chrome.storage.local.set({['keybinds']: false}, () => {})
+            setCheckbox('checkbox-keybinds', false)
+            disableKeybinds()
+        } else {
+            console.log('set keybinds')
+            chrome.storage.local.set({['keybinds']: true}, () => {})
+            setCheckbox('checkbox-keybinds', true)
+            enableKeybinds()
+        }
+    })
+})
+
 $('#reload-icons').on('click', function (e) {
     e.stopPropagation()
     loadAllIcons()
