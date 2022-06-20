@@ -19,7 +19,8 @@
 /*    padding-right: 30px;*/
 /*}*/
 .header-item {
-    padding-left: 10px;
+    padding-left: 8px;
+    padding-right: 2px;
 }
 
 .header-folder{
