@@ -18,7 +18,5 @@
     "storage",
     "bookmarks"
   ],
-  "host_permissions": [
-    "https://*/"
-  ]
+  "host_permissions": ["<all_urls>"]
 }
