@@ -106,6 +106,28 @@ function loadBackground() {
     }
 }
 
+function compareJson(){
+    chrome.storage.local.get(null, (res_local) => {
+        chrome.storage.sync.get(null, (res_cloud) => {
+            if (JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))) {
+                console.log('Identical')
+                let status = document.getElementById('save-cloud-status')
+                status.textContent  = ''
+            }
+            else {
+                console.log('Not identical')
+                let status = document.getElementById('save-cloud-status')
+                status.textContent  = 'Update cloud'
+            }
+
+
+            setTimeout(function () {
+                compareJson()
+            }, 100)
+        })
+    })
+}
+
 function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)

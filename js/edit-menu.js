@@ -70,7 +70,7 @@ function createEditPopup(id, placeholder, iconlink) {
 
     // Text-link to icon
     let icon_value = document.getElementById("edit-icon-text")
-    icon_value.placeholder = 'Link to image (svg, png, jpg or base64)'
+    icon_value.placeholder = 'Link to image (svg, png, jpg) or base64'
     icon_value.value = (varDefined(iconlink)) ? iconlink : ''
 
     // Icon itself

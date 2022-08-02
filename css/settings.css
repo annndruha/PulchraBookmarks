@@ -71,6 +71,24 @@
     font-size: 0.8em;
 }
 
+#keyus{
+    font-size: 0.8em;
+    padding-left: 10px;
+    color: #888888;
+}
+
+#save-cloud-status {
+    /*font-size: 0.8em;*/
+    padding-right: 10px;
+    color: #888888;
+}
+
+#load-cloud-status {
+    /*font-size: 0.8em;*/
+    padding-right: 10px;
+    color: #888888;
+}
+
 .verticalflex {
     display: flex;
     flex-direction: column;
