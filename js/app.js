@@ -4,6 +4,7 @@ function setStorageAndReload(storageData, message){
         initSettingsValues()
         beautyfyView()
         initClock()
+        compareJson()
         setTimeout(loadAllIcons, 200)
     })
 }
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             initSettingsValues()
             beautyfyView()
             initClock()
+            compareJson()
         }
         else {
             firstInstall()

@@ -109,17 +109,26 @@ function loadBackground() {
 function compareJson(){
     chrome.storage.local.get(null, (res_local) => {
         chrome.storage.sync.get(null, (res_cloud) => {
-            if (JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))) {
-                console.log('Identical')
-                let status = document.getElementById('save-cloud-status')
-                status.textContent  = ''
+            let ident = JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))
+            let status1 = $('#save-cloud-status')
+            let status2 = $('#load-cloud-status')
+            if (!ident) {
+                // let cloud_older =
+                // if (cloud_older) {
+                // TODO: Add watchdog to all changes with last change datetime
+                    status1.text('Update cloud')
+                    status1.css('color', 'green')
+                    status2.text('Load old')
+                    status2.css('color', 'red')
+                // }
+                // else {
+                //
+                // }
             }
             else {
-                console.log('Not identical')
-                let status = document.getElementById('save-cloud-status')
-                status.textContent  = 'Update cloud'
+                status1.text('')
+                status2.text('')
             }
-
 
             setTimeout(function () {
                 compareJson()
