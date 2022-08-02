@@ -15,7 +15,7 @@ function loadIcon(id) {
         if (varDefined(bm.getAttribute('link'))){
             setPlaseholder(id)
             clearIconCache(id)
-            if (bm.hasAttribute('cache-icon')) { // TODO: Remove link from cache-icon, set in to True/False
+            if (bm.hasAttribute('cache-icon')) {
                 if (varDefined(bm.getAttribute('cache-icon'))){
                     setIcon(id, bm.getAttribute('cache-icon'))
                 }
