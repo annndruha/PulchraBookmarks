@@ -1,27 +1,33 @@
 // noinspection JSJQueryEfficiency
 function getPureJSON(json){
-    for (let r = 0; r < json['rows']; r++) {
-        for (let c = 0; c < json['cols']; c++) {
-            let id = r.toString() + c.toString()
-            delete json[id][0]['cache-icon']
+    try{
+        for (let r = 0; r < json['rows']; r++) {
+            for (let c = 0; c < json['cols']; c++) {
+                let id = r.toString() + c.toString()
+                delete json[id][0]['cache-icon']
+            }
         }
-    }
-    for (let r = json['rows']; r < 10; r++) {
-        for (let c = 0; c <  10; c++) {
-            let id = r.toString() + c.toString()
-            delete json[id]
+        for (let r = json['rows']; r < 10; r++) {
+            for (let c = 0; c <  10; c++) {
+                let id = r.toString() + c.toString()
+                delete json[id]
+            }
         }
-    }
-    for (let r = 0; r < 10; r++) {
-        for (let c = json['cols']; c < 10; c++) {
-            let id = r.toString() + c.toString()
-            delete json[id]
+        for (let r = 0; r < 10; r++) {
+            for (let c = json['cols']; c < 10; c++) {
+                let id = r.toString() + c.toString()
+                delete json[id]
+            }
         }
+        $.getJSON('manifest.json', function (res) {
+            json['version'] = res['version']
+        })
+        delete json['datetime']
     }
-    $.getJSON('manifest.json', function (res) {
-        json['version'] = res['version']
-    })
-    delete json['datetime']
+    catch (e) {
+        if (!(e instanceof TypeError))
+        {console.log(e.message)}
+    }
     return json
 }
 
@@ -116,9 +122,7 @@ function compareJson(){
             let status2 = $('#load-cloud-status')
             if (!ident) {
                 status1.text('Update cloud')
-                status1.css('color', 'green')
                 status2.text(timeSince(new Date(lastsave)))
-                status2.css('color', 'red')
             }
             else {
                 status1.text('')

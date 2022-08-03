@@ -135,5 +135,5 @@ function toBase64(id, src, callback) {
             let reader = new FileReader()
             reader.readAsDataURL(imageBlob)
             reader.onloadend = () => callback(id, src, reader.result)
-        }).catch(err => {callback(id, src, google_err_img)})
+        }).catch(() => {callback(id, src, google_err_img)})
 }
