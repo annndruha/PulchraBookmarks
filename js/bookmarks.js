@@ -149,12 +149,6 @@ function getExistedColsRows(grid) {
 }
 
 function makeGrid(cols, rows, fromfile=false) {
-        // Переписать логику
-        // Сейчас строка/столбец добавляется как только готова вся
-        // Нужно сначала создать сетку нужного размера
-        // А потом асинхронно добавлять туда детей (заполнять закладки)
-        //
-
         // Remove bottom menu
         deleteBottomMenu()
         let grid = document.getElementById('grid')

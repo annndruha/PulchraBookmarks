@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-document.addEventListener('scroll', function (event) {
+document.addEventListener('scroll', function () {
     hideAllRightClick()
 }, true)
 

@@ -21,6 +21,7 @@ function getPureJSON(json){
     $.getJSON('manifest.json', function (res) {
         json['version'] = res['version']
     })
+    delete json['datetime']
     return json
 }
 
@@ -109,27 +110,20 @@ function loadBackground() {
 function compareJson(){
     chrome.storage.local.get(null, (res_local) => {
         chrome.storage.sync.get(null, (res_cloud) => {
+            let lastsave = res_cloud['datetime']
             let ident = JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))
             let status1 = $('#save-cloud-status')
             let status2 = $('#load-cloud-status')
             if (!ident) {
-                // let cloud_older =
-                // if (cloud_older) {
-                // TODO: Add watchdog to all changes with last change datetime
-                    status1.text('Update cloud')
-                    status1.css('color', 'green')
-                    status2.text('Load old')
-                    status2.css('color', 'red')
-                // }
-                // else {
-                //
-                // }
+                status1.text('Update cloud')
+                status1.css('color', 'green')
+                status2.text(timeSince(new Date(lastsave)))
+                status2.css('color', 'red')
             }
             else {
                 status1.text('')
                 status2.text('')
             }
-
             setTimeout(function () {
                 compareJson()
             }, 100)
@@ -141,6 +135,8 @@ function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)
         delete json['background']
+        let now = new Date()
+        json['datetime'] = now.toLocaleDateString("us-US") + ' ' + now.toLocaleTimeString("us-US")
         chrome.storage.sync.set(json, () => {
             console.log('Save bookmarks in cloud')
             let save_icon = document.getElementById('icon-cloud-save')
