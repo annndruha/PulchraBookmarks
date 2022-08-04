@@ -25,7 +25,7 @@ function firstInstall(){ // Storage clear
 function initSettingsValues(fromfile = false) {
     if (!fromfile) {
         $.getJSON('manifest.json', function (json) {
-            console.log('Pulchra bookmarks v' + json['version'])
+            console.log('Pulchra Bookmarks v' + json['version'])
             $('#version').text('v' + json['version'])
             chrome.storage.local.set({'version': json['version']}, () => {})
         })

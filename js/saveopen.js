@@ -59,7 +59,7 @@ function saveToFile() {
         let json = getPureJSON(res)
         delete json['background']
         $('<a></a>', {
-            'download': 'pulchra-' + now_str + '.json',
+            'download': 'Pulchra-' + now_str + '.json',
             'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
         }).appendTo('body').click(() => {
             $(this).remove()

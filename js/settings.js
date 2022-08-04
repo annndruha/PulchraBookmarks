@@ -14,12 +14,12 @@ function closeSettings() {
 
 $('#store-link').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb')
+    openLink('https://chrome.google.com/webstore/detail/PulchraBookmarks/pknkgclggganidoalifaagfjikhcdolb')
 })
 
 $('#git-link').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://github.com/annndruha/pulchra-bookmarks')
+    openLink('https://github.com/annndruha/PulchraBookmarks')
 })
 
 
