@@ -24,6 +24,7 @@ function getPureJSON(json){
         })
         delete json['datetime']
     }
+    // TODO: Validate json
     catch (e) {
         if (!(e instanceof TypeError))
         {console.log(e.message)}
@@ -74,7 +75,6 @@ function loadFromFile() {
         fileReader.readAsDataURL(files)
         fileReader.onload = () => {
             try {
-                console.log(fileReader.result.substring(29))
                 const cjson = JSON.parse(b64DecodeUnicode(fileReader.result.substring(29)))
                 let json = getPureJSON(cjson)
                 setJsonToLocalStorage(json)
