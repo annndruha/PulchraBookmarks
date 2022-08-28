@@ -2,27 +2,26 @@
 
 [![](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png)](https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb)
 
-### Установка из этого репозитория:
-* Нажмите на <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="30">и скачайте zip-архив <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="30">
-* Распакуйте в любое удобное место
-* Зайдите в расширения хрома chrome://extensions/
-* Включите режим разработчика <img src="https://user-images.githubusercontent.com/51162917/153860635-b3da0d96-22cf-4762-8e1f-a66359477af6.png" height="30">
-* Установите расширение <img src="https://user-images.githubusercontent.com/51162917/153861803-9a691abd-fdaa-40fc-a996-c4c0dee69ef1.png" height="30">
-* Всё готово! Тестируйте!
+### Install from this repo
+* Click on <img src="https://user-images.githubusercontent.com/51162917/153860727-4d06b357-16b1-4b91-a389-15bc7a5727ac.png" height="30">and download zip-file <img src="https://user-images.githubusercontent.com/51162917/153860703-74de55fc-8769-4eb4-aa7a-09c1e167f336.png" height="30">
+* Unzip in any place
+* Go to chrome extentions: `chrome://extensions/`
+* Turn on developer mode: <img src="https://user-images.githubusercontent.com/51162917/153860635-b3da0d96-22cf-4762-8e1f-a66359477af6.png" height="30">
+* Install extention <img src="https://user-images.githubusercontent.com/51162917/153861803-9a691abd-fdaa-40fc-a996-c4c0dee69ef1.png" height="30">
+* That's all. Enjoy!
 
-### Как это выглядит:
+### Screenshot:
 <img src="https://user-images.githubusercontent.com/51162917/162797673-5fa7c40a-1262-40d4-9dab-b6dbfe0fef2e.png" width=100% alt="">
 
-### Цели:
-* Интерфейс:
-  * ✅ Симпатичные закладки со скруглёнными углами
-  * ✅ Быстрый, но ненавязчивый доступ к Downloads, Bookmarks, History, Settings
-  * ✅ Возможность отключить быстрый доступ
-  * ✅ Красивые, подгружающиеся логотипы
-  * ✅ Выбор фона
-  * ✅ Красивое добавление закладки (с выбором текста, заднего фона и иконки)
-  * ⚒️Стиль windows 11, включая темную тему
-  * Workspaces (Переключение между экранами вкладок)
+### TODO:
+* GUI:
+  * [x]Rounded corner bookmarks
+  * [x] Quick access to Downloads, Bookmarks, History, Settings
+  * [x] Sites logos
+  * [x] Custom background
+  * [x] Add bookmarks windows with preview
+  * [] Wingows 11 style
+  * [] Workspaces
 
 * Поведение:
   * ✅ Возможность включить и выключить стандартную панель закладок сверху
