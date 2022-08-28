@@ -15,44 +15,39 @@
 
 ### TODO:
 * GUI:
-  * [x]Rounded corner bookmarks
+  * [x] Rounded corner bookmarks
   * [x] Quick access to Downloads, Bookmarks, History, Settings
   * [x] Sites logos
   * [x] Custom background
   * [x] Add bookmarks windows with preview
-  * [] Wingows 11 style
-  * [] Workspaces
+  * [ ] Wingows 11 style
+  * [ ] Workspaces
 
-* Поведение:
-  * ✅ Возможность включить и выключить стандартную панель закладок сверху
-  * ✅ Возможность выбрать где открывать закладку (это вкладка/новая вкладка)
-  * ✅ Контекстные действия для закладок
-    * ✅ Открытие в новой вкладке
-    * ✅ Изменение
-    * ✅ Удаление
-  * ✅ Выбор сетки для закладок
-  * ✅ Возможность оставлять пустые ряды и ячейки в сетке
-  * ✅ Возможность импортировать / загрузить сетку закладок из файла
-  * ✅ Открытие закладки по клавише
-  * ⚒️Открытие по клавише должно быть независимо от раскладки
-  * Фокус при открытии должен быть на странице, а не на адресной строке
-  * Фокус при редактировании должен быть на редактировании ссылки
-  * Вертикальное расположение закладок должно центроваться
-  * ✅ Enter сохраняет редактированную закладку
+* Behaviour:
+  * [x] Turn on/off top bookmarks panel
+  * [x] Where to open
+  * [x] Context actions:
+    * [x] Open in new tab
+    * [x] Edit
+    * [x] Delete
+  * [x] Change bookmarks grid
+  * [x] Import/export bookmarks file
+  * [x] Hotkey open
+  * [ ] Hotkey independed layout
+  * [ ] Focus on page while open
+  * [ ] Vertical centring grid
+  * [x] Enter to save edit
 
-* Бэк:
-  * ✅ Полностью open source
-  * ✅ Никакой слежки за пользователем
-  * Перевод на множество языков (для начала перевести на русский)
-  * ✅ Кэширование иконок
-  * ⚒️Нулевое количество ошибок и предупреждений, полная чистота кода, в том числе лицензионная
+* Back:
+  * [x] Full open source
+  * [x] No trace or advertisement
+  * [ ] Translations
+  * [x] Icon caching
+  * [ ] Zero errors
 
-* На будущее:
-  * Возможность группировать закладки в папки
-  * Ctrl + F должен искать среди закладок
-  * Ctrl + Z возвращает удалённую
-  * ✅ Часы
-  * Блок погоды
-  * Курсы валют
-  * Гибкая настройка визуала
-  * Блок новостей
+* Future features:
+  * [ ] Group bookmarks
+  * [ ] Ctrl + F for found
+  * [ ] Ctrl + Z revert last action
+  * [x] Clock
+  * [ ] Weather
