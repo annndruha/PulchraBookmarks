@@ -12,7 +12,7 @@
 
 ### Screenshot:
 
-<img src="images/branding/readme.png" width=100% alt="">
+<img src="images/branding/readme.png" width="1920" alt="">
 
 ### TODO:
 * GUI:

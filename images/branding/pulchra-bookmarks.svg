@@ -11,21 +11,11 @@
    xml:space="preserve"
    width="2500"
    height="2500"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:ns="&amp;ns_sfw;"><defs
+   xmlns="http://www.w3.org/2000/svg"><defs
    id="defs36" />
 <metadata
    id="metadata2">
-	<ns:sfw>
-		<ns:slices />
-		<ns:sliceSourceBounds
-   bottomLeftOrigin="true"
-   height="2130"
-   width="2289.75"
-   x="-1147.5"
-   y="-1041" />
-	</ns:sfw>
+
 </metadata>
 <path
    fill="#185c37"
@@ -44,25 +34,21 @@
    style="fill:#007fff;fill-opacity:1;stroke-width:1.08638" />
 <path
    opacity="0.1"
-   enable-background="new    "
    d="M 1275.5939,541.43894 H 596.5531 V 1980.1454 h 679.0408 c 56.4221,-0.1891 102.116,-47.3062 102.2995,-105.4855 V 646.92463 c -0.1835,-58.1794 -45.8774,-105.29656 -102.2995,-105.48569 z"
    id="path10"
    style="stroke-width:1.06427" />
 <path
    opacity="0.2"
-   enable-background="new    "
    d="M 1219.7837,598.98719 H 596.5531 V 2037.6938 h 623.2306 c 56.4223,-0.1892 102.1162,-47.3064 102.2996,-105.4858 V 704.47288 c -0.1834,-58.17939 -45.8773,-105.29655 -102.2996,-105.48569 z"
    id="path12"
    style="stroke-width:1.06427" />
 <path
    opacity="0.2"
-   enable-background="new    "
    d="M 1219.7837,598.98719 H 596.5531 V 1922.5972 h 623.2306 c 56.4223,-0.189 102.1162,-47.3063 102.2996,-105.4857 V 704.47288 c -0.1834,-58.17939 -45.8773,-105.29655 -102.2996,-105.48569 z"
    id="path14"
    style="stroke-width:1.06427" />
 <path
    opacity="0.2"
-   enable-background="new    "
    d="M 1163.9738,598.98719 H 596.5531 V 1922.5972 h 567.4207 c 56.422,-0.189 102.116,-47.3063 102.2995,-105.4857 V 704.47288 c -0.1835,-58.17939 -45.8775,-105.29655 -102.2995,-105.48569 z"
    id="path16"
    style="stroke-width:1.06427" />
