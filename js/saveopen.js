@@ -98,7 +98,6 @@ function loadBackground() {
         fileReader.readAsDataURL(files)
         fileReader.onload = () => {
             try {
-                fileReader.result
                 chrome.storage.local.set({'background':fileReader.result}, () => {})
                 $('body').css('background-image', 'url('+fileReader.result+')')
             } catch (e) {

@@ -16,6 +16,7 @@
   "action": {},
   "permissions": [
     "storage",
+    "unlimitedStorage",
     "bookmarks"
   ],
   "host_permissions": ["<all_urls>"]
