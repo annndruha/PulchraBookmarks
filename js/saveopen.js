@@ -117,16 +117,21 @@ function compareJson(){
     chrome.storage.local.get(null, (res_local) => {
         chrome.storage.sync.get(null, (res_cloud) => {
             let lastsave = res_cloud['datetime']
-            let ident = JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))
-            let status1 = $('#save-cloud-status')
-            let status2 = $('#load-cloud-status')
-            if (!ident) {
-                status1.text('Update cloud')
-                status2.text(timeSince(new Date(lastsave)))
+            if (varDefined(lastsave)) {
+                let ident = JSON.stringify(getPureJSON(res_cloud)) === JSON.stringify(getPureJSON(res_local))
+                let status1 = $('#save-cloud-status')
+                let status2 = $('#load-cloud-status')
+                if (!ident) {
+                    status1.text('Update cloud')
+                    status2.text(timeSince(new Date(lastsave)))
+                } else {
+                    status1.text('')
+                    status2.text('')
+                }
             }
             else {
-                status1.text('')
-                status2.text('')
+                let status1 = $('#save-cloud-status')
+                status1.text('Update cloud')
             }
             setTimeout(function () {
                 compareJson()

@@ -1,14 +1,14 @@
 {
 	"10": {
 		"0": {
-			"link": "https://mail.google.com/mail",
-			"title": "Gmail"
+			"icon-link": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg",
+			"link": "twitter.com"
 		}
 	},
 	"11": {
 		"0": {
-			"link": "https://mail.yandex.ru",
-			"title": "Mail Yandex"
+			"icon-link": "https://www.wikipedia.org/static/favicon/wikipedia.ico",
+			"link": "wikipedia.org"
 		}
 	},
 	"12": {
@@ -18,79 +18,79 @@
 	},
 	"13": {
 		"0": {
-			"icon-link": "https://www.wikipedia.org/static/favicon/wikipedia.ico",
-			"link": "https://ru.wikipedia.org/wiki"
+			"link": "https://web.telegram.org/",
+			"title": "Telegram"
 		}
 	},
 	"14": {
 		"0": {
-			"link": "https://music.yandex.ru/home"
+			"link": "reddit.com"
 		}
 	},
 	"20": {
 		"0": {
-			"link": "https://drive.google.com/drive/u/0/my-drive",
-			"title": "Google Drive"
+			"link": "https://stackoverflow.com/"
 		}
 	},
 	"21": {
-		"0": {
-			"link": "https://translate.google.com/",
-			"title": "Google Translate "
-		}
-	},
-	"22": {
-		"0": {
-			"icon-link": "https://upload.wikimedia.org/wikipedia/commons/4/48/Meduza_M_Logo.png",
-			"link": "https://meduza.io/"
-		}
-	},
-	"23": {
-		"0": {
-			"icon-link": "https://github.githubassets.com/pinned-octocat.svg",
-			"link": "https://github.com/dev-team-msu/pulchra-bookmarks"
-		}
-	},
-	"24": {
-		"0": {
-			"link": "https://web.telegram.org/"
-		}
-	},
-	"00": {
 		"0": {
 			"icon-link": "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png",
 			"link": "http://www.google.com/"
 		}
 	},
+	"22": {
+		"0": {
+			"link": "youtube.com"
+		}
+	},
+	"23": {
+		"0": {
+			"link": "https://mail.google.com/mail/u/0",
+			"title": "Mail"
+		}
+	},
+	"24": {
+		"0": {
+			"link": "https://calendar.google.com/calendar",
+			"title": "Calendar"
+		}
+	},
+	"00": {
+		"0": {
+			"icon-link": "https://github.githubassets.com/pinned-octocat.svg",
+			"link": "https://github.com/Annndruha/PulchraBookmarks",
+			"title": "Star on Github"
+		}
+	},
 	"01": {
 		"0": {
-			"link": "https://yandex.ru/"
+			"icon-link": "https://raw.githubusercontent.com/Annndruha/PulchraBookmarks/main/images/branding/chromewebstore.svg",
+			"link": "https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb",
+			"title": "Rate Extension"
 		}
 	},
 	"02": {
 		"0": {
-			"link": "https://hd.kinopoisk.ru/",
-			"title": "Кинопоиск HD"
+			"icon-link": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Facebook_F_icon.svg",
+			"link": "facebook.com"
 		}
 	},
 	"03": {
 		"0": {
-			"icon-link": "https://s2.googleusercontent.com/s2/favicons?domain=https://vk.com&sz=128",
-			"link": "https://vk.com/im",
-			"title": "ВКонтакте"
+			"link": "amazon.com"
 		}
 	},
 	"04": {
 		"0": {
-			"link": "https://youtube.com/"
+			"link": "yahoo.com"
 		}
 	},
 	"cols": 5,
-	"keybinds": false,
+	"keybinds": true,
 	"new-tab": false,
 	"rows": 3,
 	"show-clock": true,
 	"show-header": true,
-	"show-quick": true,
-	"version": "0.9.9"
+	"show-quick": false,
+	"version": "0.9.10"
 }
