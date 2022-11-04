@@ -13,7 +13,7 @@ function deleteHeaderMenu() {
 
 function createBookmarks() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
-        //TODO: Colapsing if header have too many items
+        //TODO: Collapsing if header have too many items
         let root = bookmarkTreeNodes[0]['children'][0]['children']
         for (let i = 0; i < root.length; i++) {
             let cl = ""
