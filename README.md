@@ -1,4 +1,4 @@
-# Pulchra bookmarks - Chrome extention (BETA)
+# Pulchra bookmarks - Chrome extention (1.0.0)
 
 [![](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png)](https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb)
 
@@ -11,7 +11,8 @@
 * That's all. Enjoy!
 
 ### Screenshot:
-<img src="https://user-images.githubusercontent.com/51162917/162797673-5fa7c40a-1262-40d4-9dab-b6dbfe0fef2e.png" width=100% alt="">
+
+<img src="images/branding/readme.png" width=100% alt="">
 
 ### TODO:
 * GUI:
