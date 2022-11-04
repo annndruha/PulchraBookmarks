@@ -41,8 +41,7 @@
 }
 
 #title-row {
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding: 10px 5px 20px 5px;
 }
 
 #logo {
@@ -53,7 +52,11 @@
 }
 
 #title {
-    padding-left: 40px;
+    padding-left: 47px;
+}
+
+.header-small-row{
+    padding-left: 7px;
 }
 
 #git-link, #store-link {

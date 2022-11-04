@@ -86,11 +86,11 @@
 		}
 	},
 	"cols": 5,
-	"keybinds": true,
+	"keybinds": false,
 	"new-tab": false,
 	"rows": 3,
 	"show-clock": true,
 	"show-header": true,
 	"show-quick": false,
-	"version": "0.9.10"
+	"version": "1.0.0"
 }
