@@ -23,6 +23,7 @@ function getPureJSON(json){
             json['version'] = res['version']
         })
         delete json['datetime']
+        delete json['background']
     }
     // TODO: Validate json
     catch (e) {
