@@ -1,6 +1,6 @@
-# Pulchra bookmarks - Chrome extention (1.0.0)
-
-[![download](https://img.shields.io/github/downloads/Annndruha/PulchraBookmarks/total)](https://github.com/Annndruha/PulchraBookmarks/releases)
+# Pulchra bookmarks - Chrome extention
+![version](https://img.shields.io/github/v/release/Annndruha/PulchraBookmarks)
+![rating](https://img.shields.io/badge/rating-★★★★★-brightgreen)
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=Annndruha/PulchraBookmarks)
 [![GitHub license](https://img.shields.io/github/license/Annndruha/PulchraBookmarks.svg)](https://github.com/Annndruha/PulchraBookmarks/blob/master/LICENSE)
 
