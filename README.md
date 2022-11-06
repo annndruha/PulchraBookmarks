@@ -1,4 +1,4 @@
-# <img src="https://github.com/Annndruha/PulchraBookmarks/blob/main/images/branding/pulchra-bookmarks32.png"> Pulchra bookmarks - Chrome extention
+# <img src="https://github.com/Annndruha/PulchraBookmarks/blob/main/images/branding/pulchra-bookmarks32.png"> Pulchra Bookmarks - Chrome extention
 
 ![version](https://img.shields.io/github/v/release/Annndruha/PulchraBookmarks)
 ![rating](https://img.shields.io/badge/rating-★★★★★-brightgreen)
