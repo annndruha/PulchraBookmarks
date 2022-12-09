@@ -23,6 +23,12 @@ $('#git-link').on('click', function (e) {
 })
 
 
+$('#report_bug').on('click', function (e) {
+    e.stopPropagation()
+    openLink('https://docs.google.com/forms/d/e/1FAIpQLScgAqYmlH-e9z3mQJ6I3TBUKRn8ei6QfYDtC6d-dRpTwvqe3Q/viewform?usp=sf_link')
+})
+
+
 $('#range-rows').on('input', function (e) {
     let rows = parseInt(e.target.value)
     let cols = parseInt(document.getElementById('cols').innerText)
