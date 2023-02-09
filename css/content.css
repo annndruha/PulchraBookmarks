@@ -1,7 +1,7 @@
 .content {
     padding: 120px 0 0 0;
     overflow-y: auto;
-    transition: margin 500ms, padding-right 500ms, padding-left 500ms;
+    transition: margin 250ms, padding-right 250ms, padding-left 250ms;
 }
 
 .grid {
@@ -26,7 +26,7 @@
     padding: 5px calc(1vw - 4px) 5px calc(1vw - 4px);
     height: 100px;
     width: 200px;
-    transition: padding 500ms;
+    transition: padding 250ms;
 }
 
 .grid-item-inside-key {
