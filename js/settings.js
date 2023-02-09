@@ -19,7 +19,7 @@ $('#store-link').on('click', function (e) {
 
 $('#git-link').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://github.com/annndruha/PulchraBookmarks')
+    openLink('https://github.com/Annndruha/PulchraBookmarks')
 })
 
 

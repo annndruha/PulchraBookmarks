@@ -199,42 +199,8 @@ function makeGrid(cols, rows, fromfile=false) {
             }
         }
 
-        beautyfyView()
         updateBottomMenu(cols)
         updateHeaderMenu()
         gridItemRightClick()
         initKeybinds()
-}
-
-function beautyfyView() {
-    chrome.storage.local.get(['cols', 'rows'], function (res) {
-        let cols = res['cols']
-        let app_container = document.getElementById('app-container')
-        let style = app_container.currentStyle || window.getComputedStyle(app_container)
-        let margin = style.marginRight
-        let windowWidth = app_container.clientWidth - parseFloat(margin)
-        const states = [cols * 150, cols * 130, cols * 113, cols * 92]
-        let key = 0
-        const keys = {
-            0: {'pb': '50px', 'pi': '10px'},
-            1: {'pb': '10px', 'pi': '10px'},
-            2: {'pb': '5px', 'pi': '5px'},
-            3: {'pb': '1px', 'pi': '1px'},
-            4: {'pb': '0px', 'pi': '1px'}
-        }
-        if (windowWidth >= states[0]) {
-            key = 0
-        } else if (states[0] >= windowWidth && windowWidth > states[1]) {
-            key = 1
-        } else if (states[1] >= windowWidth && windowWidth > states[2]) {
-            key = 2
-        } else if (states[2] >= windowWidth && windowWidth > states[3]) {
-            key = 3
-        } else if (states[3] >= windowWidth) {
-            key = 4
-        }
-        $('.content').css('padding-right', keys[key]['pb']).css('padding-left', keys[key]['pb'])
-        $('.grid-item').css('padding-right', keys[key]['pi']).css('padding-left', keys[key]['pi'])
-        $('.pseudo-grid-item').css('padding-right', keys[key]['pi']).css('padding-left', keys[key]['pi'])
-    })
 }

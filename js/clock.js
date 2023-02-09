@@ -8,12 +8,18 @@ function updateTime(){
 
 function initClock(){
     chrome.storage.local.get(['show-clock'], function (res) {
-        if (res['show-clock']) {
-            $('.clock-div').css('display', 'block')
-            $('.content').css('padding-top', '35px')
+        if (window.innerHeight > 512) {
+            if (res['show-clock']){
+                $('.clock-div').css('display', 'block')
+                $('.content').css('padding-top', '35px')
+            }
+            else {
+                $('.clock-div').css('display', 'none')
+                $('.content').css('padding-top', '120px')
+            }
         } else {
             $('.clock-div').css('display', 'none')
-            $('.content').css('padding-top', '120px')
+            $('.content').css('padding-top', '0')
         }
         updateTime()
     })

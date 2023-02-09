@@ -2,7 +2,6 @@ function setStorageAndReload(storageData, message){
     chrome.storage.local.set(storageData, () => {
         console.log(message)
         initSettingsValues()
-        beautyfyView()
         initClock()
         compareJson()
         setTimeout(loadAllIcons, 200)
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.local.get(['rows'], function (res) {
         if (varDefined(res['rows'])){
             initSettingsValues()
-            beautyfyView()
             initClock()
             compareJson()
         }
@@ -70,12 +68,9 @@ document.addEventListener('scroll', function () {
     hideAllRightClick()
 }, true)
 
-window.addEventListener('resize', () => {
-    beautyfyView()
-})
 
-$('.settings').on('transitionend', () => {
-    beautyfyView()
+window.addEventListener('resize', () => {
+    initClock()
 })
 
 $(document).on('keyup',function(e) {
