@@ -65,14 +65,15 @@ function createTemplate(itemInside){
 
 function createMark(itemInside, link, title){
     itemInside.setAttribute('link', link)
+
+    let iconDiv = makeIconTemplate(itemInside)
+    itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
+
     let textDiv = makeText(itemInside.id, link, title)
     itemInside.appendChild(textDiv).className = 'grid-item-inside-text'
 
     let keyDiv = makeKeyBindText(itemInside.id)
     itemInside.appendChild(keyDiv).className = 'grid-item-inside-key'
-
-    let iconDiv = makeIconTemplate(itemInside)
-    itemInside.appendChild(iconDiv).className = 'grid-item-inside-icon'
     
     $('#'+itemInside.id).off('click').on('click', function (e) {
         e.stopPropagation()
