@@ -82,6 +82,7 @@
 .grid-item-inside:hover .icon {
     max-height: 60px;
     min-height: 60px;
+    max-width: none;
 }
 
 .grid-item-inside:hover .grid-item-inside-icon {
