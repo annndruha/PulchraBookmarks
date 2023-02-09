@@ -38,13 +38,13 @@ function openLink(open_link, newtab='auto') {
         {
             chrome.storage.local.get(['new-tab'], function (res) {
                 if (res['new-tab']) {
-                    chrome.tabs.create({'url': open_link})
+                    chrome.tabs.create({'url': open_link, active: false})
                 } else {
                     chrome.tabs.update({active: true, url: open_link})
                 }})
         }
         else if (newtab === true) {
-            chrome.tabs.create({'url': open_link})
+            chrome.tabs.create({'url': open_link, active: false})
         }
         else {
             chrome.tabs.update({active: true, url: open_link})
