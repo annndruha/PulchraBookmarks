@@ -101,6 +101,7 @@ function loadBackground() {
             try {
                 chrome.storage.local.set({'background':fileReader.result}, () => {})
                 $('body').css('background-image', 'url('+fileReader.result+')')
+                $('#reset-background').css('display', 'flex')
             } catch (e) {
                 alert('Broken file!\n' + e.toString())
             }

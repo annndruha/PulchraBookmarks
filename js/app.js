@@ -47,6 +47,7 @@ function initSettingsValues(fromfile = false) {
         }
         else {
             $('body').css('background-image', 'url(../images/backgrounds/windows.jpg)')
+            $('#reset-background').css('display', 'none')
         }
     })
 }
