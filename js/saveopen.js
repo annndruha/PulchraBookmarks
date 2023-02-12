@@ -147,6 +147,7 @@ function saveToCloud() {
         delete json['background']
         let now = new Date()
         json['datetime'] = now.toLocaleDateString("us-US") + ' ' + now.toLocaleTimeString("us-US")
+        chrome.storage.sync.clear(() => {})
         chrome.storage.sync.set(json, () => {
             console.log('Save bookmarks in cloud')
             let save_icon = document.getElementById('icon-cloud-save')
