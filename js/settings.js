@@ -10,6 +10,7 @@ function closeSettings() {
     $('.settings.window').css('right', '-500px')
     $('.settings.cancel-overlay').css('right', '5000px')
     $('#settings-open-button').css('opacity', '1')
+    initKeybinds()
 }
 
 $('#store-link').on('click', function (e) {
@@ -107,7 +108,16 @@ $('#keybinds').on('click', function (e) {
             enableKeybinds()
         }
     })
-})
+}).hover(
+    () => { // In hover
+        enableKeybinds()
+        $('.grid-item-inside-key').css('opacity', '1')},
+
+    () => { // Out hover
+        disableKeybinds()
+        $('.grid-item-inside-key').css('opacity', '0')}
+)
+
 
 $('#reload-icons').on('click', function (e) {
     e.stopPropagation()
