@@ -145,18 +145,24 @@ function saveToCloud() {
         let json = getPureJSON(res)
         let now = new Date()
         json['datetime'] = now.toLocaleDateString("us-US") + ' ' + now.toLocaleTimeString("us-US")
-        chrome.storage.sync.clear(() => {
-            chrome.storage.sync.set(json, () => {
-                chrome.runtime.lastError
-                    ? alert(chrome.runtime.lastError.message + '\n\nProbably icon-link (or base64) in some bookmark too big')
-                    : console.log('Bookmarks saved in cloud')
-
-                let save_icon = document.getElementById('icon-cloud-save')
-                save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-                setTimeout(function () {
-                    let load_icon = document.getElementById('icon-cloud-save')
-                    load_icon.setAttribute('src', 'images/icons/backup.svg')
-                }, 1500)
+        chrome.storage.sync.get(null, (res_cloud_backup) => {
+            chrome.storage.sync.clear(() => {
+                chrome.storage.sync.set(json, () => {
+                    if (chrome.runtime.lastError){
+                        chrome.storage.sync.set(res_cloud_backup, () => {
+                            console.log('Runtime error while cloud save. Cloud restored to state before saving.')})
+                            alert(chrome.runtime.lastError.message + '\n\nProbably icon-link (or base64) in some bookmark too big')
+                    }
+                    else{
+                        console.log('Bookmarks saved in cloud')
+                    }
+                    let save_icon = document.getElementById('icon-cloud-save')
+                    save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
+                    setTimeout(function () {
+                        let load_icon = document.getElementById('icon-cloud-save')
+                        load_icon.setAttribute('src', 'images/icons/backup.svg')
+                    }, 1500)
+                })
             })
         })
     })
