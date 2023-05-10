@@ -1,6 +1,8 @@
 // noinspection JSJQueryEfficiency
 function getPureJSON(json){
     try{
+        delete json['datetime']
+        delete json['background']
         for (let r = 0; r < json['rows']; r++) {
             for (let c = 0; c < json['cols']; c++) {
                 let id = r.toString() + c.toString()
@@ -22,8 +24,6 @@ function getPureJSON(json){
         $.getJSON('manifest.json', function (res) {
             json['version'] = res['version']
         })
-        delete json['datetime']
-        delete json['background']
     }
     // TODO: Validate json
     catch (e) {
@@ -58,7 +58,6 @@ function saveToFile() {
         let now = new Date()
         let now_str = now.toLocaleDateString("ru-RU")
         let json = getPureJSON(res)
-        delete json['background']
         $('<a></a>', {
             'download': 'Pulchra-' + now_str + '.json',
             'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
@@ -144,18 +143,21 @@ function compareJson(){
 function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)
-        delete json['background']
         let now = new Date()
         json['datetime'] = now.toLocaleDateString("us-US") + ' ' + now.toLocaleTimeString("us-US")
-        chrome.storage.sync.clear(() => {})
-        chrome.storage.sync.set(json, () => {
-            console.log('Save bookmarks in cloud')
-            let save_icon = document.getElementById('icon-cloud-save')
-            save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-            setTimeout(function () {
-                let load_icon = document.getElementById('icon-cloud-save')
-                load_icon.setAttribute('src', 'images/icons/backup.svg')
-            }, 1500)
+        chrome.storage.sync.clear(() => {
+            chrome.storage.sync.set(json, () => {
+                chrome.runtime.lastError
+                    ? alert(chrome.runtime.lastError.message + '\n\nProbably icon-link (or base64) in some bookmark too big')
+                    : console.log('Bookmarks saved in cloud')
+
+                let save_icon = document.getElementById('icon-cloud-save')
+                save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
+                setTimeout(function () {
+                    let load_icon = document.getElementById('icon-cloud-save')
+                    load_icon.setAttribute('src', 'images/icons/backup.svg')
+                }, 1500)
+            })
         })
     })
 }
