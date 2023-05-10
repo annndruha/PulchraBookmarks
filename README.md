@@ -4,6 +4,8 @@
 ![rating](https://img.shields.io/badge/rating-★★★★★-brightgreen)
 [![GitHub license](https://img.shields.io/github/license/Annndruha/PulchraBookmarks.svg)](https://github.com/Annndruha/PulchraBookmarks/blob/master/LICENSE)
 
+### Install from [Chrome Web Store](https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb)
+
 [![](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png)](https://chrome.google.com/webstore/detail/pulchra-bookmarks/pknkgclggganidoalifaagfjikhcdolb)
 
 ### Install from this repo
