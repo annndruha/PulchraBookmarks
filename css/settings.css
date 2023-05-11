@@ -16,10 +16,11 @@
     position: absolute;
     padding-bottom: 20px;
     bottom: 0;
+    background: white;
 }
 
 .settings.cancel-overlay {
-    right: 5000px;
+    right: 10000px;
     width: 100vw;
     padding: 0;
     background: black;

@@ -8,7 +8,7 @@ function updateTime(){
 
 function initClock(){
     chrome.storage.local.get(['show-clock'], function (res) {
-        if (window.innerHeight > 512) {
+        if (window.innerHeight > 530) {
             if (res['show-clock']){
                 $('.clock-div').css('display', 'block')
                 $('.content').css('padding-top', '35px')
