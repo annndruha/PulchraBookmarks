@@ -55,11 +55,10 @@ function setJsonToLocalStorage(json) {
 
 function saveToFile() {
     chrome.storage.local.get(null, (res) => {
-        let now = new Date()
-        let now_str = now.toLocaleDateString("ru-RU")
+        let now_str = new Date().toISOString()
         let json = getPureJSON(res)
         $('<a></a>', {
-            'download': 'Pulchra-' + now_str + '.json',
+            'download': 'Pulchra-' + now_str.split('T')[0] + '.json',
             'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
         }).appendTo('body').click(() => {
             $(this).remove()
@@ -143,8 +142,7 @@ function compareJson(){
 function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)
-        let now = new Date()
-        json['datetime'] = now.toLocaleDateString("us-US") + ' ' + now.toLocaleTimeString("us-US")
+        json['datetime'] = new Date().toISOString()
         chrome.storage.sync.get(null, (res_cloud_backup) => {
             chrome.storage.sync.clear(() => {
                 chrome.storage.sync.set(json, () => {
