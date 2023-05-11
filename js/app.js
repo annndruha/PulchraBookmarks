@@ -82,10 +82,10 @@ $(document).on('keyup',function(e) {
         deleteRootElementTree()
     }
     if ($('#edit_popup').attr('data-status') === 'closed'){
-        console.log('Pressed', e.key)
+        console.log('Pressed', e.code)
         chrome.storage.local.get(['keybinds'], function (res) {
             if (res['keybinds']) {
-                $(keybinds[e.key]).click()
+                $(keybinds_codes[e.code]).click()
             }
         })
     }
