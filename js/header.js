@@ -17,30 +17,27 @@ function createBookmarks() {
         let root = bookmarkTreeNodes[0]['children'][0]['children']
         for (let i = 0; i < root.length; i++) {
             let cl = ""
-            if (hasChields(root[i]))
-            {
+            if (hasChields(root[i])) {
                 cl = "header-item header-folder"
-            }
-            else {
+            } else {
                 cl = "header-item"
             }
-            let root_item = $('<div class="'+cl+'" id="root-header-' + root[i].id + '">')
+            let root_item = $('<div class="' + cl + '" id="root-header-' + root[i].id + '">')
             root_item.text(root[i].title)
             if (hasChields(root[i])) {
                 root_item.append(addListIcon(false, true))
             } else {
-                if (varDefined(root[i].url)){
-                    if (root[i].title.length > 23){
+                if (varDefined(root[i].url)) {
+                    if (root[i].title.length > 23) {
                         root_item.text(root[i].title.substring(0, 23) + '...')
                     }
                     root_item.attr('link', root[i].url)
                     LinkRightClick(root_item)
-                }
-                else {
+                } else {
                     root_item = null // If empty folder
                 }
             }
-            if (varDefined(root_item)){
+            if (varDefined(root_item)) {
                 $('#bookmarks').append(root_item)
                 $('#root-header-' + root[i].id).on('click', createRootElementTree)
                 $('.app-container').on('click', deleteRootElementTree)
@@ -135,14 +132,13 @@ function dumpNode(bookmarkNode) {
             pseudoli.append(addListIcon())
 
         } else {
-            if (varDefined(bookmarkNode.url)){
+            if (varDefined(bookmarkNode.url)) {
                 anchor.attr('link', bookmarkNode.url)
                 anchor.on('click', (e) => {
                     e.stopPropagation()
                     openLink(anchor.attr('link'))
                 })
-            }
-            else {
+            } else {
                 anchor.on('click', (e) => {
                     e.stopPropagation()
                     alert('Empty folder')

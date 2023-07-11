@@ -2,9 +2,9 @@ function editBookmark(menu_img_id) {
     let id = menu_img_id.replace('icon-', '')
     let bookmark = document.getElementById(id)
     let link = bookmark.getAttribute('link')
-    let iconlink = bookmark.getAttribute('icon-link')
+    let icon_link = bookmark.getAttribute('icon-link')
     let placeholder = varDefined(link) ? link : ''
-    createEditPopup(id, placeholder, iconlink)
+    createEditPopup(id, placeholder, icon_link)
 
     $('#edit_popup')
         .css('top', 'calc(50vh - 95px)')
@@ -33,14 +33,14 @@ function deleteEditPopup() {
 
 function updateIconPreview() {
     let link_value = document.getElementById("edit-link-text").value
-    let iconlink = document.getElementById("edit-icon-text").value
+    let icon_link = document.getElementById("edit-icon-text").value
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', link_value)
-    if (varDefined(link_value) && varDefined(iconlink)){
-        preview_div.setAttribute('icon-link', iconlink)
+    if (varDefined(link_value) && varDefined(icon_link)){
+        preview_div.setAttribute('icon-link', icon_link)
         loadIcon('preview')
     }
-    else if (varDefined(link_value) && !varDefined(iconlink)){
+    else if (varDefined(link_value) && !varDefined(icon_link)){
         preview_div.removeAttribute('icon-link')
         loadIcon('preview')
     }
@@ -49,7 +49,7 @@ function updateIconPreview() {
     }
 }
 
-function createEditPopup(id, placeholder, iconlink) {
+function createEditPopup(id, placeholder, icon_link) {
     // Keyboard shortcut
     if (varDefined(getKeyByValue(keybinds, '#'+id))){
         let shortcut_value = document.getElementById("key-preview")
@@ -71,12 +71,12 @@ function createEditPopup(id, placeholder, iconlink) {
     // Text-link to icon
     let icon_value = document.getElementById("edit-icon-text")
     icon_value.placeholder = 'Link to icon (svg, png, jpg) or base64'
-    icon_value.value = (varDefined(iconlink)) ? iconlink : ''
+    icon_value.value = (varDefined(icon_link)) ? icon_link : ''
 
     // Icon itself
     let preview_div = document.getElementById("preview")
     preview_div.setAttribute('link', placeholder)
-    preview_div.setAttribute('icon-link', (varDefined(iconlink)) ? iconlink : '')
+    preview_div.setAttribute('icon-link', (varDefined(icon_link)) ? icon_link : '')
     updateIconPreview()
 }
 

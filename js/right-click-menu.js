@@ -2,12 +2,12 @@ $(document).on('click', function () {
     $('.click-menu').hide(0)
 })
 
-$(document).bind('contextmenu', function (e){
+$(document).bind('contextmenu', function (e) {
     e.preventDefault()
     $('.click-menu').hide(0)
 })
 
-function hideAllRightClick(){
+function hideAllRightClick() {
     $('.click-menu').hide(0)
 }
 
@@ -38,14 +38,13 @@ function gridItemRightClick() {
         let id = $(this).find('.grid-item-inside').attr('id').toString()
         let link = $(this).find('.grid-item-inside').attr('link').toString()
 
-        if($(this).find('.empty-icon').length !== 0){
+        if ($(this).find('.empty-icon').length !== 0) {
             $('#click-menu-grid-item-edit').css({top: e.clientY + 'px', left: e.clientX + 'px'}).show(100)
-        }
-        else {
+        } else {
             $('#click-menu-grid-item').css({top: e.clientY + 'px', left: e.clientX + 'px'}).show(100)
         }
 
-        $('.click-menu-row').off('click').on('click', {param1: 'link', param2:'id'}, function (e) {
+        $('.click-menu-row').off('click').on('click', {param1: 'link', param2: 'id'}, function (e) {
             e.stopPropagation()
             hideAllRightClick()
             switch ($(this).attr('data-action')) {
@@ -53,7 +52,9 @@ function gridItemRightClick() {
                     openLink(link, true)
                     break
                 case 'edit':
-                    setTimeout(() => {editBookmark('icon-'+id)}, 20)
+                    setTimeout(() => {
+                        editBookmark('icon-' + id)
+                    }, 20)
                     break
                 case 'delete':
                     deleteMark(id)

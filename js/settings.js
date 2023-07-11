@@ -32,7 +32,8 @@ $('#range-rows').on('input', function (e) {
     let rows = parseInt(e.target.value)
     let cols = parseInt(document.getElementById('cols').innerText)
     document.getElementById('rows').innerText = rows.toString()
-    chrome.storage.local.set({['rows']: rows}, () => {})
+    chrome.storage.local.set({['rows']: rows}, () => {
+    })
     makeGrid(cols, rows)
 })
 
@@ -40,7 +41,8 @@ $('#range-cols').on('input', function (e) {
     let cols = parseInt(e.target.value)
     let rows = parseInt(document.getElementById('rows').innerText)
     document.getElementById('cols').innerText = cols.toString()
-    chrome.storage.local.set({['cols']: cols}, () => {})
+    chrome.storage.local.set({['cols']: cols}, () => {
+    })
     makeGrid(cols, rows)
 })
 
@@ -54,10 +56,12 @@ $('#new-tab').on('click', (e) => {
     e.preventDefault()
     chrome.storage.local.get(['new-tab'], (res) => {
         if (res['new-tab']) {
-            chrome.storage.local.set({['new-tab']: false}, () => {})
+            chrome.storage.local.set({['new-tab']: false}, () => {
+            })
             setCheckbox('checkbox-new-tab', false)
         } else {
-            chrome.storage.local.set({['new-tab']: true}, () => {})
+            chrome.storage.local.set({['new-tab']: true}, () => {
+            })
             setCheckbox('checkbox-new-tab', true)
         }
     })
@@ -68,10 +72,12 @@ $('#show-quick').on('click', (e) => {
     e.preventDefault()
     chrome.storage.local.get(['show-quick', 'cols'], function (res) {
         if (res['show-quick']) {
-            chrome.storage.local.set({['show-quick']: false}, () => {})
+            chrome.storage.local.set({['show-quick']: false}, () => {
+            })
             setCheckbox('checkbox-show-quick', false)
         } else {
-            chrome.storage.local.set({['show-quick']: true}, () => {})
+            chrome.storage.local.set({['show-quick']: true}, () => {
+            })
             setCheckbox('checkbox-show-quick', true)
         }
         updateBottomMenu(res['cols'])
@@ -83,10 +89,12 @@ $('#show-header').on('click', (e) => {
     e.preventDefault()
     chrome.storage.local.get(['show-header'], function (res) {
         if (res['show-header']) {
-            chrome.storage.local.set({['show-header']: false}, () => {})
+            chrome.storage.local.set({['show-header']: false}, () => {
+            })
             setCheckbox('checkbox-show-header', false)
         } else {
-            chrome.storage.local.set({['show-header']: true}, () => {})
+            chrome.storage.local.set({['show-header']: true}, () => {
+            })
             setCheckbox('checkbox-show-header', true)
         }
         updateHeaderMenu()
@@ -98,12 +106,14 @@ $('#keybinds').on('click', function (e) {
     e.preventDefault()
     chrome.storage.local.get(['keybinds'], function (res) {
         if (res['keybinds']) {
-            chrome.storage.local.set({['keybinds']: false}, () => {})
+            chrome.storage.local.set({['keybinds']: false}, () => {
+            })
             setCheckbox('checkbox-keybinds', false)
             disableKeybinds()
         } else {
             console.log('set keybinds')
-            chrome.storage.local.set({['keybinds']: true}, () => {})
+            chrome.storage.local.set({['keybinds']: true}, () => {
+            })
             setCheckbox('checkbox-keybinds', true)
             enableKeybinds()
         }
@@ -111,11 +121,13 @@ $('#keybinds').on('click', function (e) {
 }).hover(
     () => { // In hover
         enableKeybinds()
-        $('.grid-item-inside-key').css('opacity', '1')},
+        $('.grid-item-inside-key').css('opacity', '1')
+    },
 
     () => { // Out hover
         disableKeybinds()
-        $('.grid-item-inside-key').css('opacity', '0')}
+        $('.grid-item-inside-key').css('opacity', '0')
+    }
 )
 
 
@@ -132,8 +144,10 @@ $('#reset-background').on('click', function (e) {
 
 $('.changegrid').hover(
     () => { // In hover
-        document.getElementById('emptysheet').href = 'css/empty-icon-bm-show.css'},
+        document.getElementById('emptysheet').href = 'css/empty-icon-bm-show.css'
+    },
 
     () => { // Out hover
-        document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'}
+        document.getElementById('emptysheet').href = 'css/empty-icon-bm.css'
+    }
 )

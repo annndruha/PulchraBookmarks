@@ -10,43 +10,40 @@ function getDomain(link) {
 
 function textFromLink(link) {
     let text = getDomain(link)
-    let text_splitted= text.split('.')
-    if (text_splitted.length === 1){
+    let text_splitted = text.split('.')
+    if (text_splitted.length === 1) {
         return text
     }
 
     let result
-    if (isNumeric(text_splitted[text_splitted.length - 1])){
+    if (isNumeric(text_splitted[text_splitted.length - 1])) {
         result = text
-    }
-    else {
+    } else {
         result = text_splitted.slice(0, -1)
         result = (result.length === 1) ? result[0].capitalize() : result.join('.')
     }
-    return  result
+    return result
 }
 
 function getOpenLink(link) {
     return (varDefined(link)) ? (!(link.includes('://'))) ? 'https://' + link : link : ''
 }
 
-function openLink(open_link, newtab='auto') {
+function openLink(open_link, newtab = 'auto') {
     hideAllRightClick()
     open_link = getOpenLink(open_link)
     if (varDefined(open_link)) {
-        if (newtab === 'auto')
-        {
+        if (newtab === 'auto') {
             chrome.storage.local.get(['new-tab'], function (res) {
                 if (res['new-tab']) {
                     chrome.tabs.create({'url': open_link, active: false})
                 } else {
                     chrome.tabs.update({active: true, url: open_link})
-                }})
-        }
-        else if (newtab === true) {
+                }
+            })
+        } else if (newtab === true) {
             chrome.tabs.create({'url': open_link, active: false})
-        }
-        else {
+        } else {
             chrome.tabs.update({active: true, url: open_link})
         }
     } else {
