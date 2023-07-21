@@ -3,6 +3,7 @@ function getPureJSON(json){
     try{
         delete json['datetime']
         delete json['background']
+        delete json["version"]
         for (let r = 0; r < json['rows']; r++) {
             for (let c = 0; c < json['cols']; c++) {
                 let id = r.toString() + c.toString()
@@ -21,9 +22,6 @@ function getPureJSON(json){
                 delete json[id]
             }
         }
-        $.getJSON('manifest.json', function (res) {
-            json['version'] = res['version']
-        })
     }
     // TODO: Validate json
     catch (e) {
@@ -57,13 +55,16 @@ function saveToFile() {
     chrome.storage.local.get(null, (res) => {
         let now_str = new Date().toISOString()
         let json = getPureJSON(res)
-        $('<a></a>', {
-            'download': 'Pulchra-' + now_str.split('T')[0] + '.json',
-            'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
-        }).appendTo('body').click(() => {
-            $(this).remove()
-        })[0].click()
-        console.log('Save bookmarks to file')
+        $.getJSON('manifest.json', function (r) {
+            json['version'] = r['version']
+            $('<a></a>', {
+                'download': 'Pulchra-' + now_str.split('T')[0] + '.json',
+                'href': 'data:application/json,' + encodeURIComponent(JSON.stringify(json, null, '\t'))
+            }).appendTo('body').click(() => {
+                $(this).remove()
+            })[0].click()
+            console.log('Save bookmarks to file')
+        })
     })
 }
 
@@ -143,23 +144,26 @@ function saveToCloud() {
     chrome.storage.local.get(null, (res) => {
         let json = getPureJSON(res)
         json['datetime'] = new Date().toISOString()
-        chrome.storage.sync.get(null, (res_cloud_backup) => {
-            chrome.storage.sync.clear(() => {
-                chrome.storage.sync.set(json, () => {
-                    if (chrome.runtime.lastError){
-                        chrome.storage.sync.set(res_cloud_backup, () => {
-                            console.log('Runtime error while cloud save. Cloud restored to state before saving.')})
-                            alert(chrome.runtime.lastError.message + '\n\nProbably icon-link (or base64) in some bookmark too big')
-                    }
-                    else{
-                        console.log('Bookmarks saved in cloud')
-                    }
-                    let save_icon = document.getElementById('icon-cloud-save')
-                    save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
-                    setTimeout(function () {
-                        let load_icon = document.getElementById('icon-cloud-save')
-                        load_icon.setAttribute('src', 'images/icons/backup.svg')
-                    }, 1500)
+        $.getJSON('manifest.json', function (r) {
+            json['version'] = r['version']
+            chrome.storage.sync.get(null, (res_cloud_backup) => {
+                chrome.storage.sync.clear(() => {
+                    chrome.storage.sync.set(json, () => {
+                        if (chrome.runtime.lastError){
+                            chrome.storage.sync.set(res_cloud_backup, () => {
+                                console.log('Runtime error while cloud save. Cloud restored to state before saving.')})
+                                alert(chrome.runtime.lastError.message + '\n\nProbably icon-link (or base64) in some bookmark too big')
+                        }
+                        else{
+                            console.log('Bookmarks saved in cloud')
+                        }
+                        let save_icon = document.getElementById('icon-cloud-save')
+                        save_icon.setAttribute('src', 'images/icons/cloud_done.svg')
+                        setTimeout(function () {
+                            let load_icon = document.getElementById('icon-cloud-save')
+                            load_icon.setAttribute('src', 'images/icons/backup.svg')
+                        }, 1500)
+                    })
                 })
             })
         })
