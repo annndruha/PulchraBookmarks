@@ -25,7 +25,7 @@ $('#git-link').on('click', function (e) {
 
 $('#report_bug').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://docs.google.com/forms/d/e/1FAIpQLScgAqYmlH-e9z3mQJ6I3TBUKRn8ei6QfYDtC6d-dRpTwvqe3Q/viewform?usp=sf_link')
+    chrome.tabs.update({'url': 'mailto:annndruha.github@gmail.com?subject=[Pulchra Bookmarks bug]'})
 })
 
 $('#range-rows').on('input', function (e) {
