@@ -22,7 +22,7 @@
   * [ ] Hotkey independed layout
   * [ ] Focus on page while open
   * [ ] Vertical centring grid
-  * [ ] Change focus from addres bar if keyboards keys enabled
+  * [ ] [Change focus from addres bar if keyboards keys enabled](https://github.com/annndruha/PulchraBookmarks/issues/2)
   * [x] Enter to save edit
 
 * Back:
