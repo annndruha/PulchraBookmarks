@@ -7,6 +7,7 @@
   * [x] Add bookmarks windows with preview
   * [ ] Wingows 11 style
   * [ ] Workspaces
+  * [ ] Generate bookmarks from Chrome default bookmarks
 
 * Behaviour:
   * [x] Turn on/off top bookmarks panel
@@ -21,6 +22,7 @@
   * [ ] Hotkey independed layout
   * [ ] Focus on page while open
   * [ ] Vertical centring grid
+  * [ ] Change focus from addres bar if keyboards keys enabled
   * [x] Enter to save edit
 
 * Back:
