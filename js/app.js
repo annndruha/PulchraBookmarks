@@ -40,6 +40,7 @@ function initSettingsValues(fromfile = false) {
         setCheckbox('checkbox-show-header', res['show-header'])
         setCheckbox('checkbox-show-clock', res['show-clock'])
         makeGrid(parseInt(res['cols']), parseInt(res['rows']), fromfile)
+        loadAllIcons()
     })
     chrome.storage.local.get(['background'], function (res) {
         if (varDefined(res['background'])) {
