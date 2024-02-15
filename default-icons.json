@@ -1,8 +1,7 @@
 {
 	"10": {
 		"0": {
-			"icon-link": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg",
-			"link": "twitter.com"
+			"link": "https://stackoverflow.com/"
 		}
 	},
 	"11": {
@@ -29,7 +28,8 @@
 	},
 	"20": {
 		"0": {
-			"link": "https://stackoverflow.com/"
+			"link": "https://translate.google.com/",
+			"title": "Google Translate"
 		}
 	},
 	"21": {
@@ -92,5 +92,5 @@
 	"show-clock": true,
 	"show-header": true,
 	"show-quick": false,
-	"version": "1.0.10"
+	"version": "1.0.14"
 }

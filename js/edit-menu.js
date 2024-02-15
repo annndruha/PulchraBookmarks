@@ -38,11 +38,11 @@ function updateIconPreview() {
     preview_div.setAttribute('link', link_value)
     if (varDefined(link_value) && varDefined(icon_link)){
         preview_div.setAttribute('icon-link', icon_link)
-        loadIcon('preview')
+        loadIcon('preview', clear_cache=true)
     }
     else if (varDefined(link_value) && !varDefined(icon_link)){
         preview_div.removeAttribute('icon-link')
-        loadIcon('preview')
+        loadIcon('preview', clear_cache=true)
     }
     else {
         setIcon('preview', 'images/icons/help.svg')
@@ -106,7 +106,7 @@ function saveEdit() {
         storage_value[0]["title"] = newText
     }
     chrome.storage.local.set({[id]: storage_value}, () => {})
-    loadIcon(id)
+    loadIcon(id, clear_cache=true)
     recreateMark(bookmark)
     deleteEditPopup()
 }

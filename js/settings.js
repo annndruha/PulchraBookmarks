@@ -133,7 +133,7 @@ $('#keybinds').on('click', function (e) {
 
 $('#reload-icons').on('click', function (e) {
     e.stopPropagation()
-    loadAllIcons()
+    loadAllIcons(true)
 })
 
 $('#reset-background').on('click', function (e) {
