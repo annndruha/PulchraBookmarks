@@ -1,5 +1,4 @@
 function loadAllIcons(clear_cache = false) {
-    console.log('loadAllIcons')
     chrome.storage.local.get(['cols', 'rows'], function (res) {
         for (let r = 0; r < res['rows']; r++) {
             for (let c = 0; c < res['cols']; c++) {
@@ -15,11 +14,9 @@ function loadIcon(id, clear_cache) {
     if (bm.hasAttribute('link') && varDefined(bm.getAttribute('link'))) {
         if (clear_cache) {
             setPlaceholder(id)
-            console.log('Clear cache true')
             clearIconCache(id)
-        } else {
-            console.log('Clear cache false')
         }
+
         if (bm.hasAttribute('cache-icon')) {
             if (varDefined(bm.getAttribute('cache-icon'))) {
                 setIcon(id, bm.getAttribute('cache-icon'))

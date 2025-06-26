@@ -20,12 +20,12 @@ $('#store-link').on('click', function (e) {
 
 $('#git-link').on('click', function (e) {
     e.stopPropagation()
-    openLink('https://github.com/Annndruha/PulchraBookmarks')
+    openLink('https://github.com/annndruha/PulchraBookmarks')
 })
 
 $('#report_bug').on('click', function (e) {
     e.stopPropagation()
-    chrome.tabs.update({'url': 'mailto:annndruha.github@gmail.com?subject=[Pulchra Bookmarks bug]'})
+    openLink('https://github.com/annndruha/PulchraBookmarks/issues')
 })
 
 $('#range-rows').on('input', function (e) {
@@ -111,7 +111,6 @@ $('#keybinds').on('click', function (e) {
             setCheckbox('checkbox-keybinds', false)
             disableKeybinds()
         } else {
-            console.log('set keybinds')
             chrome.storage.local.set({['keybinds']: true}, () => {
             })
             setCheckbox('checkbox-keybinds', true)

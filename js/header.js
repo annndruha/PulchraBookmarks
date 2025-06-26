@@ -17,14 +17,14 @@ function createBookmarks() {
         let root = bookmarkTreeNodes[0]['children'][0]['children']
         for (let i = 0; i < root.length; i++) {
             let cl = ""
-            if (hasChields(root[i])) {
+            if (hasChilds(root[i])) {
                 cl = "header-item header-folder"
             } else {
                 cl = "header-item"
             }
             let root_item = $('<div class="' + cl + '" id="root-header-' + root[i].id + '">')
             root_item.text(root[i].title)
-            if (hasChields(root[i])) {
+            if (hasChilds(root[i])) {
                 root_item.append(addListIcon(false, true))
             } else {
                 if (varDefined(root[i].url)) {
@@ -46,7 +46,7 @@ function createBookmarks() {
     })
 }
 
-function hasChields(item) {
+function hasChilds(item) {
     return !!(item.children && item.children.length > 0)
 }
 
